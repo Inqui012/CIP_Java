@@ -1,0 +1,14 @@
+김하서 강사님 klina8575@gmail.com
+
+* 백엔드 위주의 풀스택.
+* 리액트, 스프링. 오라클, mySQL, thymeleaf, aws, tomcat, git, figma(디자인계통)
+* 인텔리제이?
+* https://github.com/kamranahmedse/developer-roadmap
+
+10 프론트
+11 자바
+12 디비 jpa
+1 sping
+2 deploy
+
+* 혼자공부하는 (초중급), 두잇 시리즈, 리액트
