@@ -9,3 +9,10 @@
     테이블의 캡션위치지정. 
 * border-collapse: ;
     테이블 테두리 한줄 / 두줄 표시지정
+
+* block : margin, padding 자유. width heghit 자유
+    -> div, 시맨틱 태그, p, h1~h6, table, ul ...
+    linine : margin, padding 좌우만, width height 불가
+    -> a, img, span, button, textarea, select, input, label
+    inline-block : 인라인이지만 블록처럼 적용가능.
+    어디에 썼는지 까먹었네
