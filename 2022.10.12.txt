@@ -1,0 +1,7 @@
+* 폰트에는 serif, sans-serif를 무조건 하나는 사용해야한다? 다국어지원.
+
+* @font-face 정의
+    font-family: '이름(임의지정 가능)',
+    src: local ('폰트이름') / 사용자의 로컬pc에 해당 폰트가 있는지 확인하는 용도
+        url('주소') format ('폰트타입')
+
