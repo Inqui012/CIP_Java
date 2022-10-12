@@ -5,3 +5,7 @@
     src: local ('폰트이름') / 사용자의 로컬pc에 해당 폰트가 있는지 확인하는 용도
         url('주소') format ('폰트타입')
 
+* caption-side: ;
+    테이블의 캡션위치지정. 
+* border-collapse: ;
+    테이블 테두리 한줄 / 두줄 표시지정
