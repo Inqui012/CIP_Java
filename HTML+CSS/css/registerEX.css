@@ -1,0 +1,66 @@
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: #ccc;
+    padding: 20px;
+}
+#signup {
+    padding: 20px;
+    background-color: #fff;
+    width: 45%;
+    border: 1px solid #222;
+    border-radius: 5px;
+}
+#signup fieldset {
+    margin: 5px 5px 30px 5px;
+    border: 1px solid rgb(192, 192, 192);
+}
+#signup fieldset legend {
+    font-weight: bold;
+    font-size: 15px;
+}
+#signup fieldset:last-of-type {
+    border: none;
+    padding: 10px;
+    text-align: center;
+}
+#signup fieldset:last-of-type legend {
+    display: none;
+}
+#signup fieldset:last-of-type input {
+    font-size: 17px;
+    padding: 5px 20px;
+    border-radius: 20px;
+    border: 1px solid black;
+}
+#signup fieldset:last-of-type input:hover {
+    background-color: black;
+    color: white;
+}
+
+ul {
+    list-style: none;
+}
+ul li {
+    padding: 7px;
+}
+ul li label {
+    font-size: 13px;
+    display: inline-block;
+    width: 30%;
+}
+ul li input {
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 5px;
+    width: 200px;
+}
+ul li input[required] {
+    border-color: red;
+}
+ul li input[readonly]{
+    border: none;
+}
