@@ -1,0 +1,44 @@
+* display: grid / inline-grid;
+    grid / 컨테이너 속성이 블록인듯. 기타설정이 없으면 블록으로 나뉜 커다란 그리드 컨테이너 안에서 균등하게 아이템을 배분한다.
+    inline-grid / 문자 그대로 인라인 속성을 가짐. 그리드 아이템들이 가지고있는 최소한의 넓이에 맞춰서 컨데이너 크기가 변경? 컨테이너에 width 속성 줄 수 있다. 
+    그리드는 columns, row 로 구분. 테이블하고 비슷.
+    각 그리드 아이템의 넓이 단위는 fr인듯? fr은 비율이라고 생각하면 좋을듯. 컨테이너 안에서의 비율인가.
+    주의 html 구조에서 같은 깊이의 태그들이 아니면 gird가 제대로 적용되지 않는 듯 함. header 안에 있는 nav 태그는 grid-area 설정해도 잘 안됨.
+    flex에서 사용하던 justify-content, align-content 사용 가능하네
+    일단 컨테이너용 div를 사용하면 그리드 안에서 또 그리드를 사용하는것도 가능한것 같긴 함.
+
+    grid-template-columns: ; / grid-template-rows: ;
+    그리드 각 행열 수치 지정가능.
+    repeat(반복할 횟수, 1fr); 을 입력하면 1fr만큼의 크기를 3번 반복한다는 의미
+    minmax(최소수치, 최대수치); 그리드 아이템의 최소크기, 최대크기를 지정가능. auto 가능
+    ex) grid-template-rows: 100px 200px 50px;
+        각 행의 높이를 100, 200, 50으로 설정할 수 있음. 
+
+    각 아이템 사이사이의 간격을 정해줄 수 있다.
+    column gap: (수치);
+    row gap: (수치);
+    gap: (row-gap 수치) (column-gap 수치); / row, column 각각 적용
+    gap: (수치); / 사면 모두에 동일하게 적용
+
+    grid-column-start: ; / grid column-end: ;
+    grid-row-start: ; / grid-row-end: ;
+    각 아이템을 나누는 구분선을 grid line이라고 한다. 모눈종이처럼 왼쪽 위부터 숫자로, 1,2,3,4 로 내려가는 형태.
+    각 그리드 아이템의 크기를 아래 속성으로 적용할 수 있다.
+    그리드 아이템의 크기를 몇번째 선에서 시작해서, 몇번째 선에서 끝나게 한다는...개념?
+    주의할점은 아이템 사이사이의 선을 구분으로 하기 때문에 칸+1 로 계산해야함.
+    ex) column-start: 3; , column-end: 6; 일경우 3번째 그리드 라인 (=2번째칸 뒤)에서 시작해서 6번째 그리드라인 (=5번째칸 뒤)에서 끝남.
+    
+    grid-column: ; / grid-row: ;
+    로 축약형 가능. 시작하는 그리드라인 / 끝나는 그리드라인 으로 입력.
+    ex) grid-column: 2 / 3;
+
+    grid-area: grid-row-start / grid-column-start / grid-row-end / grid-column-end | itemname;
+    축약형. 테이블에서 쓰는 span 도 쓸 수 있는것 같은데?
+    수치를 써넣는것도 있지만 해당 속성을 적용한 태그에 그리드 이름을 지정해주고
+    이후 그리드 컨테이너에서 grid: ; 속성으로 모양 잡을때 직관적으로 이용할 수 있다.
+    ex) grid-template-areas: 
+            "이름1 이름1 이름1"
+            "이름2 이름3 이름4"
+            "이름5 이름5 .";
+        세로 세줄, 첫줄은 하나의 태그가 채우고 두번째는 세개의 태그, 세번째는 두칸 채우고 마지막은 나머지
+    gird: ; 속성 안에서 써줘도 똑같이 작용하는듯.

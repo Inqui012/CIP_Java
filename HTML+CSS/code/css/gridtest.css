@@ -1,0 +1,67 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    height: 100px;
+}
+h1, h2, h3 {
+    font-weight: bold;
+}
+div.container {
+    display: grid;
+    width: 100%;
+    grid: 
+        "header header header"
+        "sec1 sec1 aside"
+        "sec2 sec3 aside"
+        "sec4 sec4 aside"
+        "footer footer footer";
+    grid-template-columns: 35% 35% 25%;
+    grid-template-rows: 200px 400px 400px 400px 200px;
+    grid-gap: 20px;
+    justify-content: center;
+    align-content: center;
+}
+div.container header {
+    grid-area: header;
+    background-color: antiquewhite;
+}
+div.container header nav {
+    height: 100px;
+    background-color: aquamarine;
+}
+div.container section:nth-of-type(1) {
+    grid-area: sec1;
+    background-color: blue;
+}
+div.container section:nth-of-type(2) {
+    grid-area: sec2;
+    background-color: brown;
+}
+div.container section:nth-of-type(3) {
+    grid-area: sec3;
+    background-color: blueviolet;
+}
+div.container section:nth-of-type(4) {
+    grid-area: sec4;
+    background-color: chocolate;
+}
+div.container section:nth-of-type(4) div.gridInGrid {
+    width: 90%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 45%;
+    grid-template-rows: 80%;
+}
+div.container section:nth-of-type(4) div.gridInGrid div {
+    background-color: darkolivegreen;
+}
+div.container aside {
+    grid-area: aside;
+    background-color: crimson;
+}
+div.container footer {
+    grid-area: footer;
+    background-color: darkcyan;
+}
