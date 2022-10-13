@@ -19,7 +19,7 @@ div.container {
         "footer footer footer";
     grid-template-columns: 35% 35% 25%;
     grid-template-rows: 200px 400px 400px 400px 200px;
-    grid-gap: 20px;
+    grid-gap: 10px;
     justify-content: center;
     align-content: center;
 }
@@ -46,16 +46,35 @@ div.container section:nth-of-type(3) {
 div.container section:nth-of-type(4) {
     grid-area: sec4;
     background-color: chocolate;
+    position: relative;
 }
 div.container section:nth-of-type(4) div.gridInGrid {
-    width: 90%;
-    height: 100%;
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    left: 10%;
+    top: 10%;
     display: grid;
-    grid-template-columns: 45%;
-    grid-template-rows: 80%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 70%;
+    grid:
+        "sub1 sub2 sub3";
+    grid-gap: 10px;
+/*     justify-content: center;
+    align-content: center; 
+    이거 왜 안되는지 모르겠네*/
 }
-div.container section:nth-of-type(4) div.gridInGrid div {
+div.container section:nth-of-type(4) div.gridInGrid div:nth-child(1) {
+    grid-area: sub1;
     background-color: darkolivegreen;
+}
+div.container section:nth-of-type(4) div.gridInGrid div:nth-child(2) {
+    grid-area: sub2;
+    background-color: aqua;
+}
+div.container section:nth-of-type(4) div.gridInGrid div:nth-child(3) {
+    grid-area: sub3;
+    background-color: brown;
 }
 div.container aside {
     grid-area: aside;
