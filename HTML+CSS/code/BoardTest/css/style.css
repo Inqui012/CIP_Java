@@ -11,6 +11,40 @@ a {
     color: black;
 }
 
+@media screen and (max-width: 767px) {
+    div.wrap {
+        width: 95vw;
+    }
+    table.board_list th:first-child,
+    table.board_list th:nth-child(3),
+    table.board_list th:nth-child(4),
+    table.board_list td:first-child,
+    table.board_list td:nth-child(3),
+    table.board_list td:nth-child(4) {
+        display: none;
+    }
+    div.bt_list {
+        width: 100%;
+    }
+    div.bt_list.bt_wrap a {
+        width: 100%;
+        margin-left: 0;
+        box-sizing: border-box;
+        margin: 10px 0;
+    }
+    div.board_write div.info {
+        display: block;
+    }
+    div.board_view div.info dl {
+        padding: 0 5px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width:1000px) {
+    div.wrap {
+        width: 100vw;
+    }
+}
 /* index */
 div.wrap {
     width: 80%;
@@ -143,7 +177,6 @@ div.board_write div dl dt {
 }
 
 div.cont {
-    width: 100%;
     text-align: center;
     padding: 10px 0;
 }
