@@ -11,7 +11,7 @@ a {
     color: black;
 }
 
-
+/* index */
 div.wrap {
     width: 80%;
     margin: 0 auto;
@@ -75,11 +75,10 @@ div.board_page {
     justify-content: center;
 }
 div.board_page a {
-    box-sizing: border-box;
     font-size: 1.4rem;
-    padding: 5px 10px;
+    padding: 5px;
 }
-div.board_page a.on {
+div.board_page a.num.on {
     background-color: #eee;
 }
 div.board_page a:hover {
@@ -87,4 +86,68 @@ div.board_page a:hover {
 }
 div.board_page a:not(:last-child) {
     margin-right: 10px;
+}
+
+/* write */
+div.board_title {
+    width: 100%;
+    margin: 30px 10px;
+}
+div.board_title strong {
+    font-size: 3rem;
+}
+div.board_title p {
+    margin-top: 5px;
+    font-size: 1.4rem;
+}
+div.board_write_wrap {
+    border-top: 2px solid black;
+}
+div.board_write_wrap div.board_write div {
+    width: 100%;
+    border-bottom: 1px solid black;
+}
+div.board_write_wrap div.board_write div dl {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px 0;
+}
+div.info {
+    display: flex;
+    justify-content: center;
+}
+div.board_write div.info dl {
+    width: 50%;
+}
+div.board_write div dl dt {
+    box-sizing: border-box;
+    padding: 5px 10px;
+    width: 25%;
+}
+div.board_write div dl dt,
+div.board_write div dl dd {
+    display: inline-block;
+}
+div.board_write div.title dl dd {
+    width: 70%;
+}
+div.board_write div dl input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 5px 10px;
+}
+div.board_write div dl dt {
+    font-size: 1.5rem;
+    padding: 5px 10px;
+}
+
+div.cont {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+}
+div.cont textarea {
+    width: 90%;
+    height: 300px;
 }
