@@ -1,0 +1,90 @@
+@charset "uft-8";
+* {
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 10px;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+
+
+div.wrap {
+    width: 80%;
+    margin: 0 auto;
+}
+div.wrap table.board_list {
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    border-collapse: collapse;
+}
+div.wrap table.board_list th, td {
+    border-spacing: 0;
+    padding: 10px;
+}
+div.wrap table.board_list caption {
+    padding: 30px;
+    font-weight: bold;
+    font-size: 30px;
+}
+div.wrap table.board_list thead {
+    height: 40px;
+    border-bottom: 1px solid rgb(255, 255, 255);
+}
+div.wrap table.board_list tbody tr {
+    height: 35px;
+}
+div.wrap table.board_list tr:nth-child(2n+1) {
+    background-color: #eee;
+}
+div.wrap table.board_list tbody tr td.board_title {
+    width: 60%;
+}
+div.wrap table.board_list tbody tr td.board_title:hover {
+    text-decoration: underline;
+}
+
+div.bt_wrap {
+    text-align: center;
+    margin-top: 20px;
+}
+div.bt_list {
+    text-align: right;
+}
+div.bt_wrap a {
+    display: inline-block;
+    min-width: 80px;
+    font-size: 1.3rem;
+    background-color: #eee;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-left: 10px;
+    text-align: center;
+}
+div.bt_wrap a:hover {
+    background-color: black;
+    color: white;
+}
+
+div.board_page {
+    display: flex;
+    justify-content: center;
+}
+div.board_page a {
+    box-sizing: border-box;
+    font-size: 1.4rem;
+    padding: 5px 10px;
+}
+div.board_page a.on {
+    background-color: #eee;
+}
+div.board_page a:hover {
+    background-color: #eee;
+}
+div.board_page a:not(:last-child) {
+    margin-right: 10px;
+}

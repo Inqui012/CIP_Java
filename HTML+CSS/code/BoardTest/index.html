@@ -8,14 +8,77 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div>
-        <h1>자유게시판</h1>
-        <table>
-            <caption>게시판</caption>
+    <div class="wrap">
+        <table class="board_list">
+            <caption>자유 게시판</caption>
             <thead>
-                th
+                <tr>
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>글쓴이</th>
+                    <th>작성일</th>
+                    <th>조회수</th>
+                </tr>
             </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td class="board_title"><a href="view.html">글 제목입니다.</a></td>
+                    <td>작성자명</td>
+                    <td>2022.10.14</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td class="board_title"><a href="view.html">글 제목입니다.</a></td>
+                    <td>작성자명</td>
+                    <td>2022.10.14</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td class="board_title"><a href="view.html">글 제목입니다.</a></td>
+                    <td>작성자명</td>
+                    <td>2022.10.14</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td class="board_title"><a href="view.html">글 제목입니다.</a></td>
+                    <td>작성자명</td>
+                    <td>2022.10.14</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td class="board_title"><a href="view.html">글 제목입니다.</a></td>
+                    <td>작성자명</td>
+                    <td>2022.10.14</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td class="board_title"><a href="view.html">글 제목입니다.</a></td>
+                    <td>작성자명</td>
+                    <td>2022.10.14</td>
+                    <td>5</td>
+                </tr>
+            </tbody>
         </table>
+        <div class="bt_wrap bt_list">
+            <a href="write.html">글쓰기</a>
+        </div>
+        <div class="board_page">
+            <a href="" class="bt first">&lt;&lt;</a>
+            <a href="" class="bt prev">&lt;</a>
+            <a href="" class="num on">1</a>
+            <a href="" class="num">2</a>
+            <a href="" class="num">3</a>
+            <a href="" class="num">4</a>
+            <a href="" class="num">5</a>
+            <a href="" class="bt next">&gt;</a>
+            <a href="" class="bt last">&gt;&gt;</a>
+        </div>
     </div>
 </body>
 </html>
