@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div.wrap, div.wrap2 {
+            width: 960px;
+            height: 500px;
+            background-color: brown;
+            margin: 0 auto;
+        }
+        div.wrap div, div.wrap2 div {
+            width: 300px;
+            height: 100%;
+            background-color: bisque;
+        }
+        div.wrap2 div {
+            display: inline-block;
+        }
+        div.wrap2 div:nth-of-type(1) {
+            background-color: cadetblue;
+            margin-right: 200px;
+        }
+
+        @media screen and (max-width: 959px) {
+            div.wrap, div.wrap2 {
+                width: 100%;
+                height: 500px;
+                background-color: brown;
+                margin: 0 auto;
+            }
+            div.wrap div, div.wrap2 div {
+                width: 40%;
+                height: 100%;
+                background-color: bisque;
+            }
+            div.wrap2 div:nth-of-type(1) {
+                margin-right: 10%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div>
+
+        </div>
+    </div>
+    <hr>
+    <div class="wrap2">
+        <div></div>
+        <div></div>
+    </div>
+</body>
+</html>
