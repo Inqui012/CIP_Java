@@ -1,0 +1,57 @@
+@charset "uft-8";
+
+/* 리셋 */
+* {margin: 0; padding: 0;}
+a {text-decoration: none !important;}
+img {border: 0;}
+ul {list-style: none;}
+header, footer, section {box-sizing: border-box;}
+
+main.wrap {background-color: wheat;}
+
+/* 0-766 모바일*/
+.header__nav {max-width: 1200px; background-color: blueviolet; margin: 0 auto; display: flex;}
+.header__nav h1 {width: 100px; height: 120px;}
+.header__nav nav {width: calc(100%-100px); height: 120px; background-color: aqua;}
+.header__nav nav ul {display: flex; justify-content: space-around;}
+.header__nav > .delivery-order {width: 168px;}
+
+section .con {max-width: 1440px; height: 100%; margin: 0 auto;}
+.slider {height: 480px;}
+.slider__content {background-color: cadetblue;}
+.youtube {height: 605px;}
+.youtube__content {background-color: yellow;}
+.sns {height: 160px;}
+.sns__content {background-color: violet;}
+.sns__content ul {display: flex;}
+.sns__content ul li {flex: 1; text-align: center;}
+.guide {height: 480px;}
+.guide__content {background-color: tomato; display: flex; flex-direction: column;}
+.guide__content > div {flex: 1; text-align: center;}
+.guide__content .content__app {background-color: teal;}
+.guide__content .content__delivery {background-color: slategray;}
+.store {height: 597px;}
+.store__content {background-color: saddlebrown;}
+/* float 캔슬 애프터 캔슬러 안쓰고 그냥 overflow:hidden 쓰네. 넓이는 공식으로 계산한거래. 자식넓이 / 부모넓이 * 100% */
+.store__content ul {width: 79.44%; margin: 0 auto; background-color: rosybrown; overflow: hidden;}
+.store__content ul li {float: left; width: 33.33%; text-align: center;}
+
+.banner {height: 200px;}
+.banner__content {background-color: darkblue;}
+.footer {height: 680px; background-color: paleturquoise;}
+
+@media screen and (max-width:766px) {
+    
+}
+/* 767-1023 태블릿*/
+@media screen and (min-width:767px) and (max-width:1023px) {
+.guide__content {flex-direction: row;}
+.store__content ul li {width: calc(100%/6);}
+    
+}
+/* 1024 피시*/
+@media screen and (min-width:1024px) {
+.guide__content {flex-direction: row;}
+.store__content ul li {width: calc(100%/6);}
+    
+}
