@@ -1,0 +1,63 @@
+@charset "uft-8";
+
+/* 리셋 */
+* {margin: 0; padding: 0;}
+a {text-decoration: none !important;}
+img {border: 0;}
+ul {list-style: none;}
+header, footer, section {box-sizing: border-box;}
+
+/*  */
+.maxwidth {width: 85%; max-width: 1000px; margin: 0 auto;}
+
+header div {background-color: bisque;}
+header div div:first-child {display: flex; justify-content: space-between; align-items: center; height: 70px;}
+header div div:first-child h1 {width: 110px;}
+header div div:first-child nav {float: right;}
+header div div:first-child nav::after {content: ""; display: block; visibility: hidden; clear: both;}
+header div div:first-child nav ul {display: flex;}
+header div div:first-child nav ul li {padding: 0 5px;}
+header div div:last-child a {border: 1px solid black; padding: 2px 10px; background-color: aliceblue; font-size: 13px;}
+
+main div section:not(:first-child) {margin-top: 20px;}
+
+main div section.slider {width: 100vw; height: 500px; background-color: aquamarine; position: relative; top: 0; left: 0;}
+
+main div section.menu {display: flex;}
+main div section.menu ul {display: flex; height: 80px; align-items: center; justify-content: space-around;}
+main div section.menu ul li {padding: 20px;}
+main div section.menu ul.menu1 {width: calc((100%/8)*3); background-color: yellow;}
+main div section.menu ul.menu2 {width: calc((100%/8)*5); background-color: bisque;}
+
+main div section.notice {display: flex; justify-content: center;}
+main div section.notice > div {display: flex; width: 50%;}
+main div section.notice > div.news {background-color: aquamarine;}
+main div section.notice > div.event {background-color: burlywood;}
+main div section.notice > div div {width: 25%;}
+main div section.notice > div table {width: 75%;}
+main div section.notice > div table tr td {padding: 10px 5px;}
+
+main div section.subSlider ul {display: flex;}
+main div section.subSlider ul li {padding: 50px; width: calc((100%-20px)/3);}
+main div section.subSlider ul li:not(:last-child) {margin-right: 10px;}
+main div section.subSlider ul li:nth-of-type(1) {background-color: aquamarine;}
+main div section.subSlider ul li:nth-of-type(2) {background-color: antiquewhite;}
+main div section.subSlider ul li:nth-of-type(3) {background-color: yellowgreen;}
+main div section.subSlider div.subSlider_navbar {margin: 0 auto; text-align: center;}
+
+main div section.product {display: flex; align-items: flex-start; justify-content: space-between;}
+main div section.product ul {display: flex;}
+main div section.product ul li {flex: 1; padding: 20px;}
+main div section.product ul li:nth-child(1) {background-color: cadetblue;}
+main div section.product ul li:nth-child(2) {background-color: violet;}
+main div section.product ul li:nth-child(3) {background-color: wheat;}
+main div section.product ul li:nth-child(4) {background-color: turquoise;}
+main div section.product ul li:nth-child(5) {background-color: tomato;}
+main div section.product ul li:nth-child(6) {background-color: teal;}
+main div section.product ul li:nth-child(7) {background-color: sienna;}
+main div section.product ul li:nth-child(8) {background-color: sandybrown;}
+main div section.product ul li:not(:last-child) {margin-right: 5px;}
+
+main div section.prevent {background-color: slategray; position: relative;}
+main div section.prevent div {width: 80%;}
+main div section.prevent div:last-child {position: absolute; top: 10px; right: 10px; background-color: aquamarine; width: 15%; padding: 50px 30px;}
