@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-        /*
+      /*
         순서대로 경고, 확인/취소, 입력받는창("표시될 문항", 초기값), 콘솔에 표시, 도큐멘트(브라우저)에 직접표시 
         alert(""); 
         confirm("");
@@ -31,9 +31,21 @@
         NaN         / Not a Number. 수치가 아니다
         boolean 타입에서 undefined, null, '' (빈문자열), 0, NaN > false. 이외가 true.
 
+        상수 const      / 불변의 값. 읽기전용
+        변수 let, var   / 변하는 값.
+            var의 경우 같은 변수명으로 덮어쓰기 정의가 가능하지만 let의 경우는 이것이 불가능.
+        
+        let list = ''
+
+        연산자를 사용합니다.
+        list += '<ul>'
+        list += '  <li>Hello</li>'
+        list += '  <li>JavaScript..!</li>'
+        list += '<ul>'
+
         */
 
-        /*      
+      /*      
         var num = prompt("test");
         num = parseInt(num);
         document.write(typeof num + '<br />');
@@ -50,6 +62,7 @@
 
         console.log("하하하\'ㅇㅇㅇㅇㅇ\'ㅎㅎㅎㅎㅎㅎ\nㅎㅎㅎㅎㅎㅎ6") 
         */
+      /* 
         var input = parseInt(prompt("1-10까지 숫자",1));
         if (input > 0 && input < 10){
             for (var i = 1; i < 10; i++){
@@ -71,7 +84,11 @@
         console.log(flag1 && flag2);
         console.log(flag1 || flag2);
         console.log(!flag1);
+         */
 
+      var num = 1;
+      const num2 = 3;
+      let nom3 = 5;
     </script>
-</body>
+  </body>
 </html>
