@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let arr = ["hi", 1, "test", 2, 10];
+        arr.push("pushtest");       // 배열 뒤에 데이터 추가
+        arr.pop();                  // 배열 뒤의 데이터 빼기
+        
+        arr.splice(1, 2, '끼워넣기', '끼워넣기');           
+        // 지정된 위치부터 지정된 갯수만큼 배열에서 해당 인덱스 데이터 제거 (시작할 인덱스번호, 지울 갯수)
+        // 세번째란 부터는 지워진 위치에 대신 넣을 데이터를 지정할 수 있음.
+
+        arr.join(' + ');
+        // 배열 안의 데이터를 일렬로 출력하는듯. 출력되는 값은 배열이 아니라 문자열 데이터.
+        // ()안에 각 데이터 사이를 어떻게 이을것인지 지정할 수 있다. 따옴표로 pre처럼 입력가능
+        // '' > 아무것도 없이 그냥 나열
+
+        arr.slice(2, 5);
+        // 배열의 지정된 위치부터 지정된 위치-1 까지의 인덱스 데이터를 새로운 배열로 복사함. 복사.
+        // 음수입력의 경우 인덱스를 뒤에서부터 계산함. 지정되지 않을경우 기본값은 (0, 끝까지)
+        // (시작하는 인덱스번호, (끝나는 인덱스번호-1))
+
+        console.log(arr);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
