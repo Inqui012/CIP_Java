@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        for (var i = 0 ; true ; i++){
+            alert(`${i} 번째 반복문 입니다.`);
+            const isCountinue = confirm('계속 하시겠습니까?');
+            if (!isCountinue) {
+                break;
+            }
+        }
+        // const isCountinue = true;
+        // var i = 0;
+        // while (isCountinue) {
+        //     alert(`${i} 번째 반복문 입니다.`);
+        //     i++;
+        //     const isCountinue = confirm('계속 하시겠습니까?');
+        //     if (!isCountinue){
+        //         break;
+        //     }
+        // }
+        // for문과 동일한데 변수를 밖으로 빼줘야함.
+        // break는 실행되는순간 반복문을 바로 빠져나옴. if 뒤에 구문이 있어도 무시.
+        alert(`반복문 종료`);
+
+        for (var i = 0 ; i < 5; i++){
+            console.log(i + "번째 반복");
+            if (i === 2) {
+                continue;
+            }
+            console.log("안녕하세요");
+        }
+        // continue는 실행되는 순간 이후의 구문을 모두 무시한채 다시 반복문으로 돌아감.
+    </script>
+</body>
+</html>
