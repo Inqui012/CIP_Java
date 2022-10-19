@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function 함수명 (매개변수) { 기능 }
+        // 이하 함수정의하는 세가지 방법.
+        // 3번의 함수정의에서 매개변수가 하나일경우에는 () 생략가능
+        function sum (a, b) {
+            let sum = a + b;
+            console.log(sum);
+        }
+        // 비익명함수. 이름있는 함수
+
+        const sub = function (a, b) {
+            let sub = a - b;
+            console.log(sub);
+        };
+        // 익명함수. 이름있는 함수.
+
+        const mult = (a, b) => {
+            return a * b;
+        }
+        // 화살표함수. es6.
+        // return 도 break와 continue 처럼 실행되는 순간 아래 구문을 무시하고 함수를 끝냄.
+        
+        const divid = (a, b) => a / b;
+        // 화살표 함수의 경우 다른 기능없이 return 만 있다면 괄호 생략가능.
+        let result = divid(10, 5);
+        console.log(result);
+
+        function bmi1 (a, b) {
+            return a / ((b*0.01)**2);
+        }
+        const bmi2 = function (a, b) {
+            return a / ((b*0.01)**2);
+        }
+        const bmi3 = (a, b) => a / ((b*0.01)**2);
+
+        console.log(bmi1(50, 150));
+        console.log(bmi2(150, 150));
+        console.log(bmi3(100, 150));        
+        
+    </script>
+</body>
+</html>
