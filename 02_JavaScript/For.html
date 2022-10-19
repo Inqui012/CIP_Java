@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        for (let i = 0 ; i < 10 ; i++) {
+            console.log(i);
+        }
+        let sum = 0;
+        for (let i = 0 ; i <= 100 ; i++) {
+            sum += i;
+        }
+        console.log(sum);
+
+        const todos = ["buy milk", "check mail", "workout"];
+        for (var i = 0 ; i < todos.length ; i++){
+            console.log(todos[i]);
+        }
+        for (var i = todos.length - 1 ; i >= 0 ; i--){
+            console.log(todos[i]);
+        }
+
+        for (const i in todos) {
+            console.log(todos[i]);
+        }
+        // for in 반복문. for (const i in [배열]) 배열의 인덱스를 가져오는? todos.length 랑 같음
+
+        for (const todo of todos) {
+            console.log(todo);
+        }
+        // for of 반복문. for (const [단수형이름 변수] of [복수형 배열이름]) 배열의 값을 차례로 가져오는것 같음.
+        // 배열의 속성값들을 지정된 변수에 차례로 할당.
+    </script>   
+</body>
+</html>
