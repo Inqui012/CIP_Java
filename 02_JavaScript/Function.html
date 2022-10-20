@@ -46,6 +46,66 @@
         console.log(bmi2(150, 150));
         console.log(bmi3(100, 150));        
         
+        // 콜백함수. JS에만 있음. forEach(), map(), filter() ...
+        // 사용할수 있는 매개변수의 종류는 검색참고.
+        // 함수의 매개변수로서 다른 함수를 callback 포인터로 불러와 실행한다.
+        // 이거 sort() 랑 비슷한거 같은데 아닌가?
+        function CallThreeTimes(callback) {
+            for (var i = 0; i < 3; i++){
+                callback(i);
+            }
+        }
+        function print(i) {
+            console.log(`${i} 번째 함수 호출`)
+        }
+        CallThreeTimes(print);
+        // CallThreeTimes(function(i){console.log()}) 로도 사용가능.
+
+        // forEach(); 배열에서 사용가능. for문에서 배열.length 처럼 배열의 갯수만큼 함수를 실행시키는듯.
+        // 내부 매개변수로 value = 배열값, index = 인덱스값, array = 배열전체 를 불러오기 가능.
+        const numbers = [274, 52, 2366, 177, 94, 0];
+        numbers.forEach(function(value, index, array){
+            // console.log(array);
+            console.log(`${index} 번째 : ${value}`);
+        });
+
+        // map(); return 으로 새로운 배열을 만들어서 내보낸다. 입력된 배열의 인덱스만큼 반복하는건 같음.
+        // return 으로 나오는 값들을 전부 묶어서 배열로 만들어주는것에 주목. 배열을 받아줄 변수가 필요.
+        let result02 = numbers.map(function(value, index, array){
+            return value ** 2;
+        });
+        console.log(result02);
+
+        // filter(); 배열의 값을 받아와서 지정된 조건에 맞으면 넘기고, 맞지 않을경우 배열에서 제거
+        // 각 배열값을 반복하고, return 에 지정된 조건에 맞게 if문처럼 true 일 경우 return, 거짓일 경우 돌리지 않음.
+        // 이것도 새로운 배열을 만들어냄.
+        const evenNumber = numbers.filter(function(value){
+            return value % 2 == 0
+        });
+        console.log(evenNumber);
+
+        // setTimeout 지정된 시간 후 지정된 함수를 한번 실행.
+        // setTimeout(function(){실행할 함수}, 실행하기까지 시간);
+        setTimeout(() => {
+            console.log(`2초 후에 실행.`);
+        }, 2000);
+        
+        // setInterval 일정 시간마다 주기적으로 지정된 함수를 실행시킴. 시간 단위는 ms로 1000 = 1초.
+        // setInterval(function(){실행할 함수}, 실행할 주기); 
+        let count = 0;
+        setInterval(() => {
+            console.log(`2초 마다 실행. ${count}`);
+            count++;
+        }, 2000);
+
+        // setTimeout 일정시간마다 주기적으로 돌아가는 setInterval을 종료시키는 함수.
+        // 해당 함수 안에서 clearInterval을 사용한다.
+        // setTimeout(function(){실행할 함수}, 얼마후에 종료할지);
+        // 사용하려면 setInterval 함수를 변수로 저장한 뒤, setTimeout 안의 clearInterval(); 의 매개변수로 해당 변수를 불러온다.
+        setTimeout(() => {
+            console.log('타이머 종료');
+            clearInterval();
+        }, 5000)
     </script>
 </body>
 </html>
