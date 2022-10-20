@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // ES6에서 사용되는것들
+        
+        // Rest Parameter. 나머지 매개변수를 가져온는 기능
+        // 매개변수의 갯수가 가변적일 경우, 일일히 지정하지 않아도 입력받은 매개변수를 배열로 저장하여 전부 받아 올 수 있다.
+        // 매개변수 자리에 ...items(배열명?) 로 넣어주면 됨.
+        // 매개변수를 (a, b, ...items) 형식으로 받으면 a, b는 지정된 변수를 고정으로 받고, 나머지를 배열로 저장함.
+        // (필수적으로 받을값, ...items) 같은 형식으로 쓰려나
+
+        // 매개변수가 배열일경우 지정되어 있는 first 에만 값이 있을거고, 일반 자료일경우 맨 앞의 값 말고 이후 값들은 rests 배열에 들어갈것.
+        // 매개변수가 배열일지 일반자료일지 판단이 안될경우는 이렇게 쓰고 안에 if 문으로 배열인지 숫자인지 판단하는 구문을 넣어줘야 함.
+        function Sample(first, ...rests) {
+            let output;
+            let items;
+            // 받은 매개변수가 숫자인지 배열인지 구분함.
+            // Array.isArray(변수) 입력된 변수가 배열인지 아닌지 구분. boolean. 
+            if (Array.isArray(first)) {
+                output = first[0];
+                items = first;
+                console.log(`${first} 는 배열`);
+            } else if (typeof(first) === "number") {
+                output = first;
+                items = rests;
+                console.log(`${first} 는 숫자`)
+            }
+        }
+        const testArr = [5, 3, 8];
+        Sample(1, 2, 3, 10, 50, 3, 50, 5);
+        Sample(testArr);
+
+        // Spread Operator. 전개 연산자.
+        // Rest 는 매개변수를 '받을' 때 사용하고 Spread는 매개변수를 '보낼' 때 사용하나.
+        // Spread 가 없을 경우 배열형 매개변수를 또다시 배열 안에 넣기 때문에 items 배열의 0 번 인덱스에 받아온 배열 []이 전부 들어가있음.
+        // Spread 를 사용할경우 배열형 매개변수를 '전개' 해서 배열값을 하나하나 따로 취급한다.
+        // 보내는 매개변수 배열 [1, 2, 3] -> Spread로 전개 1, 2, 3 -> rests로 받은 매개변수 [1, 2, 3] 형태로 배열에서 뺐다가 rests로 다시 배열로 만드는 느낌? 
+        // Rests 는 정의되는 함수에 '받는 매개변수' 란에 '...' 으로 표시되고
+        // Spread 는 함수를 불러올때 '주는 매개변수' 란에 '...' 로 표시
+        function Sample01 (...items) {
+            console.log(items);
+        }
+        const testArr01 = [1, 9, 2, 7];
+        console.log(`전개 연산자 사용없음 : ${Sample01(testArr01)}`);
+        console.log(`전개 연산자 사용 : ${Sample01(...testArr01)}`);
+
+        // Default Parameter. 기본 매개변수. 매개변수에 초기값을 줄 수 있다.
+        // 정의된 함수에서 '받는 매개변수 = 초기값' 으로. 변수지정하는거랑 같은 느낌.
+        // 정확한 숫자가 아니라 함수 자체를 넣어줄 수도 있음. 
+        // ex) 매개변수 = new Date().getFullYear() 등.
+        // 필요한 매개변수에 지정받은 값이 없을경우 초기값으로 함수를 실행시킨다.
+        function Earnings (name, wage = 9000, hours = 40) {
+            console.log(`${name} 님의 급여 정보`);
+            console.log(`시급 : ${wage} 원`);
+            console.log(`근무 시간 : ${hours}`);
+            console.log(`급여 : ${hours * wage} 원`);
+            console.log(`=====`);
+        }
+        Earnings('구름');
+        Earnings('별', 10000);
+        Earnings('달', 10000, 52);
+
+        // Argument. ES6 이전.
+        // 넘겨받는 매개변수를 arguments 라는 배열형으로 받아옴. rests 가 없을시절이니 요즘에는 안쓸듯.
+        // 배열처럼 값을 받아오긴 한데 배열인건 아닌듯? 배열에 사용하는 map, sort 같은것들을 사용할 수 없고 이거 쓸려면 rests 사용해야함.
+        function ArgSample (){
+            console.log(arguments);
+            for (var i = 0; i < arguments.length; i++) {
+                console.log(`${i} 번째 : ${arguments[i]}`)
+            }
+        }
+        ArgSample(1, 2, 3);
+        ArgSample(1, 2, 4, 5);
+        ArgSample(1, 2);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
