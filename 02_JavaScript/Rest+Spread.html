@@ -68,6 +68,7 @@
         // Argument. ES6 이전.
         // 넘겨받는 매개변수를 arguments 라는 배열형으로 받아옴. rests 가 없을시절이니 요즘에는 안쓸듯.
         // 배열처럼 값을 받아오긴 한데 배열인건 아닌듯? 배열에 사용하는 map, sort 같은것들을 사용할 수 없고 이거 쓸려면 rests 사용해야함.
+        // 배열은 아니고 '배열 같은' 객체. ES6 이전 방법이라서 ES6에 나온 화살표 함수에서는 사용불가
         function ArgSample (){
             console.log(arguments);
             for (var i = 0; i < arguments.length; i++) {
