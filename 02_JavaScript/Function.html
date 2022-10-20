@@ -34,13 +34,13 @@
         let result = divid(10, 5);
         console.log(result);
 
-        function bmi1 (a, b) {
-            return a / ((b*0.01)**2);
+        function bmi1 (weight, height) {
+            return weight / ((height*0.01)**2);
         }
-        const bmi2 = function (a, b) {
-            return a / ((b*0.01)**2);
+        const bmi2 = function (weight, height) {
+            return weight / ((height*0.01)**2);
         }
-        const bmi3 = (a, b) => a / ((b*0.01)**2);
+        const bmi3 = (weight, height) => weight / ((height*0.01)**2);
 
         console.log(bmi1(50, 150));
         console.log(bmi2(150, 150));
