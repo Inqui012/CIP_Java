@@ -41,6 +41,15 @@
             "weight" : 400
         }];
         console.log(product02);
+
+        // JSON.stringify(객체데이터); 객체 데이터를 문자열로 바꿔서 보여줌.
+        // JSON.parse(문자열);반대로 문자열을 객체데이터로 바꿔줌.
+        // const product03 = ''
+        console.log(JSON.stringify(product02));
+        console.log(JSON.stringify(product));
+        // console.log(JSON.parse({"name" : 55555}));
+
+
         // Object. 객체 = 속성(key : value) + 함수(메소드). 호이스팅 불가능. 바로 정의할수도 있는데 배열 안에 여러개의 객체를 배치할 수도 있음.
         // 1. 리터럴 방식. Json 방식과 비슷한 형식에 value 에 함수가 들어간 모양. 함수이외에도 getter, setter 사용가능.
         // 출력하는 형식은 같게보이는데 코드상으로 구분하는건가. 
