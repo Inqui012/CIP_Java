@@ -43,11 +43,11 @@
         console.log(product02);
 
         // JSON.stringify(객체데이터); 객체 데이터를 문자열로 바꿔서 보여줌.
-        // JSON.parse(문자열);반대로 문자열을 객체데이터로 바꿔줌.
-        // const product03 = ''
+        // JSON.parse(문자열);반대로 문자열을 객체데이터로 바꿔줌. 문자열 만들때 따옴표 주의.
+        const product03 = '{"name": "ramen", "type": "food"}'
         console.log(JSON.stringify(product02));
         console.log(JSON.stringify(product));
-        // console.log(JSON.parse({"name" : 55555}));
+        console.log(JSON.parse(product03));
 
 
         // Object. 객체 = 속성(key : value) + 함수(메소드). 호이스팅 불가능. 바로 정의할수도 있는데 배열 안에 여러개의 객체를 배치할 수도 있음.
@@ -137,12 +137,9 @@
         console.log(snack);
         snack.buy(8)
 
-        const f = new Number(273.555555555555555555500);
-        console.log(f.toFixed(3));     
-        const s = new String("HELLO World Over There");
-        console.log(s);
-        // 문자열을 담은 배열로 저장된 객체를 문자열로 변환.
-        console.log(s.toString());
+        // 3. Object.create(프로토타입, {key : value});
+        // 프로토타입의 객체를 생성한다? 프로토타입 = 객체명??? 
+
         // 문자열.split(자를 기준, 출력할 갯수); 문자열을 지정한 기준에 맞추어 앞뒤를 다른 인덱스 배열로 생성함.
         // 지정하지 않을경우 전체 문자를 하나의 인덱스에 넣어줌. 출력할 갯수는 생략가능. 생략할 시 전부 출력.
         // 문자열.trim(); 문자열 양끝의 공백을 제거한 문자열을 반환. trimStart(), trimEnd().
@@ -150,6 +147,12 @@
         // 문자열.slice(시작할 인덱스번호, 끝낼인덱스 번호 + 1); 문자열안에서 지정한 인덱스의 글자들을 잘라내어 새로운 문자열 생성.
         // 문자열.indexOf(배열값); 지정된 배열값을 가지고있는 인덱스번호 반환. 문자열일경우 단어의 앞글자가 위치하는 인덱스를 반환.
         //      배열에 존재하지 않는 값을 찾으려고 하면 -1을 반환. 
+        const f = new Number(273.555555555555555555500);
+        console.log(f.toFixed(3));     
+        const s = new String("HELLO World Over There");
+        console.log(s);
+        // 문자열을 담은 배열로 저장된 객체를 문자열로 변환.
+        console.log(s.toString());
         const word = s.split(" ");
         console.log(word);
 
