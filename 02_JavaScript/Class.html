@@ -56,19 +56,54 @@
 
         // 2. 생성자 함수 방식. new 를 이용. 생성자 방식으로 생성하는 객체함수의 이름은 대문자로 시작.
         // 객체를 먼저 정의한 후에 new로 생성... 하는것 같은데. 보통 this.Key이름 = value. 형식으로 추가함.
-        // 변수명을 다르게해서 같은 객체로 여러개의 변수를 생성할 수 있다. (코드의 생산성이 높아짐)
+        // 변수명을 다르게 && 매개변수를 따로줘서 같은 포맷의 다른값인 여러개의 객체를 생성할 수 있다. (코드의 생산성이 높아짐)
         function Food (name, price, star) {
             this.name = name;
             this.price = price;
+            this.star = star;
             this.grade = star => {
                 console.log(`this food has ${star} star`);
             };
         }
         const food = new Food();
-        const food01 = new Food("udon", 4000, (3));
+        const food01 = new Food("udon", 4000, 3);
+        // 근데 this.grade같은 함수에는 직접 매개변수를 넣어줘도 이게 제대로 들어갔는지 확인할 방법이 없나?
+        // log로 그냥 불러오면 함수코드를 그대로 찍고, 매개변수 따로주면 덮어쓰기 되는건지도 모르고.
+        // 아 들어간다. this.star = star; 따로찍어서 보니까 들어가 있네.
         console.log(food);
         console.log(food01);
-        food.grade(3);
+
+        // 받을 매개변수가 가변일경우를 상정해서 rests 로 받을 수 있는데, 이걸 지정된 key에 저장할 수 있을지가 문제일듯.
+        // rests 는 매개변수자리에서 초기값을 줄수가 업으니까 함수 안에서 일일히 인덱스 지정해서 초기값을 주던지...
+        // 이런경우에는 객체에서 어떻게 하기는 어려울것 같고, 
+        // 일단 value는 인덱스 값으로 지정한다음 객체 생성할때 받을 매개변수에 초기값을 주는 방식으로 생각해야할듯.
+        // 초기값 변수를 지정해서 만들어놓고, 객체 생성할때는 그 변수를 사용하면서 변동이 있는 값들만 변수를 덮어씌우는 형식으로?
+        function Game (name, ...items) {
+            this.name = name;
+            this.price = items[0];
+            this.lang = items[1];
+            this.dn = items[2];
+            this.isDone = (dn) => {
+                if (items[2] == "done"){
+                    console.log(`done`);
+                } else {
+                    console.log(`not done`);
+                };
+            }
+        }
+        let gname = gprice = glang = gdn = "default";
+        const game01 = new Game();
+        const game02 = new Game("AC", 50000, "en");
+        const game04 = new Game(gname, gprice, glang, gdn);
+        gname = "ff", gprice = 3333, gdn = "done";
+        const game03 = new Game(gname, gprice, glang, gdn);
+        console.log(game01);
+        console.log(game02);
+        console.log(game03);
+        console.log(game04);
+        console.log(game04.isDone("done"))
+
+
 
         // 선언 : class 클래스명 { constructor (매개변수) {함수} };
         // 표현식 : let 변수명 = class { counstructor (매개변수) {함수} };
