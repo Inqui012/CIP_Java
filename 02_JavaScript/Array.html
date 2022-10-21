@@ -25,6 +25,51 @@
         // (시작하는 인덱스번호, (끝나는 인덱스번호-1))
 
         console.log(arr);
+
+        let [a, b] = [1, 2];
+        console.log(a, b);
+        // 배열 기반의 다중할당. 위치에 맞춰서 a = 1, b = 2 로 지정된다. 모양만 배열모양이고 실제 데이터가 배열타입인건 아님.
+
+        const product01 = {
+            "name" : 'gum',
+            "type" : 'snack',
+            "weight" : 4,
+        };
+        const {name, type} = product01;
+        console.log(name, type);
+        // 객체기반의 다중할당. 
+
+        const obj01 = ['milk', 'bread', 'chocolate'];
+        const obj02 = obj01;
+        obj02.push('icecream');
+        obj02.push('rice');
+        console.log(obj01);
+        console.log(obj02);
+        // Shallow Copy. Refernce Type. 데이터를 복사해서 가지고 있는게 아니라 같은 메모리 주소를 공유하고 있는 상태. 
+        // 메모리에서 자리를 차지하지 않아 깊은복사보다 빠르다.
+        // 위의 경우 같은 메모리를 공유하고 있기 때문에 obj02 에 저장한 데이터는 같은 메모리인 obj01 에도 들어간다.
+        // 
+
+        const obj03 = ['milk', 'bread', 'chocolate'];
+        const obj04 = [...obj03, 'potato'];
+        obj04.push('icecream');
+        obj04.push('rice');
+        console.log(obj03);
+        console.log(obj04);
+        
+        const product02 = {
+            "name" : 'egg',
+            "type" : 'food',
+            "weight" : 6,
+        };
+        const product03 = {...product02};
+        product02.date = "2022";
+        console.log(product02);
+        console.log(product03);
+
+        // 깊은복사
+        // spread Operator 를 사용해서 깊은복사를 할 수 있다. 다만 맹점이 존재. 1 depth 까지는 깊은복사가 되지만 그 이상은 얕은복사가 되어버리는듯?
+        // 두 변수 모두 다른 메모리를 차지하고 있다. 
     </script>
 </head>
 <body>
