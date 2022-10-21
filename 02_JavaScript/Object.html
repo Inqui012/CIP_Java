@@ -55,6 +55,8 @@
         pet.sleep("cave");
 
         // 2. 생성자 함수 방식. new 를 이용. 생성자 방식으로 생성하는 객체함수의 이름은 대문자로 시작.
+        // 객체명으로 지정해서 객체생성을 할수도 있지만, new String, new Array 등으로 사용할수도 있고
+        // new Object(); 로 생성한뒤 key와 value를 따로 넣어서 객체를 만들어줄수도 있다.
         // 객체를 먼저 정의한 후에 new로 생성... 하는것 같은데. 보통 this.Key이름 = value. 형식으로 추가함.
         // 변수명을 다르게 && 매개변수를 따로줘서 같은 포맷의 다른값인 여러개의 객체를 생성할 수 있다. (코드의 생산성이 높아짐)
         function Food (name, price, star) {
@@ -103,6 +105,50 @@
         console.log(game04);
         console.log(game04.isDone("done"))
 
+        // 2-1. Prototype. 메소드 생성방식이 다름. 메소드를 객체안이 아니라 객체 밖에서 정의함.
+        // 메모리절약? 반복되는 매소드가 메모리를 적게 차지하도록 따로 빼놨다고 이해하는게 좋은가?
+        function Snack (name, madein) {
+            this.name = name;
+            this.madein = madein;
+        }
+        Snack.prototype.buy = function (quant) {
+            console.log(`${this.name} 과자를 ${quant} 개 구입`)
+        };
+        const snack = new Snack("crunch", "eu");
+        console.log(snack);
+        snack.buy(8)
+
+        const f = new Number(273.555555555555555555500);
+        console.log(f.toFixed(3));     
+        const s = new String("HELLO World Over There");
+        console.log(s);
+        // 문자열을 담은 배열로 저장된 객체를 문자열로 변환.
+        console.log(s.toString());
+        // 문자열.split(자를 기준, 출력할 갯수); 문자열을 지정한 기준에 맞추어 앞뒤를 다른 인덱스 배열로 생성함.
+        // 지정하지 않을경우 전체 문자를 하나의 인덱스에 넣어줌. 출력할 갯수는 생략가능. 생략할 시 전부 출력.
+        // 문자열.trim(); 문자열 양끝의 공백을 제거한 문자열을 반환. trimStart(), trimEnd().
+        // 문자열.concst('문자열 사이에 넣을 문자(공백가능', 문자열 뒤에 붙일 문자열2); ['사이문자', '연결할 문자'] 형식으로 여러개 연결가능.
+        // 문자열.slice(시작할 인덱스번호, 끝낼인덱스 번호 + 1); 문자열안에서 지정한 인덱스의 글자들을 잘라내어 새로운 문자열 생성.
+        // 문자열.indexOf(배열값); 지정된 배열값을 가지고있는 인덱스번호 반환. 문자열일경우 단어의 앞글자가 위치하는 인덱스를 반환.
+        //      배열에 존재하지 않는 값을 찾으려고 하면 -1을 반환. 
+        const word = s.split(" ");
+        console.log(word);
+
+        // Date(); 날자함수. 특이사항으로는 .getMonth() 에서 +1 을 해야 정확한 달을 얻는다.
+        // .getDay는 날자를 숫자로 주기 때문에 문자열로 바꾸려면 스위치문 사용하는게 좋다.
+        // .setMonth(); 등의 함수로 매개변수를 이용해서 날자를 지정해서 표시할 수 있음.
+        var Today = new Date();
+        document.write('오늘은 ',Today.getFullYear(),'년 ',Today.getMonth()+1,'월 ',Today.getDate(),'일 ');
+
+        // Math.() 함수들. 수학적 계산을 자동으로 해주는 것들.
+        // Math.random(); 0부터 1 미만까지의 랜덤한 숫자 출력. 1 - 100 하려면 * 101. 다른 방법들도 검색하면 많음.
+        const rnNum = Math.random();
+        function getRandomArbitrary(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+        console.log(rnNum);
+        console.log((rnNum * 101).toFixed(0));
+        console.log(getRandomArbitrary(50, 100));
 
 
         // 선언 : class 클래스명 { constructor (매개변수) {함수} };
@@ -115,6 +161,6 @@
     </script>
 </head>
 <body>
-    
+    <span></span>
 </body>
 </html>
