@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        
         // Document object Model. DOM. 문서 객체 모델.
         // HTML, XML등의 프로그래밍 interface. 객체를 구조화시켜서 프로그램언어가 접근할 수 있도록 해준다.
         // Document(문서,HTML) 와 그 안의 요소(Element, Tag)에 접근하기 위해 사용되는 방법? 의 명칭
@@ -28,8 +27,6 @@
         headerAll.forEach(function(header){
             console.log(headerAll[i]);
         });
-        
-        
         </script>
 </head>
 <body>
@@ -47,7 +44,6 @@
     <img class="rect" src="" alt="placeholder04">
     
     <script>
-        
         // .textContent = '내용'; 따옴표 안의 내용을 해당 선택자 안에 '문자열'로 넣어준다. 태그를 인식하지 않음.
         // .innterHTML = '내용'; 위와 동일하나 태그를 인식하여 HTML 상에 태그를 생성하고 그 안에 요소를 넣어준다.
         // 이 스크립트가 아래에 있는 이유는 HTML을 위에서부터 읽기 때문에 div를 생성한 다음에 해당 DOM이 와야 제대로 작동하기 때문에. 위에 넣으려면 documnet.ready 넣어주면 됨. 
