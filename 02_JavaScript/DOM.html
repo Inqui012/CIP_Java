@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        
+        // Document object Model. DOM. 문서 객체 모델.
+        // HTML, XML등의 프로그래밍 interface. 객체를 구조화시켜서 프로그램언어가 접근할 수 있도록 해준다.
+        // Document(문서,HTML) 와 그 안의 요소(Element, Tag)에 접근하기 위해 사용되는 방법? 의 명칭
+        // .getElementsByTagNmae(); 같은 매소드를 정의하고 있는것이 DOM. 라이브러리 같은 느낌인가?
+
+        // .querySelector('선택자'); document 안에서 선택자를 이용해 특정한 요소를 선택한다. 선택자는 CSS에서 사용하는 모양 그대로 사용가능. 지정값에 적합한 맨 첫번째 하나만을 지정.
+        // .querySelectorAll('선택자'); 위와 동일하나 적합한 모든 요소를 가져온다. 이 경우 모든 요소를 배열형태로 저장해 NodeList 로 표현한다.
+        // .style.CSS속성 = '속성값'; 선택된 요소의 CSS요소를 변경할 수 있다. background color 처럼 띄어쓰기가 있는경우는 backgroundColor 로 카멜표기법사용. 
+
+        const header = document.querySelector('h1');
+        const headerAll = document.querySelectorAll('.txt');
+        for (var i = 0; i < headerAll.length; i++) {
+            headerAll[i].style.color = 'red';
+            console.log(headerAll[i]);
+        };
+        for (header of headerAll) {
+            console.log(headerAll[i]);
+        };
+        headerAll.forEach(function(header){
+            console.log(headerAll[i]);
+        });
+        
+        
+        </script>
+</head>
+<body>
+    <h1 class="txt">HELLO 01</h1>
+    <h1 class="txt">HELLO 02</h1>
+    <h1 class="txt">HELLO 03</h1>
+    <h1 class="txt">HELLO 04</h1>
+    <hr>
+    <div id="a"></div>
+    <div id="b"></div>
+    <hr>
+    <img class="rect" src="" alt="placeholder01">
+    <img class="rect" src="" alt="placeholder02">
+    <img class="rect" src="" alt="placeholder03">
+    <img class="rect" src="" alt="placeholder04">
+    
+    <script>
+        
+        // .textContent = '내용'; 따옴표 안의 내용을 해당 선택자 안에 '문자열'로 넣어준다. 태그를 인식하지 않음.
+        // .innterHTML = '내용'; 위와 동일하나 태그를 인식하여 HTML 상에 태그를 생성하고 그 안에 요소를 넣어준다.
+        // 이 스크립트가 아래에 있는 이유는 HTML을 위에서부터 읽기 때문에 div를 생성한 다음에 해당 DOM이 와야 제대로 작동하기 때문에. 위에 넣으려면 documnet.ready 넣어주면 됨. 
+        const a = document.querySelector('#a');
+        const b = document.querySelector('#b');
+        a.textContent = '<h1>Insert Text by Textcontent</h1>';
+        b.innerHTML = '<h1>Insert Text by InnerHTML</h1>';
+
+        // .setAttribute('속성명', '속성값'); 지정된 요소에 속성을 추가한다.
+        // .getAttribute('속성명'); 지정된 요소의 지정된 속성명이 가지고 있는 속성값들을 불러온다.
+        const rects = document.querySelectorAll('.rect');
+        rects.forEach(function(rect, index){
+            const width = (index + 1) * 100;
+            const src = `https://via.placeholder.com/${width}x250`;
+            rect.setAttribute('src', src);
+            console.log(rect.getAttribute('alt'));
+        });
+    </script>
+</body>
+</html>
