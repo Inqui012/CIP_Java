@@ -42,7 +42,8 @@
     <img class="rect" src="" alt="placeholder02">
     <img class="rect" src="" alt="placeholder03">
     <img class="rect" src="" alt="placeholder04">
-    
+    <hr>
+
     <script>
         // .textContent = '내용'; 따옴표 안의 내용을 해당 선택자 안에 '문자열'로 넣어준다. 태그를 인식하지 않음.
         // .innterHTML = '내용'; 위와 동일하나 태그를 인식하여 HTML 상에 태그를 생성하고 그 안에 요소를 넣어준다.
@@ -54,6 +55,7 @@
 
         // .setAttribute('속성명', '속성값'); 지정된 요소에 속성을 추가한다.
         // .getAttribute('속성명'); 지정된 요소의 지정된 속성명이 가지고 있는 속성값들을 불러온다.
+        //      미리 지정해주지 않은 속성명을 출력하면 null 로 반환함. 예를들면 굳이 값을 지정하지 않은 display 일경우 상속으로 자연스레 들어가지만 getAttribute 로 출력하면 null 임.
         const rects = document.querySelectorAll('.rect');
         rects.forEach(function(rect, index){
             const width = (index + 1) * 100;
@@ -61,6 +63,33 @@
             rect.setAttribute('src', src);
             console.log(rect.getAttribute('alt'));
         });
+
+        // .createElemanet('태그명'); 지정된 태그명으로 요소를 생성한다.
+        // .appendChild(document.createElement(태그명)); 앞단에서 지정된 요소의 자식요소로서 ()안의 요소를 집어넣는다. section > ul > li 처럼 한번에 여러층의 요소를 작성할 수도 있음.
+        //      위치를 document.body로 지정하면 스크립트가 실행된 다음에 생성됨. 위치를 지정하면 해당 위치의 맨 마지막 자식요소로 제대로 작성함.
+        //      중복 안됨. 해당 계층에 이미 동일한 태그가 있다면 생성되지 않고 무시되는것 같음.
+        // .removeChile(document.querySeletor(선택자)); 선택자로 지정된 모든 태그들을 지정된 위치의 자식요소에서 전부 지움.
+        const insert = document.createElement('h2');
+        document.body.appendChild(insert);
+        a.appendChild(insert);
+        // 일단 생성을 해야 querySelector로 잡아줄 수 있으니 아래 변수는 이 위치가 아니면 오류남.
+        const inserth2 = document.querySelector('h2');
+        a.removeChild(inserth2);
+        a.appendChild(insert);
+        inserth2.textContent = 'Testing Insert Elements';
+        inserth2.style.color = 'White';
+        inserth2.style.backgroundColor = 'black';
+        inserth2.setAttribute('class', 'Inserted');
+        console.log(inserth2.getAttribute('display'));
+
+        // .parentNode 지정된 위치의 부모태그의 모든걸 가져오는듯. 태그명이 아니라 <태그></태그> 안의 모든 내용.
+        // .parentElement 지정된 위치의 부모태그. <태그>를 지정하는듯.
+        // Node > Element. 노드의 한 종류가 엘레멘트.
+        // .nextSibling 지정된 위치의 바로 다음에 오는 형제태그를 지정.
+        insert02 = document.createElement('h3');
+        console.log(inserth2.parentNode);
+        inserth2.parentNode.appendChild(insert02);
+        inserth2.nextSibling.innerHTML = 'Inserted by NextSibiling';
     </script>
 </body>
 </html>
