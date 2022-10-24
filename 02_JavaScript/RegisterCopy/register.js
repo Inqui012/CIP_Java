@@ -8,7 +8,6 @@ const tel = document.querySelector('input#tel');
 const submitBtn = document.querySelector('button#submit_btn');
 const mustInput = document.querySelectorAll('input[required]');
 
-
 submitBtn.addEventListener('click', () => {
     chkRequired();
 });
