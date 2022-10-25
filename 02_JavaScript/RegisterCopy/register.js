@@ -117,7 +117,7 @@ function fullnameConfirm() {
 let optIndex = 0;
 sex.addEventListener('change', (e) => {
     optIndex = e.currentTarget.options.selectedIndex;
-    console.log(optIndex);
+    // console.log(optIndex);
     // return optIndex = e.currentTarget.options.selectedIndex;
 });
 
