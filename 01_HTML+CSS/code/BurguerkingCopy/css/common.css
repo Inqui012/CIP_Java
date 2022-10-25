@@ -1,0 +1,11 @@
+@charset "uft-8";
+
+/* 0-766 모바일*/
+.header__nav {max-width: 1200px; background-color: blueviolet; margin: 0 auto; display: flex; justify-content: space-between;}
+.header__nav h1 {width: 100px; height: 120px;}
+.header__nav nav {width: calc(100%-100px); height: 120px; background-color: aqua;}
+.header__nav nav ul {display: flex; justify-content: space-around;}
+.header__nav nav ul li {padding: 10px 20px;}
+.header__nav > .delivery-order {width: 168px;}
+
+.footer {height: 680px; background-color: paleturquoise;}
