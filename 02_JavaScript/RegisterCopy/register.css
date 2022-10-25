@@ -99,9 +99,9 @@ body {
     color: #fff;
 }
 
-#signup span {
+#signup span.alert_msg {
     color: red;
-    font-size: 0.7em;
+    font-size: 0.8rem;
     display: none;
     margin-left: 110px;
 }
