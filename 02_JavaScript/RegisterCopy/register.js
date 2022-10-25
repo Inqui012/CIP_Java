@@ -16,9 +16,9 @@ submitBtn.addEventListener('click', () => {
     const fullnameConf = fullnameConfirm();
     const emailConf = emailConfirm();
     const telConf = telConfirm();
-    sexConfirm();
+    const sexConf = sexConfirm();
 
-    if (idConf && pwd1Conf && pwd2Conf && fullnameConf && emailConf && telConf) {
+    if (idConf && pwd1Conf && pwd2Conf && fullnameConf && emailConf && telConf && sexConf) {
         // .submit(); 전송을 실행하는 함수. 앞에 데이터를 가진 form태그의 id를 붙이는듯.
         document.signup.submit();
     };
@@ -42,10 +42,8 @@ function idConfirm() {
     // Null, Undefined, "", 0 = false.
     const mustUserid = document.querySelector('span.must_userid');
     const overlap = document.querySelector('span.overlap');
-
     mustUserid.style.display = 'none';
     overlap.style.display = 'none';
-
     if (!userid.value) {
         mustUserid.style.display = 'block';
         // 하나라도 잘못된것이 있으면 제출을 막기위해서 잘못된 상황일경우 false를 반환한다.
@@ -64,10 +62,8 @@ function idConfirm() {
 function pwd1Confirm() {
     const mustPwd1 = document.querySelector('span.must_pwd1');
     const regPwd = document.querySelector('span.reg_pwd');
-
     mustPwd1.style.display = 'none';
     regPwd.style.display = 'none';
-
     if (!pwd1.value) {
         mustPwd1.style.display = 'block';
         return false;
@@ -82,11 +78,9 @@ function pwd1Confirm() {
 
 function pwd2Confirm() {
     const mustPwd2 = document.querySelector('span.must_pwd2');
-    const same = document.querySelector('span.same');
-    
+    const same = document.querySelector('span.same');    
     mustPwd2.style.display = 'none';
     same.style.display = 'none';
-
     if (!pwd2.value) {
         mustPwd2.style.display = 'block';
         return false;
@@ -104,9 +98,7 @@ function pwd2Confirm() {
 
 function fullnameConfirm() {
     const mustFullname = document.querySelector('span.must_fullname');
-        
     mustFullname.style.display = 'none';
-
     if (!fullname.value) {
         mustFullname.style.display = 'block';
         return false;
@@ -133,11 +125,9 @@ function sexConfirm() {
 
 function emailConfirm() {
     const mustEmail = document.querySelector('span.must_email');
-    const regEmail = document.querySelector('span.reg_email');
-        
+    const regEmail = document.querySelector('span.reg_email');        
     mustEmail.style.display = 'none';
     regEmail.style.display = 'none';
-
     if (!email.value) {
         mustEmail.style.display = 'block';
         return false;
@@ -151,10 +141,8 @@ function emailConfirm() {
 };
 
 function telConfirm() {
-    const regTel = document.querySelector('span.reg_tel');
-            
+    const regTel = document.querySelector('span.reg_tel');            
     regTel.style.display = 'none';
-
     if (!telCheck(tel.value) && tel.value) {
         regTel.style.display = 'block';
         return false;
