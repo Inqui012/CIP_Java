@@ -1,19 +1,25 @@
 const userid = document.querySelector('input#userid');
 const pwd1 = document.querySelector('input#pwd1');
 const pwd2 = document.querySelector('input#pwd2');
-const level = document.querySelector('input#level');
+// const level = document.querySelector('input#level');
 const fullname = document.querySelector('input#fullname');
 const email = document.querySelector('input#email');
 const tel = document.querySelector('input#tel');
 const submitBtn = document.querySelector('button#submit_btn');
 
+// type="submit" 의 html이지만 이벤트를 주었기 때문에 이벤트가 먼저 기능한다.
 submitBtn.addEventListener('click', () => {
-    idConfirm();
-    pwd1Confirm();
-    pwd2Confirm();
-    fullnameConfirm();
-    emailConfirm();
-    telConfirm();
+    const idConf = idConfirm();
+    const pwd1Conf = pwd1Confirm();
+    const pwd2Conf = pwd2Confirm();
+    const fullnameConf = fullnameConfirm();
+    const emailConf = emailConfirm();
+    const telConf = telConfirm();
+
+    if (idConf && pwd1Conf && pwd2Conf && fullnameConf && emailConf && telConf) {
+        // .submit(); 전송을 실행하는 함수. 앞에 데이터를 가진 form태그의 id를 붙이는듯.
+        document.signup.submit();
+    }
 });
 
 function idConfirm() {
@@ -116,7 +122,7 @@ function telConfirm() {
             
     regTel.style.display = 'none';
 
-    if (!telCheck(tel.value)) {
+    if (!telCheck(tel.value) && tel.value) {
         regTel.style.display = 'block';
         return false;
     }
