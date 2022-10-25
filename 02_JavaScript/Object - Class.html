@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // Class 객체지향 프로그래밍 언어에서 사용되는 문법.
+        // 추상화 : 프로그램 실행에 필요한 요소만으로 객체를 만들어내는것?
+        
+        // ES6에서 지원되는 새로운 객체정의 방법.
+        // 선언 : class 클래스명 { constructor (매개변수) {함수} };
+        // 표현식 : let 변수명 = class { counstructor (매개변수) {함수} };
+        //          let 변수명 = class 클래스명 { counstructor (매개변수) {함수} };
+        //          클래스명이 있을경우 {} 안에서만 유효한 지역 클래스...가 되나?
+        // 선언방식이 조금 다를분 큰 틀은 똑같음.
+
+        class Pet {
+            // constructor () {}; 생성자 함수.
+            constructor (nameVal, ageVal, colorVal) {
+                this.name = nameVal;
+                this.age = ageVal;
+                this.color = colorVal;
+            }
+        };
+        const pet01 = new Pet("tkn", 16, "navy");
+        console.log(pet01);        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
