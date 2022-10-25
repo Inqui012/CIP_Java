@@ -45,7 +45,7 @@ function idConfirm() {
     mustUserid.style.display = 'none';
     overlap.style.display = 'none';
     // 공백을 지워버리는 속성? \s = whitespace, g = replace를 반복한다
-    if (!userid.value.replace(/\s|0/g,"")) {
+    if (!userid.value.replace(/\s/g,"")) {
         mustUserid.style.display = 'block';
         // 하나라도 잘못된것이 있으면 제출을 막기위해서 잘못된 상황일경우 false를 반환한다.
         return false;
@@ -65,7 +65,7 @@ function pwd1Confirm() {
     const regPwd = document.querySelector('span.reg_pwd');
     mustPwd1.style.display = 'none';
     regPwd.style.display = 'none';
-    if (!pwd1.value.replace(/\s|0/g,"")) {
+    if (!pwd1.value.replace(/\s/g,"")) {
         mustPwd1.style.display = 'block';
         return false;
     } else {
@@ -82,7 +82,7 @@ function pwd2Confirm() {
     const same = document.querySelector('span.same');    
     mustPwd2.style.display = 'none';
     same.style.display = 'none';
-    if (!pwd2.value.replace(/\s|0/g,"")) {
+    if (!pwd2.value.replace(/\s/g,"")) {
         mustPwd2.style.display = 'block';
         return false;
     } else {
@@ -100,7 +100,7 @@ function pwd2Confirm() {
 function fullnameConfirm() {
     const mustFullname = document.querySelector('span.must_fullname');
     mustFullname.style.display = 'none';
-    if (!fullname.value.replace(/\s|0/g,"")) {
+    if (!fullname.value.replace(/\s/g,"")) {
         mustFullname.style.display = 'block';
         return false;
     }
@@ -129,7 +129,7 @@ function emailConfirm() {
     const regEmail = document.querySelector('span.reg_email');        
     mustEmail.style.display = 'none';
     regEmail.style.display = 'none';
-    if (!email.value.replace(/\s|0/g,"")) {
+    if (!email.value.replace(/\s/g,"")) {
         mustEmail.style.display = 'block';
         return false;
     } else {

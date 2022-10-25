@@ -8,24 +8,116 @@
     <script>
         // Class 객체지향 프로그래밍 언어에서 사용되는 문법.
         // 추상화 : 프로그램 실행에 필요한 요소만으로 객체를 만들어내는것?
+        // 구현할 대상(구현전) : 객체 / 구현한 대상(구현후) : 인스턴스. 의미는 비슷하다.
         
         // ES6에서 지원되는 새로운 객체정의 방법.
         // 선언 : class 클래스명 { constructor (매개변수) {함수} };
         // 표현식 : let 변수명 = class { counstructor (매개변수) {함수} };
         //          let 변수명 = class 클래스명 { counstructor (매개변수) {함수} };
-        //          클래스명이 있을경우 {} 안에서만 유효한 지역 클래스...가 되나?
+        //          클래스명이 있을경우 {} 안에서만 유효한 지역 클래스...가 되나? 아닌가
         // 선언방식이 조금 다를분 큰 틀은 똑같음.
 
         class Pet {
             // constructor () {}; 생성자 함수. 하나의 클래스 안에 하나의 생성자만 사용.
+            // 매소드는 constructor 바깥쪽에 따로 생성. 객체안의 매소드 이름은 속성이름하고 겹치면 안됨. 당연하긴 하지.
             constructor (nameVal, ageVal, colorVal) {
                 this.name = nameVal;
                 this.age = ageVal;
                 this.color = colorVal;
             }
+            printEat (food) {
+                console.log(`${this.name} 이 ${food} 먹는다`);
+            }
+            printAge () {
+                console.log(`${this.name} 의 나이 ${this.age}`);
+            }
+            printColor () {
+                console.log(`${this.name} 의 색 ${this.color}`);
+            }
         };
         const pet01 = new Pet("tkn", 16, "navy");
-        console.log(pet01);        
+        console.log(pet01);
+        pet01.printEat('cha');
+        pet01.printAge();
+        pet01.printColor();
+        // 정적 메소드가 아닌경우는 아래의 코드는 작동하지 않음.
+        // Pet.printColor();
+
+        class Rectangle {
+            constructor (width, height) {
+                this.width = width;
+                this.height = height;
+            };
+            getPerimeter () {
+                return (this.width + this.height) * 2;
+            };
+            getArea () {
+                return this.width * this.height;
+            };
+        };
+        // 상속. super() 로 부모의 생성자를 호출하여 사용.
+        // rect02에서 생성한 depth 객체에서도 상위객체인 rectangle 에서 정의한 getarea, this.width 등을 동일하게 사용가능.
+        // 당연하지만 rect01 에서는 depth의 getVolume은 실행 불가능. 일방통행
+        // 부모와 자식에 같은 이름을 가진 매소드를 생성할 수 있다. 덮어씌워서 실행하는 느낌인가.
+        class Depth extends Rectangle {
+            constructor (width, height, volume) {
+                super(width, height);
+                this.volume = volume;
+            };
+            getVolume () {
+                return this.width * this.height * this.volume;
+            }
+        }
+        const rect01 = new Rectangle(10, 20);
+        console.log(rect01.getPerimeter());
+        console.log(rect01.getArea());
+        const rect02 = new Depth(30, 30, 10);
+        console.log(rect02.getVolume());
+        console.log(rect02.getPerimeter());
+
+        // Private Field. 외부에서 접근할 수 없도록 만들어놓는 구역. 덮어쓰기가 불가능해짐.
+        // 아예 접근이 불가능해지기 때문에 console.log 에서의 출력도 불가능.
+        class Triangle {
+            #height     // #을 이용해서 변수를 프라이빗으로 사용하겠다 선언한다.
+            constructor (height) {
+                this.#height = height;      // #을 이용한 선언으로 프라이빗 변수를 지정한다?
+            };
+            getSimpleCalc () {
+                return this.#height * 2;
+            };
+            // get. 클래스 안에서 값을 가져오는 방법. 반드시 반환값 retrun이 있어야한다.
+            get printPrivate() {
+                return this.#height; 
+            }; 
+            // set. 클래스 안에서 값을 변경하는 방법. 반드시 하나의 매개변수를 지정해줘야 한다.
+            // set으로 값을 바꾸는거 같은데 바꾼값을 출력하는 방법까지는 잘 모르겠네
+            set setPrivate(height) {
+                this.#height = height * 3;
+            };
+        };
+        const tri01 = new Triangle(15);
+        console.log(tri01);
+        console.log(tri01.getSimpleCalc());
+        console.log(tri01.printPrivate);
+        tri01.setPrivate;
+
+        // Static. 인스턴스 생성없이 바로 접근할 수 있는 객체? 정적 메소드
+        // new Circle(); 인 객체생성 과정 없이 바로 color 값을 출력할 수 있다.
+        // 인스턴스 생성이 없어서 그런지 같은 클래스 안에 있어서 조금 따로 노는 느낌?
+        // 같은 클래스 안에서 static 이 참조하는 this 는 최상위 클래스(하위 포함없음)뿐이고 일반적으로 지정된 this.값을 가져오지 못함.
+        class Circle {
+            static color = 'red';
+            constructor (r) {
+                this.r = r;
+            };
+            static round () {
+                return this.r * 2
+            };
+        }
+        console.log(Circle.color);
+        console.log(Circle.round());
+        console.log(Circle.r);
+
     </script>
 </head>
 <body>
