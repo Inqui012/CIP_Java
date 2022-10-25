@@ -105,18 +105,29 @@
         // new Circle(); 인 객체생성 과정 없이 바로 color 값을 출력할 수 있다.
         // 인스턴스 생성이 없어서 그런지 같은 클래스 안에 있어서 조금 따로 노는 느낌?
         // 같은 클래스 안에서 static 이 참조하는 this 는 최상위 클래스(하위 포함없음)뿐이고 일반적으로 지정된 this.값을 가져오지 못함.
+        // 캡슐화(사용자가 임의로 사용할 수 없게 만드는 기술)를 할 수 없다. 함수의 경우에는 관리가 쉽다?
         class Circle {
             static color = 'red';
-            constructor (r) {
-                this.r = r;
+            constructor () {
+                this.r = 10;
             };
             static round () {
                 return this.r * 2
             };
+            static staticThis() {
+                return this;
+            }
+            nonStaticThis () {
+                return this;
+            }
         }
         console.log(Circle.color);
         console.log(Circle.round());
         console.log(Circle.r);
+        console.log(Circle.staticThis.value);
+        const test01 = new Circle();
+        console.log(test01.nonStaticThis());
+
 
     </script>
 </head>

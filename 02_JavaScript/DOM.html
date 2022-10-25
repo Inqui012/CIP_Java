@@ -257,12 +257,20 @@
         // 으음.... 1-9까지의 숫자를 루프시킬 수 있으면 계산으로 가능할 것 같은데 잘 모르겠네.
         // 위 아래는 루프로 해결. 옆으로 가는건 1,4,7 에서 루프 3,6,9 에서 루프.....
         // 1에서 아래로 내려가면 -2 위치인데 +9 하면 7. 7에서 올라가면 10인데 -9하면 1.
+        
+        // 화살표로 스크롤 움직이는 거 막음.
+        window.addEventListener("keydown", function(e) {
+            if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
+                e.preventDefault();
+            }
+        }, false);
+
         const control = document.querySelector('div.keyControlTest');
         const controlChild = document.querySelectorAll('div.keyControlTest div');
         console.log(controlChild);
+        let currentIndex = 4;
         document.body.addEventListener('keyup', (e) => {
             let inputKey = e.code;
-            let currentIndex = 4;
             for (var i = 0; i < controlChild.length; i++){
                 if (controlChild[i].style.backgroundColor == 'black'){
                     console.log(controlChild[i])
@@ -274,20 +282,36 @@
                 case "ArrowUp":
                     controlChild[currentIndex].style.backgroundColor = 'bisque';
                     if (currentIndex - 3 < 0) {
-                        currentIndex += 9;
-                        controlChild[currentIndex].style.backgroundColor = 'black';
+                        controlChild[currentIndex + 6].style.backgroundColor = 'black';
+                    } else {
+                        controlChild[currentIndex - 3].style.backgroundColor = 'black';
                     }
-                    controlChild[currentIndex - 3].style.backgroundColor = 'black';
                     break;
                 case "ArrowDown":
+                    controlChild[currentIndex].style.backgroundColor = 'bisque';
+                    if (currentIndex + 3 > 8) {
+                        controlChild[currentIndex - 6].style.backgroundColor = 'black';
+                    } else {
+                        controlChild[currentIndex + 3].style.backgroundColor = 'black';
+                    }
                     break;
                 case "ArrowLeft":
+                    controlChild[currentIndex].style.backgroundColor = 'bisque';
+                    if (currentIndex % 3 == 0) {
+                        controlChild[currentIndex + 2].style.backgroundColor = 'black';
+                    } else {
+                        controlChild[currentIndex - 1].style.backgroundColor = 'black';
+                    }
                     break;
                 case "ArrowRight":
+                    controlChild[currentIndex].style.backgroundColor = 'bisque';
+                    if (currentIndex % 3 == 2) {
+                        controlChild[currentIndex - 2].style.backgroundColor = 'black';
+                    } else {
+                        controlChild[currentIndex + 1].style.backgroundColor = 'black';
+                    }
                     break;
-                default:
-                    break;
-            }
+            };
         });
 
     </script>
