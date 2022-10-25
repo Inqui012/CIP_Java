@@ -8,7 +8,6 @@ const email = document.querySelector('input#email');
 const tel = document.querySelector('input#tel');
 const submitBtn = document.querySelector('button#submit_btn');
 
-// type="submit" 의 html이지만 이벤트를 주었기 때문에 이벤트가 먼저 기능한다.
 submitBtn.addEventListener('click', () => {
     // 1. 함수의 결과값을 전부 변수로 받아서 if로 판단. 단순하고 직관적임.
     const idConf = idConfirm();
@@ -115,6 +114,7 @@ function fullnameConfirm() {
     return true;
 };
 
+let optIndex = 0;
 sex.addEventListener('change', (e) => {
     optIndex = e.currentTarget.options.selectedIndex;
     console.log(optIndex);
