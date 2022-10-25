@@ -9,6 +9,7 @@ const submitBtn = document.querySelector('button#submit_btn');
 
 // type="submit" 의 html이지만 이벤트를 주었기 때문에 이벤트가 먼저 기능한다.
 submitBtn.addEventListener('click', () => {
+    // 1. 함수의 결과값을 전부 변수로 받아서 if로 판단. 단순하고 직관적임.
     const idConf = idConfirm();
     const pwd1Conf = pwd1Confirm();
     const pwd2Conf = pwd2Confirm();
@@ -19,7 +20,21 @@ submitBtn.addEventListener('click', () => {
     if (idConf && pwd1Conf && pwd2Conf && fullnameConf && emailConf && telConf) {
         // .submit(); 전송을 실행하는 함수. 앞에 데이터를 가진 form태그의 id를 붙이는듯.
         document.signup.submit();
-    }
+    };
+
+    // 2. 함수의 결과값을 배열로 저장해서 for문으로 돌림. 배열중에서 false값이 있는지 확인하고 없을경우에 진행.
+    // let chkArray = [idConfirm(), pwd1Confirm(), pwd2Confirm(), fullnameConfirm(), emailConfirm(), telConfirm()];
+    // let chkFlag = true;
+    // for (var i = 0; i < chkArray.length; i++) {
+    //     if (!chkArray[i]) {
+    //         chkFlag = false;
+    //     };
+    // };
+    // if (chkFlag) {
+    //     document.signup.submit();
+    // };
+
+    
 });
 
 function idConfirm() {
