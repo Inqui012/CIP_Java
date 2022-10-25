@@ -3,6 +3,7 @@ const pwd1 = document.querySelector('input#pwd1');
 const pwd2 = document.querySelector('input#pwd2');
 // const level = document.querySelector('input#level');
 const fullname = document.querySelector('input#fullname');
+const sex = document.querySelector('select#sex');
 const email = document.querySelector('input#email');
 const tel = document.querySelector('input#tel');
 const submitBtn = document.querySelector('button#submit_btn');
@@ -16,6 +17,7 @@ submitBtn.addEventListener('click', () => {
     const fullnameConf = fullnameConfirm();
     const emailConf = emailConfirm();
     const telConf = telConfirm();
+    sexConfirm();
 
     if (idConf && pwd1Conf && pwd2Conf && fullnameConf && emailConf && telConf) {
         // .submit(); 전송을 실행하는 함수. 앞에 데이터를 가진 form태그의 id를 붙이는듯.
@@ -110,6 +112,22 @@ function fullnameConfirm() {
         mustFullname.style.display = 'block';
         return false;
     }
+    return true;
+};
+
+sex.addEventListener('change', (e) => {
+    optIndex = e.currentTarget.options.selectedIndex;
+    console.log(optIndex);
+    // return optIndex = e.currentTarget.options.selectedIndex;
+});
+
+function sexConfirm() {
+    const mustSex = document.querySelector('span.must_sex');
+    mustSex.style.display = 'none';
+    if (optIndex == 0) {
+        mustSex.style.display = 'block';
+        return false;
+    };
     return true;
 };
 

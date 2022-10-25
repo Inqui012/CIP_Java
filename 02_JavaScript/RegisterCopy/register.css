@@ -105,3 +105,11 @@ body {
     display: none;
     margin-left: 110px;
 }
+
+#signup select {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 13px;
+    padding: 5px;
+    width: 200px;
+}
