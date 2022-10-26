@@ -6,20 +6,128 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="library/fontawesome-free-6.2.0-web/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 </head>
 <body>
     <header class="header">
-        <div class="header__nav">
-            <h1><a href="Index.html"><img src="img/logo.gif" alt="Logo"></a></h1>
-            <nav>
-                <ul>
-                    <li>메뉴소개</li>
-                    <li>매장소개</li>
-                    <li>이벤트</li>
-                    <li>브랜드스토리</li>
-                </ul>
-            </nav>
-            <a href="" class="delivery-order">딜리버리 주문</a>
+        <div class="header__Mnav animate__animated animate__slideInLeft">
+			<div class="trigger">
+				<button class="mobile close"><i class="fas fa-times fa-lg"></i></button>
+			</div>
+			<nav class="Mmenu">
+				<ul class="Mmenu__main">
+					<li onclick="showHide(this)">
+						<span>메뉴소개</span>
+						<span><i class="fas fa-chevron-right"></i></span>
+						<ul class="Mlist__drop animate__animated animate__fadeIn">
+							<li><a href="#">스페셜&할인팩</a></li>
+							<li><a href="#">프리미엄</a></li>
+							<li><a href="#">와퍼</a></li>
+							<li><a href="#">주니어&버거</a></li>
+							<li><a href="#">올데이킹&치킨버거</a></li>
+							<li><a href="#">사이드</a></li>
+							<li><a href="#">음료&디저트</a></li>
+							<li><a href="#">독퍼</a></li>
+						</ul>
+					</li>
+					<li onclick="showHide(this)">
+						<span>매장소개</span>
+						<span><i class="fas fa-chevron-right"></i></span>
+						<ul class="Mlist__drop animate__animated animate__fadeIn">
+							<li><a href="#">매장찾기</a></li>
+						</ul>
+					</li>
+					<li onclick="showHide(this)">
+						<span>이벤트</span>
+						<span><i class="fas fa-chevron-right"></i></span>
+						<ul class="Mlist__drop animate__animated animate__fadeIn">
+							<li><a href="#">이벤트</a></li>
+							<li><a href="#">신규매장</a></li>
+						</ul>
+					</li>
+					<li onclick="showHide(this)">
+						<span>브랜드스토리</span>
+						<span><i class="fas fa-chevron-right"></i></span>
+						<ul class="Mlist__drop animate__animated animate__fadeIn">
+							<li><a href="#">버거킹 스토리</a></li>
+							<li><a href="#">WHY 버거킹</a></li>
+							<li><a href="#">버거킹 NEWS</a></li>
+						</ul>
+					</li>
+					<li onclick="showHide(this)">
+						<span>고객센터</span>
+						<span><i class="fas fa-chevron-right"></i></span>
+						<ul class="Mlist__drop animate__animated animate__fadeIn">
+							<li><a href="#">공지사항</a></li>
+							<li><a href="#">버거킹 앱이용안내</a></li>
+							<li><a href="#">FAQ</a></li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
+		</div>
+		<div class="header__nav">
+			<div class="trigger">
+				<button class="mobile hamburger"><i class="fas fa-bars fa-lg"></i></button>
+			</div>
+			<h1>
+				<a href="./index.html"><img src="./img/logo.gif" alt="로고" class="logo"></a>
+			</h1>
+			<div class="menu">
+				<nav>
+					<ul class="menu__main">
+						<li class="main__list">
+							<a href="#">메뉴소개 <i class="fas fa-caret-down"></i></a>
+							<div>
+								<ul class="list__drop animate__animated animate__fadeIn">
+									<li><a href="#">스페셜&할인팩</a></li>
+									<li><a href="#">프리미엄</a></li>
+									<li><a href="#">와퍼</a></li>
+									<li><a href="#">주니어&버거</a></li>
+									<li><a href="#">올데이킹&치킨버거</a></li>
+									<li><a href="#">사이드</a></li>
+									<li><a href="#">음료&디저트</a></li>
+									<li><a href="#">독퍼</a></li>
+								</ul>
+							</div>
+						</li>
+						<li class="main__list">
+							<a href="#">매장소개 <i class="fas fa-caret-down"></i></a>
+							<div>
+								<ul class="list__drop animate__animated animate__fadeIn">
+									<li><a href="#">매장찾기</a></li>
+								</ul>	
+							</div>
+						</li>
+						<li class="main__list">
+							<a href="#">이벤트 <i class="fas fa-caret-down"></i></a>
+							<div>
+								<ul class="list__drop animate__animated animate__fadeIn">
+									<li><a href="#">이벤트</a></li>
+								</ul>
+							</div>
+						</li>
+						<li class="main__list">
+							<a href="#">브랜드스토리 <i class="fas fa-caret-down"></i></a>
+							<div>
+								<ul class="list__drop animate__animated animate__fadeIn">
+									<li><a href="#">버거킹 스토리</a></li>
+									<li><a href="#">WHY 버거킹</a></li>
+									<li><a href="#">버거킹 NEWS</a></li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</nav>
+				<div class="delivery-order">
+					<button class="button button--shape-red">딜리버리 주문</button>
+				</div>
+			</div>
+		</div>
+        <div class="header__panel">
+
         </div>
     </header>
     <main class="wrap">
@@ -67,14 +175,81 @@
             </div>
         </section>
     </main>
-    <footer class="footer">
-        <ul>
-            <li>메뉴</li>
-            <li>매장</li>
-            <li>이벤트</li>
-            <li>브랜드 스토리</li>
-            <li>고객센터</li>
-        </ul>
-    </footer>
+	<footer class="footer">
+		<div class="footer__level1">
+			<ul class="sitemap">
+				<li>
+					<a href="#" class="top">메뉴</a>
+					<ul class="sitemap__list">
+						<li><a href="#">스페셜&할인팩</a></li>
+						<li><a href="#">프리미엄</a></li>
+						<li><a href="#">와퍼</a></li>
+						<li><a href="#">주니어&버거</a></li>
+						<li><a href="#">올데이킹&치킨버거</a></li>
+						<li><a href="#">사이드</a></li>
+						<li><a href="#">음료&디저트</a></li>
+						<li><a href="#">독퍼</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#" class="top">매장</a>
+					<ul class="sitemap__list">
+						<li><a href="#">매장찾기</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#" class="top">이벤트</a>
+					<ul class="sitemap__list">
+						<li><a href="#">이벤트</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#" class="top">브랜드 스토리</a>
+					<ul class="sitemap__list">
+						<li><a href="#">버거킹 스토리</a></li>
+						<li><a href="#">WHY 버거킹</a></li>
+						<li><a href="#">버거킹 News</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#" class="top">고객센터</a>
+					<ul class="sitemap__list">
+						<li><a href="#">공지사항</a></li>
+						<li><a href="#">버거킹앱이용안내</a></li>
+						<li><a href="#">FAQ</a></li>
+						<li><a href="#">문의</a></li>
+						<li><a href="#">가맹점 모집</a></li>
+						<li><a href="#">인재채용</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="footer__level2">
+			<div>
+				<div class="private-line">
+					<ul>
+						<li class="font--gothic">이용약관</li>
+						<li class="font--gothic">개인정보취급방침</li>
+						<li class="font--gothic">법적고지</li>
+					</ul>
+					<div class="button-line">
+						<button class="button--shape-beige">인재채용</button>
+						<button class="button--shape-beige">가맹점 모집</button>
+					</div>
+				</div>
+                <!-- <address> 태그 안쓰네 -->
+				<div class="address-line">
+					<h2><img src="./img/footer_logo.png" alt="하단로고"></h2>
+					<p class="font--gothic">서울 종로구 삼봉로 71 G 타워 2층 주식회사 비케이알│전화주문 1599-0505</p>
+					<p class="font--gothic">사업자 등록번호 101-86-76277│(주)BKR 대표이사 문영주</p>
+					<p class="font--gothic"> Copyright 2019 BKR Co., Ltd. All right Reserved</p>
+					<div>
+						<i class="fab fa-facebook-square"></i>
+						<i class="fab fa-instagram"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
 </body>
 </html>
