@@ -74,9 +74,12 @@ section .con {
 	-webkit-align-items: center;
 	align-items: center;
 }
+.swiper-pagination-bullet-active {
+    --swiper-theme-color: rgb(255, 62, 37);
+}
 .slider__content .swiper-slide {
     /* 이미지 크기 안맞음? */
-	background-size: cover;
+	background-size: 100% 100%;
 	background-position:center;
     background-repeat: no-repeat;
 }
@@ -151,7 +154,7 @@ section .con {
 	text-align: center;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% auto;
 }
 .guide__content > .content__app {
     background-color: #c7a186;

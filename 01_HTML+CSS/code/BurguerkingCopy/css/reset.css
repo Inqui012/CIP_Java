@@ -26,6 +26,8 @@ time, mark, audio, video {
 	background-repeat: no-repeat;
 	background-position: center center;
 	word-break: keep-all;
+	/* font추가 */
+	font-family: 'Jua', sans-serif;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
