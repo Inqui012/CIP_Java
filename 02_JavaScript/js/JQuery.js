@@ -81,6 +81,35 @@ $(function () {
     console.log($('.test02').is(":visible"));
 
     // .attr("속성"); 지정된 태그가 가지고 있는 지정된 속성값을 가져옴. 여러개가 있어도 HTML상 가장 처음것만 가져오는듯.
-    console.log($('a').attr("href"));
+    // 객체데이터로 여러 데이터를 한번에 줄 수 있음.
+    // .removeAttr("속성"); = 속성삭제
+    $('a').attr("href", "https://www.ezenac.co.kr")
 
+    // .addClass('클래스명') / .removeClass('클래스명') = 클래스 추가 삭제
+    // .toggleClass('클래스명') 클래스 토글 / .hasClass('클래스명') 해당 클래스를 가지고 있는지 판단
+    $('p#test03').addClass('red');
+
+    // .after(); / .before(); = 지정된 위치의 앞/ 뒤에 내용추가. 태그인식함.
+    // .insertAfter(); / .insertBefore(); = 지정된 내용을 지정하는 위치의 앞/ 뒤에 추가 위와 구조가 반대.
+    // .append(); / prepend(); = 선택된 요소의 하위중에 맨뒤 / 맨앞에 괄호의 내용을 추가함. 태그인식.
+    // .appendTo(); / prependTo(); = 위와 구조가 반대.
+    // .clone(); = 지정된 요소의 내용물(하위포함 안함)을 배열형태로 가져옴.
+    // .remove(); = 지정된 요소(본인과 하위포함)를 지움.
+    // .empty(); = 지정된 요소의 하위태그를 지워줌.
+    // .replaceWith(); = 지정된 요소를 괄호안의 내용물로 변경함.
+    // .replaceAll(); = 위와 구조가 반대.
+    $('#wrap01 p:eq(2)').after("<p>ATFER</p>");
+    $('#wrap01 p:eq(1)').before("<p>BEFORE</p>");    
+    $('#wrap01').append("<p>CONTNTS04</p>");
+    $('#wrap01').prepend("<p>CONTNTS00</p>");
+    var cloneCode = $('#wrap01').children().clone();
+    $('#wrap02').append(cloneCode);
+    $('h3').replaceWith("<h1>CHANGED</h1>");
+
+    // .unwrap(); / .wrap(); / .wrapAll(); = 해당객체를 내포하고 있는 부모를 지우고 생성하고.
+    // wrap의 경우 여러 요소를 한번에 감싸는게 아니라 각각 개별로 감싼다. 한번에 감싸기위해서는 wrapAll 사용.
+    // .wrapInner(); = 지정된 요소의 하위요소들을 감싸는 태그를 추가
+    $('strong').unwrap();
+    $('p.ct01').wrap('<div />');
+    $('li').wrapInner("<h3 />")
 })
