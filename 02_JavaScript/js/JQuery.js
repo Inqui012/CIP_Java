@@ -112,4 +112,36 @@ $(function () {
     $('strong').unwrap();
     $('p.ct01').wrap('<div />');
     $('li').wrapInner("<h3 />")
+
+    // .Event(function () {}); 기본이벤트 형식
+    $('.btn01').click(function () {
+        $(this).parent().next().css({ color: "red" });
+    })
+
+    // .on({Event:function(){}, Event:function(){}}); 객체형식으로 이벤트를 여러개 동시에 등록할 수 있음.
+    // .off("Event"); = 이벤트 제거. 여러 이벤트를 제거할때는 띄어쓰기로 구분하는듯.
+    $('.btn02').on({
+        "mouseover focus": function () { 
+            $(this).text("CHANGE")
+        },
+        "mouseout": function () {
+            $(this).text("BUTTON02")
+        },
+        "click": function () {
+            $(this).parent().next().css("color", "blue")
+        }
+    })
+
+    // 클래스 생성순서가 늦어서 실행 안됨.
+    $(".03_btn01.on").on("mouseover focus", function() {
+        alert("HI");
+    })
+    // 라이브 이벤트. 클래스 생성이 아래여도 실행가능.
+    // 부모태그나 상위요소를 지정해서 이벤트를 주는듯?
+    $('.03_btn02').parent().on("mouseover focus", ".03_btn02.on", function () {
+        alert("HI");
+    })
+    $('.03_btn01').addClass("on");
+    $('.03_btn02').addClass("on");
+
 })
