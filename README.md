@@ -19,7 +19,8 @@ from 2022 10 05. Java 정처기.
     * 유효성 테스트 (웹 접근성, 호환성, 표준)
     * 사용성 테스트 (테스트 기법 선정)
     * 기능 테스트 (문서)
-
+------------
+* C reate R read U pdate D elete
 ------------
 
 >11/7 마감. 팀프로젝트.
@@ -27,6 +28,7 @@ from 2022 10 05. Java 정처기.
 >   * 각자 한페이지????????????????
 >   * 기본 HTML, CSS. js는 들어가는지 모르겠네
 >   * 웹접근성 openWax 테스트.
+>   
 
 -------------
 
@@ -36,10 +38,14 @@ from 2022 10 05. Java 정처기.
 - https://developer.mozilla.org/ko/docs/Web/JavaScript
 - https://school.programmers.co.kr/
 - https://www.w3resource.com/index.php
-- https://regexr.com/
-- https://kangax.github.io/compat-table/es5/
-- https://fontawesome.com/
-- https://swiperjs.com/
+- [정규 표현식] (https://regexr.com/)
+- [JS ES버전별 호환성체크] (https://kangax.github.io/compat-table/es5/)
+- [아이콘 라이브러리] (https://fontawesome.com/)
+- [슬라이더 라이브러리] (https://swiperjs.com/)
+- [CSS 애니메이션 라이브러리] (https://animate.style/)
+- [파비콘 자동생성] (https://www.favicon-generator.org)
+- [URL에 따른 카드생성] (http://ogp.me/)
+- [트위터 카드생성] (https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started)
 
 -------------
 
