@@ -48,6 +48,8 @@ from 2022 10 05. Java 정처기.
 - [카카오지도API](https://apis.map.kakao.com/)
 
 -------------
+- [인파Dev블로그](https://inpa.tistory.com/)
+-------------
 
 ## 추천 책
 
