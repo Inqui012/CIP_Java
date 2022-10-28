@@ -1,3 +1,4 @@
+// 데이터를 주고받는 방법. ajax, fetch, axios
 // jQ 의 경우 데이터관리에 ajax 사용가능. 온리 쿼리
 var url = "https://api.openweathermap.org/data/2.5/weather";
 url += "?appid=411d579a912a8d5efb7cd45593e2daa4";
@@ -47,7 +48,7 @@ promise01.then(function (result) {
 });
 
 // 상위의 ajax 참고.
-// fetch();는 Promise 객체자동으로 생성해서 반환한다.
+// fetch();는 Promise 객체자동으로 생성해서 반환한다. IE에서 사용불가.
 const getData = function (url) {
     return fetch(url);
 };
