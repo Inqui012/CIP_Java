@@ -36,7 +36,26 @@ function getCurrentWeather(city) {
     });
     return dataObj;
 };
+
 // 지역별 온도
-function getCurrentTemp() {
-    
+function getCurrentTemp(city) {
+    var temp = {};
+    var openWeatherAPI = url;
+
+        $.ajax({
+            type: "GET",
+            url: openWeatherAPI += city,
+            dataType: "json",
+            async: false,
+            success: function (data) {
+                temp.celsius = data.main.temp;
+                temp.icon = data.weather[0].icon;
+            },
+            error: function (request, status, error) {
+                console.log("code:" + request.status);
+                console.log("message:" + request.responseText);
+                console.log("error:" + error);
+            }
+        });
+    return temp
 };
