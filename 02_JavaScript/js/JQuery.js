@@ -36,17 +36,40 @@ function getCurrentWeather() {
     return dataObj;
 };
             
-// 스크립트에서는 fetch 방법을 사용함.
+// 스크립트에서는 fetch 방법을 사용함. ES6.
+// 기본적으로 비동기를 편하게 제어하기 위해 많이 사용하는듯.
+// async, await 로 비동기로 진행되는 promise 들을 자연스럽게 연결시킬 수 있다.
+// 아래의 경우 비동기 통신으로 인해 2초뒤에 실행되는 resolve보다 먼저 alert가 실행되어 데이터가 전달되지 않는다.
+function asyncFunc01() {
+    let Promise02 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve("DONE");
+        }, 2000)
+    })
+    let result02 = Promise02;
+    alert(result02);
+}
+// 아래처럼 async 로 함수를 정의하고 await 로 promise02 객체가 생성되는것을 기다린 후 alert가 실행된다.
+async function asyncFunc02() {
+    let Promise02 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve("DONE");
+        }, 2000)
+    })
+    let result02 = await Promise02;
+    alert(result02);
+}
+asyncFunc02();
 const promise01 = new Promise(function (resolve, reject) {
     // 데이터를 보내는 함수
     resolve('STRING');
 });
 console.log(promise01);
-// .then 을 이용해서 Promise 객체의 데이터를 받아올 수 있음.
+// .then(function(result){}); 을 이용해서 Promise 객체의 실행이 성공했을경우 데이터를 받아올 수 있음.
+// .catch(function(error){}); Promise 객체 실행이 실패했을경우에 수행할 작업을 지정할 수 있다.
 promise01.then(function (result) {
     console.log(result);
 });
-
 // 상위의 ajax 참고.
 // fetch();는 Promise 객체자동으로 생성해서 반환한다. IE에서 사용불가.
 const getData = function (url) {
