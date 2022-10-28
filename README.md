@@ -45,6 +45,7 @@ from 2022 10 05. Java 정처기.
 [파비콘 자동생성](https://www.favicon-generator.org)
 [URL에 따른 카드생성](http://ogp.me/)
 [트위터 카드생성](https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started)
+[카카오지도API](https://apis.map.kakao.com/)
 
 -------------
 
