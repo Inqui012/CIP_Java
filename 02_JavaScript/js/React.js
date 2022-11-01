@@ -60,7 +60,9 @@ function App() {
     color: 'white'
   }
   return (
-    // 이 안의 내용들이 componant, 주석모양이 특이하네
+    // component = 코드를 재사용하기 쉽게 하기 위해서 캡슐화한 한 블록.
+    // Class component = 라이프사이클 이용 / function component (권장) = 라이프사이클 없음
+    // 이 안의 내용들이 component, 주석모양이 특이하네
     // 최상위는 반드시 부모요소가 존재해야한다. (태그 || fragment)
     // fragment = <></> 아무것도 없는 빈태그?
     // {}를 이용해서 중간에 js 변수, 표현식(연산자), 삼항연산자 등을 이용할 수 있다. js 의 if문 사용불가.
