@@ -34,36 +34,6 @@
 
     <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
-    <script>
-        // // 기존방법
-        // const root = document.querySelector('#root');
-        // const btn_plus = document.querySelector('#btn_plus');
-        // let i = 1;
-
-        // root.innerHTML = '<p>init : 1</p>';
-        // btn_plus.addEventListener('click', () => {
-        //     root.innerHTML = `<p>init : ${i++}</p>`;            
-        // });
-
-        // React
-        // 객체데이터로 div안의 내용물을 구성해서 만들어놓고, render 로 실행하는듯.
-        // render (실행할 위치, 실행할 객체);
-        const component = {
-            message: 'init',
-            count: 0,
-            render () {
-                return `<p>${this.message} : ${this.count}</p>`;
-            }
-        };
-        function render (rootElement, component) {
-            rootElement.innerHTML = component.render();
-        };
-        render(document.querySelector('#root'), component);
-        document.querySelector('#btn_plus').addEventListener("click", () => {
-            component.message = "update";
-            component.count += 1;
-            render(document.querySelector('#root'), component);
-        })
-    </script>
+    <script src="js/React.js"></script>
 </body>
 </html>
