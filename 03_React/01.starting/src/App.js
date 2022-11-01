@@ -1,8 +1,11 @@
 import './App.css';
 // Component의 확장 클래스를 사용하면 자동으로 생성되네.
 import { Component } from 'react';
+// 외부에 작성한 콤포넌트를 임포트로 불러올 수 있음. 이때 콤포넌트 파일 이름은 대문자로 시작.
 import MyComponent from './MyComp_func';
 import MyComponent01 from './MyComp_class';
+import Counter from './Counter';
+import Say from './Say';
 
 function ReactStart() {
   const name = 'Var.REACT';
@@ -17,7 +20,6 @@ function ReactStart() {
   }
   return (
     // component = 코드를 재사용하기 쉽게 하기 위해서 캡슐화한 한 블록.
-    // Class component = 라이프사이클 이용 / function component (권장) = 라이프사이클 없음
     // 이 안의 내용들이 component, 주석모양이 특이하네
     // 최상위는 반드시 부모요소가 존재해야한다. (태그 || fragment)
     // fragment = <></> 아무것도 없는 빈태그?
@@ -49,6 +51,7 @@ class ClassTest extends Component {
 }
 
 const App = () => {
+  // props = 데이터를 전달하는 방법?
   // propsKey="value" = 인라인 속성을 주는것처럼 props 를 줄 수 있다.
   // 컴포넌트js에서 기본값 설정해줄 수도 있음
   return (
@@ -59,6 +62,8 @@ const App = () => {
       <MyComponent01 /><br />
       <ClassTest /><br />
       <ReactStart />
+      <Counter />
+      <Say />
     </>
   )  
 }

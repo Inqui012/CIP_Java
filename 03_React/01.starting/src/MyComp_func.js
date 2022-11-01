@@ -1,10 +1,13 @@
 import PropTypes from 'prop-types';
 // function MyComponent() { } = ES5버전
+// Class component = 라이프사이클 이용 / function component (권장) = 라이프사이클 없음
+
 const MyComponent = (props) => {
     // 비구조화 할당. 위의 매개변수자리에 객체형식으로 변수를 지정하는것도 많이 사용.
     const { name, forNumber, children } = props;
     return (
         <>
+            <hr></hr>
             NEW COMPONENT PROPS : {name}<br />
             {/* children 은 app.js 에서 해당 콤포넌트가 감싸고있는 내용물인듯 */}
             PROPS CHILDREN = {children}<br />

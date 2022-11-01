@@ -16,6 +16,7 @@ class MyComponent01 extends Component {
         const { name, forNumber, children } = this.props;
         return (
             <>
+                <hr></hr>
                 CLASS COMPONENT PROPS : {name}<br />
                 CLASS PROPS CHILDREN = {children}<br />
                 CLASS FAV NUMBER = {forNumber}<br />
