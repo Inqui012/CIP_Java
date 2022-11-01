@@ -32,7 +32,7 @@ class Counter extends Component {
                 <h1>현재시간 { this.state.getDate.toLocaleTimeString() }</h1>
                 <h1>증가하는 수치 : {this.state.numberUp}</h1>
                 <button onClick={() => {
-                    // setState = state 객체의 수치들을 다시 조정할 수 있다. 변경될때는 무조건 render를 다시하게된다.
+                    // setState = state 객체의 수치들을 다시 조정할 수 있다. state 나 props가 변경될때는 무조건 render를 다시하게된다.
                     // this.setState((prevState) => {return {numberUp: this.state.numberUp + 1}}) 로도 사용가능. 아래와 동일
                     this.setState({ numberUp: this.state.numberUp + 1})
                 }}>증가</button>
