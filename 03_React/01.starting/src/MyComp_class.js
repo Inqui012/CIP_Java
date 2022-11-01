@@ -1,4 +1,6 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
+
 
 class MyComponent01 extends Component {
     // 클래스형식에서는 static을 사용해서 기본값, 필수값등을 설정해줄 수 있음.
