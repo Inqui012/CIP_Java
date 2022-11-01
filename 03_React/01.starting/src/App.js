@@ -1,7 +1,8 @@
 import './App.css';
 // Component의 확장 클래스를 사용하면 자동으로 생성되네.
 import { Component } from 'react';
-import MyComponent from './MyComponent';
+import MyComponent from './MyComp_func';
+import MyComponent01 from './MyComp_class';
 
 function ReactStart() {
   const name = 'Var.REACT';
@@ -52,11 +53,12 @@ const App = () => {
   // 컴포넌트js에서 기본값 설정해줄 수도 있음
   return (
     <>
-      < MyComponent name="PropsName" /><br />
+      <MyComponent name="PropsName" forNumber={1} /><br />
       <MyComponent>Testing Props Children</MyComponent>
-      < MyComponent /><br />
-      < ClassTest /><br />
-      < ReactStart />
+      <MyComponent /><br />
+      <MyComponent01 /><br />
+      <ClassTest /><br />
+      <ReactStart />
     </>
   )  
 }
