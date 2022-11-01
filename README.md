@@ -46,7 +46,8 @@ from 2022 10 05. Java 정처기.
 - [URL에 따른 카드생성](http://ogp.me/)
 - [트위터 카드생성](https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started)
 - [카카오지도API](https://apis.map.kakao.com/)
-
+- [HTML호환성체크](https://jigsaw.w3.org/css-validator/)
+- [CSS호환성체크](https://jigsaw.w3.org/css-validator/)
 -------------
 - [인파Dev블로그](https://inpa.tistory.com/)
 -------------
