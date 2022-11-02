@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class EventPractice extends Component {
+class EventPractice01 extends Component {
    state = {
       message: '',
    }
@@ -27,7 +27,7 @@ class EventPractice extends Component {
    render() {
       return (
          <div>
-            <h1>Practice Event</h1>
+            <h1>EventPractice01</h1>
             {/* 인라인으로 지정되는 이벤트들은 onClick, onChage 처럼 카멜방식사용 */}
             {/* 매개변수 e 로 받는 이벤트객체 사용법은 js와 동일 */}
             <input
@@ -46,4 +46,4 @@ class EventPractice extends Component {
    }
 }
 
-export default EventPractice
+export default EventPractice01
