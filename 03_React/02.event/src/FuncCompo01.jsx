@@ -4,6 +4,17 @@ const FuncCompo01 = () => {
    // EventPractice 와 같은 기능의 함수콤포넌트 useState 형식 이게 더 깔끔한듯?
    const [username, setUsername] = useState('')
    const [message, setMessage] = useState('')
+
+   let getDate = new Date()
+   const [daytime, setDaytime] = useState(getDate.toLocaleTimeString())
+   const tick = () => {
+      setInterval(() => {
+         getDate = new Date()
+         setDaytime(getDate.toLocaleTimeString())
+      }, 1000)
+   }
+   tick()
+
    const onChangeUsername = e => setUsername(e.target.value)
    const onChangeMessage = e => setMessage(e.target.value)
    const onClick = e => {
@@ -31,6 +42,7 @@ const FuncCompo01 = () => {
          <button type="submit" onClick={onClick}>
             Confirm
          </button>
+         <h2>{daytime}</h2>
       </div>
    )
 }
