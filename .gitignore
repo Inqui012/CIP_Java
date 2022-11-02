@@ -3,21 +3,21 @@
 # dependencies
 /03_React/*/node_modules
 /03_React/*/.pnp
-.pnp.js
+/03_React/*/.pnp.js
 
 # testing
-/coverage
+/03_React/*//coverage
 
 # production
-/build
+/03_React/*//build
 
 # misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+/03_React/*/.DS_Store
+/03_React/*/.env.local
+/03_React/*/.env.development.local
+/03_React/*/.env.test.local
+/03_React/*/.env.production.local
 
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+/03_React/*/npm-debug.log*
+/03_React/*/yarn-debug.log*
+/03_React/*/yarn-error.log*
