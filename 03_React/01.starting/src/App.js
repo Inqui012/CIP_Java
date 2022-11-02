@@ -16,8 +16,8 @@ function ReactStart() {
   const styleCSS = {
     backgroundColor: 'blue',
     fontSize: '20px',
-    color: 'white'
-  }
+    color: 'white',
+  };
   return (
     // component = 코드를 재사용하기 쉽게 하기 위해서 캡슐화한 한 블록.
     // 이 안의 내용들이 component, 주석모양이 특이하네
@@ -27,13 +27,17 @@ function ReactStart() {
     // JSX에서의 연산자.
     //    A && B = A가 true 일경우 B, false 일경우 A
     //    A || B = A가 true 일경우 A, false 일경우 B
-    
+
     <>
       {/* 인라인스타일로 스타일을 주게됨 */}
-      { name === 'Var.REACT' ? <span style={styleCSS}>참</span> : <span>거짓</span>}
+      {name === 'Var.REACT' ? (
+        <span style={styleCSS}>참</span>
+      ) : (
+        <span>거짓</span>
+      )}
       <h1>Print : {name}</h1>
       {/* JSX문법에서는 Class 대신 ClassName을 사용. Class도 적용은 되나 콘솔에 오류뜸. */}
-      <h2 className='reactClass'>REACT TEST</h2>
+      <h2 className="reactClass">REACT TEST</h2>
       {def || 'TEST'}
       {def && 'TEST'}
       {/* HTML의 독립태그들도 JSX에서는 반드시 닫는태그가 있어야함. 보통은 단일태그 끝에 / 로 닫는 표시를 함. */}
@@ -45,27 +49,32 @@ function ReactStart() {
 class ClassTest extends Component {
   // 오버라이드 = 상위 Component 에 있는 함수 render()를 가져다 쓸 수 있다.
   render() {
-    const name = "REACT";
-    return <div>{name}</div>
+    const name = 'REACT';
+    return <div>{name}</div>;
   }
 }
 
 const App = () => {
-  // props = 데이터를 전달하는 방법?
+  // props = 콤포넌트 사이에서 데이터를 전달하는 방법
+  // state = 콤포넌트 안에서 데이터를 전달하는 방법
   // propsKey="value" = 인라인 속성을 주는것처럼 props 를 줄 수 있다.
   // 컴포넌트js에서 기본값 설정해줄 수도 있음
   return (
     <>
-      <MyComponent name="PropsName" forNumber={1} /><br />
+      <MyComponent name="PropsName" forNumber={1} />
+      <br />
       <MyComponent>Testing Props Children</MyComponent>
-      <MyComponent /><br />
-      <MyComponent01 /><br />
-      <ClassTest /><br />
+      <MyComponent />
+      <br />
+      <MyComponent01 />
+      <br />
+      <ClassTest />
+      <br />
       <ReactStart />
       <Counter />
       <Say />
     </>
-  )  
-}
+  );
+};
 
 export default App;
