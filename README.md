@@ -21,6 +21,8 @@ from 2022 10 05. Java 정처기.
     * 기능 테스트 (문서)
 ------------
 * C reate R read U pdate D elete
+* React. 후에 클론이나 풀한 프로젝트에 node_module 설치하는법
+>   npm i 로 package.json 안에 설정되어있는 모듈을 설치할 수 있다.
 ------------
 
 >11/7 마감. 팀프로젝트.
