@@ -6,10 +6,10 @@
 /03_React/*/.pnp.js
 
 # testing
-/03_React/*//coverage
+/03_React/*/*/coverage
 
 # production
-/03_React/*//build
+/03_React/*/*/build
 
 # misc
 /03_React/*/.DS_Store
