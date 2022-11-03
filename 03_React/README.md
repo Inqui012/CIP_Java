@@ -1,4 +1,4 @@
--  React 관련 메모
+# React 관련 메모
 
 -  React. 후에 클론이나 풀한 프로젝트에 node_module 설치하는법
 
@@ -17,6 +17,8 @@
    > VsCode 확장과 프로젝트 직접설치 둘다 필요.
    > npm i -D eslint / yarn add -D eslint
    > 해당 프로젝트의 루트에 .eslintrc.js 로 설정 조절가능.
+
+-  크롬 익스텐션. React Developer Tools
 
 -  Ref
    > HTML의 id 속성과 비슷. DOM을 직접적으로 조정해야할때 사용한다.

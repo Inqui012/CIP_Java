@@ -1,3 +1,4 @@
+import Average from './Average'
 import Counter from './Counter'
 import Info from './Info'
 import InfoReduce from './Info_Reduce'
@@ -8,6 +9,7 @@ function App() {
          <Info />
          <Counter />
          <InfoReduce />
+         <Average />
       </>
    )
 }
