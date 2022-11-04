@@ -7,7 +7,9 @@ const About = () => {
    const location = useLocation()
    // useSearchParams() 훅. 쿼리스트링을 쉽게 가져올 수 있음.
    // setSearchParams 이거는 useState 에서 사용하는 데이터 업데이트 하는 함수인듯
-   const [searchParams, setSearchParams] = useSearchParams()
+   // const [searchParams, setSearchParams] = useSearchParams()
+   const [searchParams] = useSearchParams()
+
    // searchParams.get('키') = 지정된 키의 쿼리스트링의 '값'을 가져옴
    const detail = searchParams.get('detail')
    const mode = searchParams.get('mode')
