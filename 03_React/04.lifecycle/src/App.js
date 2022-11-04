@@ -1,5 +1,6 @@
 import LifeCycle from './LifeCycle'
 import React, { Component } from 'react'
+import SassComponent from './SassComponent'
 
 function getRandomColor() {
    // 랜덤한 컬러코드를 만들어주는 코드
@@ -18,6 +19,7 @@ class App extends Component {
             <button onClick={this.handleClick}>RANDOM COLOR</button>
             {/* state 에 있는 color를 하위콤포넌트인 lifecycle에게 props로 전달 */}
             <LifeCycle color={this.state.color} />
+            <SassComponent />
          </div>
       )
    }
