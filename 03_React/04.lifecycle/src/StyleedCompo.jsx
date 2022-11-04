@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components'
 
 // Box 라는 태그로 사용할 수 있는 스타일이 지정된 div 를 생성. 백틱사용
 // jsx 문법 기억하기. 값이 있느냐 없느냐로 참/거짓 판단해서 출력하는듯.
+// 콤포넌트 안에서 변수를 생성해서 사용하기 때문에 다른 콤포넌트와 충돌할 걱정이 없음.
 const Box = styled.div`
    background: ${props => props.color || 'papayawhip'};
    padding: 1rem;
@@ -45,6 +46,7 @@ const Button = styled.button`
             color: black;
          }
       `};
+   // css 선택자. + 바로 뒤에오는 태그
    & + button {
       margin-left: 1rem;
    }

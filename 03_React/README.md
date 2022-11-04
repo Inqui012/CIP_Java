@@ -30,8 +30,17 @@
    > 3. Canvas 요소에 그림을 그릴 때
 
 -  리액트의 작업 흐름 (after 16.3)
+
    > 1. Mounting
    >    > 1. constructor / 초기 state 생성. hook일경우 useState 를 사용한다.
    >    > 2. getDerivedStateFromProps / props로 받아온값을 state 에 동기화시킨다.
    > 2. Updating
    > 3. UnMounting
+
+-  Single Page Application (SPA)
+
+   > 기존의 방법과 달리 페이지 로드시 필요한 모든 파일을 한번에 받아온 후, 필요에 따라 데이터만을 서버에서 받아와 바꾼다. 초기 로드에 시간이 걸릴 수 있지만 이후에는 빠름.
+
+-  React Router
+   > index.js 에서 최상위 태그를 BrowserRouter로 바꿔줘야 하는듯
+   > app.js 에서 최상위를 Routes, 아래에 Route 사용?
