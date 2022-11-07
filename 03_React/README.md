@@ -44,3 +44,8 @@
 -  React Router
    > index.js 에서 최상위 태그를 BrowserRouter로 바꿔줘야 하는듯
    > app.js 에서 최상위를 Routes, 아래에 Route 사용?
+
+- 데이터 바인딩
+   > 1. ajax (JQuery 로드 필수)
+   > 2. fetch (기본적으로 ie에서 사용불가)
+   > 3. axios (node.js 권장)
