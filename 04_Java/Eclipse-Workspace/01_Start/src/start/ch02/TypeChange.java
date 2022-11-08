@@ -76,6 +76,7 @@ public class TypeChange {
 		System.out.println(result04);
 		System.out.println(result05);
 		
+		System.out.println('1' + '2');
 	}
 
 }
