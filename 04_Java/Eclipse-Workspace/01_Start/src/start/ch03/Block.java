@@ -14,6 +14,19 @@ public class Block {
 		int var02 = 10;
 		int var03 = var01 + var02 + 5;
 		System.out.println(var03);
+		
+		String var04 = "string";
+//		출력종류
+		System.out.println("엔터가 들어감");
+		System.out.printf("변수: %d\n", var01);
+		System.out.printf("문자열: %s\n", var04);
+		System.out.printf("변수01 정수로 : %d %n변수02 실수로 : %d\n", var01, var02);
+//		%6d = 6자리의 정수 앞의 빈자리에는 공백. %-6d = 6자리의 정수 뒤의 빈자리에 공백.
+		System.out.printf("정수출력 : %6d\n", 1234);
+		System.out.printf("정수출력 : %-6d\n", 1234);
+//		%10.2f = 10자리 정수와 소수2자리까지 출력. 앞의 빈자리 공백.
+		System.out.printf("소수출력 : %10.2f\n", 123456789123456.234);
+		
 	}
 
 }
