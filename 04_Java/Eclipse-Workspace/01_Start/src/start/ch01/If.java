@@ -47,6 +47,30 @@ public class If {
 			System.out.println("num01 : 6");
 		}
 
+//		자바에서는 for 문의 변수와 증감변수를 한번에 두개 선언할 수 있다. 조건식은 반드시 하나.
+//		int j = 0;
+//		for (int i = 0; i < 5; i ++, j++)
+//		위처럼 변수를 밖으로 빼놓고 증감을 두개 쓰는것도 가능. 
+		int sum01 = 0;
+		for (int i = 0, j = 0; i < 5; i ++, j++) {
+			int num02 = (int) (Math.random() * 100) + 1;
+//			+= 같은 연산자를 사용할경우 반드시 한번 초기화가 필요한듯?
+			sum01 += num02;
+			System.out.println((i + 1) + "번째 num02 : " + num02);
+			System.out.println((j + 1) + "번째 sum01 : " + sum01);
+		}
+		
+//		부동소수점은 오차때문에 값이 정확하지 않음.
+		for (float i = 0.1f; i < 1.0f; i += 0.1f) {
+			System.out.println("test : " + i);
+		}
+		
+//		구구단 찍는 이중for문
+		for (int i = 2; i <= 9; i++) {
+			for (int j = 1; j <= 9; j++) {
+				System.out.println(i + " X " + j + " = " + i * j);
+			}
+		}
 	}
 
 }
