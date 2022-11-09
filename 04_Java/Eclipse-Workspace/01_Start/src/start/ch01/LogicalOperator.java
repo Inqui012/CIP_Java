@@ -3,6 +3,11 @@ package start.ch01;
 public class LogicalOperator {
 
 	public static void main(String[] args) {
+//		삼항연산자. (조건) ? 참 : 거짓;
+		int score = 85;
+		char grade = (score > 90) ? 'A' : ((score > 80) ? 'B' : 'C');
+		System.out.println(grade);
+		
 //		정수형 변수에 문자열'A'로 유니코드 65를 넣음.
 		int charCode = 'A';
 		
