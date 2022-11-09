@@ -27,6 +27,15 @@ public class Block {
 //		%10.2f = 10자리 정수와 소수2자리까지 출력. 앞의 빈자리 공백.
 		System.out.printf("소수출력 : %10.2f\n", 123456789123456.234);
 		
+String pyra = "";
+for (int i = 0; i <= 5; i++) {
+	for(int j = 1; j <= i; j++) {
+		pyra += "*";
+	}
+	pyra += "\n";
+}
+System.out.println(pyra);
+		
 	}
 
 }
