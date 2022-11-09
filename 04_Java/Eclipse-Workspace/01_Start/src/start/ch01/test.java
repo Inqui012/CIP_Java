@@ -3,14 +3,15 @@ package start.ch01;
 public class test {
 
 	public static void main(String[] args) {
-		int prev01 = 1;
-		int prev02 = 1;
-		int current = 0;
-		for (int i = 1; i <= 8; i++) {
-			current = prev01 + prev02;
+//		피보나치 수열 출력
+		int prev01 = 0;
+		int prev02 = 0;
+		int current = 1;
+		for (int i = 1; i <= 10; i++) {
+			System.out.println(current);
 			prev02 = prev01;
 			prev01 = current;
-			System.out.println(current);
+			current = prev01 + prev02;
 		}
 		
 	}
