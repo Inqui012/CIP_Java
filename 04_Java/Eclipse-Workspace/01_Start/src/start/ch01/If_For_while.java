@@ -1,6 +1,6 @@
 package start.ch01;
 
-public class If {
+public class If_For_while {
 
 	public static void main(String[] args) {
 		int score01 = 85;
@@ -71,6 +71,28 @@ public class If {
 				System.out.println(i + " X " + j + " = " + i * j);
 			}
 		}
+		
+//		while(조건식){} for 랑 다르게 조건식 안에 바로 int 선언 불가능.
+		int i = 0;
+		while (i < 10) {
+			System.out.println(i);
+			i++;
+		}
+		
+//		while 로 1-100 합계 구하기. 증감연산자가 sum보다 먼저인지 후인지에 따라 결과값이 다르네.
+		int j = 1;
+		int sum = 0;
+		while (j <= 100) {
+			sum += j;
+			j++;
+		}
+		System.out.println(sum);
+		
+//		일단 do를 한번 실행하고 while문의 조건식이 false가 될때까지 do를 반복
+		do {
+			j++;
+			System.out.println(j);
+		} while (j <= 10);
 	}
 
 }
