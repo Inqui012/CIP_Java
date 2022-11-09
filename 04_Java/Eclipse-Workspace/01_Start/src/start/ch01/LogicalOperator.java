@@ -60,6 +60,9 @@ public class LogicalOperator {
 		System.out.println("-8 >> 3 : " + (-8 >> 3));
 		System.out.println("-8 >>> 3 : " + (-8 >>> 3));
 
+		double area = (double)( (5 + 10) * 7 / 2);
+		System.out.println(area);
+
 	}
 
 }
