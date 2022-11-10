@@ -58,6 +58,7 @@ public class ArrayType {
 		}
 		System.out.println("전체 총합 : " + totalSum + " / 학생수 : " + totalNumSum + " / 평균 : " + ((double) totalSum / totalNumSum));
 		
+		
 	}
 
 }
