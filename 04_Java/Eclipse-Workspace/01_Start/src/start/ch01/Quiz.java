@@ -1,6 +1,6 @@
 package start.ch01;
 
-public class test {
+public class Quiz {
 
 	public static void main(String[] args) {
 //		피보나치 수열 출력
