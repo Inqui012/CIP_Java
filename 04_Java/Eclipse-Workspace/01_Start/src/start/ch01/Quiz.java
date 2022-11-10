@@ -1,5 +1,7 @@
 package start.ch01;
 
+import java.util.Arrays;
+
 public class Quiz {
 
 	public static void main(String[] args) {
@@ -14,5 +16,25 @@ public class Quiz {
 			current = prev01 + prev02;
 		}
 		
+		
+		int ballArr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+		int ball3[] = new int[3];
+		for (int i = 0; i < ballArr.length; i++) {
+			int j = (int) (Math.random()  * ballArr.length);
+			int tmp = 0;
+			tmp = ballArr[i];
+			ballArr[i] = j;
+			
+			for (int k = 0; k < ballArr.length; k++) {
+				if(ballArr[k] == j && k != i) {
+					ballArr[k] = tmp;
+				}
+			}
+		}
+		System.arraycopy(ballArr, 0, ball3, 0, ball3.length);
+		System.out.println(Arrays.toString(ballArr));
+		for (int i = 0; i < ball3.length; i++) {
+			System.out.println(ball3[i]);
+		}
 	}
 }
