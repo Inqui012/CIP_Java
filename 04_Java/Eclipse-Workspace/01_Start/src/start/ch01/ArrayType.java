@@ -72,6 +72,16 @@ public class ArrayType {
 		System.arraycopy(oldIntArr01, 0, newIntArr02, 0, oldIntArr01.length);
 		System.out.println(Arrays.toString(newIntArr01));
 		System.out.println(Arrays.toString(newIntArr02));
+		
+//		향상된 for 문. js의 rest 로 가져오는 것 같은 느낌인가.
+//		for (int 아이템변수명 : 참조할 배열) {}; 배열의 각각의 아이템들을 새로운 변수에 넣어서 for문을 돌린다. 
+		int forArr01[] = {95, 75, 15, 85, 35};
+		int forSum = 0;
+		for (int forArr : forArr01) {
+			System.out.println(forArr);
+			forSum += forArr;
+		}
+		System.out.println(forSum);
 	}
 
 }
