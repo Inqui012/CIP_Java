@@ -58,7 +58,20 @@ public class ArrayType {
 		}
 		System.out.println("전체 총합 : " + totalSum + " / 학생수 : " + totalNumSum + " / 평균 : " + ((double) totalSum / totalNumSum));
 		
+//		자바에서 배열의 길이를 늘이는 방법. 기존 배열과 원하는 길이의 빈 배열을 생성하고 새 배열에 기존 배열값을 넣어준다.
+//		배열을 길이로 생성할때는 모든값이 초기값으로 되어있기 때문에 복사한 배열 이외에는 초기값으로 채워진 새로운 길이의 배열이 완성.
+//		for문을 이용한 방법 말고 java에서 제공하는 System.arraycopy(복사하고싶은 배열)을 사용.
+		int oldIntArr01[] = {1, 2, 3};
+		int newIntArr01[] = new int[5];
+		int newIntArr02[] = new int[5];
 		
+		for (int i = 0; i < oldIntArr01.length; i++) {
+			newIntArr01[i] = oldIntArr01[i];
+		}
+//		System.arraycopy(원본배열, 복사를 시작할 인덱스, 새로 저장할 배열, 저장을 시작할 인덱스, 복사할 인덱스 갯수)
+		System.arraycopy(oldIntArr01, 0, newIntArr02, 0, oldIntArr01.length);
+		System.out.println(Arrays.toString(newIntArr01));
+		System.out.println(Arrays.toString(newIntArr02));
 	}
 
 }
