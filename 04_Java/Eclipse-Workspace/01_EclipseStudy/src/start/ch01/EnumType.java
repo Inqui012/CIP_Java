@@ -6,7 +6,7 @@ package start.ch01;
 // public enum => 열거상수를 만들겠다는 선언 키워드
 // public enum 타입이름 {열거할 상수들} = 주의. 상수들 이름은 전부 대문자로.
 
-//지정된 숫자의 객체를 생성해놓은 객체
+// 지정된 MONDAY 값을 가지고 있는 EnumType이란 이름의 객체를 생성. 상수별로 반복
 public enum EnumType {
 	MONDAY,
 	TUSEDAY,
