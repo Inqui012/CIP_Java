@@ -1,4 +1,4 @@
-package start.ch01;
+package start.ch02;
 
 // Scanner 클래스를 자바에서 불러오기 때문에 작성하는 클래스의 파일명이 Scanner로 동일하면 오류남. 주의
 import java.util.Scanner;

@@ -1,4 +1,4 @@
-package start.ch01;
+package start.ch02;
 
 public class CompareOperator {
 

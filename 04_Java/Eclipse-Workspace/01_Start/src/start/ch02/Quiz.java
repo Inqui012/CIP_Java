@@ -1,4 +1,4 @@
-package start.ch01;
+package start.ch02;
 
 import java.util.Arrays;
 
