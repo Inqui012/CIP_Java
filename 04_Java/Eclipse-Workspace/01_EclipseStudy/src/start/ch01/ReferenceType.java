@@ -82,8 +82,7 @@ public class ReferenceType {
 		System.out.println(Arrays.toString(strArr01));
 		System.out.println(strArr01[0] == strArr01[1]);
 		System.out.println(strArr01[0] == strArr01[2]);
-		System.out.println(strArr01[0].equals(strArr01[2]));
-		
+		System.out.println(strArr01[0].equals(strArr01[2]));		
 		
 	}
 
