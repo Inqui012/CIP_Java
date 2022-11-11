@@ -29,7 +29,7 @@ public class ClassCar {
 	ClassCar(String model) {
 		this.model = model;
 //		아래경우 받아온 매개변수 model을 입력하고 나머지 값을 상위에 있는 다른 생성자로 사용해서 생성.
-//		this(model, "red", 204)
+//		this(model, "red", 204)   
 	}
 	ClassCar(int maxSpeed) {
 		this.maxSpeed = maxSpeed;
