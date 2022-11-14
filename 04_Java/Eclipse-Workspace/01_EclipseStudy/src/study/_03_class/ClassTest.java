@@ -1,4 +1,4 @@
-package start.ch01;
+package study._03_class;
 
 public class ClassTest {
 

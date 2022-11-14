@@ -1,4 +1,4 @@
-package start.ch01;
+package study._01_variableType;
 
 public class TypeChange {
 

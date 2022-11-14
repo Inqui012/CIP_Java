@@ -1,4 +1,4 @@
-package start.ch01;
+package study._01_variableType;
 
 public class Variable {
 //	 main 안의 코드가 가장 먼저 실행됨. 

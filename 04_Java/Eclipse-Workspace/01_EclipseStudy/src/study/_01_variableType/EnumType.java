@@ -1,4 +1,4 @@
-package start.ch01;
+package study._01_variableType;
 
 // 열거상수를 생성. 생성할때부터 enum 으로 생성하는 옵션이 있네.
 // Enumeration Type. 열거상수 타입. 한정된 범위의 상수를 가지는 타입? 요일, 월, 시간 처럼 지정된 범위가 있는것들?

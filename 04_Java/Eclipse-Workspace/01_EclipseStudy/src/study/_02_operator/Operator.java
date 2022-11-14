@@ -1,4 +1,4 @@
-package start.ch01;
+package study._02_operator;
 
 public class Operator {
 
