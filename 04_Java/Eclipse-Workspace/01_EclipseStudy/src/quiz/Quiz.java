@@ -1,4 +1,4 @@
-package start.ch01;
+package quiz;
 
 import java.util.Arrays;
 

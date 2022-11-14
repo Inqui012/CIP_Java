@@ -25,5 +25,6 @@ public class MethodMake {
 		void powerOff () {
 			System.out.println("POWER OFF");
 		}
+		
 
 }
