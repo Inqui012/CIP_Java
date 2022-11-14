@@ -10,6 +10,5 @@ public class Account {
 		this.accNum = strNum;
 		this.accName = strName;
 		this.balance = bal;
-		System.out.println("계좌가 생성되었습니다.");
 	}
 }
