@@ -24,4 +24,5 @@ public class StaticMake {
 	static {
 		info = model + "_" + number;
 	}
+
 }
