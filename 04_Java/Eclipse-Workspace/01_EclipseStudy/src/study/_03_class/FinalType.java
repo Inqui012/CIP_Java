@@ -15,6 +15,8 @@ public class FinalType {
 	final String nation = "Korea";
 	final String ssn;
 	String name;
+	protected String testStr = "Strict Test";
+	private String testStr01 = "this is private";
 	
 	FinalType(String ssn, String name) {
 		this.ssn = ssn;
