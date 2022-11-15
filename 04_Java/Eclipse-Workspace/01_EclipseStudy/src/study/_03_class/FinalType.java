@@ -2,6 +2,7 @@ package study._03_class;
 
 public class FinalType {
 
+	
 //	final [데이터타입] [변수명] = 초기값; = 프로그램 실행중에 수정할 수 없는 최종값. 선언이나 생성자상에서 선언가능.
 //	private 는 getter / setter 로 변경 가능하니 절대로 바뀌면 안되는 값에는 final을 사용.
 //	메소드에 사용하면 오버라이드를 불가능하게 만들고 클래스 자체에 사용하면 상속을 불가능하게 한다.
@@ -20,6 +21,16 @@ public class FinalType {
 		this.name = name;
 	}
 	
+//	static final = 상수 = 변하지 않는 값 = 변수명은 반드시 대문자+스네이크 형식으로 작성.
+	static final double EARTH_RADIUS = 6400;
+	static final double EARTH_SURFACE_AREA;
+//	static 필드를 초기화해주는 공간. static 전용 생성자?
+	static {
+//		Math.PI = 자바에서 제공하는 원주율. 변수명에서 추측하기로 이것도 상수인듯.
+		EARTH_SURFACE_AREA = 4 * Math.PI * EARTH_RADIUS * EARTH_RADIUS;
+	}
+	
+	
 	public static void main(String[] args) {
 		FinalType kr01 = new FinalType("social security number", "your name");
 		System.out.println(kr01.nation);
@@ -29,6 +40,9 @@ public class FinalType {
 		System.out.println(kr02.nation);
 		System.out.println(kr02.ssn);
 		System.out.println(kr02.name);
+		
+		System.out.println("지구 반지름 = " + EARTH_RADIUS);
+		System.out.println("지구 표면적 = " + EARTH_SURFACE_AREA);
 	}
 
 }

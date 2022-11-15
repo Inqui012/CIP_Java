@@ -10,6 +10,7 @@ public class PublicPrivate {
 //	값을 변경하려면 getter / setter 메소드를 사용한다. 파일 오른쪽클릭 source 메뉴에 generate 항목이 있음. 권장.
 //	외부에서 값을 보고싶을때는 get메소드, 변경하고 싶을때는 set 메소드. 왜 굳이 이렇게 하지?
 //	외부에서 접근할 수 없다 = 사용할 수 없다? 기본 생성자를 막아놓는다던가 특정 생성자를 직접 사용 못하게 하거나?
+//	set 메소드는 함수니까 이 안에 for문이나 if문을 이용해서 변수에 넣을 값을 선별할 수 있네. 이건 확실히 쓸만한듯.
 	private int num;
 	public int getNum() {
 		return num;
