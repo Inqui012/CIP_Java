@@ -6,7 +6,8 @@ public class BApp {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-		
+		Account[] accList = new Account[100];
+		int count = 0;
 		
 		while(true) {
 			System.out.println("------------------------");
@@ -20,14 +21,59 @@ public class BApp {
 				System.out.println("--------");
 				System.out.println("계좌생성");
 				System.out.println("--------");
-				System.out.print("계좌번호 		: ");
-				String accNum = scan.nextLine();
+				System.out.print("계좌번호		: ");
+				String accCreateNum = scan.nextLine();
 				System.out.print("계좌주 		: ");
-				String accName = scan.nextLine();
+				String accCreateName = scan.nextLine();
 				System.out.print("초기입금액 	: ");
 				String accInitBalance = scan.nextLine();
-				Account accList = new Account(accNum, accName, Integer.parseInt(accInitBalance));
-				
+				accList[count] = new Account(accCreateNum, accCreateName, Integer.parseInt(accInitBalance));
+				count++;
+				System.out.println("결과 		: 계좌가 생성되었습니다. ");
+				break;
+			case "2" : 
+				System.out.println("--------");
+				System.out.println("계좌목록");
+				System.out.println("--------");
+				for (int i = 0; i < accList.length; i++) {
+//					System.out.println(accList[i].accNum + "	" + accList[i].accName + "	" + accList[i].balance);		
+				}
+				break;
+			case "3" : 
+				System.out.println("--------");
+				System.out.println("예금");
+				System.out.println("--------");
+				System.out.print("계좌번호		: ");
+				String accAddNum = scan.nextLine();
+				System.out.println("예금액	 	: ");
+				String accAddBalance = scan.nextLine();
+				for (int i = 0; i < accList.length; i++) {
+					if(accList[i].accNum.equals(accAddNum)) {
+						accList[i].balance += Integer.parseInt(accAddBalance);
+					} else {
+						System.out.println("일치하는 계좌가 없습니다.");						
+					}
+				}				
+				break;
+			case "4" : 
+				System.out.println("--------");
+				System.out.println("출금");
+				System.out.println("--------");
+				System.out.print("계좌번호		: ");
+				String accSubNum = scan.nextLine();
+				System.out.print("예금액	 	: ");
+				String accSubBalance = scan.nextLine();
+				for (int i = 0; i < accList.length; i++) {
+					if(accList[i].accNum.equals(accSubNum)) {
+						accList[i].balance -= Integer.parseInt(accSubBalance);
+					} else {
+						System.out.println("일치하는 계좌가 없습니다.");						
+					}
+				}				
+				break;
+			case "5" : 
+				System.out.println("프로그램 종료");
+				break;
 			default :
 				break;
 				

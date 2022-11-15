@@ -11,4 +11,5 @@ public class Account {
 		this.accName = strName;
 		this.balance = bal;
 	}
+	
 }

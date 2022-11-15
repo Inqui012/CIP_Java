@@ -14,4 +14,14 @@ public class StaticMake {
 	int minus (int x, int y) {
 		return x - y;
 	}
+	
+//	정적블록 = 정적필드에 초기화 작업이 필요할때 사용한다. 정적필드를 지정할때 this 사용이 불필요.
+//	this. 는 해당 객체를 지징하는것이고 정적필드는 클래스와는 별개로 구분되기 때문에 에러남.
+	static String model = "calc01";
+	static String number = "1";
+	static String info;
+	
+	static {
+		info = model + "_" + number;
+	}
 }
