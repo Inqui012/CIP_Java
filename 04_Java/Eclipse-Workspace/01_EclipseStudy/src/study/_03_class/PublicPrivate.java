@@ -1,7 +1,6 @@
 package study._03_class;
 
 import quiz.Account;
-
 //import quiz.Account;
 
 public class PublicPrivate {
@@ -16,7 +15,15 @@ public class PublicPrivate {
 	
 //	접근제한자 = private < default < protected < public
 //	오직 해당 클래스 내부 < 동일 패키지 내 < 동일 패키지 + 상속 클래스 < 모든 클래스
-//	설정하지 않으면 기본으로 dafault 로 설정됨.
+//	설정하지 않으면 기본으로 dafault 로 설정됨. 보통 데이터보호(은닉화)나 캡슐화를 위해 많이 사용함.
+//	사용자에게 보이지 않아도 되는 데이터등을 숨길때 사용하는듯
+
+//	사용할 수 있는 종류가 제한되어 있는듯.
+//	클래스	: public, default
+//	생성자 	: public, protected, default, private
+//	멤버변수	: public, protected, default, private
+//	멤버메소드	: public, protected, default, private
+//	지역변수	: 사용불가
 	
 //	private 선언. 변수마 메소드를 외부에서 직접 접근하지 못하도록 설정한다.
 //	값을 변경하려면 getter / setter 메소드를 사용한다. 파일 오른쪽클릭 source 메뉴에 generate 항목이 있음. 권장.
@@ -28,7 +35,18 @@ public class PublicPrivate {
 		return num;
 	}
 	public void setNum(int num) {
-		this.num += num;
+		boolean flag = false;
+		if(num > 0) {
+			this.num = num;
+			flag = true;
+		}
+		if(flag) {
+			System.out.print("값이 반영되었음 : ");
+			return;
+		} else {
+			System.out.print("값이 유지되었음 : ");
+			return;
+		}
 	}
 	
 	class InheritTest extends Account {
@@ -46,18 +64,22 @@ public class PublicPrivate {
 		FinalType PublClass = new FinalType("test", "tttt");
 //		testStr은 protected 속성이지만 같은 패키지 안에서 불러오므로 호출이 가능하다.
 		System.out.println(PublClass.testStr);
-
-		
-//		같은 패키지에 있어서 이미 생성한 객체에 있는 변수이지만 private로 설정되어 있어서 여기서도 '안보임'
-//		System.out.println(PublClass.testStr01);
-		
+				
 //		다른 패키지에 있는 Account 클래스는 public 속성이라 불러오는것 까지는 가능한데
 //		변수인 testStr01 은 protected 속성이라 같은 패키지가 아닌 이곳에서는 '보이지 않아' 라고 인식하네.
 //		외부에서는 접근할 수 없다는게 이런소리인듯. 아예 없는것처럼 취급하는 느낌?
 //		System.out.println(Account.testStr01);
 		
-	
+//		같은 패키지에 있어서 이미 생성한 객체에 있는 변수이지만 private로 설정되어 있어서 여기서도 '안보임'
+//		System.out.println(PublClass.testStr01);
 		
+		PublicPrivate getSetTest01 = new PublicPrivate();
+		getSetTest01.setNum(20);
+		System.out.println(getSetTest01.getNum());
+		getSetTest01.setNum(-10);
+		System.out.println(getSetTest01.getNum());
+		getSetTest01.setNum(50);
+		System.out.println(getSetTest01.getNum());
 	}
 
 }
