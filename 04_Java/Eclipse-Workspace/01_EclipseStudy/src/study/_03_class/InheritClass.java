@@ -6,11 +6,12 @@ package study._03_class;
 // public인경우 생성자를 통해서 클래스를 생성해야 필드나 메소드에 접근할 수 있는건 똑같은데 자식클래스를 생성하고 그 안에서 부모의 필드나 메소드를 참조하는경우는 실행이 되네.
 // 이렇게 상속으로 클래스의 기능을 확장할경우 보통 제일 확장된 필요한 클래스의 인스턴스를 생성해서 사용하는듯. 
 // 생성자를 선언하지 않으면 자바아 알아서 부모클래스의 생성자를 super(); 로 생성해준다네. 자동으로 만드는구나.
-// 접근제한자 사용 못함.
+// 클래스 자체에 접근제한자는 안되지만 필드와 메소드에는 그냥 평범하게 쓸 수 있네.
 
 class Parent {
 	String parentStr = "부모클래스";
 	int cnt = 0;
+	private String Test01;
 	
 	void parentMethod() {
 		System.out.println("Parent Class : " + parentStr);

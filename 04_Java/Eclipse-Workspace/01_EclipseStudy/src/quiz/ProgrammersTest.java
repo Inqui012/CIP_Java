@@ -27,7 +27,7 @@ public class ProgrammersTest {
 		String letter = "f";
 		String answer = "";
         for(int i = 0; i < my_string.length() - 1; i++){
-        	if(my_string.charAt(i) == Character.)
+//        	if(my_string.charAt(i) == Character.)
             answer += my_string.charAt(i);       
         }
 		
