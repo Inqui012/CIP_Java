@@ -23,6 +23,14 @@ public class ProgrammersTest {
 	
 	public static void main(String[] args) {
 		
+		String my_string = "abcdef";
+		String letter = "f";
+		String answer = "";
+        for(int i = 0; i < my_string.length() - 1; i++){
+        	if(my_string.charAt(i) == Character.)
+            answer += my_string.charAt(i);       
+        }
+		
 //		String my_string = "bread";
 //		String answer = "";
 //		length(); 문자열의 길이를 반환. 배열의 .length 랑은 괄호차이
