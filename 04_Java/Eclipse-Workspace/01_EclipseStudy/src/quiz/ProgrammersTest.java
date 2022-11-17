@@ -20,7 +20,7 @@ public class ProgrammersTest {
 		}
 		return a;
 	}
-	
+
 	public static void main(String[] args) {
 //		String my_string = "hello";
 //		String answer = "";
@@ -29,9 +29,10 @@ public class ProgrammersTest {
 //        		answer += my_string.charAt(i);    		
 //        	}
 //        }
-//        System.out.println(answer);
-		
-//		int[] sides = {30, 30, 30};
+
+//		Arrays.sort(배열, 시작할 인덱스, 끝낼 인덱스, 정렬조건); 기능으로 배열을 간단하게 크기순으로 정렬할 수 있음. 기존배열을 다시 덮어씌우는 형식
+//		배열만 넣으면 기본값인 오름차순으로 정렬하고, 내림차순으로 하고 싶을경우 정렬조건에 Collections.reverseOrder(); 를 넣네
+//		  int[] sides = {30, 30, 30};
 //        int answer = 2;
 //        int maxSides = 0;
 //        int sum = 0;
@@ -42,13 +43,10 @@ public class ProgrammersTest {
 //            sum += sides[i];
 //        }
 //        sum -= maxSides;
-//        System.out.println(maxSides);
-//        
-//        System.out.println(sum);
 //        if (maxSides < sum) {
 //            answer = 1;
 //        }
-		
+
 //		String my_string = "abcdef";
 //		String letter = "f";
 //		String answer = "";
@@ -56,7 +54,7 @@ public class ProgrammersTest {
 ////        	if(my_string.charAt(i) == Character.)
 //            answer += my_string.charAt(i);       
 //        }
-		
+
 //		String my_string = "bread";
 //		String answer = "";
 //		length(); 문자열의 길이를 반환. 배열의 .length 랑은 괄호차이
@@ -64,7 +62,7 @@ public class ProgrammersTest {
 //        for(int i = my_string.length() - 1; i >= 0; i--){
 //            answer += my_string.charAt(i);
 //        }
-		
+
 //		이거 카운트로만 되나??? 포문돌리면 안되는데..흠....
 //		int[] num_list = {1, 2, 3, 4, 5};
 //		int[] answer = new int [num_list.length];
