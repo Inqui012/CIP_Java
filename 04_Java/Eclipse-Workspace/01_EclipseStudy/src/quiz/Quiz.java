@@ -3,6 +3,9 @@ package quiz;
 import java.util.Arrays;
 
 public class Quiz {
+//	public static boolean isNumber (String str) {
+
+//	}
 
 	public static void main(String[] args) {
 //		피보나치 수열 출력
@@ -15,18 +18,17 @@ public class Quiz {
 			prev01 = current;
 			current = prev01 + prev02;
 		}
-		
-		
-		int ballArr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+		int ballArr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 		int ball3[] = new int[3];
 		for (int i = 0; i < ballArr.length; i++) {
-			int j = (int) (Math.random()  * ballArr.length);
+			int j = (int) (Math.random() * ballArr.length);
 			int tmp = 0;
 			tmp = ballArr[i];
 			ballArr[i] = j;
-			
+
 			for (int k = 0; k < ballArr.length; k++) {
-				if(ballArr[k] == j && k != i) {
+				if (ballArr[k] == j && k != i) {
 					ballArr[k] = tmp;
 				}
 			}
@@ -36,5 +38,20 @@ public class Quiz {
 		for (int i = 0; i < ball3.length; i++) {
 			System.out.println(ball3[i]);
 		}
+
+		String numTest1 = "1234o";
+		String numTest2 = "ㅁㄴㅇㄹㄷ";
+		String numTest3 = "85612";
+		String numTest4 = "ㅐㅐㄷ01234djkasd";
+
+		try {
+			System.out.println(Integer.parseInt(numTest3));
+		} catch (NumberFormatException e) {
+			System.out.println("숫자가 아님");
+		}
+		
+		int[] answer = {0, 0};
+		System.out.println(answer[0]);
+		System.out.println(answer[1]);
 	}
 }
