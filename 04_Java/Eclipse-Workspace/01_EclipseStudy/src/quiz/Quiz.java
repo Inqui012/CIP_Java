@@ -53,5 +53,10 @@ public class Quiz {
 		int[] answer = {0, 0};
 		System.out.println(answer[0]);
 		System.out.println(answer[1]);
+		
+        int angle = 75;
+		if(0 < angle && angle < 90){
+            
+        }
 	}
 }
