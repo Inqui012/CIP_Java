@@ -22,14 +22,32 @@ public class ProgrammersTest {
 	}
 	
 	public static void main(String[] args) {
-		
-		String my_string = "abcdef";
-		String letter = "f";
-		String answer = "";
-        for(int i = 0; i < my_string.length() - 1; i++){
-//        	if(my_string.charAt(i) == Character.)
-            answer += my_string.charAt(i);       
+
+		int[] sides = {30, 30, 30};
+        int answer = 2;
+        int maxSides = 0;
+        int sum = 0;
+        for(int i = 0; i < sides.length; i++){
+            if(maxSides < sides[i]){
+                maxSides = sides[i];
+            }
+            sum += sides[i];
         }
+        sum -= maxSides;
+        System.out.println(maxSides);
+        
+        System.out.println(sum);
+        if (maxSides < sum) {
+            answer = 1;
+        }
+		
+//		String my_string = "abcdef";
+//		String letter = "f";
+//		String answer = "";
+//        for(int i = 0; i < my_string.length() - 1; i++){
+////        	if(my_string.charAt(i) == Character.)
+//            answer += my_string.charAt(i);       
+//        }
 		
 //		String my_string = "bread";
 //		String answer = "";
