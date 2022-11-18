@@ -7,6 +7,22 @@ public class ProgrammersTest {
 
 	public static void main(String[] args) {
 		
+		int price = 150010;
+
+		System.out.println(price - (price * 0.05));
+		
+//		int n = 100;
+//		loop01 : for(int i = 1; i <= n; i++) {
+//			for(int j = n; j > 0; j--) {
+//				if(i == j) {
+//					break loop01;
+//				}
+//				if(i * j == n) {
+//					answer++;
+//				}
+//			}
+//		}
+		
 //		int n = 15;
 //		int[] answer;
 //		

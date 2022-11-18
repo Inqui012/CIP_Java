@@ -55,3 +55,33 @@ Arrays.copyOfRange(배열, 시작할 인덱스, 끝낼 인덱스);
 ```
 지정된 배열을 지정한 위치에서 잘라내어 새 배열로 저장.
 항상 그렇듯 끝낼 인덱스는 실제 끝내고싶은 위치의 인덱스 + 1 로 계산해야함.
+
+### Arrays.stream();
+```java
+Stream<데이터타입> var = Arrays.stream(배열 / 콜렉션, 시작할 인데스, 끝낼 인덱스);
+```
+자바8에서 추가된 람다? 를 활용할 수 있는 기술.
+배열과 콜렉션 인스턴스의 요소를 하나하나 꺼내어 다루는 방법.
+
+### 문자열.replace(); / .replaceAll();
+```java
+문자열.replace(CharSequence target, CharSequence replacement);
+문자열.replace(바꾸고싶은 문자열, 바꿀 문자열);
+```
+문자열에서 특정 문자열을 원하는 문자열로 바꾼다. 사용 받는 매개변수의 타입이 다르다.
+
+
+```java
+문자열.replaceAll(String regex, String replacement);
+문자열.replaceAll(바꾸고싶은 문자열, 바꿀 문자열);
+```
+문자열에서 특정 문자열을 원하는 문자열로 바꾼다.
+바꾸고싶은 문자열에 정규식을 사용 가능.
+
+```java
+문자열.replaceFirst(String regex, String replacement);
+문자열.replaceAll(바꾸고싶은 문자열, 바꿀 문자열);
+```
+문자열에서 특정 문자열을 원하는 문자열로 바꾸지만 가장 처음으로 찾는 문자열만 바꾸고 나머지는 그대로 유지한다.
+마찬가지로 문자열에 정규식 사용 가능.
+
