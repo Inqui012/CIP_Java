@@ -1,5 +1,8 @@
 package quiz;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 public class ProgrammersTest {
 //	최대공약수 구하는 유클리드 호제법 알고리즘.
 //	값 a 와 b 가 있고 a > b 일때, a / b = r 일경우. a, b의 공약수는 b, r의 공약수이다???
@@ -22,6 +25,49 @@ public class ProgrammersTest {
 	}
 
 	public static void main(String[] args) {
+
+		int[] array = { 1, 2, 3, 3, 3, 4};
+		int answer = 0;
+		int maxNum = 0;
+		int maxIdx = 0;
+		Arrays.sort(array);
+		int[] count = new int[array[array.length - 1] + 1];
+		for (int i = 0; i < array.length; i++) {
+			count[array[i]]++;
+		}
+		for (int i = 0; i < count.length; i++) {
+			if (maxNum < count[i]) {
+				maxNum = count[i];
+				maxIdx = i;
+			}
+		}
+		answer = maxIdx;
+		loop01: for (int i = 0; i < count.length; i++) {
+			for (int j = 0; j < count.length; j++) {
+				if (count[i] == count[j] && i != j) {
+					answer = -1;
+					break loop01;
+				}
+			}
+		}
+		
+		for(int i = 0; i < count.length; i++) {
+			System.out.println(count[i]);			
+		}
+//		int[] array = {-1, -9, 0, 1, 7};
+//        Arrays.sort(array);
+//        for(int i = 0; i < array.length; i++) {
+//        	System.out.println(array[i]);
+//        }
+
+//		int k = 5;
+//		int[] numbers = {1, 2, 3, 4, 5, 6};
+//        int num = 2 * k - 1;
+//        while(num > numbers.length){
+//            num = num % numbers.length;
+//            System.out.println(num);
+//        }
+
 //		String my_string = "hello";
 //		String answer = "";
 //        for(int i = 0; i < my_string.length(); i++){

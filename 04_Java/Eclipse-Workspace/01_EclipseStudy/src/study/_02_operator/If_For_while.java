@@ -72,6 +72,17 @@ public class If_For_while {
 			}
 		}
 		
+//		for문에 switch case 처럼 : 로 라벨을 지정해주고 break 라벨; 로 지정한 포문을 한번에 빠져나올 수 있음.
+//		이중포문이나 다중포문중에서 한번 조건을 만족하면 바로 이중포문을 한번에 빠져나오게 만들때 좋을듯.
+//		loop01: for (int i = 0; i < count.length; i++) {
+//			for (int j = 0; j < count.length; j++) {
+//				if (count[i] == count[j] && i != j) {
+//					answer = -1;
+//					break loop01;
+//				}
+//			}
+//		}
+		
 //		while(조건식){} for 랑 다르게 조건식 안에 바로 int 선언 불가능.
 		int i = 0;
 		while (i < 10) {
