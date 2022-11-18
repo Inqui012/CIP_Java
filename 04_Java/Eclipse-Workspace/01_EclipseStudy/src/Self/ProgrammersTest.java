@@ -1,59 +1,53 @@
-package quiz;
+package Self;
 
 import java.util.Arrays;
 import java.util.Collections;
 
 public class ProgrammersTest {
-//	최대공약수 구하는 유클리드 호제법 알고리즘.
-//	값 a 와 b 가 있고 a > b 일때, a / b = r 일경우. a, b의 공약수는 b, r의 공약수이다???
-//	a % b = r, b % r = r2, r % r2 = r3, r2 % r3 = r4..... 로 반복해서 나머지가 0이될때까지.
-//	나머지가 0일경우의 값이 최대공약수이다.
-	static int gcd(int a, int b) {
-//		b 가 0이 아닐때 반복이니까 b는 공식에서 말하는 나머지...가 아닌데. 아니 맞는....데
-//		반복문 함수 안에서 b = t % b; 를 반복해서 b값은 계속 바뀌니까, 계산하는 t 를 받아온 매개변수 b 로나눈 나머지가 0 이면
-//		b = 0 되서 반복문이 끝난다. 그럼 반복문을 안들어가니 a에는 다음 계산을 위해 미리 넣어둔 전번의 b 가 들어가 있으니
-//		결과적으로 최대공약수는 a 가 되는듯.
-		while (b != 0) {
-//			함수에서 매개변수로 받아오는 a, b로 계산을 계속할거니까 여기서 미리 여분의 변수 t를 설정해서
-//			t=a, 로해서 계산은 t로 하고 a값은 다음번 계산에 쓰일 b를 미리 저장해놓음.
-			int t = a;
-			a = b;
-//			b값을 계속 새로운 나머지값으로 대체하면서 나누게됨.
-			b = t % b;
-		}
-		return a;
-	}
 
 	public static void main(String[] args) {
-
-		int[] array = { 1, 2, 3, 3, 3, 4};
-		int answer = 0;
-		int maxNum = 0;
-		int maxIdx = 0;
-		Arrays.sort(array);
-		int[] count = new int[array[array.length - 1] + 1];
-		for (int i = 0; i < array.length; i++) {
-			count[array[i]]++;
-		}
-		for (int i = 0; i < count.length; i++) {
-			if (maxNum < count[i]) {
-				maxNum = count[i];
-				maxIdx = i;
-			}
-		}
-		answer = maxIdx;
-		loop01: for (int i = 0; i < count.length; i++) {
-			for (int j = 0; j < count.length; j++) {
-				if (count[i] == count[j] && i != j) {
-					answer = -1;
-					break loop01;
-				}
-			}
-		}
 		
-		for(int i = 0; i < count.length; i++) {
-			System.out.println(count[i]);			
-		}
+//		int n = 15;
+//		int[] answer;
+//		
+//        if(n % 2 != 0){
+//            answer = new int[(n / 2) + 1];
+//        } else {
+//            answer = new int[(n / 2)];
+//        }
+//        for(int j = 0; j < answer.length; j++) {
+//        	첫번째 인덱스 = 첫번째 홀수 니까 같은 for문안에서 해결할 수 있네
+//        	answer[j] = 2 * (j + 1) - 1;
+//        }
+		
+		//		int[] array = { 1, 2, 3, 3, 3, 4};
+//		int answer = 0;
+//		int maxNum = 0;
+//		int maxIdx = 0;
+//		Arrays.sort(array);
+//		int[] count = new int[array[array.length - 1] + 1];
+//		for (int i = 0; i < array.length; i++) {
+//			count[array[i]]++;
+//		}
+//		for (int i = 0; i < count.length; i++) {
+//			if (maxNum < count[i]) {
+//				maxNum = count[i];
+//				maxIdx = i;
+//			}
+//		}
+//		answer = maxIdx;
+//		loop01: for (int i = 0; i < count.length; i++) {
+//			for (int j = 0; j < count.length; j++) {
+//				if (count[i] == count[j] && i != j) {
+//					answer = -1;
+//					break loop01;
+//				}
+//			}
+//		}
+//		
+//		for(int i = 0; i < count.length; i++) {
+//		}
+
 //		int[] array = {-1, -9, 0, 1, 7};
 //        Arrays.sort(array);
 //        for(int i = 0; i < array.length; i++) {

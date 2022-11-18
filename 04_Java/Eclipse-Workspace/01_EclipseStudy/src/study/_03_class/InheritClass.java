@@ -14,6 +14,10 @@ class Parent {
 	String parentStr = "부모클래스";
 	int cnt = 0;
 	private String Test01;
+//	부모클래스에서 자식타입의 변수를 생성가능. 이렇게 만들어놓은 자식타입 변수 A를 사용하는 메소드를 만들어놓고
+//	메인메소드에서 생성된 부모객체의 필드 A를 지정해서 새로 객체를 생성하면 메소드가 실행이 됨.
+//	메인메소드에서 재정의하는 A는 자식타입 이기때문에 자손타입의 객체를 생성해도 자연스럽게 형변환이 일어남.
+	Child01 A;
 	
 	void parentMethod() {
 		System.out.println("Parent Class : " + parentStr);
