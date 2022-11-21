@@ -1,7 +1,6 @@
 package study._03_class;
 
-import quiz.Account;
-//import quiz.Account;
+import quiz.pdf.Account;
 
 public class PublicPrivate {
 //	패키지 = 소스파일의 폴더. 같은 src 안에서라도 패키지가 다르면 다른 클래스로 인식한다.
