@@ -51,7 +51,8 @@ public class CustomerApplication {
 		Customer Resultcustomer = null;
 		for( Customer customer : customerList){
 			if (customer.getCustomerID() == customerID) {
-				Resultcustomer = customer;				
+				Resultcustomer = customer;		
+				break;
 			}
 		}		
 		return Resultcustomer;

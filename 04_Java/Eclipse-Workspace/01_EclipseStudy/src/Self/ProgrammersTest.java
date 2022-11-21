@@ -1,5 +1,6 @@
 package Self;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -7,11 +8,16 @@ public class ProgrammersTest {
 
 	public static void main(String[] args) {
 		
-		int price = 150010;
-
-		System.out.println(price - (price * 0.05));
 		
-//		int n = 100;
+
+//		String my_string = "aAb1B2cC34oOp";
+//		int answer = 0;
+//		my_string = my_string.replaceAll("[a-z,A-Z]", "");
+//		for(int i = 0; i < my_string.length(); i++) {
+//			answer += Character.getNumericValue(my_string.charAt(i));
+//		}
+		
+		//		int n = 100;
 //		loop01 : for(int i = 1; i <= n; i++) {
 //			for(int j = n; j > 0; j--) {
 //				if(i == j) {
