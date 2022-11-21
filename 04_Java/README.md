@@ -215,3 +215,21 @@ int num = Character.getNumericValue(문자);
 ```
 Character 타입으로 저장되어 있는 숫자를 ASCII 코드 숫자가 아닌 실제 표시되는 숫자로 가져온다.
 참조) 0 ~ 9 = ASCII 48 ~ ASCII 57;
+
+### Character.toString(); / String.valueOf();
+```java
+String str = Character.toString(문자);
+String str = String.valueOf(문자);
+```
+둘 다 Character 타입의 문자를 String 형으로 바꾸는 메소드이다.  
+.toString(); 은 문자값이 null 일경우 에러를 띄우지만  
+.valueOf(); 는 문자값에 null 이 들어올경우 null 을 문자열로 출력한다.  
+
+### 문자열.toUpperCase(); / 문자열.toLowerCase(); / 문자열.trim();
+```java
+문자열.toUpperCase();
+문자열.toLowerCase();
+문자열.trim();
+```
+문자열의 모든 문자를 대문자 / 소문자로 변경하는 메소드.  
+.trim(); 은 문자열 앞 뒤에 있는 공백문자를 모두 제거해준다. 중간에 있는건 제거 안함.   

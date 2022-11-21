@@ -7,15 +7,25 @@ import java.util.Collections;
 public class ProgrammersTest {
 
 	public static void main(String[] args) {
-		String my_string = "p2o4i8gj2";
-        my_string = my_string.replaceAll("[a-z]","");
-        System.out.println(my_string.length());
-        int[] answer = new int[my_string.length()];
-        for(int i = 0; i < answer.length; i++){
-            answer[i] = Character.getNumericValue(my_string.charAt(i));
-            System.out.println(i + ", Char : " + my_string.charAt(i) + ", Array : " + answer[i]);
+
+		String my_string = "abCdEfghIJ";
+		String answer = "";
+        for(int i = 0; i < my_string.length(); i++){
+            if(my_string.charAt(i) >= 'a' && my_string.charAt(i) <= 'z') {
+            	answer += Character.toString(my_string.charAt(i)).toUpperCase();
+            } else {
+            	answer += Character.toString(my_string.charAt(i)).toLowerCase();          	
+            }
         }
-        Arrays.sort(answer);
+        System.out.println(answer);
+		
+//		  String my_string = "p2o4i8gj2";
+//        my_string = my_string.replaceAll("[a-z]","");
+//        int[] answer = new int[my_string.length()];
+//        for(int i = 0; i < answer.length; i++){
+//            answer[i] = Character.getNumericValue(my_string.charAt(i));
+//        }
+//        Arrays.sort(answer);
         
 
 //		String my_string = "aAb1B2cC34oOp";

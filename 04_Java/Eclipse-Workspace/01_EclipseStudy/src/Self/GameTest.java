@@ -1,14 +1,14 @@
 package Self;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GameTest {
 
-	static Scanner scan = new Scanner(System.in);
-
+	public static Scanner scan = new Scanner(System.in);
+	public static ArrayList<Char> charList = new ArrayList<>();
+	
 	public static void main(String[] args) {
-		System.out.println();
-		CharCreate[] charList = new CharCreate[20];
 		
 		while(true) {
 			System.out.println("---------------------------------------");
@@ -18,25 +18,10 @@ public class GameTest {
 			String MenuNum = scan.nextLine();
 			switch(MenuNum) {
 			case "1":
-				for (int i = 0; i < charList.length; i++) {
-					if(charList[i] == null) {
-						charList[i] = new CharCreate(CharCreate.charNameSet(), CharCreate.charClassSet());
-						break;
-					}
-				}
+				charCreate();
 				break;
 			case "2":
-				for (int i = 0; i < charList.length; i++) {
-					if(charList[i] != null) {
-						System.out.println("---------------------------------------");
-						System.out.println("캐릭터명 		: " + charList[i].charName);
-						System.out.println("캐릭터직업 	: " + charList[i].charClass);
-						System.out.println("캐릭터레벨 	: " + charList[i].charLv);
-						System.out.println("캐릭터 현재 HP	: " + charList[i].charHP);
-						System.out.println("캐릭터 현재 MP	: " + charList[i].charMP);
-						System.out.println("---------------------------------------");
-					}
-				}
+				showCharList();
 				break;
 			case "3":
 				
@@ -49,6 +34,47 @@ public class GameTest {
 			default :
 				break;
 			}
+		}
+	}
+	
+	public static void charCreate() {
+		System.out.println("---------------------------------------");				
+		System.out.print("캐릭터 이름 >	");
+		String charName = scan.nextLine();
+		System.out.println("---------------------------------------");
+		System.out.println("1.검사 | 2.마법사 | 3.탱크 | 4.힐러");
+		System.out.println("---------------------------------------");
+		System.out.print("캐릭터 클래스 >	");
+		String charClass = scan.nextLine();
+		while(true) {
+			switch(charClass) {
+			case "1":
+				charList.add(new Char_Fight(charName));
+				break;
+			case "2":
+				charList.add(new Char_Mage(charName));
+				break;
+			case "3":
+				charList.add(new Char_Tank(charName));
+				break;
+			case "4":
+				charList.add(new Char_Heal(charName));
+				break;
+			default :
+				System.out.print("다시 선택	> ");
+				charClass = scan.nextLine();
+				continue;
+			}
+			break;
+		}
+	}
+	
+	public static void showCharList() {
+		for(int i = 0; i < charList.size(); i++) {
+			System.out.println("---------------------------------------");
+			System.out.println(charList.get(i).charName + " [LV." + charList.get(i).charLv + "]	/ 클래스 : " + charList.get(i).charClass);
+			System.out.println("HP : " + charList.get(i).charHP + " / MP : " + charList.get(i).charMP);
+			System.out.println("---------------------------------------");
 		}
 	}
 
