@@ -60,8 +60,8 @@ public class CustomerApplication {
 	public static void showPriceBonus(Customer customer, int price) {
 		System.out.println("====== 해당 고객의 할인율과 보너스 포인트 계산=======");
 		int cost = customer.calcPrice(price);
-		System.out.println(customer.getCustomerName() +"님의 지불금액: " + cost + "원");
-		System.out.println(customer.getCustomerName() +"님의 현재 보너스 포인트: " + customer.bonusPoint + "점");
+		System.out.println(customer.getCustomerName() +"	님의 지불금액	: " + cost + " 원");
+		System.out.println(customer.getCustomerName() +"	님의 포인트	: " + customer.bonusPoint + " 점");
 	}
 
 }

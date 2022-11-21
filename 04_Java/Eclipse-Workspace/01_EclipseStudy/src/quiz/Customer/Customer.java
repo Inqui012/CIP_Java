@@ -30,7 +30,7 @@ public class Customer {
 	}
 	
 	public String showCustomerInfo() {
-		return customerName + "님의 등급: " + customerGrade + ", 보너스 포인트: " + bonusPoint + "점";
+		return customerName + "	님의 등급:	" + customerGrade + "	, 보너스 포인트:	" + bonusPoint + " 점";
 	}
 	
 //	getter, setter
