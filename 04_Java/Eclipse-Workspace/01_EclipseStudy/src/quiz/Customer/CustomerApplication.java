@@ -48,14 +48,14 @@ public class CustomerApplication {
 	}
 	
 	public static Customer findCustomer(int customerID) {
-		Customer Resultcustomer = null;
+		Customer resultCustomer = null;
 		for( Customer customer : customerList){
 			if (customer.getCustomerID() == customerID) {
-				Resultcustomer = customer;		
+				resultCustomer = customer;		
 				break;
 			}
 		}		
-		return Resultcustomer;
+		return resultCustomer;
 	}
 	
 	public static void showPriceBonus(Customer customer, int price) {

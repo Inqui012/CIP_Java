@@ -1,14 +1,22 @@
 package Self;
 
-import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.Collections;
 
 public class ProgrammersTest {
 
 	public static void main(String[] args) {
-		
-		
+		String my_string = "p2o4i8gj2";
+        my_string = my_string.replaceAll("[a-z]","");
+        System.out.println(my_string.length());
+        int[] answer = new int[my_string.length()];
+        for(int i = 0; i < answer.length; i++){
+            answer[i] = Character.getNumericValue(my_string.charAt(i));
+            System.out.println(i + ", Char : " + my_string.charAt(i) + ", Array : " + answer[i]);
+        }
+        Arrays.sort(answer);
+        
 
 //		String my_string = "aAb1B2cC34oOp";
 //		int answer = 0;
