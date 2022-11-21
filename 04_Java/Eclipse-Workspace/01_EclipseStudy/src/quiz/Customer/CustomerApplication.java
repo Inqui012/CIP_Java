@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class CustomerApplication {
 //	ArrayList를 Customer 데이터타입으로 생성해서 customerList 라는 변수에 저장.
-	public static ArrayList<Customer> customerList;
+	public static ArrayList<Customer> customerList = new ArrayList<Customer>();
 
 	public static void main(String[] args) {
 		Customer customerLee = new Customer(10010, "이순신");
