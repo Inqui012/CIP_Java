@@ -6,10 +6,9 @@ public class Char_Fight extends Char{
 		super(charName, "Fight");
 	}
 
-	@Override
 	public void charInit() {
-		super.charHP += charHP * 0.1;
-		super.charMP += charMP * -0.2;
+		super.charHP = Math.round(((charHP + charHP * 0.1) * 100) / 100.0);
+		super.charMP = Math.round(((charMP + charMP * -0.2) * 100) / 100.0);
 		super.charMleeAtt += charMleeAtt * 0.2;
 		super.charMleeDef += charMleeDef * 0.1;
 		super.charMagAtt += charMagAtt * -0.2;

@@ -17,17 +17,7 @@ public class Char {
 		this.charName = charName;
 		this.charClass = charClass;
 		this.charLv = 1;
-		charInit();
 		setCharStatus(true);
-	}
-
-	public void charInit() {
-		this.charHP += 0;
-		this.charMP += 0;
-		this.charMleeAtt += 0;
-		this.charMleeDef += 0;
-		this.charMagAtt += 0;
-		this.charMagDef += 0;
 	}
 	
 	public int getCharMleeAtt() {

@@ -8,6 +8,16 @@ interface Interface_RemoteControl {
 //	메소드도 마찬가지로 abstract 지정하지 않아도 자동으로 설정됨. public도.
 	int B = 100;
 	public void turnOn();
+	
+//	인터페이스에서 바로 실행가능한 메소드를 구현하고 싶을때는 dafulat 제한자나 static 키워드를 이용한다.
+//	추상메소드만 사용하면 자식객체에서 무조건 해당 메소드를 전부 오버라이드해야 하는 번거로움때문에 사용.
+	default void setMethod () {
+		System.out.println("this is Interface's method");
+	}
+	
+	public static void setStaticMethod () {
+		System.out.println("this is Interface's static method");
+	}
 }
 
 interface Interface_A {
@@ -28,6 +38,7 @@ class Interface_Tv implements Interface_RemoteControl, Interface_A{
 	@Override
 	public void printA() {
 		System.out.println("Print Interface_A's int A = " + A);
+		System.out.println("Print Interface_RemoteControl's int B = " + B);
 	}	
 }
 
@@ -45,6 +56,9 @@ public class Interface {
 
 		make02.printA();
 		make02.turnOn();
+		
+//		인터페이스의 static 메소드를 호출하는건 클래스의 static과 같이 인터페이스명.메소드명(); 으로 호출
+		Interface_RemoteControl.setStaticMethod();
 	}
 
 }

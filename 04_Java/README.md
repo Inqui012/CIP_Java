@@ -43,6 +43,7 @@ Arrays.sort(배열, 시작할 인덱스, 끝낼 인덱스, 정렬조건);
 import java.util.Collections;
 Collections.reverseOrder();
 ```
+
 ### 배열.length
 ```java
 int a = array.length;
@@ -233,3 +234,20 @@ String str = String.valueOf(문자);
 ```
 문자열의 모든 문자를 대문자 / 소문자로 변경하는 메소드.  
 .trim(); 은 문자열 앞 뒤에 있는 공백문자를 모두 제거해준다. 중간에 있는건 제거 안함.   
+
+### Math.random(); / Math.round(); ...
+```java
+Math.random();
+```
+기본적으로 0.0부터 0.999... 까지의 숫자중에서 랜덤한 숫자를 반환한다.  
+1부터 100까지의 범위를 제한하려면 반환된 숫자에 *100 + 1 을 해야함.  
+
+```java
+Math.round(숫자);
+```
+수치를 반올림해주는 메소드. 표시하고싶은 자릿수까지를 지정해서 반올림 가능.  
+소숫점 2자리까지 표시하고 소숫점 3자리에서 반올림하기 위해서는  
+
+```java
+Math.round((숫자 * 100) / 100.0)
+```

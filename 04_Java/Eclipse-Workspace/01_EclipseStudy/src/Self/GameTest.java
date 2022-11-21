@@ -24,7 +24,7 @@ public class GameTest {
 				showCharList();
 				break;
 			case "3":
-				
+				battleStart();
 				break;
 			case "4":
 				
@@ -76,6 +76,36 @@ public class GameTest {
 			System.out.println("HP : " + charList.get(i).charHP + " / MP : " + charList.get(i).charMP);
 			System.out.println("---------------------------------------");
 		}
+	}
+	
+	public static void battleStart() {
+		showCharList();
+		System.out.print("사용하고싶은 캐릭터의 이름을 입력하세요 : ");
+		String chooseChar = scan.nextLine();
+		Char battleChar = null;
+		while(battleChar == null) {
+			for(int i = 0; i < charList.size(); i++) {
+				if(charList.get(i).charName.contains(chooseChar)) {
+					battleChar = charList.get(i);
+					break;
+				}
+			}
+			if(battleChar == null) {
+				System.out.println("일치하는 캐릭터가 없습니다.");
+				System.out.print("사용하고싶은 캐릭터의 이름을 다시 입력하세요 : ");
+				chooseChar = scan.nextLine();
+			}
+		}
+		System.out.println("---------------------------------------");
+		System.out.println(battleChar.charName + " [LV." + battleChar.charLv + "]	/ 클래스 : " + battleChar.charClass);
+		System.out.println("HP : " + battleChar.charHP + " / MP : " + battleChar.charMP);
+		System.out.println("---------------------------------------");
+		Battle enemy = new Battle();
+		System.out.println("--------------B-A-T-T-L-E--------------");
+		System.out.println("---------------------------------------");
+		System.out.println("고블린 [LV.1]");
+		System.out.println("HP : " + enemy.getEnemyHP());
+		System.out.println("---------------------------------------");
 	}
 
 }
