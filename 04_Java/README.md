@@ -263,3 +263,36 @@ Math.round(숫자);
 ```java
 Math.round((숫자 * 100) / 100.0)
 ```
+
+### BigInteger
+```java
+BigInteger 변수명1 = new BigInteger("숫자", 표현할 진수);
+BigInteger 변수명2 = new BigInteger("숫자");
+BigInteger 변수명3 = BigInteger.valueOf(숫자);
+```
+JAVA에서 제공하는 객체형 데이터타입중 하나. non-primitive.  
+Int, Long 형 보다도 더 큰 숫자를 표현할 때 사용하게 된다.  
+숫자를 문자열 형태로 저장하기 때문에 무한에 가까운 수치를 표현할 수 있음.  
+저장방식이 문자열이기 때문에 정수형 숫자를 변환하기 위해서는 강제현변환이 불가능  
+해당경우 BigInteger.valueOf(); 메소드를 사용하게 된다.  
+    
+```java
+변수명1.add(변수명2);
+변수명1.subtract(변수명2);
+변수명1.multiply(변수명2);
+변수명1.divide(변수명2);
+변수명1.remainder(변수명2);
+```
+문자열로 수치를 저장하기 때문에 일반적인 사칙연산이 불가능. BigInteger 끼리의 사칙연산은 위와 같다.  
+  
+```java
+변수명1.compareTo(변수명2);
+```
+두 BigInteger 끼리의 값을 비교하는 메소드.  
+변수명 1이 더 클경우 1, 같을경우 0, 작을경우 -1 을 반환한다.  
+  
+```java
+변수명1.max(변수명2);
+변수명1.min(변수명2);
+```
+두 BigInteger 끼리 비교한 뒤, 더 큰수, 더 작은수를 반환하는 메소드.  
