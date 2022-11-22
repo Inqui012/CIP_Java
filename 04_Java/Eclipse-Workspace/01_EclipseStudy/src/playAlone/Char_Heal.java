@@ -1,4 +1,4 @@
-package Self;
+package playAlone;
 
 public class Char_Heal extends Char{
 

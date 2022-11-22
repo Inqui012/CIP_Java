@@ -1,4 +1,4 @@
-package Self;
+package playAlone;
 
 
 import java.util.Arrays;

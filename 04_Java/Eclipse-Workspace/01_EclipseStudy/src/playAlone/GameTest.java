@@ -1,4 +1,4 @@
-package Self;
+package playAlone;
 
 import java.util.ArrayList;
 import java.util.Scanner;

@@ -1,4 +1,4 @@
-package Self;
+package playAlone;
 
 public class Battle {
 	private double enemyHP;
