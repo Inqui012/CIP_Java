@@ -76,7 +76,7 @@ Stream<데이터타입> var = Arrays.stream(배열 / 콜렉션, 시작할 인데
 자바8에서 추가된 람다? 를 활용할 수 있는 기술.  
 배열과 콜렉션 인스턴스의 요소를 하나하나 꺼내어 다루는 방법.  
 
-### 문자열.replace(); / .replaceAll();
+### 문자열.replace(); / .replaceAll(); / .replaceFirst(); / .split();
 ```java
 문자열.replace(CharSequence target, CharSequence replacement);
 문자열.replace(바꾸고싶은 문자열, 바꿀 문자열);
@@ -92,10 +92,16 @@ Stream<데이터타입> var = Arrays.stream(배열 / 콜렉션, 시작할 인데
 
 ```java
 문자열.replaceFirst(String regex, String replacement);
-문자열.replaceAll(바꾸고싶은 문자열, 바꿀 문자열);
+문자열.replaceFirst(바꾸고싶은 문자열, 바꿀 문자열);
 ```
 문자열에서 특정 문자열을 원하는 문자열로 바꾸지만 가장 처음으로 찾는 문자열만 바꾸고 나머지는 그대로 유지한다.  
 마찬가지로 문자열에 정규식 사용 가능.  
+
+```java
+String[] str = 문자열.split(문자열을 자를 기준);
+```
+문자열을 지정한 기준을 기점으로 잘라낸다. 반환은 배열로하기 때문에 문자열형식의 배열로 받아옴.  
+자를 기준을 정했을경우 기존 문자열에서 해당 기준을 기점으로 나누기 때문에 기준 문자열은 배열에 존재하지 않음.  
 
 ### 문자열.indexOf(); / .search(); / .lastIndexOf();
 ```java
@@ -143,7 +149,7 @@ a % b = r, b % r = r2, r % r2 = r3, r2 % r3 = r4..... 로 반복해서 나머지
 ### ArrayList<>
 ```java
 import java.util.ArrayList;
-ArrayList<데이터타입> 변수명1 = new ArrayList<>();
+ArrayList<데이터타입(제네릭)> 변수명1 = new ArrayList<>();
 // 리스트가 가질 사용가능한 공간을 지정할 수 있다.
 ArrayList<데이터타입> 변수명2 = new ArrayList<>(초기용량(capacity)); 
 // 리스트에 다른 리스트나 collection? 을 넣어주면 해당 리스트가 가지고 있는 값을 초기값으로한다.
@@ -158,6 +164,12 @@ ArrayList<데이터타입> 변수명4 = new ArrayList<>(Arrays.asList(1, 2, 3, 4
 리스트의 크기를 가변적이여서 값을 추가하거나 잘라낼 수 있는 것이 배열과 다름.  
 사용가능한 공간(capacity) 와 실제 사용중인 공간(size) 를 구분한다.  
 만약 capacity를 넘어선 데이터를 저장하려고 할 시에는 자동으로 크기를 새로 할당한다.  
+
+```java
+ArrayList<ArrayList<Integer>> 변수명 = new ArrayList<ArrayList<Integer>>();
+```  
+리스트 안에 다중배열형식으로 리스트를 집어넣는것도 가능하다.  
+제네릭위치에 넣는 데이터타입을 다른 리스트의 형태로 지정하는 형식  
 
 ```java
 변수명1.add(인덱스번호, 값);

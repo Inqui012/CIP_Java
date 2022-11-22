@@ -6,6 +6,7 @@ package study._03_class;
 interface Interface_A {
 //	인터페이스 안에서 선언되는 필드는 따로 지정하지 않아도 자동으로 public static final 특성을 가진 상수로 지정된다.
 //	메소드도 마찬가지로 abstract 지정하지 않아도 자동으로 설정됨. public도.
+//	int Z; 인터페이스의 필드는 전부 final 이라서 값을 안주고 설정할 수는 없음.
 	int B = 100;
 	public void printA();
 	
@@ -72,7 +73,6 @@ interface Interface_C extends Interface_A, Interface_B {
 }
 // 인터페이스 A, B를 상속받은 인터페이스 C 를 상속받아 만들어진 클래스 C
 // implements 는 Interface_C 하나뿐이지만 상속으로 인해서 A, B, C의 모든 추상메소드와 상수에 접근가능하다.
-
 class Class_C implements Interface_C {
 	@Override
 	public void printA() {
