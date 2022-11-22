@@ -1,6 +1,6 @@
 package study._03_class;
 
-import quiz.pdf.Account;
+//import quiz.pdf.Account;
 
 public class PublicPrivate {
 //	패키지 = 소스파일의 폴더. 같은 src 안에서라도 패키지가 다르면 다른 클래스로 인식한다.
@@ -48,16 +48,16 @@ public class PublicPrivate {
 		}
 	}
 	
-	class InheritTest extends Account {
-		InheritTest(String strNum, String strName, int bal) {
+//	class InheritTest extends Account {
+//		InheritTest(String strNum, String strName, int bal) {
 //			Account의 생성자를 거쳐야 하기 때문에 자식 클래스에서도 생성자를 똑같이 만들어서 super 형태로 보내야하네.
 //			게다가 해당 생성자가 default 라 다른 패키지에서 못쓰니까 적어도 protected로 바꿔줘야 사용가능하고.
-			super(strNum, strName, bal);
-			testStr01 = "is this possible?";
+//			super(strNum, strName, bal);
+//			testStr01 = "is this possible?";
 //			일단 사용하는거에 오류는 안뜨는것 같은데 이걸 어떻게 찍어내지??? 실행에는 오류가 나네
-			System.out.println(testStr01);
-		}
-	}
+//			System.out.println(testStr01);
+//		}
+//	}
 	
 	public static void main(String[] args) {
 		FinalType PublClass = new FinalType("test", "tttt");
