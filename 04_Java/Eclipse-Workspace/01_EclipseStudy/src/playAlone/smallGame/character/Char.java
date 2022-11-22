@@ -1,12 +1,12 @@
-package playAlone;
+package playAlone.smallGame.character;
 
 public class Char {
 	
-	String charName;
-	String charClass;
-	int charLv;
-	double charHP = 100;
-	double charMP = 100;
+	public String charName;
+	public String charClass;
+	public int charLv;
+	public double charHP = 100;
+	public double charMP = 100;
 	protected int charMleeAtt = 10;
 	protected int charMleeDef = 10;
 	protected int charMagAtt = 10;

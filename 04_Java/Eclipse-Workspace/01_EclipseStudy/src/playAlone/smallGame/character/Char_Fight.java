@@ -1,4 +1,4 @@
-package playAlone;
+package playAlone.smallGame.character;
 
 public class Char_Fight extends Char{
 

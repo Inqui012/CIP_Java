@@ -1,7 +1,13 @@
-package playAlone;
+package playAlone.smallGame;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import playAlone.smallGame.character.Char;
+import playAlone.smallGame.character.Char_Fight;
+import playAlone.smallGame.character.Char_Heal;
+import playAlone.smallGame.character.Char_Mage;
+import playAlone.smallGame.character.Char_Tank;
 
 public class GameTest {
 
@@ -100,11 +106,10 @@ public class GameTest {
 		System.out.println(battleChar.charName + " [LV." + battleChar.charLv + "]	/ 클래스 : " + battleChar.charClass);
 		System.out.println("HP : " + battleChar.charHP + " / MP : " + battleChar.charMP);
 		System.out.println("---------------------------------------");
-		Battle enemy = new Battle();
+//		Enemy enemy = new Enemy();
 		System.out.println("--------------B-A-T-T-L-E--------------");
 		System.out.println("---------------------------------------");
 		System.out.println("고블린 [LV.1]");
-		System.out.println("HP : " + enemy.getEnemyHP());
 		System.out.println("---------------------------------------");
 	}
 
