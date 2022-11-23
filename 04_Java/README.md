@@ -297,3 +297,43 @@ Int, Long 형 보다도 더 큰 숫자를 표현할 때 사용하게 된다.
 변수명1.min(변수명2);
 ```
 두 BigInteger 끼리 비교한 뒤, 더 큰수, 더 작은수를 반환하는 메소드.  
+  
+### try {} catch () {} finally {}
+```java
+try {
+	실행할 코드
+} catch catch (예외객체타입 e) {
+	위의 코드에서 예외가 발생했을 경우 실행할 코드
+	System.out.println(e.getMessage());
+	System.out.println(e.toString());
+	e.printStackTrace();
+} finally {
+	예외여부와 상관없이 실행할 코드
+}
+```
+자바에서의 예외처리를 구현할 수 있는 메소드.  
+프로그램 실행중에 발생할 수 있는 예외를 잡아내는 구문으로 실행예외를 처리하기 위해 많이 사용한다.  
+catch 와 finally 둘 중 하나의 블록은 생략 가능하다.
+
+아래는 try & catch 구문에서 예외를 알아볼 때 사용할 수 있는 메소드.  
+  
+```java
+catch (예외객체타입 e) {
+	System.out.println(e.getMessage());
+}
+```
+예외가 발생한 원인을 문자열로 반환한다.  
+  
+```java
+catch (예외객체타입 e) {
+	System.out.println(e.toString());
+}
+```
+예외로 인해 생성된 Throwable 자식객체의 객체명을 출력하는듯.  
+  
+```java
+catch (예외객체타입 e) {
+	e.printStackTrace();
+}
+```
+예외로 인해 생성된 Throwable 자식객체의 객체명과 예외가 발생한 파일의 위치, 라인정보를 출력.  
