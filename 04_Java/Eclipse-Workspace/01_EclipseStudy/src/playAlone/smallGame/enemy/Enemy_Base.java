@@ -11,7 +11,7 @@ public class Enemy_Base implements BattelFunc {
 	
 	public void createEnemy (Enemy_Base enemy) {
 		enemyInit();
-		this.enemyHp = calcMaxHp(enemyMaxVal);
+		this.enemyHp = Math.round(calcMaxHp(enemyMaxVal) * 100) / 100.0 ;
 		setEnemyDropCoin(enemy.enemyHp);
 		setEnemyDropExp(enemy.enemyHp);
 	}
@@ -42,7 +42,7 @@ public class Enemy_Base implements BattelFunc {
 		if(enemyHp <= 15) {
 			this.enemyDropExp = 1;
 		} else {
-			this.enemyDropExp = (int) Math.floor(enemyHp - 15);			
+			this.enemyDropExp = (int) Math.floor(enemyHp - 15) + 1;			
 		}
 	}
 

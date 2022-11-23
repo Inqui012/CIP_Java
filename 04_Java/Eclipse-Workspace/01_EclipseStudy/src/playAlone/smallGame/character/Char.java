@@ -7,8 +7,12 @@ public class Char implements BattelFunc{
 	public String charName;
 	public String charClass;
 	public int charLv;
-	public double charHP = 100;
-	public double charMP = 100;
+	public double charHP;
+	public double charMP;
+	public int charCoin = 0;
+	protected double charMaxHP = 100;
+	protected double charMaxMP = 100;
+	protected int charExp = 0;
 	protected int charMleeAtt = 10;
 	protected int charMleeDef = 10;
 	protected int charMagAtt = 10;
@@ -21,7 +25,33 @@ public class Char implements BattelFunc{
 		this.charLv = 1;
 		setCharStatus(true);
 	}
+
+	public void calcWinBattle(int exp, int coin) {
+		this.charExp += exp;
+		while(this.charExp / 100 > 0) {
+			this.charLv++;
+			System.out.println("레벨 업! [Lv. " + (charLv - 1) + "] -> [Lv. " + charLv + "]");
+			this.charExp %= 100;
+		}
+		this.charCoin += coin;
+	}
 	
+	public double getCharMaxHP() {
+		return charMaxHP;
+	}
+
+	public void setCharMaxHP(double charMaxHP) {
+		this.charMaxHP = charMaxHP;
+	}
+
+	public double getCharMaxMP() {
+		return charMaxMP;
+	}
+
+	public void setCharMaxMP(double charMaxMP) {
+		this.charMaxMP = charMaxMP;
+	}
+
 	public int getCharMleeAtt() {
 		return charMleeAtt;
 	}

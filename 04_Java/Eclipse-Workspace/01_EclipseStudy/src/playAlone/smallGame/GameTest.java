@@ -2,6 +2,7 @@ package playAlone.smallGame;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.IOException;
 
 import playAlone.smallGame.character.Char;
 import playAlone.smallGame.character.Char_Fight;
@@ -9,21 +10,24 @@ import playAlone.smallGame.character.Char_Heal;
 import playAlone.smallGame.character.Char_Mage;
 import playAlone.smallGame.character.Char_Tank;
 import playAlone.smallGame.enemy.Enemy_Base;
+import playAlone.smallGame.enemy.Enemy_Goblin;
+import playAlone.smallGame.enemy.Enemy_Wolf;
 
 public class GameTest {
 
 	public static Scanner scan = new Scanner(System.in);
 	public static ArrayList<Char> charList = new ArrayList<>();
-	
+	public static String timeOut = scan.nextLine();
+
 	public static void main(String[] args) {
-		
-		while(true) {
+		while (true) {
+			clrscr();
 			System.out.println("---------------------------------------");
 			System.out.println("1.생성 | 2.목록 | 3.전투 | 4.휴식 | 5.종료");
 			System.out.println("---------------------------------------");
 			System.out.print("선택 > ");
 			String MenuNum = scan.nextLine();
-			switch(MenuNum) {
+			switch (MenuNum) {
 			case "1":
 				charCreate();
 				break;
@@ -34,18 +38,18 @@ public class GameTest {
 				battleStart();
 				break;
 			case "4":
-				
+				restInn();
 				break;
 			case "5":
-				break;
-			default :
+				System.exit(0);
+			default:
 				break;
 			}
 		}
 	}
-	
+
 	public static void charCreate() {
-		System.out.println("---------------------------------------");				
+		System.out.println("---------------------------------------");
 		System.out.print("캐릭터 이름 >	");
 		String charName = scan.nextLine();
 		System.out.println("---------------------------------------");
@@ -53,8 +57,8 @@ public class GameTest {
 		System.out.println("---------------------------------------");
 		System.out.print("캐릭터 클래스 >	");
 		String charClass = scan.nextLine();
-		while(true) {
-			switch(charClass) {
+		while (true) {
+			switch (charClass) {
 			case "1":
 				charList.add(new Char_Fight(charName));
 				break;
@@ -67,7 +71,7 @@ public class GameTest {
 			case "4":
 				charList.add(new Char_Heal(charName));
 				break;
-			default :
+			default:
 				System.out.print("다시 선택	> ");
 				charClass = scan.nextLine();
 				continue;
@@ -75,75 +79,190 @@ public class GameTest {
 			break;
 		}
 	}
-	
+
 	public static void showCharList() {
-		for(int i = 0; i < charList.size(); i++) {
+		for (int i = 0; i < charList.size(); i++) {
 			System.out.println("---------------------------------------");
-			System.out.println(charList.get(i).charName + " [LV." + charList.get(i).charLv + "]	/ 클래스 : " + charList.get(i).charClass);
+			System.out.println(charList.get(i).charName + " [LV." + charList.get(i).charLv + "]	/ 클래스 : "
+					+ charList.get(i).charClass);
 			System.out.println("HP : " + charList.get(i).charHP + " / MP : " + charList.get(i).charMP);
+			System.out.println("Coin : " + charList.get(i).charCoin);
 			System.out.println("---------------------------------------");
 		}
+		timeOut = scan.nextLine();
 	}
-	
+
 	public static void battleStart() {
 		showCharList();
-		Enemy_Base battleEnemy = new Enemy_Base();
-		battleEnemy.createEnemy(battleEnemy);
+		Char battleChar = selectCharBattle();
+		while (true) {
+			clrscr();
+			System.out.println("---------------------------------------");
+			System.out.println(battleChar.charName + " [LV." + battleChar.charLv + "]	/ 클래스 : " + battleChar.charClass);
+			System.out.println("HP : " + battleChar.charHP + " / MP : " + Math.round(battleChar.charMP * 100) / 100.0);
+			System.out.println("Coin : " + battleChar.charCoin);
+			System.out.println("---------------------------------------");
+			System.out.println();
+			System.out.print("여행을 계속 하시겠습니까? (Y / N)");
+			String nextBattle = scan.nextLine();
+
+			while (!nextBattle.equals("Y") && !nextBattle.equals("N")) {
+				System.out.print("여행을 계속 하시겠습니까? (Y / N)");
+				nextBattle = scan.nextLine();
+			}
+			if (nextBattle.equals("N")) {
+				break;
+			} else {
+				if(!battleChar.isCharStatus()) {
+					System.out.println(battleChar.charName + " 은 더이상 싸울 수 없다....");
+					break;
+				} else {
+					Enemy_Base battleEnemy = new Enemy_Base();
+					if (Math.random() * 100 < 35) {
+						battleEnemy = new Enemy_Goblin();
+					} else if (Math.random() * 100 < 70 && Math.random() * 100 >= 35) {
+						battleEnemy = new Enemy_Wolf();			
+					}
+//		Enemy_Base battleEnemy = new Enemy_Goblin();
+					battleEnemy.createEnemy(battleEnemy);
+					battleING(battleEnemy, battleChar);					
+				}
+			}
+		}
+	}
+
+	public static void battleING(Enemy_Base battleEnemy, Char battleChar) {
+		String battleContinue = "Y";
+		while (battleContinue.equals("Y")) {
+			clrscr();
+			System.out.println("---------------------------------------");
+			System.out.println(battleChar.charName + " [LV." + battleChar.charLv + "]	/ 클래스 : " + battleChar.charClass);
+			System.out.println("HP : " + battleChar.charHP + " / MP : " + Math.round(battleChar.charMP * 100) / 100.0);
+			System.out.println("Coin : " + battleChar.charCoin);
+			System.out.println("---------------------------------------");
+			System.out.println();
+			System.out.println("---------------------------------------");
+			System.out.println(battleEnemy.enemyRace + "	/ HP : " + Math.round(battleEnemy.enemyHp * 100) / 100.0);
+			System.out.println("---------------------------------------");
+			System.out.println();
+			battleEnemy.enemyHp -= battleChar.battleAttack();
+			battleChar.charHP -= battleEnemy.battleAttack();
+			System.out.println();
+			if (battleEnemy.enemyHp <= 0) {
+				battleEnemy.battleDead();
+				battleChar.calcWinBattle(battleEnemy.getEnemyDropExp(), battleEnemy.getEnemyDropCoin());
+				timeOut = scan.nextLine();
+				break;
+			} else if (battleChar.charHP <= 0) {
+				battleChar.battleDead();
+				timeOut = scan.nextLine();
+				break;
+			} else {
+				System.out.print("전투를 계속 하시겠습니까? (Y / N)");
+				battleContinue = scan.nextLine();
+				while (!battleContinue.equals("Y") && !battleContinue.equals("N")) {
+					System.out.print("전투를 계속 하시겠습니까? (Y / N)");
+					battleContinue = scan.nextLine();
+				}
+				if (battleContinue.equals("N")) {
+					System.out.println(battleChar.charName + " 은 도망쳤다!");
+					timeOut = scan.nextLine();
+					break;
+				}
+			}
+		}
+	}
+
+	public static Char selectCharBattle () {
 		System.out.print("사용하고싶은 캐릭터의 이름을 입력하세요 : ");
 		String chooseChar = scan.nextLine();
 		Char battleChar = null;
-		while(battleChar == null) {
-			for(int i = 0; i < charList.size(); i++) {
-				if(charList.get(i).charName.equals(chooseChar)) {
+		while (battleChar == null) {
+			for (int i = 0; i < charList.size(); i++) {
+				if (charList.get(i).charName.equals(chooseChar)) {
 					battleChar = charList.get(i);
 					break;
 				}
 			}
-			if(battleChar == null) {
+			if (battleChar == null) {
 				System.out.println("일치하는 캐릭터가 없습니다.");
 				System.out.print("사용하고싶은 캐릭터의 이름을 다시 입력하세요 : ");
 				chooseChar = scan.nextLine();
 			}
-			if(battleChar.isCharStatus() == false) {
+			if (battleChar != null && battleChar.isCharStatus() == false) {
 				System.out.println(battleChar.charName + " 은 움직일 수 없습니다...");
 				System.out.print("사용하고싶은 캐릭터의 이름을 다시 입력하세요 : ");
 				chooseChar = scan.nextLine();
-				battleChar = null;
+				continue;
 			}
 		}
-		battleING (battleEnemy, battleChar);
+		return battleChar;
 	}
 	
-	public static void battleING (Enemy_Base battleEnemy, Char battleChar) {
-		String battleContinue = "Y";
-		while(battleContinue.equals("Y")) {
-			System.out.println("---------------------------------------");
-			System.out.println(battleChar.charName + " [LV." + battleChar.charLv + "]	/ 클래스 : " + battleChar.charClass);
-			System.out.println("HP : " + battleChar.charHP + " / MP : " + battleChar.charMP);
-			System.out.println("---------------------------------------");
+	public static Char selectCharRest () {
+		System.out.print("휴식할 캐릭터의 이름을 입력하세요 (메인으로 나가려면 Q 입력) : ");
+		String chooseChar = scan.nextLine();
+		Char restChar = null;
+		while (restChar == null && !chooseChar.equals("Q")) {
+			for (int i = 0; i < charList.size(); i++) {
+				if (charList.get(i).charName.equals(chooseChar)) {
+					restChar = charList.get(i);
+					break;
+				}
+			}
+			if (restChar == null) {
+				System.out.println("일치하는 캐릭터가 없습니다.");
+				System.out.print("사용하고싶은 캐릭터의 이름을 다시 입력하세요 : ");
+				chooseChar = scan.nextLine();
+			}
+			if (restChar != null && restChar.charHP == restChar.getCharMaxHP()) {
+				System.out.println(restChar.charName + " 휴식이 필요하지 않습니다.");
+				System.out.print("사용하고싶은 캐릭터의 이름을 다시 입력하세요 : ");
+				chooseChar = scan.nextLine();
+				continue;
+			}
+		}
+		return restChar;
+	}
+	
+	public static void restInn() {
+		while(true) {
+			showCharList();
+			Char restChar = selectCharRest();
+			if(restChar == null) {
+				break;
+			}				
+			int neededCoin = (int) (restChar.getCharMaxHP() - restChar.charHP);		
 			System.out.println();
-			System.out.println("---------------------------------------");
-			System.out.println(battleEnemy.enemyRace + "	/ HP : " + battleEnemy.enemyHp);
-			System.out.println("---------------------------------------");
-						
-			battleEnemy.enemyHp -= battleChar.battleAttack();
-			battleChar.charHP -= battleEnemy.battleAttack();
-			
-			System.out.print("전투를 계속 하시겠습니까? (Y / N)");
-			battleContinue = scan.nextLine();
-			while(!battleContinue.equals("Y") && !battleContinue.equals("N")) {
-				System.out.print("전투를 계속 하시겠습니까? (Y / N)");				
-				battleContinue = scan.nextLine();
+			System.out.print("총 " + neededCoin + " Coin 을 사용하여 휴식합니까?  (Y / N)");
+			String doingRest = scan.nextLine();
+			while (!doingRest.equals("Y") && !doingRest.equals("N")) {
+				System.out.println("총 " + neededCoin + " Coin 을 사용하여 휴식합니까?  (Y / N)");
+				doingRest = scan.nextLine();
 			}
-		}
-		if(battleEnemy.enemyHp <= 0) {
-			battleEnemy.battleDead();
-		} else if (battleChar.charHP <= 0){
-			battleChar.battleDead();
-		} else {
-			System.out.println(battleChar.charName + " 은 도망쳤다!");
+			if (doingRest.equals("Y")) {
+				if(restChar.charCoin >= neededCoin) {
+					restChar.charCoin -= neededCoin;
+					restChar.charHP = restChar.getCharMaxHP();
+				} else {
+					System.out.println("코인이 부족합니다.");
+					continue;
+				}
+			} else {
+				break;
+			}
 		}
 	}
 	
+ 	public static void clrscr() {
+		// Clears Screen in java
+		try {
+			if (System.getProperty("os.name").contains("Windows"))
+				new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+			else
+				Runtime.getRuntime().exec("clear");
+		} catch (IOException | InterruptedException ex) {
+		}
+	}
 
 }
