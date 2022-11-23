@@ -1,6 +1,8 @@
 package playAlone.smallGame.character;
 
-public class Char {
+import playAlone.smallGame.BattelFunc;
+
+public class Char implements BattelFunc{
 	
 	public String charName;
 	public String charClass;
@@ -11,7 +13,7 @@ public class Char {
 	protected int charMleeDef = 10;
 	protected int charMagAtt = 10;
 	protected int charMagDef = 10;
-	private boolean charStatus;
+	protected boolean charStatus;
 			
 	public Char (String charName, String charClass) {
 		this.charName = charName;
@@ -60,5 +62,19 @@ public class Char {
 		this.charStatus = charStatus;
 	}
 	
+
+	@Override
+	public int battleAttack() {
+		int charDamege = (int) (Math.random() * charMleeAtt + 1);
+		System.out.println(charName + " 의 공격! " + charDamege + " 의 데미지!");
+		return charDamege;
+	}
+
+	@Override
+	public void battleDead() {
+		setCharStatus(false);
+		System.out.println(charName + " 의 힘이 다했다... ");
+		
+	}
 
 }

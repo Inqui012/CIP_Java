@@ -8,6 +8,7 @@ import playAlone.smallGame.character.Char_Fight;
 import playAlone.smallGame.character.Char_Heal;
 import playAlone.smallGame.character.Char_Mage;
 import playAlone.smallGame.character.Char_Tank;
+import playAlone.smallGame.enemy.Enemy_Base;
 
 public class GameTest {
 
@@ -86,12 +87,14 @@ public class GameTest {
 	
 	public static void battleStart() {
 		showCharList();
+		Enemy_Base battleEnemy = new Enemy_Base();
+		battleEnemy.createEnemy(battleEnemy);
 		System.out.print("사용하고싶은 캐릭터의 이름을 입력하세요 : ");
 		String chooseChar = scan.nextLine();
 		Char battleChar = null;
 		while(battleChar == null) {
 			for(int i = 0; i < charList.size(); i++) {
-				if(charList.get(i).charName.contains(chooseChar)) {
+				if(charList.get(i).charName.equals(chooseChar)) {
 					battleChar = charList.get(i);
 					break;
 				}
@@ -101,16 +104,46 @@ public class GameTest {
 				System.out.print("사용하고싶은 캐릭터의 이름을 다시 입력하세요 : ");
 				chooseChar = scan.nextLine();
 			}
+			if(battleChar.isCharStatus() == false) {
+				System.out.println(battleChar.charName + " 은 움직일 수 없습니다...");
+				System.out.print("사용하고싶은 캐릭터의 이름을 다시 입력하세요 : ");
+				chooseChar = scan.nextLine();
+				battleChar = null;
+			}
 		}
-		System.out.println("---------------------------------------");
-		System.out.println(battleChar.charName + " [LV." + battleChar.charLv + "]	/ 클래스 : " + battleChar.charClass);
-		System.out.println("HP : " + battleChar.charHP + " / MP : " + battleChar.charMP);
-		System.out.println("---------------------------------------");
-//		Enemy enemy = new Enemy();
-		System.out.println("--------------B-A-T-T-L-E--------------");
-		System.out.println("---------------------------------------");
-		System.out.println("고블린 [LV.1]");
-		System.out.println("---------------------------------------");
+		battleING (battleEnemy, battleChar);
 	}
+	
+	public static void battleING (Enemy_Base battleEnemy, Char battleChar) {
+		String battleContinue = "Y";
+		while(battleContinue.equals("Y")) {
+			System.out.println("---------------------------------------");
+			System.out.println(battleChar.charName + " [LV." + battleChar.charLv + "]	/ 클래스 : " + battleChar.charClass);
+			System.out.println("HP : " + battleChar.charHP + " / MP : " + battleChar.charMP);
+			System.out.println("---------------------------------------");
+			System.out.println();
+			System.out.println("---------------------------------------");
+			System.out.println(battleEnemy.enemyRace + "	/ HP : " + battleEnemy.enemyHp);
+			System.out.println("---------------------------------------");
+						
+			battleEnemy.enemyHp -= battleChar.battleAttack();
+			battleChar.charHP -= battleEnemy.battleAttack();
+			
+			System.out.print("전투를 계속 하시겠습니까? (Y / N)");
+			battleContinue = scan.nextLine();
+			while(!battleContinue.equals("Y") && !battleContinue.equals("N")) {
+				System.out.print("전투를 계속 하시겠습니까? (Y / N)");				
+				battleContinue = scan.nextLine();
+			}
+		}
+		if(battleEnemy.enemyHp <= 0) {
+			battleEnemy.battleDead();
+		} else if (battleChar.charHP <= 0){
+			battleChar.battleDead();
+		} else {
+			System.out.println(battleChar.charName + " 은 도망쳤다!");
+		}
+	}
+	
 
 }

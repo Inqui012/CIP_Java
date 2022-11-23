@@ -35,12 +35,19 @@ class A {
 //		System.out.println(b);
 		System.out.println(b001.b);
 	}
+//	중첩된 인터페이스. 이런경우는 부모객체인 A 에서는 implements 가 불가능하고 동일 선상이나 하위인 B 이하에서 가능
+//	A가 생성되지 않으면 해당 인터페이스도 생성이 안되기때문에 A에 의존적인 다른 중첩 클래스에서 사용하거나 익명구현으롯 사용하는듯.
+	interface InterfaceA {
+		int A = 10;
+		void printA();
+	}
 	class B {
 		int b = 10;
 		B (){
 			System.out.println("Create Class B inside Class A");
 		}
 		void methodB() {
+//			a = 2;
 			System.out.println("methodB From Class B inside Class A");
 //			상위 필드 a 에 접근가능.
 //			중첩클래스 B 를 생성하려면 반드시 A도 같이 생성되기 때문에 상위 클래스의 모든 필드, 메소드에 접근가능.
