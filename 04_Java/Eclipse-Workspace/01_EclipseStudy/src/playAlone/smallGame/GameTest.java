@@ -19,7 +19,7 @@ public class GameTest {
 			System.out.println("---------------------------------------");
 			System.out.println("1.생성 | 2.목록 | 3.전투 | 4.휴식 | 5.종료");
 			System.out.println("---------------------------------------");
-			System.out.print("선택 > ");
+			System.out.print("선택 : ");
 			String MenuNum = scan.nextLine();
 			switch (MenuNum) {
 			case "1":
@@ -47,7 +47,7 @@ public class GameTest {
 		boolean flag = true;
 		charNameLoop : while(flag) {
 			System.out.println("---------------------------------------");
-			System.out.print("캐릭터 이름 >	");
+			System.out.print("캐릭터 이름 :	");
 			charName = scan.nextLine();
 			if(charList.size() == 0) {
 				break;
@@ -67,7 +67,7 @@ public class GameTest {
 		System.out.println("---------------------------------------");
 		System.out.println("1.검사 | 2.마법사 | 3.탱크 | 4.힐러");
 		System.out.println("---------------------------------------");
-		System.out.print("캐릭터 클래스 >	");
+		System.out.print("캐릭터 클래스 :	");
 		String charClass = scan.nextLine();
 		while (true) {
 			switch (charClass) {
@@ -84,7 +84,7 @@ public class GameTest {
 				charList.add(new Char_Heal(charName));
 				break;
 			default:
-				System.out.print("다시 선택	> ");
+				System.out.print("다시 선택	: ");
 				charClass = scan.nextLine();
 				continue;
 			}
@@ -95,7 +95,7 @@ public class GameTest {
 	public static void showCharList() {
 		for (int i = 0; i < charList.size(); i++) {
 			System.out.println("---------------------------------------");
-			System.out.println(charList.get(i).charName + " [LV." + charList.get(i).charLv + "]	/ 클래스 : "
+			System.out.println(charList.get(i).charName + " [LV." + charList.get(i).charLv + " / Exp." + charList.get(i).getCharExp() + "]	/ 클래스 : "
 					+ charList.get(i).charClass);
 			System.out.println("HP : " + charList.get(i).charHP + " / MP : " + charList.get(i).charMP);
 			System.out.println("Coin : " + charList.get(i).charCoin);
@@ -110,16 +110,16 @@ public class GameTest {
 		while (true) {
 			clrscr();
 			System.out.println("---------------------------------------");
-			System.out.println(battleChar.charName + " [LV." + battleChar.charLv + "]	/ 클래스 : " + battleChar.charClass);
+			System.out.println(battleChar.charName + " [LV." + battleChar.charLv + " / Exp." + battleChar.getCharExp() + "]	/ 클래스 : " + battleChar.charClass);
 			System.out.println("HP : " + battleChar.charHP + " / MP : " + Math.round(battleChar.charMP * 100) / 100.0);
 			System.out.println("Coin : " + battleChar.charCoin);
 			System.out.println("---------------------------------------");
 			System.out.println();
-			System.out.print("여행을 계속 하시겠습니까? (Y / N)");
+			System.out.print("여행을 계속 하시겠습니까? (Y / N) : ");
 			String nextBattle = scan.nextLine();
 
 			while (!nextBattle.equals("Y") && !nextBattle.equals("N")) {
-				System.out.print("여행을 계속 하시겠습니까? (Y / N)");
+				System.out.print("여행을 계속 하시겠습니까? (Y / N) : ");
 				nextBattle = scan.nextLine();
 			}
 			if (nextBattle.equals("N")) {
@@ -148,7 +148,7 @@ public class GameTest {
 		battleLoop : while (battleContinue.equals("Y")) {
 			clrscr();
 			System.out.println("---------------------------------------");
-			System.out.println(battleChar.charName + " [LV." + battleChar.charLv + "]	/ 클래스 : " + battleChar.charClass);
+			System.out.println(battleChar.charName + " [LV." + battleChar.charLv + " / Exp." + battleChar.getCharExp() + "]	/ 클래스 : " + battleChar.charClass);
 			System.out.println("HP : " + battleChar.charHP + " / MP : " + Math.round(battleChar.charMP * 100) / 100.0);
 			System.out.println("Coin : " + battleChar.charCoin);
 			System.out.println("---------------------------------------");
@@ -159,6 +159,7 @@ public class GameTest {
 			System.out.println();
 			attMetLoop : while(true) {
 				System.out.println("1. 물리공격 / 2. 마법공격 / 3. 도망");
+				System.out.print("선택 : ");
 				String selecAttMet = scan.nextLine();
 				switch(selecAttMet) {
 				case "1":
@@ -174,9 +175,27 @@ public class GameTest {
 				}
 			}
 			if(Math.random() * 100 < 50) {
-				battleChar.charHP -= battleEnemy.battleMleeAttack();				
+				int def = (int) (Math.random() * battleChar.getCharMleeDef());
+				int enemyAtt = battleEnemy.battleMleeAttack();
+				if(def > 0) {
+					if(def > enemyAtt) {
+						System.out.println(battleChar.charName + " 은 공격을 피했다!");
+					} else {
+						battleChar.charHP -= (enemyAtt - def);								
+						System.out.println(battleChar.charName + " 은 " + def + " 의 물리 데미지를 막아냈다!");										
+					}
+				}
 			} else {
-				battleChar.charHP -= battleEnemy.battleMagicAttack();								
+				int def = (int) (Math.random() * battleChar.getCharMagDef());
+				int enemyAtt = battleEnemy.battleMagicAttack();
+				if(def > 0) {
+					if(def > enemyAtt) {
+						System.out.println(battleChar.charName + " 은 공격을 피했다!");
+					} else {
+						battleChar.charHP -= (enemyAtt - def);								
+						System.out.println(battleChar.charName + " 은 " + def + " 의 마법 데미지를 막아냈다!");										
+					}
+				}
 			}
 			System.out.println();
 			if (battleEnemy.enemyHp <= 0) {
@@ -189,10 +208,10 @@ public class GameTest {
 				timeOut = scan.nextLine();
 				break;
 			} else {
-				System.out.print("전투를 계속 하시겠습니까? (Y / N)");
+				System.out.print("전투를 계속 하시겠습니까? (Y / N) : ");
 				battleContinue = scan.nextLine();
 				while (!battleContinue.equals("Y") && !battleContinue.equals("N")) {
-					System.out.print("전투를 계속 하시겠습니까? (Y / N)");
+					System.out.print("전투를 계속 하시겠습니까? (Y / N) : ");
 					battleContinue = scan.nextLine();
 				}
 				if (battleContinue.equals("N")) {
@@ -266,10 +285,10 @@ public class GameTest {
 			}				
 			int neededCoin = (int) (restChar.getCharMaxHP() - restChar.charHP);		
 			System.out.println();
-			System.out.print("총 " + neededCoin + " Coin 을 사용하여 휴식합니까?  (Y / N)");
+			System.out.print("총 " + neededCoin + " Coin 을 사용하여 휴식합니까?  (Y / N) : ");
 			String doingRest = scan.nextLine();
 			while (!doingRest.equals("Y") && !doingRest.equals("N")) {
-				System.out.println("총 " + neededCoin + " Coin 을 사용하여 휴식합니까?  (Y / N)");
+				System.out.print("총 " + neededCoin + " Coin 을 사용하여 휴식합니까?  (Y / N) : ");
 				doingRest = scan.nextLine();
 			}
 			if (doingRest.equals("Y")) {

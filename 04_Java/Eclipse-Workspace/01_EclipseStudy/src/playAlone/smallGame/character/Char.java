@@ -13,16 +13,18 @@ public class Char implements BattelFunc{
 	protected double charMaxHP = 100;
 	protected double charMaxMP = 100;
 	protected int charExp = 0;
-	protected int charMleeAtt = 10;
-	protected int charMleeDef = 10;
-	protected int charMagAtt = 10;
-	protected int charMagDef = 10;
+	protected int charMleeAtt = 30;
+	protected int charMleeDef = 30;
+	protected int charMagAtt = 30;
+	protected int charMagDef = 30;
 	protected boolean charStatus;
 			
 	public Char (String charName, String charClass) {
 		this.charName = charName;
 		this.charClass = charClass;
 		this.charLv = 1;
+		this.charExp = 0;
+		charInit();
 		setCharStatus(true);
 	}
 
@@ -30,10 +32,17 @@ public class Char implements BattelFunc{
 		this.charExp += exp;
 		while(this.charExp / 100 > 0) {
 			this.charLv++;
-			System.out.println("레벨 업! [Lv. " + (charLv - 1) + "] -> [Lv. " + charLv + "]");
+			System.out.println("레벨 업! [Lv. " + (charLv - 1) + "] -> [Lv. " + charLv + "]");	
+			calcLvupStatus();
 			this.charExp %= 100;
 		}
 		this.charCoin += coin;
+	}
+	public void charInit() {
+		
+	}
+	public void calcLvupStatus () {
+		
 	}
 	
 	public double getCharMaxHP() {
@@ -41,15 +50,22 @@ public class Char implements BattelFunc{
 	}
 
 	public void setCharMaxHP(double charMaxHP) {
-		this.charMaxHP = charMaxHP;
+		this.charMaxHP = Math.round((charMaxHP * 100) / 100.0);
 	}
 
 	public double getCharMaxMP() {
 		return charMaxMP;
 	}
+	public int getCharExp() {
+		return charExp;
+	}
+
+	public void setCharExp(int charExp) {
+		this.charExp = charExp;
+	}
 
 	public void setCharMaxMP(double charMaxMP) {
-		this.charMaxMP = charMaxMP;
+		this.charMaxMP = Math.round((charMaxMP * 100) / 100.0);
 	}
 
 	public int getCharMleeAtt() {
@@ -101,14 +117,14 @@ public class Char implements BattelFunc{
 	@Override
 	public int battleMleeAttack() {
 		int charDamege = (int) (Math.random() * charMagAtt + 1);
-		System.out.println(charName + " 의 마법 공격! " + charDamege + " 의 데미지!");
+		System.out.println(charName + " 의 물리 공격! " + charDamege + " 의 데미지!");
 		return charDamege;
 	}
 
 	@Override
 	public int battleMagicAttack() {
 		int charDamege = (int) (Math.random() * charMleeAtt + 1);
-		System.out.println(charName + " 의 물리 공격! " + charDamege + " 의 데미지!");
+		System.out.println(charName + " 의 마법 공격! " + charDamege + " 의 데미지!");
 		return charDamege;
 	}
 

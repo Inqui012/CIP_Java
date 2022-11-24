@@ -62,7 +62,7 @@ public class Enemy_Base implements BattelFunc {
 	@Override
 	public int battleMagicAttack() {
 		int enemyDamege = (int) (Math.random() * enemyDropExp + 1);
-		System.out.println(enemyRace + " 의 물리 공격! " + enemyDamege + " 의 데미지!");
+		System.out.println(enemyRace + " 의 마법 공격! " + enemyDamege + " 의 데미지!");
 		return enemyDamege;
 	}
 
