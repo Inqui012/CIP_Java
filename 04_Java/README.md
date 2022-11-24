@@ -337,3 +337,32 @@ catch (예외객체타입 e) {
 }
 ```
 예외로 인해 생성된 Throwable 자식객체의 객체명과 예외가 발생한 파일의 위치, 라인정보를 출력.  
+
+### Java Module
+```java
+프로젝트 A
+module A프로젝트의 패키지명 {
+	requires B프로젝트의 패키지명;
+}
+
+프로젝트 B
+module B프로젝트의 패키지명 {
+	exports B프로젝트의 패키지명;
+}
+```
+
+패키지보다 상위의 개념. 실제로 모듈을 코드로 사용할 수 있는 것은 JDK9 부터.  
+패키지 사이가 아니라 한 프로젝트의 패키지를 다른 프로젝트에서 사용할 수 있도록 하는 기능?  
+직점 임의의 패키지를 모듈화시켜서 내보내고 > 다른 프로젝트에서 받아오는 개념?  
+  
+```java
+java.lang
+java.util
+java.text
+java.time
+java.io
+java.net
+java.nio
+```
+Java Base Module 은 이런 모듈화를 거치지 않아도(requires 없이도) 사용할 수 있는 자바의 기본 모듈들.  
+
