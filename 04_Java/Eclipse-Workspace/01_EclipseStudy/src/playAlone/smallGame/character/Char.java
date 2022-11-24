@@ -92,19 +92,24 @@ public class Char implements BattelFunc{
 		this.charStatus = charStatus;
 	}
 	
-
-	@Override
-	public int battleAttack() {
-		int charDamege = (int) (Math.random() * charMleeAtt + 1);
-		System.out.println(charName + " 의 공격! " + charDamege + " 의 데미지!");
-		return charDamege;
-	}
-
 	@Override
 	public void battleDead() {
 		setCharStatus(false);
 		System.out.println(charName + " 의 힘이 다했다... ");
-		
+	}
+
+	@Override
+	public int battleMleeAttack() {
+		int charDamege = (int) (Math.random() * charMagAtt + 1);
+		System.out.println(charName + " 의 마법 공격! " + charDamege + " 의 데미지!");
+		return charDamege;
+	}
+
+	@Override
+	public int battleMagicAttack() {
+		int charDamege = (int) (Math.random() * charMleeAtt + 1);
+		System.out.println(charName + " 의 물리 공격! " + charDamege + " 의 데미지!");
+		return charDamege;
 	}
 
 }

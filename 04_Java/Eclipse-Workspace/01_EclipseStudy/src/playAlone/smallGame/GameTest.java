@@ -4,14 +4,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.IOException;
 
-import playAlone.smallGame.character.Char;
-import playAlone.smallGame.character.Char_Fight;
-import playAlone.smallGame.character.Char_Heal;
-import playAlone.smallGame.character.Char_Mage;
-import playAlone.smallGame.character.Char_Tank;
-import playAlone.smallGame.enemy.Enemy_Base;
-import playAlone.smallGame.enemy.Enemy_Goblin;
-import playAlone.smallGame.enemy.Enemy_Wolf;
+import playAlone.smallGame.character.*;
+import playAlone.smallGame.enemy.*;
 
 public class GameTest {
 
@@ -49,9 +43,27 @@ public class GameTest {
 	}
 
 	public static void charCreate() {
-		System.out.println("---------------------------------------");
-		System.out.print("캐릭터 이름 >	");
-		String charName = scan.nextLine();
+		String charName = "";
+		boolean flag = true;
+		charNameLoop : while(flag) {
+			System.out.println("---------------------------------------");
+			System.out.print("캐릭터 이름 >	");
+			charName = scan.nextLine();
+			if(charList.size() == 0) {
+				break;
+			} else {
+				for(int i = 0; i < charList.size(); i++) {
+					if(charList.get(i).charName.equals(charName)) {
+						flag = true;
+						continue charNameLoop;
+					} else {
+						flag = false; 						
+					}
+				}
+			}
+			
+		}
+		
 		System.out.println("---------------------------------------");
 		System.out.println("1.검사 | 2.마법사 | 3.탱크 | 4.힐러");
 		System.out.println("---------------------------------------");
@@ -133,7 +145,7 @@ public class GameTest {
 
 	public static void battleING(Enemy_Base battleEnemy, Char battleChar) {
 		String battleContinue = "Y";
-		while (battleContinue.equals("Y")) {
+		battleLoop : while (battleContinue.equals("Y")) {
 			clrscr();
 			System.out.println("---------------------------------------");
 			System.out.println(battleChar.charName + " [LV." + battleChar.charLv + "]	/ 클래스 : " + battleChar.charClass);
@@ -145,8 +157,27 @@ public class GameTest {
 			System.out.println(battleEnemy.enemyRace + "	/ HP : " + Math.round(battleEnemy.enemyHp * 100) / 100.0);
 			System.out.println("---------------------------------------");
 			System.out.println();
-			battleEnemy.enemyHp -= battleChar.battleAttack();
-			battleChar.charHP -= battleEnemy.battleAttack();
+			attMetLoop : while(true) {
+				System.out.println("1. 물리공격 / 2. 마법공격 / 3. 도망");
+				String selecAttMet = scan.nextLine();
+				switch(selecAttMet) {
+				case "1":
+					battleEnemy.enemyHp -= battleChar.battleMleeAttack();
+					break attMetLoop;
+				case "2":
+					battleEnemy.enemyHp -= battleChar.battleMagicAttack();
+					break attMetLoop;
+				case "3":
+					System.out.println(battleChar.charName + " 은 도망쳤다!");
+					timeOut = scan.nextLine();
+					break battleLoop;
+				}
+			}
+			if(Math.random() * 100 < 50) {
+				battleChar.charHP -= battleEnemy.battleMleeAttack();				
+			} else {
+				battleChar.charHP -= battleEnemy.battleMagicAttack();								
+			}
 			System.out.println();
 			if (battleEnemy.enemyHp <= 0) {
 				battleEnemy.battleDead();
@@ -212,13 +243,14 @@ public class GameTest {
 			}
 			if (restChar == null) {
 				System.out.println("일치하는 캐릭터가 없습니다.");
-				System.out.print("사용하고싶은 캐릭터의 이름을 다시 입력하세요 : ");
+				System.out.print("사용하고싶은 캐릭터의 이름을 다시 입력하세요 (메인으로 나가려면 Q 입력) : ");
 				chooseChar = scan.nextLine();
 			}
 			if (restChar != null && restChar.charHP == restChar.getCharMaxHP()) {
 				System.out.println(restChar.charName + " 휴식이 필요하지 않습니다.");
-				System.out.print("사용하고싶은 캐릭터의 이름을 다시 입력하세요 : ");
+				System.out.print("사용하고싶은 캐릭터의 이름을 다시 입력하세요 (메인으로 나가려면 Q 입력) : ");
 				chooseChar = scan.nextLine();
+				restChar = null;
 				continue;
 			}
 		}

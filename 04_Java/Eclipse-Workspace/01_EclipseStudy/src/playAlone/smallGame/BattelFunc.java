@@ -1,6 +1,7 @@
 package playAlone.smallGame;
 
 public interface BattelFunc {
-	int battleAttack();
+	int battleMleeAttack();
+	int battleMagicAttack();
 	void battleDead();
 }

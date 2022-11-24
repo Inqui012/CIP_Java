@@ -48,15 +48,22 @@ public class Enemy_Base implements BattelFunc {
 
 //	interface override
 	@Override
-	public int battleAttack() {
+	public void battleDead() {
+		System.out.println(enemyRace + " 를 쓰러트렸다! " + enemyDropExp + "의 경험치와 " + enemyDropCoin + " 코인을 얻었다!");
+	}
+
+	@Override
+	public int battleMleeAttack() {
 		int enemyDamege = (int) (Math.random() * enemyDropExp + 1);
-		System.out.println(enemyRace + " 의 공격! " + enemyDamege + " 의 데미지!");
+		System.out.println(enemyRace + " 의 물리 공격! " + enemyDamege + " 의 데미지!");
 		return enemyDamege;
 	}
 
 	@Override
-	public void battleDead() {
-		System.out.println(enemyRace + " 를 쓰러트렸다! " + enemyDropExp + "의 경험치와 " + enemyDropCoin + " 코인을 얻었다!");
+	public int battleMagicAttack() {
+		int enemyDamege = (int) (Math.random() * enemyDropExp + 1);
+		System.out.println(enemyRace + " 의 물리 공격! " + enemyDamege + " 의 데미지!");
+		return enemyDamege;
 	}
 
 }
