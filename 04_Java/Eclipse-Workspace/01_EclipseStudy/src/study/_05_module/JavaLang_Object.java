@@ -39,7 +39,7 @@ class TestingClassB extends TestingClassA implements TestingInterfaceA {
 		super(str);
 	}
 }
-public class JavaLang_Objects {
+public class JavaLang_Object {
 	public static void main(String[] args) throws CloneNotSupportedException {
 //		java.lang.Object 클래스. 객체생성에 사용되는 최상위 클래스. 사용자가 생성하는 모든 객체는 이 클래스를 상속받는다.
 //		base module 인 java.lang 에 속해있는 패키지이기 때문에 requires 같은 다른 구문 없이도 해당 패키지의 코드를 사용가능.
@@ -50,6 +50,7 @@ public class JavaLang_Objects {
 
 //		.toString(); 지정된 객체로 생성된 인스턴스에대한 정보를 문자열로 바꿔주는 메소드.
 //		반환되는 문자열은 객체명@인스턴스의 메모리주소값(16진수 hash코드)
+//		보통은 사용자가 생성한 객체에서 오버라이딩해서 객체의 간략한 정보를 출력하도록 하는것을 권장한다.
 		System.out.println(obj01.toString());
 		System.out.println(obj02.toString());
 		System.out.println("-------");
@@ -113,5 +114,12 @@ public class JavaLang_Objects {
 		System.out.println(test01.testArr[0] + ", " + test01.testArr[1] + ", " + test01.testArr[2]);
 		System.out.println(test09.testArr[0] + ", " + test09.testArr[1] + ", " + test09.testArr[2]);
 		
+//		.notify(); .notifyAll(); .wait(); .wait(long timeout); .wait(long timeout, int nanos);
+//		이 다섯개는 쓰레드 thread 와 관련된 메소드인듯. thread 는 하나의 프로세스(프로그램) 내에서 여러 기능을 동시에 수행할 수 있게 해줌.
+//		보통 클래스의 extends 로 Thread 를 상속받아서 생성한다. run(); 메소드를 반드시 구현해야한다.
+//		클래스.start(); 로 thread 를 실행시킬 수 있고, 이렇게 되면 스레드가 run(); 메소드를 자동으로 실행???
+//		특이점은 여러개가 동시에 실행되면서 순차적이지 않다는거...???
+		
+//		.finalize(); 해당 객체가 더이상 참조되지 않아서 정리할때...? protected.
 	}
 }
