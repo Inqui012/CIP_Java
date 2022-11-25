@@ -6,7 +6,7 @@ public class JavaLang_Math {
 		int b = 100;
 		float c = -50.1156f;
 		double d = 10.5555555;
-		int e = 25;
+//		int e = 25;
 		
 //		Math.abs(); 매개변수로 받는 값의 절댓값(양수값)을 반환한다.
 		System.out.println(Math.abs(a));

@@ -15,7 +15,7 @@ public class JavaLang_String {
 		
 //		utf-8 로 인코딩된 배열을 다시 문자열로 디코딩. 기본이 utf-8 에서 디코딩하는거라 생략했지만 원래는
 //		String(인코딩된 배열, 배열의 인코딩 규칙); 이다.
-		String test02 = new String(getByteArr);
+//		String test02 = new String(getByteArr);
 //		System.out.println(test02);
 		
 //		StringBuilder 문자열에 관련한 클래스. String 객체는 한번 생성되면 내용을 바꿀 수 없다?

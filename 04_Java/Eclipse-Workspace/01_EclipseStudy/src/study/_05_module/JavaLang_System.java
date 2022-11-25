@@ -10,8 +10,8 @@ public class JavaLang_System {
 //		이것도 Object 상속받은 객체네.
 //		System.err.println("error print");
 		
-		int speed = 0;
-		int keyCode = 0;
+//		int speed = 0;
+//		int keyCode = 0;
 //		while(true) {
 ////			System.in.read(); Scanner 처럼 키 입력을 하나씩 받음. 하나씩?
 ////			하나씩?????? +를 네개를 입력하면 while문을 네번을 도는데....흠....
@@ -54,7 +54,7 @@ public class JavaLang_System {
 //		.keyset(); 해당 객체가 가지고 있는 키값을 추출해오는 메소드. 키값이 뭐지.... 필드명하고는 다른가?
 		System.out.println(System.getProperties());
 		Properties props = System.getProperties();
-		Set keys = props.keySet();
+		Set<Object> keys = props.keySet();
 		System.out.println(keys);
 
 //		.getproperty(키값); 위에서 표시하는 정보들중에 원하는 정보의 키값으로 지정해서 받아오는 메소드.
