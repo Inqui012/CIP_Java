@@ -37,5 +37,11 @@ public class JavaLang_Math {
 //		Math.sqrt(); 제곱근을 double 값으로 반환.
 		System.out.println(Math.sqrt(144));
 		System.out.println(Math.sqrt(145));
+		
+//		Math.random(); 0.0 부터 0.999... 까지의 double 형의 난수를 생성한다.
+//		시스템의 시간값을 이용해서 난수를 생성하는 구조인것 같아.
+//		java.lang.math 의 random(); 함수와 java.util.Random 의 Random(); 객체가 있음.
+//		여러번 쓸때는 util쪽 random 이 재사용성이 높아서 더 좋은것 같은데. 
+		
 	}
 }

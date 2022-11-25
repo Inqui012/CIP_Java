@@ -22,14 +22,13 @@ public class Char_Mage extends Char {
 	@Override
 	public void calcLvupStatus() {
 		double randNum =  (Math.random() * 15) + 1;
-		setCharMaxHP(getCharMaxHP() + randNum * 0.3);
+		setCharMaxHP(getCharMaxHP() + randNum * 0.4);
 		setCharMaxMP(getCharMaxMP() + randNum);
-		charMleeAtt += randNum * 0.3;
-		charMleeDef += randNum * 0.3;
+		charMleeAtt += randNum * 0.4;
+		charMleeDef += randNum * 0.4;
 		charMagAtt += randNum;
 		charMagDef += randNum * 0.8;
 		charHP = getCharMaxHP();
 		charMP = getCharMaxMP();
 	}
-
 }

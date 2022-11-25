@@ -44,6 +44,13 @@ import java.util.Collections;
 Collections.reverseOrder();
 ```
 
+### Arrays.equals();
+```java
+Arrays.equals(배열1, 배열2);
+```
+두 배열의 값을 비교하는 메소드. 모든 인덱스의 값이 같다면 true, 하나라도 아니라면 false 반환.  
+따라서 값을 비교할때는 먼저 Arrays.sort(); 로 정렬을 해줘야 한다.  
+
 ### 배열.length
 ```java
 int a = array.length;
