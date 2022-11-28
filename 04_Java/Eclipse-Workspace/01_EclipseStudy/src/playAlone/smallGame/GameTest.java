@@ -178,7 +178,7 @@ public class GameTest {
 				int def = (int) (Math.random() * battleChar.getCharMleeDef());
 				int enemyAtt = battleEnemy.battleMleeAttack();
 				if(def > 0) {
-					if(def > enemyAtt) {
+					if(def >= enemyAtt) {
 						System.out.println(battleChar.charName + " 은 공격을 피했다!");
 					} else {
 						battleChar.charHP -= (enemyAtt - def);								
@@ -189,7 +189,7 @@ public class GameTest {
 				int def = (int) (Math.random() * battleChar.getCharMagDef());
 				int enemyAtt = battleEnemy.battleMagicAttack();
 				if(def > 0) {
-					if(def > enemyAtt) {
+					if(def >= enemyAtt) {
 						System.out.println(battleChar.charName + " 은 공격을 피했다!");
 					} else {
 						battleChar.charHP -= (enemyAtt - def);								

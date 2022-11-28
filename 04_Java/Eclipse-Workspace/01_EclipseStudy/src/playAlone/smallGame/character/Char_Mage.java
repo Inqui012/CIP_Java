@@ -4,7 +4,6 @@ public class Char_Mage extends Char {
 
 	public Char_Mage(String charName) {
 		super(charName, "Mage");
-		charInit();
 	}
 
 	@Override
