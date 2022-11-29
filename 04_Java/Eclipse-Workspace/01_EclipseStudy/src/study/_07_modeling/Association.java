@@ -2,17 +2,27 @@ package study._07_modeling;
 
 import java.util.Vector;
 
-// 연관관계. 클래스가 서로를, 또는 일방적으로 한쪽을 참조하는 관계.
+// 연관관계. 클래스가 서로를, 또는 일방적으로 한쪽을 참조하는 관계. 실선에 화살표
 // 아래 AssoClassA 와 AssoClassB 는 서로가 서로의 객체를 생성해서 필드로 사용하기 때문에 이를 연관관계라고한다.
 // AssoClassA 와 AssoClassB 는 서로가 서로를 각자 한번씩 참조하는 일대일 관계.
 class AssoClassA {
-	private AssoClassB assoClass01 = new AssoClassB();
+	private AssoClassB assoClass01;
 	private Vector<AssoClassE> assoClass08;
+	AssoClassA(){
+		System.out.println("AssoClassA create");
+//		이거 서로의 생성자에서 서로를 생성하면 무한루프 도는거 아닌가 했는데 진짜 도네...
+//		이렇게 쓰면 안되는게 맞는듯.
+//		assoClass01 = new AssoClassB();
+	}
 }
 
 class AssoClassB {
-	private AssoClassA assoClass02 = new AssoClassA();
+	private AssoClassA assoClass02;
 	private Vector<AssoClassE> assoClass09;
+	AssoClassB(){
+		System.out.println("AssoClassB create");
+//		assoClass02 = new AssoClassA();
+	}
 }
 
 // 아리의 AssoClassC 는 AssoClassB 를 리스트형태로 저장하여 사용하기 때문에 여러개의 AssoClassB 를 참조한다고 본다.
@@ -49,6 +59,6 @@ class AssoClassE {
 }
 public class Association {
 	public static void main(String[] args) {
-
+		AssoClassA test01 = new AssoClassA();
 	}
 }
