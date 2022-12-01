@@ -32,24 +32,96 @@ a값의 비트를 b만큼 오른쪽으로. 빈자리는 부호비트와 같은�
 a >>> b  
 a값의 비트를 b만큼 오른쪽으로. 빈자리는 0으로  
 
-### Arrays.sort();
+### 비트연산자를 이용한 2진수 계산
+```java
+public static int addBin(int a, int b) {
+    if(b == 0) return a;
+    //1. 두 비트 XOR 연산 : 두 비트가 다르면 1, 같으면 0
+    //즉, 1+0, 0+1은 = 1이고 1+1, 0+0은 0이므로 두 비트의 올림수를 제외하고 덧셈을 할 수 있다.
+    int sum = a^b;
+    //2. AND 연산 : 두 비트가 모두 1이면 1 (==두 비트가 같을때)
+    //1 + 1 의 비트는 올림수가 되므로 왼쪽으로 1 시프트 연산 (<<)
+    int carry = (a&b) << 1;
+    return addBin(sum, carry);
+}
+```
+왜... 이게 계산이 되는지는 모르겠는데 일단 되긴 됨...  
+
+### Arrays 메소드 모음
 ```java
 import java.util.Arrays;
 Arrays.sort(배열, 시작할 인덱스, 끝낼 인덱스, 정렬조건);
 ```
 배열을 간단하게 오름차순으로 정렬할 수 있음. 기존배열을 덮어씌움.  
-내림차순이나 다른 정렬조건을 사용하고 싶을경우는 아래와 같은 다른 메소드를 사용.  
+
 ```java
 import java.util.Collections;
 Collections.reverseOrder();
 ```
+내림차순이나 다른 정렬조건을 사용하고 싶을경우는 다른 메소드를 사용.  
+콜렉션 패키지의 다른 기능을 쓰는것 같은데 아직 정확하지는 않음.  
 
-### Arrays.equals();
 ```java
 Arrays.equals(배열1, 배열2);
 ```
 두 배열의 값을 비교하는 메소드. 모든 인덱스의 값이 같다면 true, 하나라도 아니라면 false 반환.  
 따라서 값을 비교할때는 먼저 Arrays.sort(); 로 정렬을 해줘야 한다.  
+
+```java
+Arrays.copyOfRange(배열, 시작할 인덱스, 끝낼 인덱스);
+```
+지정된 배열을 지정한 위치에서 잘라내어 새 배열로 저장.  
+항상 그렇듯 끝낼 인덱스는 실제 끝내고싶은 위치의 인덱스 + 1 로 계산해야함.  
+
+### Stream 메소드 모음
+
+```java
+Stream<데이터타입> var = Arrays.stream(배열, 시작할 인데스, 끝낼 인덱스);
+Stream<데이터타입> var = Arrays.stream(콜렉션?);
+```
+자바8에서 추가된 람다? 를 활용할 수 있는 기술. 배열과 콜렉션 인스턴스의 요소를 하나하나 꺼내어 다루는 방법.  
+람다는 메소드와 함수를 식으로 표현하는걸 말하는거고, stream 은 배열의 요소를 내부적으로 순회하면서 데이터를 가공한다.  
+배열이나 콜렉션에서 스트림을 생성 > 중간작업(필터링, 매핑등...) > 최종작업(결과물 작성) 흐름이다.  
+스트림으로 만들고싶은 매개변수 배열/콜렉션 안에서 또다른 스트림을 생성할수도 있네.  
+  
+```java
+Arrays.stream().filter(람다식 조건문);
+```
+중간작업.  
+스트림으로 형성된 데이터배열안에서 조건문에 맞는 값들만으로 새로운 스트림을 구성함.  
+람다식 조건문이라는건 js의 화살표 함수 비슷한 느낌. 매개변수 -> 조건 식으로 기능함.  
+
+```java
+Arrays.stream().distinct();
+```
+중간작업.  
+데이터배열 안에서 중복되지 않는 값들만을 가지는 새로운 스트림을 구성.  
+
+```java
+Arrays.stream().map(매개변수 -> 연산);
+```
+중간작업.  
+스트림의 각 요소를 매개변수로 받아와서 연산을 적용한 새로운 값을 가지는 새로운 스트림으로 구성.  
+
+```java
+Arrays.stream().count();
+```
+최종작업.  
+모든 작업을 거친 스트림이 가지고 있는 요소의 갯수를 반환한다.  
+
+```java
+Arrays.stream().collect();
+```
+최종작업.  
+Collectors 클래스의 메소드를 사용해서 스트림의 요소들을...... 어떻게 한다.  
+
+### IntStream 메소드
+```java
+int[] a = IntStream.range(시작하는숫자, 끝나는숫자 + 1).toArray();
+int[] a = IntStream.rangeClosed(시작하는숫자, 끝나는숫자).toArray();
+```
+지정한 범위 안의 숫자를 모두 가지는 정수형 스트림을 생성하고 배열로 변환하는 코드.  
+둘의 차이점은 끝나는 숫자를 포함하는지 안하는지 인듯하다.  
 
 ### 배열.length
 ```java
@@ -57,64 +129,37 @@ int a = array.length;
 ```
 배열의 길이를 정수로 반환. 마지막 인덱스번호 + 1 의 값을 가진다.  
 
-### 문자열.length();
+### String 메소드 모음
 ```java
-int a = String.length();
-```
-문자열 String의 길이를 정수로 반환. 띄어쓰기와 특수문자 포함.   
-
-### 문자열.charAt();
-```java
-char a = String.charAt(인덱스번호);
-```
-문자열을 배열로보고 지정한 인덱스번호에 있는 문자를 문자형으로 반환.  
-
-### Arrays.copyOfRange();
-```java
-Arrays.copyOfRange(배열, 시작할 인덱스, 끝낼 인덱스);
-```
-지정된 배열을 지정한 위치에서 잘라내어 새 배열로 저장.  
-항상 그렇듯 끝낼 인덱스는 실제 끝내고싶은 위치의 인덱스 + 1 로 계산해야함.  
-
-### Arrays.stream();
-```java
-Stream<데이터타입> var = Arrays.stream(배열 / 콜렉션, 시작할 인데스, 끝낼 인덱스);
-```
-자바8에서 추가된 람다? 를 활용할 수 있는 기술.  
-배열과 콜렉션 인스턴스의 요소를 하나하나 꺼내어 다루는 방법.  
-
-### 문자열.replace(); / .replaceAll(); / .replaceFirst(); / .split();
-```java
-문자열.replace(CharSequence target, CharSequence replacement);
-문자열.replace(바꾸고싶은 문자열, 바꿀 문자열);
+String a = String.replace(CharSequence target, CharSequence replacement);
+String a = String.replace(바꾸고싶은 문자열, 바꿀 문자열);
 ```
 문자열에서 특정 문자열을 원하는 문자열로 바꾼다. 사용 받는 매개변수의 타입이 다르다.  
 
 ```java
-문자열.replaceAll(String regex, String replacement);
-문자열.replaceAll(바꾸고싶은 문자열, 바꿀 문자열);
+String a = String.replaceAll(String regex, String replacement);
+String a = String.replaceAll(바꾸고싶은 문자열, 바꿀 문자열);
 ```
 문자열에서 특정 문자열을 원하는 문자열로 바꾼다.  
 바꾸고싶은 문자열에 정규식을 사용 가능.  
 
 ```java
-문자열.replaceFirst(String regex, String replacement);
-문자열.replaceFirst(바꾸고싶은 문자열, 바꿀 문자열);
+String a = String.replaceFirst(String regex, String replacement);
+String a = String.replaceFirst(바꾸고싶은 문자열, 바꿀 문자열);
 ```
 문자열에서 특정 문자열을 원하는 문자열로 바꾸지만 가장 처음으로 찾는 문자열만 바꾸고 나머지는 그대로 유지한다.  
 마찬가지로 문자열에 정규식 사용 가능.  
 
 ```java
-String[] str = 문자열.split(문자열을 자를 기준, 반환할 배열의 길이);
+String[] str = String.split(문자열을 자를 기준, 반환할 배열의 길이);
 ```
 문자열을 지정한 기준을 기점으로 잘라낸다. 반환은 배열로하기 때문에 문자열형식의 배열로 받아옴.  
 자를 기준을 정했을경우 기존 문자열에서 해당 기준을 기점으로 나누기 때문에 기준 문자열은 배열에 존재하지 않음.  
 반환할 배열의 길이를 지정할경우 저장된 배열이 지정값이 다다르면 더이상 자르지 않고 나머지를 전부 마지막 배열에 집어넣는다.  
-
-### 문자열.indexOf(); / .search(); / .lastIndexOf();
+  
 ```java
-문자열.indexOf(찾고싶은 문자열, 찾기 시작할 인덱스);
-문자열.lastIndexOf(찾고싶은 문자열, 찾기 시작할 인덱스);
+int a = String.indexOf(찾고싶은 문자열, 찾기 시작할 인덱스);
+int a = String.lastIndexOf(찾고싶은 문자열, 찾기 시작할 인덱스);
 ```
 indexOf   
 지정된 문자열에서 찾고싶은 문자열과 일치하는 위치가 시작하는 인덱스 번호를 반환한다. 대소문자 구분 있음.  
@@ -126,9 +171,41 @@ lastIndexOf
 문자열배열의 뒤에서부터 검색을 시작한다.  
 
 ```java
-문자열.search(정규식);
+int a = String.search(정규식);
 ```
 위와 같은 기능을 하지만 정규식을 사용할 수 있다. 시작위치 지정은 불가능.  
+  
+```java
+char a = String.charAt(인덱스번호);
+```
+문자열을 배열로보고 지정한 인덱스번호에 있는 문자를 문자형으로 반환.  
+  
+```java
+int a = String.length();
+```
+문자열 String의 길이를 정수로 반환. 띄어쓰기와 특수문자 포함.   
+
+```java
+String a = String.repeat(반복횟수);
+```
+Java 11 에서부터 지원.  
+문자열을 지정한 숫자만큼 반복하는 새로운 문자열을 반환한다. 굳이 for 문 사용하지 않아도 반복되는 문자열을 만들 수 있음.  
+
+```java
+String a = String.toUpperCase();
+String a = String.toLowerCase();
+String a = String.trim();
+```
+문자열의 모든 문자를 대문자 / 소문자로 변경하는 메소드.  
+.trim(); 은 문자열 앞 뒤에 있는 공백문자를 모두 제거해준다. 중간에 있는건 제거 안함.   
+
+```java
+String a = String.substring(시작할 인덱스, 끝낼인덱스 + 1);
+String a = String.substring(i, i + 1);
+```
+String 클래스에서 제공하는 메소드. 문자열에서 인덱스로 지정된 범위를 잘라낸 시로운 문자열을 반환한다.  
+for 문 안에서 아랫줄 처럼 사용하게 되면 문자열을 한글자씩 나눈 문자열을 반환함.  
+String.split(""); 과 동일하지만 반환받는것이 배열이냐 아니냐의 차이인듯.  
 
 ### 유클리드 호제법 알고리즘
 ```java
@@ -237,14 +314,13 @@ for-each 반복문으로 값을 하나씩 순회하는것도 가능하다.
 설정한 사이즈보다 실제 리스트가 클 경우에는 이를 덮어씌워서 실제 리스트 사이즈로 배열을 생성.  
 설정한 사이즈보다 실제 리스트가 작을경우 설정한 사이즈로 배열을 생성하고 빈값은 초기값으로 넣는듯.  
 
-### Character.getNumericValue();
+### Character 메소드 모음
 ```java
 int num = Character.getNumericValue(문자);
 ```
 Character 타입으로 저장되어 있는 숫자를 ASCII 코드 숫자가 아닌 실제 표시되는 숫자로 가져온다.
 참조) 0 ~ 9 = ASCII 48 ~ ASCII 57;
 
-### Character.toString(); / String.valueOf();
 ```java
 String str = Character.toString(문자);
 String str = String.valueOf(문자);
@@ -253,14 +329,6 @@ String str = String.valueOf(문자);
 .toString(); 은 문자값이 null 일경우 에러를 띄우지만  
 .valueOf(); 는 문자값에 null 이 들어올경우 null 을 문자열로 출력한다.  
 
-### 문자열.toUpperCase(); / 문자열.toLowerCase(); / 문자열.trim();
-```java
-문자열.toUpperCase();
-문자열.toLowerCase();
-문자열.trim();
-```
-문자열의 모든 문자를 대문자 / 소문자로 변경하는 메소드.  
-.trim(); 은 문자열 앞 뒤에 있는 공백문자를 모두 제거해준다. 중간에 있는건 제거 안함.   
 
 ### Math.random(); / Math.round(); ...
 ```java
