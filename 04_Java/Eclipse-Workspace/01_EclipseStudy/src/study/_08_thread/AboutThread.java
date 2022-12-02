@@ -1,16 +1,18 @@
 package study._08_thread;
 
 import java.awt.Toolkit;
+import java.util.*;
+
 // 스레드를 지원하는 클래스를 생성할경우 Thread 클래스를 상속받거나, Runnable 인터페이스를 상속받는 방법을 쓴다.
 // 클래스 상속으로 Thread를 상속받을 경우 다중상속이 불가능하여 다른 클래스의 상속을 받지 못하기 때문에 보통 Runnable을 많이 쓰는듯.
 class ThreadClass extends Thread {
 	public void run() {
-		for(int i = 0; i < 5; i++) {
+		for (int i = 0; i < 5; i++) {
 			System.out.println("thread02		1sec 	: " + getName());
 			try {
 				Thread.sleep(1000);
 			} catch (Exception e) {
-				
+
 			}
 		}
 	}
@@ -20,12 +22,12 @@ class RunnableClass implements Runnable {
 	@Override
 	public void run() {
 		int num;
-		for(int i = 0; i < 5; i++) {
+		for (int i = 0; i < 5; i++) {
 			System.out.println("thread03		2sec 	: " + Thread.currentThread().getName());
 			try {
 				Thread.sleep(2000);
 			} catch (Exception e) {
-				
+
 			}
 		}
 	}
@@ -34,26 +36,27 @@ class RunnableClass implements Runnable {
 class SingletonTest {
 	private int num;
 	private static SingletonTest instance = null;
-	private SingletonTest() {}
+
+	private SingletonTest() {
+	}
+
 	public static SingletonTest getInstance() {
-		if(instance == null) {
+		if (instance == null) {
 			instance = new SingletonTest();
 		}
 		return instance;
 	}
+
 //	메소드에 lock 을 건다고 표현. 한번에 하나의 스레드만이 해당 메소드나 변수에 접근할 수 있도록 제한하는것. 동기화를 건다?
 //	동시성문제는 해결할 수 있지만 스레드가 해당 메소드나 변수를 참조하는동안 다른 스레드는 대기상태가 되기때문에 병렬성이 낮아짐.
 //	lock을 변수에 걸기 위해서는 변수가 객체여야할 필요성이 있기 때문에 wrapper 클래스 사용해야함.
-//	lock을 걸고 메인에서 똑같이 여러개의 스레드를 실행시키면 스레드가 순차적으로 실행되고 있는 상황이 보인다.
+//	lock을 걸고 메인에서 똑같이 여러개의 스레드를 실행시키면 스레드가 순차적으로 실행되고 있는 상황이 보인다. 아닌듯?
 	public synchronized int getNum() {
 		return num++;
 	}
-	
-//	특정 코드의 범위를 동기화시키기 위해서는 아래처럼 작성하면 synchronized {} 안에 들어가 있는 코드를 지정해서 동기화 가능하다.
-	synchronized (this) {
-//		코드
-	}
+//	동기화를 코드범위로 지정하고 싶을경우 synchronized(this){코드} 로 작성하면 가능하다.
 }
+
 public class AboutThread {
 	public static void main(String[] args) {
 //		Toolkit 비프음을 생성. 이외에도 특정 위치로 스크롤을 움직인다거나, 포커스를 옮긴다거나 하는등의 기능을 사용할때 생성.
@@ -65,7 +68,7 @@ public class AboutThread {
 				try {
 					Thread.sleep(3000);
 				} catch (Exception e) {
-					
+
 				}
 			}
 		});
@@ -74,17 +77,17 @@ public class AboutThread {
 		Thread thread04 = new Thread() {
 			@Override
 			public void run() {
-				for(int i = 0; i < 5; i++) {
+				for (int i = 0; i < 5; i++) {
 					System.out.println("thread04		2sec 	: " + getName());
 					try {
 						Thread.sleep(2000);
 					} catch (Exception e) {
-						
+
 					}
 				}
 			}
 		};
-		
+
 //		소리와 글자가 동시에 나오게하려면 이렇게 하면 멀테스레드 기능이 실행되지 않는다.
 //		for(int i = 0; i < 5; i++) {
 //			비프음
@@ -102,7 +105,7 @@ public class AboutThread {
 //		동시에 찍히는 3하고 4에서 3이 무조건 먼저 찍힐거라 생각했는데 그렇지도 않네???
 //		아까는 .start(); 보다 뒤에 놨어서 그런가보다. 먼저 설정하고 실행하면 03보다 무조건 뒤에 찍힘.
 //		아니네. 가끔 4가 먼저 찍히는 일도 있네.
-		thread04.setPriority(1);		
+		thread04.setPriority(1);
 //		쓰레드의 이름을 정할 수 있는 메소드. 이것도 이름 자체는 private인가보지?
 		thread03.setName("changed thread");
 
@@ -116,7 +119,7 @@ public class AboutThread {
 //		thread02.start();
 //		thread03.start();
 //		thread04.start();		
-		
+
 //		for(int i = 0; i < 5; i++) {
 //			System.out.println("main			0.5sec 	: " + Thread.currentThread().getName());
 //			try {
@@ -125,7 +128,7 @@ public class AboutThread {
 //				
 //			}
 //		}
-		
+
 //		유일한 객체인 싱글톤 객체를 참조해서 찍는 5개의 스레드를 생성하고 실행.
 //		스레드가 실행되는 순서를 보면 같은 스레드에서 찍히는 번호가 연속되지 않고, 중간에 다른 스레드가 끼었을 경우
 //		해당 스레드를 통과한 숫자에서 연속되는걸 볼 수 있다.
@@ -134,15 +137,51 @@ public class AboutThread {
 //		다섯개의 스레드가 가장 처음 시작하는 0번 째 프린트에서의 값이 동일한 0이 아니라 다 다른 값인걸 보면 알 수 있음.
 //		이렇게 여러개의 스레드가 같은 객체를 참조하면서 스레드간의 간섭으로 값이 변동하는상황을 동시성이라고 하는듯?
 //		이런 동시성을 제어하기 위해 사용하는것이 synchronized 라는 키워드인것같음.
-		SingletonTest onlyInstance = SingletonTest.getInstance();
-		for(int i = 0; i < 5; i++) {
-			new Thread() {
-				public void run() {
-					for(int i = 0; i < 5; i++) {
-						System.out.println(i + " 	: " + getName() + ", " + onlyInstance.getNum());
-					}
+//		SingletonTest onlyInstance = SingletonTest.getInstance();
+//		for (int i = 0; i < 5; i++) {
+//			new Thread() {
+//				public void run() {
+//					for (int i = 0; i < 5; i++) {
+//						System.out.println(i + " 	: " + getName() + ", " + onlyInstance.getNum());
+//					}
+//				}
+//			}.start();
+//		}
+		
+//		동기화가 되지 않는 ArrayList를 두 스레드에서 동시에 참조하며 값을 add 하고 있다.
+//		0부터 30, 51부터 80 까지의 값이 들어갈 것으로 예상이 되지만 실제로는 그렇지 않음.
+//		으음...두번째 스레드가 79까지는 넣는것 같으니 첫번째 쓰레드가 하는 작업을 두번째 스레드가 몇번 덮어 씌워 버리는건가?
+//		null 값이 들어가는건 뭘까...
+		List<Integer> arrListTest = new ArrayList<>();
+		Thread thread05 = new Thread() {
+			@Override
+			public void run() {
+				for(int i = 0; i < 30; i++) {
+					arrListTest.add(i);
 				}
-			}.start();
+			}
+		};
+		Thread thread06 = new Thread() {
+			@Override
+			public void run() {
+				for(int i = 51; i < 80; i++) {
+					arrListTest.add(i);
+				}
+			}
+		};
+
+		thread05.start();
+		thread06.start();
+		try {
+			thread05.join();
+			thread06.join();
+		} catch (Exception e) {
+			
 		}
+		
+		for(Integer num : arrListTest) {
+			System.out.println(num);
+		}
+		System.out.println(arrListTest.size());
 	}
 }

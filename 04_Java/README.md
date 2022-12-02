@@ -336,6 +336,23 @@ for-each 반복문으로 값을 하나씩 순회하는것도 가능하다.
 설정한 사이즈보다 실제 리스트가 클 경우에는 이를 덮어씌워서 실제 리스트 사이즈로 배열을 생성.  
 설정한 사이즈보다 실제 리스트가 작을경우 설정한 사이즈로 배열을 생성하고 빈값은 초기값으로 넣는듯.  
 
+### Vector
+ArrayList 와 동일한 기능. 멀티스레드 환경에서의 안정성을 높이기 위한 동기화가 가능할 뿐.  
+
+### LinkedList
+```java
+LinkedList<T> var = new LinkedList<>();
+LinkedList<T> var = new LinkedList<T>();
+LinkedList<T> var = new LinkedList<>(Collection 타입 객체);
+LinkedList<T> var = new LinkedList<>(Arrays.asList());
+```
+기본적으로는 ArrayList와 비슷하다. 같은 Collection FrameWork 의 클래스임.  
+차이점으로는 인덱스번호로 데이터를 관리하는것이 아니라 다음/ 이전에 있는 데이터의 주소값으로 연결하고 있다는 것.  
+따라서 데이터를 순회하기 위해서는 반드시 처음이나 끝부터 순차적으로 돌아야 한다.  
+기본적인 메소드는 ArrayList와 동일하다.  
+  
+인덱스 번호가 존재하기는 하는데, 해당 인덱스로 바로 찾아들어가는것이 아니라 앞에서 부터 순차적으로 올라가는 느낌?
+
 ### Character 메소드 모음
 ```java
 int num = Character.getNumericValue(문자);
