@@ -1,4 +1,4 @@
-package study._08_thread;
+package study._08_Collection;
 
 import java.util.*;
 

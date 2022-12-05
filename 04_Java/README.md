@@ -541,3 +541,65 @@ var.clear();
 var.empty();
 ```
 해당 스택이 비어있는지 아닌지 boolean 값으로 반환한다. size() 가 0인지 아닌지...로 알 수도 있을듯.  
+
+### Queue
+```java
+import java.util.Queue
+interface;
+ArrayDeque<String> var = new ArrayDeque<>();
+LinkedList<String> var = new LinkedList<>();
+...
+```
+클래스가 아닌 인터페이스. Collection 과 Iterable 을 상속받는 인터페이스이다.  
+사용하려면 ArrayDeque, LinkedList 등의 Queue를 상속받은 클래스에서 사용가능.  
+FIFO(First In First Out) 의 선입선출의 특성을 가진다.  
+기본적인 데이터의 추가(add), 엿보기(peek) 등의 메소드는 Stack 과 동일하나 조금 다름.  
+
+```java
+var.peek();
+```
+해당 리스트의 가장 앞에 있는 값(haed)을 반환한다.  
+
+```java
+var.poll();
+```
+해당 리스트에서 가장 앞에 있는 값을 반환한 후 제거한다.  
+
+### 람다식
+```java
+interface Function {
+	void method(매개변수);
+}
+(매개변수) -> {처리코드};
+```
+JS 의 화살표 함수처럼 메소드를 간략하게 나타낼 수 있는 하나의 문법?  
+매개변수의 타입, 매개변수가 하나일경우의 괄호, 실행문이 하나일경우의 중괄호를 생략 가능.  
+람다식은 메소드이기 때문에 인터페이스로 선언을 하는데 람다식으로 표현을 하기 위해서는 인터페이스에 선언되어 있는 추상메소드가 하나뿐이어야만 한다. 이걸 @FunctionalInterface 어노테이션으로 컴파일 과정에서 검사할 수 있음.  
+인터페이스로 선언되어 있는 메소드를 따로 클래스를 만들지 않고 간단하게 구현하여 사용할 수 있는 방법.  
+메소드를 사용하는 곳에서 직접 처리코드를 생성해서 사용하기 때문에 익명구현으로 실행되는듯?  
+
+```java
+(a, b) -> Math.max(a, b);
+Math :: max;
+```
+매개변수가 두개인 메소드일경우 더욱 생략할 수 있다.  
+정적 메소드일경우 해당 클래스명 :: 메소드명 으로 사용 가능.
+
+```java
+Class var = new Class();
+(a, b) -> var.method(a, b);
+var :: method;
+```
+클래스를 생성한 후에 사용가능한 일반 메소드의 경우에는 객체를 생성한 변수명 :: 메소드명 으로 실행가능.  
+
+```java
+(a, b) -> a.equals(b);
+String :: equals;
+```
+매소드 참조. 해당 메소드를 가지고 있는 클래스 :: 메소드명 으로 하면 위와 같은 형태가 된다?  
+
+```java
+(a, b) -> return new Class(a, b);
+Class :: new;
+```
+생성자 참조. 받아온 매개변수를 지정한 클래스의 생성자의 매개변수로 사용.  
