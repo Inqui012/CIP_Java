@@ -1,7 +1,6 @@
 package playAlone.pharmacy;
 
 public enum Medicine {
-//	정제
 	ATIVAN_TAB_05MG("정제", "아티반정 0.5mg", "일동제약", new String[] {"Lorazepam 0.5mg"}, 22, true, true, true),
 	ATIVAN_TAB_1MG("정제", "아티반정 1mg", "일동제약", new String[] {"Lorazepam 1mg"}, 41, true, true, true), 
 	ATIVAN_INJ_05ML("주사제", "아티반주사 0.5ml", "일동제약", new String[] {"Lorazepam 2mg"}, 782, true, true, true), 
