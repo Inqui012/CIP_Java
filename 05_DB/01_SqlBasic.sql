@@ -31,8 +31,9 @@ ALTER TABLE CUSTOMER RENAME COLUMN PHON TO PNUM;
 -- 제약조건을 변경할경우 이미 들어가 있는 데이터가 제약조건에 부합하지 않을경우 오류.
 ALTER TABLE CUSTOMER MODIFY PNUM VARCHAR2(20);
 ALTER TABLE CUSTOMER MODIFY PNUM NOT NULL;
--- DROP COLUMN 열이름; = 지정한 열을 테이블에서 삭제한다. 모든 데이터 삭제.
-ALTER TABLE CUSTOMER DROP COLUMN PHUM;
+INSERT INTO CUSTOMER(ID, NAME, PNUM) VALUES(4, 'AA', '11223');
+-- DROP COLUMN 열이름; = 지정한 열을 테이블에서 삭제한다. 해당 열의 모든 데이터 삭제. 다른 열에 저장되어 있는 데이터는 유지
+ALTER TABLE CUSTOMER DROP COLUMN PNUM;
 
 -- COMMENT ON COLUMN 테이블명.열이름 IS '설명'; = 지정한 테이블의 해당열에 대한 설명을 추가한다.
 COMMENT ON COLUMN customer.pnum IS '전화번호';
@@ -59,3 +60,33 @@ CREATE TABLE LOCATION (
     CITY        VARCHAR2(50)
 );
 
+-- 현재 설치된 오라클DB의 캐릭터셋을 확인하는 명령어. 기본 AL32UTF8인가?
+select * from nls_database_parameters where parameter = 'NLS_CHARACTERSET';
+
+-- 지정된 크기 이상의 글자를 넣으려고 할 경우 오류가 나면서 몇BYTE 오버인지 알려주네.
+-- AL상태인 현재 한글은 3BYTE 계산이니 지정된 20이면 최대 6글자. 사 는 들어가지 않음.
+INSERT INTO CUSTOMER(ID, NAME) VALUES(005, '가나다라마바사');
+INSERT INTO CUSTOMER(ID, NAME) VALUES(005, '가나다라마바');
+
+-- DELETE FROM 테이블이름 WHRER 조건식; = 지정한 테이블에서 데이터를 삭제하는 명령문.
+-- 조건식에 일치하는 데이터가 없어도 오류는 안나고 그냥 0개 삭제로 진행됨.
+-- 실행할경우 재확인 없이 바로 실행되니까 실수하면 큰일남?
+DELETE FROM CUSTOMER WHERE ID=5;
+
+-- SELECT 열이름 FROM 테이블이름; = 지정한 테이블에서 지정한 열의 데이터를 모두 가져오는듯?
+-- 열이름에 * 를 넣으면 테이블에 있는 모든 열이 가지고 있는 모든 데이터를 가져옴.
+SELECT * FROM CUSTOMER;
+SELECT NAME FROM CUSTOMER;
+
+CREATE TABLE NUMBERTEST (
+    NUM01 NUMBER(3),
+    NUM02 NUMBER(3, 2),
+    NUM03 NUMBER(3, -2)
+);
+
+-- 반올림된 후의 숫자가 자릿수에 맞으면 입력 가능하다.
+-- 자릿수를 3으로 설정하고 10의 자리에서 반올림인데 15000 이 정상적으로 입력이 되네????
+-- 반올림하는 위치 아래의 숫자들은 자릿수로 인식하지 않나?
+-- 아닌데 안들어가는데 반올림 숫자를 음수로 지정할경우 전체 숫자는 지정한숫자 + 반올림 숫자인가
+INSERT INTO NUMBERTEST VALUES (123, 1.446, 15008.2);
+SELECT * FROM NUMBERTEST;
