@@ -31,6 +31,7 @@ ALTER TABLE CUSTOMER RENAME COLUMN PHON TO PNUM;
 -- 제약조건을 변경할경우 이미 들어가 있는 데이터가 제약조건에 부합하지 않을경우 오류.
 ALTER TABLE CUSTOMER MODIFY PNUM VARCHAR2(20);
 ALTER TABLE CUSTOMER MODIFY PNUM NOT NULL;
+ALTER TABLE CUSTOMER MODIFY ADRESS DEFAULT 'NONE';
 INSERT INTO CUSTOMER(ID, NAME, PNUM) VALUES(4, 'AA', '11223');
 -- DROP COLUMN 열이름; = 지정한 열을 테이블에서 삭제한다. 해당 열의 모든 데이터 삭제. 다른 열에 저장되어 있는 데이터는 유지
 ALTER TABLE CUSTOMER DROP COLUMN PNUM;
@@ -69,6 +70,7 @@ INSERT INTO CUSTOMER(ID, NAME) VALUES(005, '가나다라마바사');
 INSERT INTO CUSTOMER(ID, NAME) VALUES(005, '가나다라마바');
 
 -- DELETE FROM 테이블이름 WHRER 조건식; = 지정한 테이블에서 데이터를 삭제하는 명령문.
+-- WHERE 이후를 작성하지 않을경우 해당 테이블이 가지는 모든 데이터를 삭제한다.
 -- 조건식에 일치하는 데이터가 없어도 오류는 안나고 그냥 0개 삭제로 진행됨.
 -- 실행할경우 재확인 없이 바로 실행되니까 실수하면 큰일남?
 DELETE FROM CUSTOMER WHERE ID=5;
@@ -89,4 +91,24 @@ CREATE TABLE NUMBERTEST (
 -- 반올림하는 위치 아래의 숫자들은 자릿수로 인식하지 않나?
 -- 아닌데 안들어가는데 반올림 숫자를 음수로 지정할경우 전체 숫자는 지정한숫자 + 반올림 숫자인가
 INSERT INTO NUMBERTEST VALUES (123, 1.446, 15008.2);
+ALTER TABLE NUMBERTEST ADD NUM05 NUMBER(10, -9);
+INSERT INTO NUMBERTEST (NUM05) VALUES (12345678901234567890.9876543219);
+INSERT INTO NUMBERTEST (NUM04) VALUES (0.9876543219);
 SELECT * FROM NUMBERTEST;
+
+-- UPDATE 테이블이름 SET 변경할데이터의 열이름 = '변경할값' WHERE 조건문;
+-- 테이블에 이미 생성되어 있는 데이터를 변경하는 명령. 조건문이 없을경우 지정한 열의 모든 데이터를 일괄변경한다.
+UPDATE CUSTOMER SET NAME = 'HO' WHERE ID = 2;
+UPDATE CUSTOMER SET NAME = 'JUNG';
+
+-- 아래는 DUAL 이라는 오라클의 기본 테이블에서 TO_CHAR 라는 함수를 불러오는 구문.
+-- TO_CHAR(값, '표시할형식') 으로 입력된 값을 형식에 맞춰서 출력해준다.
+-- AS 는 표시하는 데이터의 열이름을 임의로 설정할 수 있음. FROM 보다 앞에 입력할것.
+-- SYSDATE 는 시스템의현재 시간을 불러오는 기능인듯????
+SELECT TO_CHAR(SYSDATE, 'YY-MM-DD HH24 : MI : SS DY') AS 날자 FROM DUAL;
+-- 숫자의 표시형식. 정수일경우 값의 길이보다 형식의 길이 길어야 제대로 출력한다. 오류나면 ### 로 표시.
+-- 소수의 길이를 지정할경우 형식에 맞도록 반올림해서 값을 표시한다.
+-- FM 은 문자열에 공백을 제거하라는 명령 
+-- 9는 해당 자리에 값이 없을경우 표시를 안함, 0은 값이 없을경우 0으로 표시함.
+SELECT TO_CHAR(123456789, 'FM9999,9,99,999') AS 숫자 FROM DUAL;
+SELECT TO_CHAR(1.23456789, 'FM990.99999') AS 날자 FROM DUAL;
