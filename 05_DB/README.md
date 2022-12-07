@@ -71,8 +71,6 @@ DELETE FROM 테이블이름;
 ### 데이터 참조 관련
 ```SQL
 SELECT 열이름 FROM 테이블이름;
-SELECT * AS 별명 FROM 테이블이름;
-SELECT * AS 별명 FROM 테이블이름 ORDER BY 열이름 ASC/DESC;
 ```
 지정한 테이블에서 열이름에 해당하는 모든 데이터를 가져온다. 열이름 쉼표구분으로 다중설정 가능.  
 열이름 위치에 '*' 를 사용할경우 해당 테이블이 가지고 있는 모든 데이터를 가져온다.  
@@ -86,6 +84,7 @@ SELECT * AS 별명 FROM 테이블이름;
 SELECT * FROM 테이블이름 ORDER BY 열이름 ASC/DESC;
 ```
 지정한 열을 기준으로 ASC(내림차순) / DESC(오름차순) 으로 정렬하여 보여준다.  
+정렬기준을 여러개 설정하고 싶을 경우 쉼표로 구분가능.  
 
 ```SQL
 SELECT 열이름 FROM 테이블이름 GROUP BY 열이름;
@@ -94,6 +93,7 @@ SELECT 열이름 FROM 테이블이름 GROUP BY 열이름;
 
 #### 함수
 기본적으로는 DUAL 이라는 테이블에 포함되어 있는 형식인듯. 단독으로 사용하기 위해서는 FROM DUAL 을 사용한다.  
+DUAL 은 테스트 할 때 자주 사용하는 테이블인가봐???  
 직접 작성한 테이블에서 사용할경우에는 아래와 같이 DUAL을 생략 가능한듯??  
 
 ```SQL
@@ -111,6 +111,49 @@ SELECT COUNT(열이름) FROM 테이블이름;
 
 
 #### 연산자
+```SQL
+SELECT * FROM 테이블이름 WHERE A = B; A > B; A < B; A <= B; A >= B; A != B;
+SELECT * FROM 테이블이름 WHERE A AND B;
+SELECT * FROM 테이블이름 WHERE A OR B;
+SELECT * FROM 테이블이름 WHERE NOT A;
+```
+기본적인 비교와 논리비교 연산자. 비교는 자바와 동일하고 논리비교일 경우 문자를 사용하는점이 다름.  
+
+```SQL
+SELECT A + B; A - B; A * B; A / B; FROM 테이블이름
+```
+데이터가 숫자형 또는 날자형일 경우에 사용 가능. 나머지 연산은 따로 있는 듯?  
+
+```SQL
+SELECT '문자열1' || '문자열2' || 열이름 FROM 테이블이름
+```
+두개의 문자열을 하나로 합쳐서 표시한다. 열이름을 지정할경우 지정한곳의 데이터에 맞추어서 표시하는듯.  
+
+```SQL
+SELECT * FROM 테이블이름 WHERE 열이름 BETWEEN A AND B;
+SELECT * FROM 테이블이름 WHERE 열이름 NOT BETWEEN A AND B;
+```
+범위로 찾는 연산자. 지정한 열의 데이터가 지정한 값 A 와 B 사이에 있는지, 그 이외인지를 구분함.  
+
+```SQL
+SELECT * FROM 테이블이름 WHERE 열이름 IN (값);
+SELECT * FROM 테이블이름 WHERE 열이름 NOT IN (값);
+```
+범위가 아닌 특정 값들과 일치하는지 아닌지를 판단한다.  
+
+```SQL
+SELECT * FROM 테이블이름 WHERE 열이름 LIKE '%문자열';
+SELECT * FROM 테이블이름 WHERE 열이름 LIKE '문자열%';
+SELECT * FROM 테이블이름 WHERE 열이름 LIKE '%문자열%';
+```
+문자열 검색용 키워드. %가 있는 장소는 다른 문자가 있음을 표현한다.  
+지정한 문자열로 시작하는지, 끝나는지, 포함하는지의 여부를 구분.  
+
+```SQL
+SELECT * FROM 테이블이름 WHERE 열이름 IS NULL;
+SELECT * FROM 테이블이름 WHERE 열이름 IS NOT NULL;
+```
+지정한 열의 값이 NULL 인지 아닌지를 판단해서 표시한다.  
 
 ### SQL 의 자료형
 문자 자료형  

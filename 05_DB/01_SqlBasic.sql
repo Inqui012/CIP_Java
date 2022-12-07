@@ -49,17 +49,8 @@ CREATE TABLE ORDERS (
     ORDER_DATE DATE NOT NULL
 );
 
-CREATE TABLE CATEGORIES (
-    GATEGORY_ID NUMBER PRIMARY KEY,
-    CATEGORY_NAME VARCHAR2(100) NOT NULL
-);
-
-CREATE TABLE LOCATION (
-    LOCATION_ID NUMBER PRIMARY KEY,
-    ADRESS      VARCHAR2(255) NOT NULL,
-    POSTAL_CODE VARCHAR2(20),
-    CITY        VARCHAR2(50)
-);
+INSERT INTO ORDERS VALUES(1006, 1002, TO_DATE('2022-12-24 12:10:45', 'YYYY-MM-DD HH:MI:SS'), 'SIN');
+SELECT * FROM ORDERS;
 
 -- 현재 설치된 오라클DB의 캐릭터셋을 확인하는 명령어. 기본 AL32UTF8인가?
 select * from nls_database_parameters where parameter = 'NLS_CHARACTERSET';
@@ -77,6 +68,8 @@ DELETE FROM CUSTOMER WHERE ID=5;
 
 -- SELECT 열이름 FROM 테이블이름; = 지정한 테이블에서 지정한 열의 데이터를 모두 가져오는듯?
 -- 열이름에 * 를 넣으면 테이블에 있는 모든 열이 가지고 있는 모든 데이터를 가져옴.
+-- 뒤에 WHERE 문으로 조건식을 붙여넣을 수 있음. 붙여넣는다면 조건에 맞는 데이터만을 표시.
+-- 연산자, 범위, 패턴, NULL체크 등을 사용 가능.
 SELECT * FROM CUSTOMER;
 SELECT NAME FROM CUSTOMER;
 
@@ -94,7 +87,9 @@ INSERT INTO NUMBERTEST VALUES (123, 1.446, 15008.2);
 ALTER TABLE NUMBERTEST ADD NUM05 NUMBER(10, -9);
 INSERT INTO NUMBERTEST (NUM05) VALUES (12345678901234567890.9876543219);
 INSERT INTO NUMBERTEST (NUM04) VALUES (0.9876543219);
-SELECT * FROM NUMBERTEST;
+-- order by asc/desc 로 내림차순, 오름차순으로 정렬가능.
+SELECT * FROM NUMBERTEST order by num05 desc;
+SELECT FLOOR(NUM04) FROM NUMBERTEST; 
 
 -- UPDATE 테이블이름 SET 변경할데이터의 열이름 = '변경할값' WHERE 조건문;
 -- 테이블에 이미 생성되어 있는 데이터를 변경하는 명령. 조건문이 없을경우 지정한 열의 모든 데이터를 일괄변경한다.
@@ -112,3 +107,18 @@ SELECT TO_CHAR(SYSDATE, 'YY-MM-DD HH24 : MI : SS DY') AS 날자 FROM DUAL;
 -- 9는 해당 자리에 값이 없을경우 표시를 안함, 0은 값이 없을경우 0으로 표시함.
 SELECT TO_CHAR(123456789, 'FM9999,9,99,999') AS 숫자 FROM DUAL;
 SELECT TO_CHAR(1.23456789, 'FM990.99999') AS 날자 FROM DUAL;
+
+create table grouping (
+    type varchar2(20),
+    name varchar2(50),
+    price NUMBER
+);
+insert into grouping (DATETEST) VALUES (SYSDATE + 5);
+-- SUM(열이름) 은 오라클 기본 함수인듯. 지정한 열이름이 가지고있는 데이터를 합산함.
+-- COUNT(열이름) 은 지정한 열이름에 데이터가 몇개 있는지의 갯수. NULL 포함 안함.
+-- SELECT 열이름 GROUP BY 열이름1; = 열이름을 기준으로 그룹화한 목록을 보여줌. 두 열이름을 동일해야함.
+select NAME from grouping GROUP by NAME;
+select SUM(DATETEST) from grouping ;
+select type,sum(price) as total from grouping GROUP by type;
+select type,count(name) as count from grouping GROUP by TYPE;
+
