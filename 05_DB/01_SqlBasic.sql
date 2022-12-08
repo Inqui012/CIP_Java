@@ -122,3 +122,12 @@ select SUM(DATETEST) from grouping ;
 select type,sum(price) as total from grouping GROUP by type;
 select type,count(name) as count from grouping GROUP by TYPE;
 
+SELECT LENGTH('') FROM DUAL;
+SELECT ROUND(10.487, 2) FROM DUAL;
+SELECT TRUNC(10.487, 2) FROM DUAL;
+SELECT CEIL(10.0) FROM DUAL;
+SELECT FLOOR(10.9) FROM DUAL;
+SELECT 10 / 3 FROM DUAL;
+
+-- 지정한 열의 데이터중에서 가장 처음으로 NULL 이 아닌값을 반환.
+SELECT COALESCE(NUM01, NUM02, NUM03, NUM04, NUM05) FROM NUMBERTEST;
