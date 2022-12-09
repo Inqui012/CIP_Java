@@ -88,8 +88,10 @@ SELECT * FROM 테이블이름 ORDER BY 열이름 ASC/DESC;
 
 ```SQL
 SELECT 열이름 FROM 테이블이름 GROUP BY 열이름;
+SELECT 열이름 FROM 테이블이름 GROUP BY 열이름 HAVING 조건;
 ```
 지정한 열이름을 기준으로 그룹화하여 보여준다. 앞 뒤의 열이름을 동일해야 오류가 안나는듯?  
+뒤에 HAVING 문을 붙여줄경우 그룹화한 테이블에서 지정한 조건에 맞는 데이터만을 따로 표시한다.  
 
 #### 함수
 기본적으로는 DUAL 이라는 테이블에 포함되어 있는 형식인듯. 단독으로 사용하기 위해서는 FROM DUAL 을 사용한다.  
@@ -97,18 +99,6 @@ DUAL 은 테스트 할 때 자주 사용하는 테이블인가봐???
 직접 작성한 테이블에서 사용할경우에는 아래와 같이 DUAL을 생략 가능한듯??  
 오라클에서도 명시적, 암시적 형변환이 존재하지만 성능저하나 에러의 위험성때문에 되도록이면 명시적으로 형변환을 하는것을 권장함.  
 일단은 SELECT 문으로 예시를 작성했지만 WHERE 절에서도 사용가능함.  
-
-```SQL
-SELECT SUM(열이름) FROM 테이블이름;
-```
-아마도 오라클이 제공하는 기본함수? 지정한 열이름이 가지는 숫자를 전부 더해서 보여줌.  
-열이 가지는 데이터가 숫자형이 아닐경우 오류남. 날자도 안됨.  
-그룹핑 하지 않을경우 테이블이 가지고 있는 모든 값을 더해준다.  
-
-```SQL
-SELECT COUNT(열이름) FROM 테이블이름;
-```
-지정한 열이름이 가지고있는 데이터의 갯수를 반환한다. 중복판단 불가능. NULL 일경우 무시함.  
 
 ```SQL
 SELECT CHR(아스키코드) FROM 테이블이름;
@@ -131,7 +121,7 @@ SELECT TRIM(비교시작위치(LEADING/ TRAILING/ BOTH) '문자열1' FROM '문�
 TRIM의 비교시작 위치는 앞부터 / 끝부터 / 양쪽에서 임. 양쪽으로 지정할경우 양방향에서 동시에 글자를 지움.  
 
 ```SQL
-SELECT SUBSTR(시작할 인덱스번호, 반환할 문자열 길이);
+SELECT SUBSTR(자를문자열 / 문자열이 있는 열이름, 시작할 인덱스번호, 반환할 문자열 길이);
 ```
 자바의 subString 과 비슷하지만 인덱스번호가 문자열의 앞에서부터 1 로 시작함. 배열과는 다름.  
 반환할 문자열 길이는 생략 가능하고 이경우 끝까지 반환, 지정할경우 시작부터 끝까지의 문자열 길이를 맞춰서 반환.  
@@ -213,6 +203,54 @@ SELECT CASE WHEN 조건 THEN 반환값 WHEN 조건2 THEN 반환값2 ... ELSE 반
 ```
 자바의 IF 문과 SWITCH 문 같은 느낌이네.  
 CASE 의경우 조건문에 열이름 = 조건 으로 설정할 수도 있고 진짜 SWITCH 문처럼 조건 만으로도 사용 가능.  
+  
+  ****
+윈도우 함수. 조회하는 컬럼을 전체적으로 비교하는 느낌의 함수???  
+기본적으로 OVER() 와 함께 사용한다.
+```SQL
+SELECT 윈도우함수() OVER(PARTITION BY 열이름 ORDER BY 열이름 분할기준) FROM 테이블이름;
+```
+여러 값들을 비교하거나 집계할경우 GROUP BY 나 서브쿼리의 사용 없이 간단히 참조할 데이터를 지정할 수 있다.
+PARTITION BY 의 기능은 GROUP BY 와 동일하고 지정한 열이름을 기준으로 함수를 실행할 가상의 테이블을 생성하나?  
+분할기준을 상세하게 설정할 수 있다.  
+
+```SQL
+ROWS BETWEEN (UNBOUNDED PRECEDING / CURRENT ROW / 값 PRECEDING) AND (UNBOUNDED FOLLOWING / CURRENT ROW / 값 FOLLOWING); 
+RANGE BETWEEN (UNBOUNDED PRECEDING / CURRENT ROW / 값 PRECEDING) AND (UNBOUNDED FOLLOWING / CURRENT ROW / 값 FOLLOWING); 
+```
+세부 분할기준은 크게 두가지로 조건에 맞는 행으로 판단하는 ROWS 와 조건에 맞는 값으로 판단하는 RANGE 가 있음.
+시작하는 값 AND 끝나는 값 으로, 해당 범위에서만 함수를 실행하겠다는 조건임.  
+UNBOUNDED PRECEDING / UNBOUNDED FOLLOWING = 첫행 / 마지막행
+CURRENT ROW = 현재 행
+값 PRECEDING / 값 FOLLOWING = 지정한 값 부터 / 지정한 값 까지  
+
+```SQL
+SELECT RANK() FROM 테이블이름;
+SELECT DENSE_RANK() FROM 테이블이름;
+SELECT ROW_NUMBER() FROM 테이블이름;
+```
+데이터의 순위를 매기는 함수.  
+RANK() 의 경우 같은순위가 있을경우에는 다음순의의 수치를 같은순위가 존재하는 수만큼 건너뛰고  
+DENSE_RANK() 의 경우 건너뛰지 않고 그냥 표시한다.  
+ROW_NUMBER() 는 그냥 동일순위를 무시한채 순위만 매긴다.  
+
+```SQL
+SELECT MAX(열이름);
+SELECT MIN(열이름);
+SELECT AVG(열이름);
+```
+
+```SQL
+SELECT SUM(열이름) FROM 테이블이름;
+```
+아마도 오라클이 제공하는 기본함수? 지정한 열이름이 가지는 숫자를 전부 더해서 보여줌.  
+열이 가지는 데이터가 숫자형이 아닐경우 오류남. 날자도 안됨.  
+그룹핑 하지 않을경우 테이블이 가지고 있는 모든 값을 더해준다.  
+
+```SQL
+SELECT COUNT(열이름) FROM 테이블이름;
+```
+지정한 열이름이 가지고있는 데이터의 갯수를 반환한다. 중복판단 불가능. NULL 일경우 무시함.  
 
 #### 연산자
 ```SQL

@@ -117,6 +117,7 @@ insert into grouping (DATETEST) VALUES (SYSDATE + 5);
 -- SUM(열이름) 은 오라클 기본 함수인듯. 지정한 열이름이 가지고있는 데이터를 합산함.
 -- COUNT(열이름) 은 지정한 열이름에 데이터가 몇개 있는지의 갯수. NULL 포함 안함.
 -- SELECT 열이름 GROUP BY 열이름1; = 열이름을 기준으로 그룹화한 목록을 보여줌. 두 열이름을 동일해야함.
+-- GROUP BY 열이름 HAVING 조건; 으로 그룹화를 할 때 기준을 지정할 수 있다. 예를 들면 그룹화할 열이름에서 특정 값을 가진 타입만을 보고싶다거나 할 경우.
 select NAME from grouping GROUP by NAME;
 select SUM(DATETEST) from grouping ;
 select type,sum(price) as total from grouping GROUP by type;
