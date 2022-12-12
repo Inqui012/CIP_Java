@@ -58,4 +58,38 @@ public enum Medicine {
 			return price;
 		}
 	}
+
+	public String getType() {
+		return type;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getMadeBy() {
+		return madeBy;
+	}
+
+	public String[] getInclude() {
+		return include;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public boolean isEthical() {
+		return isEthical;
+	}
+
+	public boolean isInsurance() {
+		return isInsurance;
+	}
+
+	public boolean isPsychotropic() {
+		return isPsychotropic;
+	}
+	
+	
 }

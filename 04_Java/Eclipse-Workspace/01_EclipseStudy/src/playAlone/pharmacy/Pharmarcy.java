@@ -23,5 +23,8 @@ public class Pharmarcy {
 		for(Doctor doc : hos02.hiredDoc) {
 			System.out.println(doc.docName);
 		}
+		
+		System.out.println(Medicine.ATIVAN_TAB_05MG.getName());
+		System.out.println("한글");
 	}
 }
