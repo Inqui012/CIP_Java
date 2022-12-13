@@ -34,14 +34,21 @@ public class UrlTesting extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		String testing = "var Test";
+		String input = request.getParameter("test");
 //		텍스트형식으로 html 태그를 쓰니까 인라인 스타일도 줄 수 있네. 자바 변수도 물론 쓸 수 있고.
 //		어펜드를 새로하면 자동으로 줄바꿈이 일어나는듯????? 아님. 안일어남.
 //		아까는 body, html 태그도 넣었는데 딱히 넣지 않아도 자동으로 body 안에 태그들이 생성되네. 어펜드 순서대로.
 //		아 타이틀 넣으려면 head 태그도 써야하니까 그런가보다
 		out.append("<h1 style=\"color:red\">" + testing + "</h1>")
-		.append("<input type=\"text\">")
-		.append("<input type=\"text\"><br/>")
-		.append("<div style=\"width:500px; height:500px; background-color:blue; margin:0 auto;\"></div>");
+		.append("<form>")
+		.append("<input type=\"text\" name=\"test\">")
+		.append("<input type=\"submit\"></form><br/>")
+		.append(input)
+		.append("<div style=\"width:500px; height:500px; background-color:blue; margin:0 auto;\"></div>");			
+		if(input.equals("red")) {
+			out.append("<h1 style=\"color:blue\">" + testing + "</h1>")
+			.append("<div style=\"width:500px; height:500px; background-color:red; margin:0 auto;\"></div>");						
+		}
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
