@@ -14,12 +14,12 @@
 	<%=java.time.LocalDateTime.now()  %>
 	<hr>
 	<!-- 메소드나 함수를 불러올때는 =을, 직접 코드를 작성할 경우에는 없이 그냥 쓰는듯? -->
-	<%
+<%-- 	<%
 	for(int i=2; i<10; i++){
 	    for(int j=1; j<10; j++){
 	        out.println(i+" * "+j+" = "+i*j + "<br>");
 	    }
 	}
-	%>
+	%> --%>
 </body>
 </html>
