@@ -23,7 +23,15 @@
 데이터베이스 관리자(DBA) 가 관리하고, 일반 사용자는 단순 조회만 가능하다. 
 사용자의 ID, PW, 권한이나 DB의 테이블, 인덱스, 뷰, 제약조건, 함수 프로시저 등으로 구성되어 있다.
 ```
-
+  
+* 프로시저 (Procedure, Persistent Storage module)
+```sql
+CREATE OR REPLACE PROCEDURE 프로시저이름 (매개변수1, 매개변수2)
+IS 변수 데이터타입 := 값 BEGIN 실행할 쿼리문 END 프로시저 이름;
+  
+EXEC 프로시저명(매개변수);
+```
+일정한 쿼리구문을 함수처럼 묶어서 선언해놓은것. 
 
 ### 제약조건
 * UNIQUE = NULL 가능, 중복 불가능
