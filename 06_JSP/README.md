@@ -38,3 +38,13 @@ JSP 에서 JAVA 와 HTML 을 동시에 사용할 수 있게 해주는 코드. �
 <!-- HTML 주석. 화면의 소스에만 보임 -->
 <%-- JSP 주석. 화면의 소스에도 보이지 않음. --%>
 ```
+
+### Action Tag
+```
+jsp:forward
+jsp:include
+jsp:useBean
+jsp:setProperty
+jsp:getProperty
+jsp:param
+```

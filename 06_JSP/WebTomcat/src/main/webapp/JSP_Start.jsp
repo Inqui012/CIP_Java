@@ -37,6 +37,25 @@
 	    <li><%= j %></li>  
 	<% }%>	
 	</ul>
+	<hr>
+	<!-- 인클루드로 jsp 를 불러오면 meta, title 태그도 같이 가져오네. 나머지는 없고. -->
+	<%@ include file="/Including.jsp" %>
+	<hr>
+	<!-- page 의 import 로 사용하고 싶은 java 클래스를 불러와서 스크립트 요소에서 사용할 수 있음. -->
+	<%@ page import="java.util.ArrayList" %>
+	<% 
+		ArrayList<String> list = new ArrayList<>();
+		for(int i = 0; i < 5; i++){
+			list.add("Adding " + i + " to list");
+		}
+	%>
+	<ul>
+		<%
+			for(String str : list){
+				out.println("<li>" + str + "</li>");
+			}
+		%>
+	</ul>
 	
 </body>
 </html>
