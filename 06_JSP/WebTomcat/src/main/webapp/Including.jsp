@@ -8,5 +8,15 @@
 </head>
 <body>
 	<h1>Testing For Include</h1>
+	<%
+		String param = request.getParameter("paramName");
+		String param1 = request.getParameter("paramName1");
+		String param2 = request.getParameter("action");
+		out.println(param + "<br/>");
+		out.println(param1 + "<br/>");
+		out.println(param2 + "<br/>");
+	%>
+	<hr>
+	
 </body>
 </html>
