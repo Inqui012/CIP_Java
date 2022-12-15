@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!--
+MVC 패턴은 말 그대로 프로그램의 연관성을 어떻게 설정할것인지 정하는 디자인의 패턴임. 기능을 어떻게 나누느냐?
+클라이언트의 요청을 받아서 기능을 수행하는곳이 controller 이고, controller 가 DB에 접근할 필요가 있을때 개입하는게 DAO.
+Data Access Objects. 
+MVC 에서 View 는 아무런 기능이 없이 그저 단순하게 보여지는 페이지를 뜻한다.
+기능은 전부 controller 에서 제어하는듯. 컨트롤러는 보통 servlet 으로 한다. jsp로도 할 수 있는데 권장하지 않음.
+-->
+	<h1>Calculation by MVC model</h1>
+	<form method="post" action="/WebTomcat/CalcController">
+		<input type="text" name="firstNum" size="10"/>
+		<select name="option">
+			<option> + </option>
+			<option> - </option>
+			<option> * </option>
+			<option> / </option>
+			<option> % </option>
+		</select>
+		<input type="text" name="secondNum" size="10"/>
+		<input type="submit" value="Doit"/>
+	</form>
+</body>
+</html>
