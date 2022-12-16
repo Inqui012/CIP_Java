@@ -1,8 +1,6 @@
 package DB_Conn;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.sql.Date;
 import java.util.regex.Pattern;
 
 import javax.servlet.ServletConfig;
