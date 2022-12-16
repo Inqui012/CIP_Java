@@ -27,6 +27,7 @@ public class Student_Controller extends HttpServlet {
     	super.init(config);
 //    	여기서 객체를 생성하면 여러번의 controller 실행에도 같은객체를 공유한다는건.............
 //    	컨트롤러는 한번 생성되고 나면 계속 메모리에 상주하는건가? 가비지컬렉터로 제거된다고 하면 여기서 설정한 객체도 사라지지 않나
+//    	서블릿은 처음 실행할때 생성되고 이후에는 상주. 삭제할경우에는 destroy(); 메소드가 있다고 하네.
 //    	그럼 stu는 역시 여기보다는 service 안에서 선언하는게 나은가? 그렇게 되면 메소드가 끝나면 메모리 해제될것 같으니까...
     	DB = new Student_DAO();
 //    	stu = new Student_Entity();
