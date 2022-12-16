@@ -32,6 +32,8 @@ public class Student_Controller extends HttpServlet {
     @Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	String action = request.getParameter("action");
+//    	한글이 db에 깨져서 들어갈때 인코딩을 지정해줘야한다.
+    	request.setCharacterEncoding("utf-8");;
 //    	이거는 한페이지에서 모든걸 다하고... 리스트는 계속 보여줄거니까 이렇게 해도 되겠다.
 //    	지금은 코드가 짧아서 그냥 service 메소드에 모든걸 때려넣었지만 코드가 길어지고 분기점이 많아진다면 다른 메소드로 구성하는게 보기에 깔끔하겠다.
 //    	그럴경우 각 메소드는 내부에서 .setAttribute 와 같은 기능을 실행하고 이후에 이동할 페이지의 주소를 리턴한다.
