@@ -19,14 +19,17 @@ import org.apache.commons.beanutils.BeanUtils;
 public class Student_Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private Student_DAO DB;
-	private Student_Entity stu;
+//	private Student_Entity stu;
     
     @Override
     public void init(ServletConfig config) throws ServletException {
     	// TODO Auto-generated method stub
     	super.init(config);
+//    	여기서 객체를 생성하면 여러번의 controller 실행에도 같은객체를 공유한다는건.............
+//    	컨트롤러는 한번 생성되고 나면 계속 메모리에 상주하는건가? 가비지컬렉터로 제거된다고 하면 여기서 설정한 객체도 사라지지 않나
+//    	그럼 stu는 역시 여기보다는 service 안에서 선언하는게 나은가? 그렇게 되면 메소드가 끝나면 메모리 해제될것 같으니까...
     	DB = new Student_DAO();
-    	stu = new Student_Entity();
+//    	stu = new Student_Entity();
     }
     	
     @Override
@@ -53,7 +56,7 @@ public class Student_Controller extends HttpServlet {
 // 				그쪽에서 처리해도 되겠구나.
     			if(Pattern.matches(birth_pattern, birth)) {
 //    				이거 매번 서비스 실행할때마다 새로운 객체를 생성하지 않나...이것도 init 에 넣는게 효율적이지 않을까?
-//    				Student_Entity stu = new Student_Entity();
+    				Student_Entity stu = new Student_Entity();
 //    				init에 넣어도 되네......
 //    				엔티티객체에 생성자 안만들었으니 값 넣으려면 전부 set 메소드 써야...하나
 //    				이거 한꺼번에 할 수 있는 라이브러리가 있대.....
