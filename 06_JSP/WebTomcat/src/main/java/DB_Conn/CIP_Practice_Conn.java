@@ -90,9 +90,6 @@ public class CIP_Practice_Conn extends HttpServlet {
 				}
 				
 				if(modify != null && modify.equals("true")) {
-					System.out.println(modifyCheck(mem, req));
-					String str = new String (req.getParameter("address").getBytes("8859_1"), "KSC5601");
-					System.out.println(str);
 					if(modifyCheck(mem, req)) {
 						resp.sendRedirect("/WebTomcat/DB_Connected/update");						
 					} else {

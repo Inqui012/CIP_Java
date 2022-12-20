@@ -79,7 +79,7 @@
 				<tr>
 					<td colspan="2">
 						<button type="submit" onclick="submitFunc(); return false;">등 록</button>
-						<button type="button">조 회</button>
+						<button type="button" onclick="location='update'">조 회</button>
 					</td>
 				</tr>
 			</table>
