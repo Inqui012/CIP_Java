@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import ="java.util.List" %>
+<%@ page import ="DB_Conn.CIP_Practice_DTO_mon" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +13,7 @@
 	<jsp:include page="CIP_Practice_Head.jsp"></jsp:include>
 	<section class="sell">
 		<h2>회원 매출조회</h2>
+		<% List<CIP_Practice_DTO_mon> sellList = (List<CIP_Practice_DTO_mon>) request.getAttribute("sellList"); %>
 		<table border="1">
 			<thead>
 				<tr>
@@ -19,6 +22,14 @@
 					<th>고객등급</th>
 					<th>매출</th>
 				</tr>
+				<% for(CIP_Practice_DTO_mon sell : sellList) { %>
+				<tr>
+					<td><%= sell.getCustno() %></td>
+					<td><%= sell.getCustname() %></td>
+					<td><%= sell.getGrade() %></td>
+					<td><%= sell.getTotalPrice() %></td>
+				</tr>
+				<% } %>
 			</thead>
 			<tbody>
 				

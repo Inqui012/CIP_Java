@@ -7,7 +7,7 @@ public class CIP_Practice_DTO_mem {
 	private String custname;
 	private String phone;
 	private String address;
-	private Date joindate;
+	private String joindate;
 	private String grade;
 	private String city;
 	
@@ -35,10 +35,11 @@ public class CIP_Practice_DTO_mem {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public Date getJoindate() {
+
+	public String getJoindate() {
 		return joindate;
 	}
-	public void setJoindate(Date joindate) {
+	public void setJoindate(String joindate) {
 		this.joindate = joindate;
 	}
 	public String getGrade() {

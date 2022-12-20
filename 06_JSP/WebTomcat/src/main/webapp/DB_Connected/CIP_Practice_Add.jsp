@@ -17,7 +17,7 @@
 	<jsp:include page="CIP_Practice_Head.jsp"/>
 	<section class="add">
 		<h2>홈쇼핑 회원 등록</h2>
-		<form method="post" action="insert" name="insFrm">
+		<form method="post" action="insert?actv=true" name="insFrm">
 			<input type="hidden" id="spec" value="inserting">
 			<table border="1">
 				<tr>

@@ -45,7 +45,7 @@ public class CIP_Practice_DAO {
 			mem.setCustname(result.getString("CUSTNAME"));
 			mem.setPhone(result.getString("PHONE"));
 			mem.setAddress(result.getString("ADDRESS"));
-			mem.setJoindate(result.getDate("JOINDATE"));
+			mem.setJoindate(result.getString("JOINDATE"));
 			mem.setGrade(result.getString("GRADE"));
 			mem.setCity(result.getString("CITY"));
 		}
@@ -66,7 +66,7 @@ public class CIP_Practice_DAO {
 			mem.setCustname(result.getString("CUSTNAME"));
 			mem.setPhone(result.getString("PHONE"));
 			mem.setAddress(result.getString("ADDRESS"));
-			mem.setJoindate(result.getDate("JOINDATE"));
+			mem.setJoindate(result.getString("JOINDATE"));
 			mem.setGrade(result.getString("GRADE"));
 			mem.setCity(result.getString("CITY"));
 			memList.add(mem);
@@ -80,30 +80,30 @@ public class CIP_Practice_DAO {
 		con = getconnection();
 		String stateStr = "INSERT INTO CIP_MEM VALUES (?, ?, ?, ?, ?, ?, ?)";
 		state = con.prepareStatement(stateStr);
-		state.setInt(1, getMaxNo() + 1);
+		state.setInt(1, insertMem.getCustno());
 		state.setString(2, insertMem.getCustname());
 		state.setString(3, insertMem.getPhone());
 		state.setString(4, insertMem.getAddress());
-		state.setDate(5, insertMem.getJoindate());
+		state.setString(5, insertMem.getJoindate());
 		state.setString(6, insertMem.getGrade());
 		state.setString(7, insertMem.getCity());
-		state.executeQuery(stateStr);
+		state.executeUpdate();
 		state.close();
 		con.close();
 	}
 	
 //	서블릿에서 아예 새로운 객체랑 선택한 파라메터를 가져옴. 
-	public void updateMem (CIP_Practice_DTO_mem updateMem, int selectNo) throws Exception {
+	public void updateMem (HttpServletRequest req) throws Exception {
 		con = getconnection();
 		String stateStr = "UPDATE CIP_MEM SET ";
-		stateStr += " CUSTNO = " + updateMem.getCustno();
-		stateStr += " CUSTNAME = " + updateMem.getCustname();
-		stateStr += " PHONE = " + updateMem.getPhone();
-		stateStr += " ADDRESS = " + updateMem.getAddress();
-		stateStr += " JOINDATE = " + updateMem.getJoindate();
-		stateStr += " GRADE = " + updateMem.getGrade();
-		stateStr += " CITY = " + updateMem.getCity();
-		stateStr += " WHERE CUSTNO = " + selectNo;
+		stateStr += " CUSTNO = " + Integer.parseInt(req.getParameter("custno"));
+		stateStr += " ,CUSTNAME = '" + req.getParameter("custname") + "'";
+		stateStr += " ,PHONE = '" + req.getParameter("phone") + "'";
+		stateStr += " ,ADDRESS = '" + req.getParameter("address") + "'";
+		stateStr += " ,JOINDATE = TO_DATE('" + req.getParameter("joindate") + "', 'YYYY-MM-DD')";
+		stateStr += " ,GRADE = '" + req.getParameter("grade") + "'";
+		stateStr += " ,CITY = '" + req.getParameter("city") + "'";
+		stateStr += " WHERE CUSTNO = " + req.getParameter("modifyno");
 		state = con.prepareStatement(stateStr);
 		state.executeUpdate();
 		state.close();
@@ -113,7 +113,7 @@ public class CIP_Practice_DAO {
 	public List<CIP_Practice_DTO_mon> getSellList() throws Exception{
 		con = getconnection();
 		List<CIP_Practice_DTO_mon> sellList = new ArrayList<>();
-		String stateStr = "SELECT MEM.CUSTNO, MEM.CUSTNAME, MEM.GRADE, SUM(MON.PRICE) FROM CIP_MEM MEM, CIP_MON MON";
+		String stateStr = "SELECT MEM.CUSTNO, MEM.CUSTNAME, DECODE(MEM.GRADE, 'A', 'VIP', 'B', '일반', '직원') GRADE, SUM(MON.PRICE) FROM CIP_MEM MEM, CIP_MON MON";
 		stateStr += " WHERE MEM.CUSTNO = MON.CUSTNO";
 		stateStr += " GROUP BY MEM.CUSTNO, MEM.CUSTNAME, MEM.GRADE";
 		stateStr += " ORDER BY SUM(MON.PRICE) DESC";

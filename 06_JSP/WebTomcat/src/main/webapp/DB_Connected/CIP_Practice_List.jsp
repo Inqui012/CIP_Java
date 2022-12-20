@@ -28,7 +28,7 @@
 				for (CIP_Practice_DTO_mem mem : list) {
 			%>
 			<tr>
-				<td><a href="update?custno=<%= mem.getCustno() %>"><%= mem.getCustno() %></a></td>
+				<td><a href="update?modifyno=<%= mem.getCustno() %>"><%= mem.getCustno() %></a></td>
 				<td><%= mem.getCustname() %></td>
 				<td><%= mem.getPhone() %></td>
 				<td><%= mem.getAddress() %></td>
