@@ -1,0 +1,25 @@
+@charset "UTF-8";
+* {margin: 0; padding: 0; text-decoration: none;}
+header {width: 100%; height: 150px;}
+header h1 {width: 100%; height: 100px; line-height:100px; color: white; background-color: blue; text-align: center;}
+header ul {height: 50px; list-style: none; display: flex; justify-content: flex-start; align-items: center;}
+header ul li {margin-left: 20px;}
+header ul li:last-child {margin-left: 10px;}
+
+section {width: 100%; height:800px; margin: 0 auto; background-color: #d4d4d4;}
+section h2 {text-align: center; padding: 20px 0;}
+section form {width:fit-content; margin: 0 auto;}
+section > table {margin: 0 auto;}
+
+section.main ol {list-style-position: inside;}
+
+section.add form table tr th {width: 40%; text-align: center;}
+section.add form table tr td {width: 60%}
+section.add form table tr:not(:nth-child(3)) td input,
+section.add form table tr:not(:nth-child(4)) td input {width: 100px;}
+section.add form table tr:nth-child(3) td input {width: 130px;}
+section.add form table tr:nth-child(4) td input {width: 200px;}
+section.add form table tr:last-child td {text-align: center;}
+section.add form table tr:last-child td button {padding: 5px 15px;}
+
+footer {background-color: blue; text-align: center; height: 100px; color: white; line-height: 100px}
