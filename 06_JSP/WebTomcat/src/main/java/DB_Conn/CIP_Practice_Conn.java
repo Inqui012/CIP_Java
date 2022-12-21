@@ -37,12 +37,7 @@ public class CIP_Practice_Conn extends HttpServlet {
 		switch(target) {
 		case "/DB_Connected/insert":
 			String actv = req.getParameter("actv");
-			int nextNo = 0;
-			try {
-				nextNo = DB.getMaxNo() + 1;
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			int nextNo = DB.getMaxNo() + 1;
 			if(actv == null) {
 //				등록 페이지에 들어왔지만 form태그의 submit이 실행되지 않은상태.
 //				action 에 따로 파라미터를 만들어줘서 일단 그걸로 판단...
@@ -57,12 +52,7 @@ public class CIP_Practice_Conn extends HttpServlet {
 				newMem.setJoindate(req.getParameter("joindate"));
 				newMem.setGrade(req.getParameter("grade"));
 				newMem.setCity(req.getParameter("city"));
-				try {
-					DB.insertMem(newMem);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				DB.insertMem(newMem);
 				resp.sendRedirect("/WebTomcat/DB_Connected/update");						
 			}
 			break;
@@ -71,34 +61,17 @@ public class CIP_Practice_Conn extends HttpServlet {
 			String modify = req.getParameter("modify");
 			
 			if (modifyno == null) {
-				List<CIP_Practice_DTO_mem> memberList = new ArrayList<>();
-				try {
-					memberList = DB.getMemList();
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				List<CIP_Practice_DTO_mem> memberList = DB.getMemList();
 				req.setAttribute("memList", memberList);				
 				getServletContext().getRequestDispatcher("/DB_Connected/CIP_Practice_List.jsp").forward(req, resp);
 			} else {
-				CIP_Practice_DTO_mem mem = new CIP_Practice_DTO_mem();
-				try {
-					mem = DB.getMemData(Integer.parseInt(modifyno));
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				CIP_Practice_DTO_mem mem = DB.getMemData(Integer.parseInt(modifyno));
 				
 				if(modify != null && modify.equals("true")) {
 					if(modifyCheck(mem, req)) {
 						resp.sendRedirect("/WebTomcat/DB_Connected/update");						
 					} else {
-						try {
-							DB.updateMem(req);
-						} catch (Exception e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
+						DB.updateMem(req);			
 						resp.sendRedirect("/WebTomcat/DB_Connected/update");						
 					}
 				} else {
@@ -108,13 +81,7 @@ public class CIP_Practice_Conn extends HttpServlet {
 			}
 			break;
 		case "/DB_Connected/sell":
-			List<CIP_Practice_DTO_mon> sellList = new ArrayList<>();
-			try {
-				sellList = DB.getSellList();
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			List<CIP_Practice_DTO_mon> sellList = DB.getSellList();
 			req.setAttribute("sellList", sellList);
 			getServletContext().getRequestDispatcher("/DB_Connected/CIP_Practice_Sell.jsp").forward(req, resp);
 			break;
