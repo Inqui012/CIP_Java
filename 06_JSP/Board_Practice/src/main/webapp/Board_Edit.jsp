@@ -20,13 +20,13 @@
                 <div class="title">
                     <dl>
                         <dt>제목</dt>
-                        <dd><input type="text" name="title" placeholder="제목 입력" value="${board.title}"></dd>
+                        <dd><input type="text" name="title"  maxlength="50" placeholder="제목 입력" value="${board.title}"></dd>
                     </dl>
                 </div>
                 <div class="info">
                     <dl>
                         <dt>글쓴이</dt>
-                        <dd><input type="text" name="user_id" placeholder="글쓴이 입력" value="${board.user_id}"></dd>
+                        <dd><input type="text" name="user_id"  maxlength="10" placeholder="글쓴이 입력" value="${board.user_id}"></dd>
                     </dl>
                 </div>
                 <div class="cont">
