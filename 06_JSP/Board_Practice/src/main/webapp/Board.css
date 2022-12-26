@@ -1,0 +1,251 @@
+@charset "uft-8";
+* {
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 10px;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+
+@media screen and (max-width: 767px) {
+    div.wrap {
+        width: 95vw;
+    }
+    table.board_list th:first-child,
+    table.board_list th:nth-child(3),
+    table.board_list th:nth-child(4),
+    table.board_list td:first-child,
+    table.board_list td:nth-child(3),
+    table.board_list td:nth-child(4) {
+        display: none;
+    }
+    div.bt_list {
+        width: 100%;
+    }
+    div.bt_list.bt_wrap a {
+        width: 100%;
+        margin-left: 0;
+        box-sizing: border-box;
+        margin: 10px 0;
+    }
+    div.board_write div.info {
+        display: block;
+    }
+    div.board_view div.info dl {
+        padding: 0 5px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width:1000px) {
+    div.wrap {
+        width: 100vw;
+    }
+}
+/* index */
+div.wrap {
+    width: 80%;
+    margin: 0 auto;
+}
+div.wrap table.board_list {
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    border-collapse: collapse;
+}
+div.wrap table.board_list th, td {
+    border-spacing: 0;
+    padding: 10px;
+}
+div.wrap table.board_list caption {
+    padding: 30px;
+    font-weight: bold;
+    font-size: 30px;
+}
+div.wrap table.board_list thead {
+    height: 40px;
+    border-bottom: 1px solid rgb(255, 255, 255);
+}
+div.wrap table.board_list tbody tr {
+    height: 35px;
+}
+div.wrap table.board_list tr:nth-child(2n+1) {
+    background-color: #eee;
+}
+div.wrap table.board_list tbody tr td.board_title {
+    width: 60%;
+}
+div.wrap table.board_list tbody tr td.board_title:hover {
+    text-decoration: underline;
+}
+
+div.bt_wrap {
+    text-align: center;
+    margin-top: 20px;
+}
+div.bt_list {
+    text-align: right;
+}
+div.bt_wrap button {
+	border: none;
+    display: inline-block;
+    min-width: 80px;
+    font-size: 1.3rem;
+    background-color: #eee;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-left: 10px;
+    text-align: center;
+}
+div.bt_wrap button:hover {
+    background-color: black;
+    color: white;
+}
+div.bt_wrap a {
+    display: inline-block;
+    min-width: 80px;
+    font-size: 1.3rem;
+    background-color: #eee;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-left: 10px;
+    text-align: center;
+}
+div.bt_wrap a:hover {
+    background-color: black;
+    color: white;
+}
+
+div.board_page {
+    display: flex;
+    justify-content: center;
+}
+div.board_page a {
+    font-size: 1.4rem;
+    padding: 5px;
+}
+div.board_page a.num.on {
+    background-color: #eee;
+}
+div.board_page a:hover {
+    background-color: #eee;
+}
+div.board_page a:not(:last-child) {
+    margin-right: 10px;
+}
+
+/* write */
+div.board_title {
+    width: 100%;
+    margin: 30px 10px;
+}
+div.board_title strong {
+    font-size: 3rem;
+}
+div.board_title p {
+    margin-top: 5px;
+    font-size: 1.4rem;
+}
+form.board_write_wrap {
+    border-top: 2px solid black;
+}
+form.board_write_wrap div.board_write div {
+    width: 100%;
+    border-bottom: 1px solid black;
+}
+form.board_write_wrap div.board_write div dl {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px 0;
+}
+div.info {
+    display: flex;
+    justify-content: center;
+}
+div.board_write div.info dl {
+    width: 50%;
+}
+div.board_write div dl dt {
+    box-sizing: border-box;
+    padding: 5px 10px;
+    width: 25%;
+}
+div.board_write div dl dt,
+div.board_write div dl dd {
+    display: inline-block;
+}
+div.board_write div.title dl dd {
+    width: 70%;
+}
+div.board_write div dl input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 5px 10px;
+}
+div.board_write div dl dt {
+    font-size: 1.5rem;
+    padding: 5px 10px;
+}
+
+div.cont {
+    text-align: center;
+    padding: 10px 0;
+}
+div.cont textarea {
+    width: 90%;
+    height: 300px;
+}
+
+/* view */
+.board_view {
+    width: 100%;
+    border-top: 2px solid black;
+}
+.board_view .title {
+    padding: 20px 15px;
+    border-bottom: 1px dashed #ddd;
+    font-size: 2rem;
+}
+.board_view .info {
+    padding: 15px;
+    border-bottom: 1px solid #999;
+    font-size: 0;
+}
+.board_view .info dl {
+    position: relative;
+    display: inline-block;
+    padding: 0 20px;
+}
+.info dl:first-child {
+    padding-left: 0;
+}
+.info dl:not(:first-child)::before {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 100%;
+    background-color: #999;
+}
+.board_view .info dl dt,
+.board_view .info dl dd {
+    display: inline-block;
+    font-size: 1.4rem;
+}
+.board_view .info dl dt {
+    margin-left: 10px;
+    color: #777;
+}
+.board_view .cont {
+    padding: 15px;
+    border-bottom: 1px solid #999;
+    line-height: 160%;
+    font-size: 1.5rem;
+    text-align: left;
+}
