@@ -38,7 +38,7 @@
                         <dd>${board.views}</dd>
                     </dl>
                 </div>
-                <div class="cont">
+                <div class="cont" style="white-space: pre-wrap;">
                 	${board.content}
                 </div>            
             </div>
