@@ -1,6 +1,9 @@
 package Meds;
 
 import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,29 +16,67 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/")
 public class Meds_Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Meds_Controller() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	private Meds_DAO DB;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@Override
+	public void init(ServletConfig config) throws ServletException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		super.init(config);
+		DB = new Meds_DAO();
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		String url = req.getServletPath();
+		switch(url) {
+		case "/sellMag":
+			getServletContext().getRequestDispatcher("/pages/SellManage.jsp").forward(req, resp);				
+			break;
+		case "/sellMeds":
+			String selling = req.getParameter("sell");
+			if(selling == null) {
+				List<Meds_DTO_Products> meds = DB.getAllProduct();
+				req.setAttribute("meds", meds);
+				getServletContext().getRequestDispatcher("/pages/SellMeds.jsp").forward(req, resp);								
+			} else {
+				DB.sell(req);
+			}
+			break;
+		case "/sellRefund":
+			getServletContext().getRequestDispatcher("/pages/SellRefund.jsp").forward(req, resp);				
+			break;
+		case "/prodMag":
+			getServletContext().getRequestDispatcher("/pages/ProductManage.jsp").forward(req, resp);				
+			break;
+		case"/prodAdd":
+			getServletContext().getRequestDispatcher("/pages/ProductAdd.jsp").forward(req, resp);				
+			break;
+		case"/prodRemove":
+			getServletContext().getRequestDispatcher("/pages/ProductRemove.jsp").forward(req, resp);				
+			break;
+		case"/storeMag":
+			getServletContext().getRequestDispatcher("/pages/StoreManage.jsp").forward(req, resp);				
+			break;
+		case"/storeOrder":
+			getServletContext().getRequestDispatcher("/pages/StoreOrder.jsp").forward(req, resp);				
+			break;
+		case"/storeRefund":
+			getServletContext().getRequestDispatcher("/pages/StoreRefund.jsp").forward(req, resp);				
+			break;
+		case"/salesMag":
+			getServletContext().getRequestDispatcher("/pages/SaleManage.jsp").forward(req, resp);				
+			break;
+		case"/salesDate":
+			getServletContext().getRequestDispatcher("/pages/StoreRefund.jsp").forward(req, resp);				
+			break;
+		case"/salesProd":
+			getServletContext().getRequestDispatcher("/pages/StoreRefund.jsp").forward(req, resp);				
+			break;
+		case"/salesMade":
+			getServletContext().getRequestDispatcher("/pages/StoreRefund.jsp").forward(req, resp);				
+			break;
+		}
 	}
-
 }
+

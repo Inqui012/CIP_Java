@@ -51,14 +51,35 @@ function addToCart(row) {
 	if (!flag) {
 		const tableTo = $("table.customerCart");
 		var str = "<tr>" +
-			"<td>" + nameToAdd + "</td>" +
+			"<td><input type='hidden' name='medsName' value='" + nameToAdd + "'>" + nameToAdd + "</td>" +
 			"<td>" + priceToAdd + "</td>" +
-			"<td><input type='number' name='listedQuant' value='" + cntToAdd + "'> " +
-			"<button type='button' onclick='changeCart(this);'>변경</button> " +
-			"<button type='button' onclick='deleteCart(this);'>삭제</button></td>" +
+			"<td><input type='number' min='0' name='medsQuant' value='" + cntToAdd + "'> " +
+			"<button type='button' class='btn' onclick='changeCart(this);'>변경</button> " +
+			"<button type='button' class='btn' onclick='deleteCart(this);'>삭제</button></td>" +
 			"<td>" + priceToAdd * cntToAdd + "</td>" +
 			"</tr>";
 		tableTo.append(str);
 	}
 	getTotalCart();
+}
+
+function cartSubmit() {
+	const fm = $(".cartForm");
+	const totalPrice = $("table.customerCart tfoot tr:first-child td").text();
+	if (totalPrice == "") {
+		alert("판매할 제품을 추가해 주세요");
+		return false;
+	}
+	alert("판매를 완료했습니다.");
+	fm.submit();
+}
+
+function cartReset() {
+	const fm = $(".cartForm");
+	$("table.customerCart tbody tr").each(function(index, element) {
+		$(element).remove();
+		getTotalCart();
+	});
+	alert("판매를 취소했습니다.");
+	fm.reset();
 }

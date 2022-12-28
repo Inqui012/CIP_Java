@@ -10,10 +10,10 @@
 	<script type="text/javascript" src="Meds.js"></script>
 </head>
 <body>
-	<c:import url="Meds_Header.jsp"></c:import>
+	<c:import url="Header.jsp"></c:import>
 	<section>
-		<h2>판매제품 추가</h2>
+		<h2>재고 주문</h2>
 	</section>
-	<c:import url="Meds_Footer.jsp"></c:import>
+	<c:import url="Footer.jsp"></c:import>
 </body>
 </html>

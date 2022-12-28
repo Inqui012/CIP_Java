@@ -4,76 +4,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="css/Meds.css" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="css/Meds.css" />
 </head>
 <body>
-	<c:import url="pages/Meds_Header.jsp"></c:import>
+	<c:import url="pages/Header.jsp"></c:import>
 	<section class="saleProduct">
 		<div class="wrap">
-			<h2>제품 판매</h2>
+			<h2>판매</h2>
 			<div class="insideWrapper">
-				<table class="productList">
-					<thead>
-						<tr>
-							<th>제품명</th>
-							<th>판매가</th>
-							<th>판매갯수</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>테스트제품</td>
-							<td>500</td>
-							<td>
-								<input type="number">
-								<button type="button"  class="btn" onclick="addToCart(this);">추가</button>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<form method="post" action="" class="cartForm">
-					<table class="customerCart">
-						<thead>
-							<tr>
-								<th>제품명</th>
-								<th>판매가</th>
-								<th>판매갯수</th>
-								<th>합계</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td></td>
-								<td>100</td>
-								<td>
-									<input type="number" name="listedQuant">
-									<button type="button" class="btn" onclick="changeCart(this);">변경</button>
-									<button type="button" class="btn" onclick="deleteCart(this)">삭제</button>
-								</td>
-								<td></td>
-							</tr>
-						</tbody>
-						<tfoot>
-							<tr>
-								<th colspan="3">계</th>
-								<td></td>
-							</tr>
-							<tr>
-								<td colspan="4">
-									<button type="button" class="btn">주문 취소</button>
-									<button type="button" class="btn">주문 확정</button>
-								</td>
-							</tr>
-						</tfoot>
-					</table>
-				</form>
-			</div>
-		</div>
+				<div class="cards">
+					<i class="fa-solid fa-cart-shopping"></i>
+				</div>
+				<div class="cards">
+					
+				</div>
+			</div>	
+		</div> 
+		<form method="get" action="">
+			<input type="text" name="test">
+			<input type="text" name="test">
+			<input type="text" name="test">
+			<input type="text" name="test">
+			<input type="text" name="test">
+			<input type="submit">
+		</form>
 	</section>
-	<c:import url="pages/Meds_Footer.jsp"></c:import>
-<script type="text/javascript" src="./js/jquery-3.6.3.js"></script>
-<script type="text/javascript" src="./js/Meds.js"></script>
+	<c:import url="pages/Footer.jsp"></c:import>
 </body>
 </html>
