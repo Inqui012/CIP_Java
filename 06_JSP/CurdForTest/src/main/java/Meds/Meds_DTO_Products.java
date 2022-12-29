@@ -1,12 +1,19 @@
 package Meds;
 
 public class Meds_DTO_Products {
+	private int code;
 	private String name;
 	private String madeby;
 	private int inprice;
 	private int outprice;
 	private int stored;
 	
+	public int getCode() {
+		return code;
+	}
+	public void setCode(int code) {
+		this.code = code;
+	}
 	public String getName() {
 		return name;
 	}

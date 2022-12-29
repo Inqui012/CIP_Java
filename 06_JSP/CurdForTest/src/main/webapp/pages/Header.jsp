@@ -21,6 +21,7 @@
 				<li><a href="prodMag">제품관리</a>
 					<ul class="subMenu">
 						<li><a href="prodAdd">판매 제품 추가</a></li>
+						<li><a href="prodEdit">판매 제품 수정</a></li>
 						<li><a href="prodRemove">판매 제품 삭제</a></li>
 					</ul></li>
 				<li><a href="storeMag">재고 관리</a>

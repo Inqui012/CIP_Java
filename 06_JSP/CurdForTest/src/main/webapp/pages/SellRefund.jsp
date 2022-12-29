@@ -11,57 +11,58 @@
 </head>
 <body>
 	<c:import url="Header.jsp"></c:import>
-	<section class="saleProduct">
+	<section class="sellRefund">
 		<div class="wrap">
 			<h2>환불처리</h2>
 			<div class="insideWrapper">
-				<table class="productList">
+				<table class="sellList">
 					<thead>
 						<tr>
-							<th>매출번호</th>
-							<th>매출일자</th>
-							<th>매출내용</th>
+							<th>판매번호</th>
+							<th>판매일자</th>
+							<th colspan="3">판매내용</th>
 							<th>결제금액</th>
+							<th>상태</th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>
-					<c:forEach var="sell" items="${sells}" varStatus="status">
-						<tr>
-							<td>${ med.name }</td>
-							<td>${ med.outprice }</td>
-							<td><input type="number" min="0">
-								<button type="button" class="btn" onclick="addToCart(this);">추가</button>
+					<c:forEach var="sell" items="${sellList}" varStatus="status">
+						<tr class="sellmainList">
+							<td class="txtCenter">${ sell.sellNo }</td>
+							<td>${ sell.sellDate }</td>
+							<td colspan="3">${ sell.sellName }</td>
+							<td class="txtRight">${ sell.sellTotal }</td>
+							<td class="txtCenter">${ sell.sellStatus }</td>
+							<td>
+								<button class="btn" onclick="sellRefund(this);">환불</button>
 							</td>
-						</tr>					
+						</tr>
+							<tr class="dispNone subStlye">
+								<th></th>
+								<th>제조사</th>
+								<th>상품명</th>
+								<th>판매가</th>
+								<th>판매갯수</th>
+								<th>금액</th>
+								<th colspan="2"></th>
+							</tr>
+						<c:forEach var="i" items="${ sell.sellName }" begin="0" end="${sell.sellName.size()}" varStatus="status">
+							<tr class="dispNone subStlye">
+								<td></td>
+								<td>${ sell.sellMadeby.get(status.index) }</td>
+								<td>${ sell.sellName.get(status.index) }</td>
+								<td class="txtRight">${ sell.sellOut.get(status.index) }</td>
+								<td class="txtRight">${ sell.sellQuantity.get(status.index) }</td>
+								<td class="txtRight">${ sell.sellQuantity.get(status.index) * sell.sellOut.get(status.index) }</td>
+								<td colspan="2"></td>
+							</tr>					
+						</c:forEach>
 					</c:forEach>
 					</tbody>
 				</table>
-				<form method="post" action="" class="cartForm">
-					<table class="customerCart">
-						<thead>
-							<tr>
-								<th>제품명</th>
-								<th>판매가</th>
-								<th>판매갯수</th>
-								<th>합계</th>
-							</tr>
-						</thead>
-						<tbody>
-
-						</tbody>
-						<tfoot>
-							<tr>
-								<th colspan="3">계</th>
-								<td></td>
-							</tr>
-							<tr>
-								<td colspan="4">
-									<button type="reset" class="btn" onclick="cartReset(); return false;">주문 취소</button>
-									<button type="submit" class="btn" onclick="cartSubmit(); return false;">주문 확정</button>
-								</td>
-							</tr>
-						</tfoot>
-					</table>
+				<form method="post" action="sellRefund?refund=Y" class="refundForm">
+					<input type="hidden" name="refundNo" value="">
 				</form>
 			</div>
 		</div>

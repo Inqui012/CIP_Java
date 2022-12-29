@@ -11,7 +11,7 @@
 </head>
 <body>
 	<c:import url="Header.jsp"></c:import>
-	<section class="saleProduct">
+	<section class="sellMeds">
 		<div class="wrap">
 			<h2>제품 판매</h2>
 			<div class="insideWrapper">
@@ -19,7 +19,9 @@
 					<thead>
 						<tr>
 							<th>제품명</th>
+							<th>제조사</th>
 							<th>판매가</th>
+							<th>현재고</th>
 							<th>판매갯수</th>
 						</tr>
 					</thead>
@@ -27,9 +29,11 @@
 					<c:forEach var="med" items="${meds}" varStatus="status">
 						<tr>
 							<td>${ med.name }</td>
-							<td>${ med.outprice }</td>
-							<td><input type="number" min="0">
-								<button type="button" class="btn" onclick="addToCart(this);">추가</button>
+							<td>${ med.madeby }</td>
+							<td class="txtRight">${ med.outprice }</td>
+							<td class="txtRight">${ med.stored }</td>
+							<td class="quantInput"><input type="number" min="0" max="${ med.stored }">
+								<button type="button" class="btn" onclick="addToCart(this, ${ med.code });">추가</button>
 							</td>
 						</tr>					
 					</c:forEach>
@@ -51,12 +55,12 @@
 						<tfoot>
 							<tr>
 								<th colspan="3">계</th>
-								<td></td>
+								<td class="txtRight"></td>
 							</tr>
 							<tr>
-								<td colspan="4">
-									<button type="reset" class="btn" onclick="cartReset(); return false;">주문 취소</button>
-									<button type="submit" class="btn" onclick="cartSubmit(); return false;">주문 확정</button>
+								<td class="btnWrap" colspan="4">
+									<button type="reset" class="btn" onclick="cartReset(); return false;">판매 취소</button>
+									<button type="submit" class="btn" onclick="cartSubmit(); return false;">판매 확정</button>
 								</td>
 							</tr>
 						</tfoot>

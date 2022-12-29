@@ -23,14 +23,7 @@
 				</div>
 			</div>	
 		</div> 
-		<form method="get" action="">
-			<input type="text" name="test">
-			<input type="text" name="test">
-			<input type="text" name="test">
-			<input type="text" name="test">
-			<input type="text" name="test">
-			<input type="submit">
-		</form>
+
 	</section>
 	<c:import url="pages/Footer.jsp"></c:import>
 </body>
