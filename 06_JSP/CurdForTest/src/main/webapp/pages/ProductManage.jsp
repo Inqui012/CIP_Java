@@ -16,7 +16,7 @@
 	<c:import url="Header.jsp"></c:import>
 	<section class="prodManage">
 		<div class="wrap">
-			<div class="insideWrapper btnMenu">
+			<div class="flexWrapper btnMenu">
 				<div class="cards">
 					<a href="prodAdd">
 						<span class="material-symbols-outlined">add_comment</span>

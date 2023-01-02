@@ -14,7 +14,7 @@
 	<section class="storeOrder">
 		<div class="wrap">
 			<h2>추가 주문</h2>
-			<div class="insideWrapper">
+			<div class="flexWrapper">
 				<table class="productList">
 					<thead>
 						<tr>

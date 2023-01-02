@@ -15,7 +15,7 @@
 	<c:import url="Header.jsp"></c:import>
 	<section class="storeManage">
 		<div class="wrap">
-			<div class="insideWrapper btnMenu">
+			<div class="flexWrapper btnMenu">
 				<div class="cards">
 					<a href="storeOrder">
 						<span class="material-symbols-outlined">add_location_alt</span>

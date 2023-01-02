@@ -14,7 +14,7 @@
 	<section class="sellMeds">
 		<div class="wrap">
 			<h2>제품 판매</h2>
-			<div class="insideWrapper">
+			<div class="flexWrapper">
 				<table class="productList">
 					<thead>
 						<tr>

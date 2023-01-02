@@ -13,8 +13,8 @@
 	<c:import url="Header.jsp"></c:import>
 	<section class="prodEdit">
 		<div class="wrap">
-			<h2>판매 제품 추가</h2>
-			<div class="insideWrapper">
+			<h2>판매 제품 수정</h2>
+			<div>
                 <table class="productList">
 					<thead>
 						<tr>
@@ -22,6 +22,7 @@
 							<th>제조사</th>
 							<th>판매가</th>
 							<th>구매가</th>
+							<th class="oneBtn"></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -31,50 +32,20 @@
 							<td>${ med.madeby }</td>
 							<td class="txtRight">${ med.outprice }</td>
 							<td class="txtRight">${ med.inprice }</td>
+							<td class="oneBtn">
+								<p class="dispNone">${ med.code }</p>
+								<button class="btn" type="button" onclick="">수정</button>
+							</td>
 						</tr>					
 					</c:forEach>
 					</tbody>
 				</table>
-				<form method="post" action="prodEdit?edit=Y" class="prodForm">
-					<table class="prod">
-                        <tr>
-                            <th>
-                                <label for="prodName">상품명</label>
-                            </th>
-                            <td>
-                                <input type="text" id="prodName" name="prodName" value="" required>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <label for="prodMade">제조사</label>
-                            </th>
-                            <td>
-                                <input type="text" id="prodMade" name="prodMade" value="" required>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <label for="prodOut">판매가</label>
-                            </th>
-                            <td>
-                                <input type="number" id="prodOut" name="prodOut" value="" min="0" required>
-                            </td>
-                        <tr>
-                        <tr>
-                            <th>
-                                <label for="prodIn">구매가</label>
-                            </th>
-                            <td>
-                                <input type="number" id="prodIn" name="prodIn" value="" min="0">
-                            </td>
-                        </tr>
-							<td class="btnWrap" colspan="2">
-								<button type="reset" class="btn">추가 취소</button>
-								<button type="submit" class="btn" onclick="inputSubmit(); return false;">상품 추가</button>
-						    </td>
-						</tr>                   
-					</table>
+				<form method="post" action="prodEdit?edit=Y" class="editForm">
+					<input type="hidden" name="prodcode" value="">
+					<input type="hidden" name="prodname" value="">
+					<input type="hidden" name="prodmadeby" value="">
+					<input type="hidden" name="prodoutprice" value="">
+					<input type="hidden" name="prodinprice" value="">
 				</form>
 			</div>
 		</div>

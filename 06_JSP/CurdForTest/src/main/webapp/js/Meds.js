@@ -1,12 +1,12 @@
 $(".sellList tbody tr.sellmainList").on("click", function () {
 	const sublist = $(this).nextUntil(".sellmainList");
 	$(this).toggleClass("bgc");
-	sublist.toggleClass("sellSubList");
+	sublist.toggleClass("dispNone");
 });
 
 $(".prodEdit .productList tbody tr").on("click", function () {
 	$(this).toggleClass("bgc");
-	const prodName;
+	const prodName = null;
 })
 
 // function

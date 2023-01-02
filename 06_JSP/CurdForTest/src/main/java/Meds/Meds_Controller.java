@@ -95,6 +95,8 @@ public class Meds_Controller extends HttpServlet {
 			getServletContext().getRequestDispatcher("/pages/StoreOrder.jsp").forward(req, resp);				
 			break;
 		case"/storeRefund":
+			List<Meds_DTO_Products> medStoreList = DB.getAllProduct(" ORDER BY NAME");
+			req.setAttribute("meds", medStoreList);
 			getServletContext().getRequestDispatcher("/pages/StoreRefund.jsp").forward(req, resp);				
 			break;
 		case"/salesMag":

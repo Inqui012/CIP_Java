@@ -16,7 +16,7 @@
 	<c:import url="Header.jsp"></c:import>
 	<section class="saleManage">
 		<div class="wrap">
-			<div class="insideWrapper btnMenu">
+			<div class="flexWrapper btnMenu">
 				<div class="cards">
 					<a href="salesDate">
 						<span class="material-symbols-outlined">alarm</span>

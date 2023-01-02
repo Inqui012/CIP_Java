@@ -14,7 +14,7 @@
 	<section class="prodAdd">
 		<div class="wrap">
 			<h2>판매 제품 추가</h2>
-			<div class="insideWrapper">
+			<div>
 				<form method="post" action="prodAdd?add=Y" class="prodForm">
 					<table class="prod">
                         <tr>

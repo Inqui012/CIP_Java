@@ -15,7 +15,7 @@
 	<c:import url="Header.jsp"></c:import>
 	<section class="sellManage">
 		<div class="wrap">
-			<div class="insideWrapper btnMenu">
+			<div class="flexWrapper btnMenu">
 				<div class="cards">
 					<a href="sellMeds">
 						<span class="material-symbols-outlined">shopping_cart</span>
