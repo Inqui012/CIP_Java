@@ -14,7 +14,7 @@
 	<section class="prodEdit">
 		<div class="wrap">
 			<h2>판매 제품 수정</h2>
-			<div>
+			<div class="flexWrapper">
                 <table class="productList">
 					<thead>
 						<tr>
@@ -40,7 +40,7 @@
 					</c:forEach>
 					</tbody>
 				</table>
-				<form method="post" action="prodEdit?edit=Y" class="editForm">
+				<form method="post" action="prodEdit?edit=Y" class="editForm dispNone">
 					<input type="hidden" name="prodcode" value="">
 					<input type="hidden" name="prodname" value="">
 					<input type="hidden" name="prodmadeby" value="">

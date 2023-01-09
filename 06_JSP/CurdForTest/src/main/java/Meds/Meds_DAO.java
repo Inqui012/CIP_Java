@@ -122,9 +122,9 @@ public class Meds_DAO {
 			con = getConn();
 				for(int i = 0; i < medsCode.length; i++) {
 					if(i == 0) {
-						str = "INSERT INTO MED_SALE (SALENO, CODE, SALE_QUANTITY, SALE_DATE) VALUES (SALENO_SEQ.NEXTVAL, ?, ?, TO_DATE(?, 'YYYYMMDDHHMISS'))";												
+						str = "INSERT INTO MED_SALE (SALENO, CODE, SALE_QUANTITY, SALE_DATE) VALUES (SALENO_SEQ.NEXTVAL, ?, ?, TO_DATE(?, 'YYYYMMDDHH24MISS'))";												
 					} else {
-						str = "INSERT INTO MED_SALE (SALENO, CODE, SALE_QUANTITY, SALE_DATE) VALUES (SALENO_SEQ.CURRVAL, ?, ?, TO_DATE(?, 'YYYYMMDDHHMISS'))";												
+						str = "INSERT INTO MED_SALE (SALENO, CODE, SALE_QUANTITY, SALE_DATE) VALUES (SALENO_SEQ.CURRVAL, ?, ?, TO_DATE(?, 'YYYYMMDDHH24MISS'))";												
 					}
 					st = con.prepareStatement(str);
 					st.setInt(1, Integer.parseInt(medsCode[i]));

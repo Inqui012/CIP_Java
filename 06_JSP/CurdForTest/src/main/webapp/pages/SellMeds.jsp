@@ -58,7 +58,7 @@
 								<td class="txtRight"></td>
 							</tr>
 							<tr>
-								<td class="btnWrap" colspan="4">
+								<td class="txtCenter" colspan="4">
 									<button type="reset" class="btn" onclick="cartReset(); return false;">판매 취소</button>
 									<button type="submit" class="btn" onclick="cartSubmit(); return false;">판매 확정</button>
 								</td>

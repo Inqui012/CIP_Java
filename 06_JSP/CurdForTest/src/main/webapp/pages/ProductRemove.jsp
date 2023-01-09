@@ -14,7 +14,7 @@
 	<section class="prodRemove">
 		<div class="wrap">
 			<h2>판매 제품 삭제</h2>
-			<div class="flexWrapper">
+			<div class="flexWrapper col">
                 <span>
                     !! 재고가 존재하지 않는 상품만 판매 리스트에서 삭제 가능합니다. !!<br/>
                     !! 리스트에 상품이 없을경우 재고 처리를 먼저 진행해주세요. !!

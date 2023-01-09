@@ -14,7 +14,7 @@
 	<section class="prodAdd">
 		<div class="wrap">
 			<h2>판매 제품 추가</h2>
-			<div>
+			<div class="flexWrapper">
 				<form method="post" action="prodAdd?add=Y" class="prodForm">
 					<table class="prod">
                         <tr>
@@ -68,7 +68,7 @@
                             </td>
                         </tr>
                         <tr>
-							<td class="btnWrap" colspan="2">
+							<td class="txtCenter" colspan="2">
 								<button type="reset" class="btn">추가 취소</button>
 								<button type="submit" class="btn" onclick="inputSubmit(); return false;">상품 추가</button>
 						    </td>
