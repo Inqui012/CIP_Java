@@ -39,7 +39,7 @@
 					</c:forEach>
 					</tbody>
 				</table>
-				<form method="post" action="sellMeds?sell=Y" class="cartForm">
+				<form method="post" action="sellMeds?div=sell" class="cartForm">
 					<table class="customerCart">
 						<thead>
 							<tr>

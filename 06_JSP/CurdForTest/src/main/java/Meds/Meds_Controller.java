@@ -1,6 +1,9 @@
 package Meds;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletConfig;
@@ -30,18 +33,21 @@ public class Meds_Controller extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		String url = req.getServletPath();
 		String root = req.getContextPath();
+		String div = req.getParameter("div");
 		switch(url) {
 		case "/sellMag":
 			getServletContext().getRequestDispatcher("/pages/SellManage.jsp").forward(req, resp);				
 			break;
 		case "/sellMeds":
-			String selling = req.getParameter("sell");
-			if(selling == null) {
+			if(div == null) {
 				List<Meds_DTO_Products> medList = DB.getAllProduct(" ORDER BY NAME");
 				req.setAttribute("meds", medList);
 				getServletContext().getRequestDispatcher("/pages/SellMeds.jsp").forward(req, resp);								
 			} else {
-				DB.sell(req);
+				String[] medsQuant = req.getParameterValues("medsQuant");
+				String[] medsCode = req.getParameterValues("medsCode");
+				String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
+				DB.sellOrder(medsQuant, medsCode, now, div);
 				resp.sendRedirect(root + "/sellMeds");
 			}
 			break;
@@ -65,7 +71,13 @@ public class Meds_Controller extends HttpServlet {
 				req.setAttribute("nextCode", DB.getMaxNum());			
 				getServletContext().getRequestDispatcher("/pages/ProductAdd.jsp").forward(req, resp);								
 			} else {
-				DB.prodAdd(req);
+				Meds_DTO_Products newProd = new Meds_DTO_Products();
+				newProd.setName(req.getParameter("prodName"));
+				newProd.setMadeby(req.getParameter("prodMade"));
+				newProd.setInprice(Integer.parseInt(req.getParameter("prodIn")));
+				newProd.setOutprice(Integer.parseInt(req.getParameter("prodOut")));
+				newProd.setStored(Integer.parseInt(req.getParameter("prodStock")));			
+				DB.prodAdd(newProd);
 				resp.sendRedirect(root + "/sellMeds");
 			}
 			break;
@@ -90,9 +102,17 @@ public class Meds_Controller extends HttpServlet {
 			getServletContext().getRequestDispatcher("/pages/StoreManage.jsp").forward(req, resp);				
 			break;
 		case"/storeOrder":
-			List<Meds_DTO_Products> medStock = DB.getAllProduct(" ORDER BY STORED");
-			req.setAttribute("meds", medStock);
-			getServletContext().getRequestDispatcher("/pages/StoreOrder.jsp").forward(req, resp);				
+			if(div == null) {
+				List<Meds_DTO_Products> medStock = DB.getAllProduct(" ORDER BY STORED");
+				req.setAttribute("meds", medStock);
+				getServletContext().getRequestDispatcher("/pages/StoreOrder.jsp").forward(req, resp);				
+			} else {
+				String[] medsQuant = req.getParameterValues("medsQuant");
+				String[] medsCode = req.getParameterValues("medsCode");
+				String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
+				DB.sellOrder(medsQuant, medsCode, now, div);
+				resp.sendRedirect(root + "/storeOrder");				
+			}
 			break;
 		case"/storeRefund":
 			List<Meds_DTO_Products> medStoreList = DB.getAllProduct(" ORDER BY NAME");

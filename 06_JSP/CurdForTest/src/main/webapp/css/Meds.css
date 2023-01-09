@@ -37,6 +37,8 @@ section.saleManage div.cards {width: 30%;}
 tr:not(:first-child) .quantInput {border-top: 1px solid black;}
 .dispNone {display: none;}
 .productList thead tr th:last-child {width: 100px;}
+.customerCart thead tr th:nth-child(3) {width: 150px;}
+
 /* saleManage */
 
 /* sellMeds */

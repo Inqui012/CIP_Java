@@ -113,18 +113,23 @@ public class Meds_DAO {
 		return sellList;
 	}
 
-	public void sell(HttpServletRequest req) {
-		String[] medsQuant = req.getParameterValues("medsQuant");
-		String[] medsCode = req.getParameterValues("medsCode");
-		String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
+	public void sellOrder (String[] medsQuant, String[] medsCode, String now, String div) {
 		String str;
 		try {
 			con = getConn();
 				for(int i = 0; i < medsCode.length; i++) {
-					if(i == 0) {
-						str = "INSERT INTO MED_SALE (SALENO, CODE, SALE_QUANTITY, SALE_DATE) VALUES (SALENO_SEQ.NEXTVAL, ?, ?, TO_DATE(?, 'YYYYMMDDHH24MISS'))";												
+					if(div.equals("sell")) {
+						if(i == 0) {
+							str = "INSERT INTO MED_SALE (SALENO, CODE, SALE_QUANTITY, SALE_DATE) VALUES (SALENO_SEQ.NEXTVAL, ?, ?, TO_DATE(?, 'YYYYMMDDHH24MISS'))";												
+						} else {
+							str = "INSERT INTO MED_SALE (SALENO, CODE, SALE_QUANTITY, SALE_DATE) VALUES (SALENO_SEQ.CURRVAL, ?, ?, TO_DATE(?, 'YYYYMMDDHH24MISS'))";												
+						}						
 					} else {
-						str = "INSERT INTO MED_SALE (SALENO, CODE, SALE_QUANTITY, SALE_DATE) VALUES (SALENO_SEQ.CURRVAL, ?, ?, TO_DATE(?, 'YYYYMMDDHH24MISS'))";												
+						if(i == 0) {
+							str = "INSERT INTO MED_STORE (STORENO, CODE, STORE_QUANTITY, STORE_DATE) VALUES (STORE_SEQ.NEXTVAL, ?, ?, TO_DATE(?, 'YYYYMMDDHH24MISS'))";												
+						} else {
+							str = "INSERT INTO MED_STORE (STORENO, CODE, STORE_QUANTITY, STORE_DATE) VALUES (STORE_SEQ.CURRVAL, ?, ?, TO_DATE(?, 'YYYYMMDDHH24MISS'))";												
+						}												
 					}
 					st = con.prepareStatement(str);
 					st.setInt(1, Integer.parseInt(medsCode[i]));
@@ -140,16 +145,29 @@ public class Meds_DAO {
 		}
 	}
 	
-	public void prodAdd(HttpServletRequest req) {
+//	public void stockChange () {
+//		String str;
+//		try {
+//			con = getConn();
+//			
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} finally {
+//			disCon();
+//		}
+//	}
+	
+	public void prodAdd(Meds_DTO_Products newMeds) {
 		String str = "INSERT INTO MED_PRODUCT VALUES (PRODUCT_SEQ.NEXTVAL, ?, ?, ?, ?, ?)";
 		try {
 			con = getConn();
 			st = con.prepareStatement(str);
-			st.setString(1, req.getParameter("prodName"));
-			st.setString(2, req.getParameter("prodMade"));
-			st.setInt(3, Integer.parseInt(req.getParameter("prodIn")));
-			st.setInt(4, Integer.parseInt(req.getParameter("prodOut")));
-			st.setInt(5, Integer.parseInt(req.getParameter("prodStock")));
+			st.setString(1, newMeds.getName());
+			st.setString(2, newMeds.getMadeby());
+			st.setInt(3, newMeds.getInprice());
+			st.setInt(4, newMeds.getOutprice());
+			st.setInt(5, newMeds.getStored());
 			st.executeUpdate();			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
