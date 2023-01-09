@@ -145,18 +145,66 @@ public class Meds_DAO {
 		}
 	}
 	
-//	public void stockChange () {
-//		String str;
-//		try {
-//			con = getConn();
-//			
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} finally {
-//			disCon();
-//		}
-//	}
+	public int getStored (String code) {
+		String str;
+		int stored = 0;
+		try {
+			con = getConn();
+			str = "SELECT STORED FROM MED_PRODUCT WHERE CODE = " + code;
+			st = con.prepareStatement(str);
+			rs = st.executeQuery();
+			rs.next();
+			stored = rs.getInt(1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			disCon();
+		}
+		return stored;
+	}
+	
+	public int getSelled (String code) {
+		String str;
+		int selled = 0;
+		try {
+			con = getConn();
+			str = "SELECT NVL(SUM(DECODE(SA.SALE_STATUS, 'R', 0, (SA.SALE_QUANTITY * -1))), 0)";
+			str += " FROM MED_SALE SA";
+			str += " WHERE SA.CODE = " + code;
+			st = con.prepareStatement(str);
+			rs = st.executeQuery();
+			rs.next();
+			selled = rs.getInt(1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			disCon();
+		}
+		return selled;
+	}
+	
+	public int getOrdered (String code) {
+		String str;
+		int ordered = 0;
+		try {
+			con = getConn();
+			str = "SELECT NVL(SUM(DECODE(ST.STORE_STATUS, 'I', ST.STORE_QUANTITY, (ST.STORE_QUANTITY * -1))), 0)";
+			str += " FROM MED_STORE ST";
+			str += " WHERE ST.CODE = " + code;
+			st = con.prepareStatement(str);
+			rs = st.executeQuery();
+			rs.next();
+			ordered = rs.getInt(1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			disCon();
+		}
+		return ordered;		
+	}
 	
 	public void prodAdd(Meds_DTO_Products newMeds) {
 		String str = "INSERT INTO MED_PRODUCT VALUES (PRODUCT_SEQ.NEXTVAL, ?, ?, ?, ?, ?)";
