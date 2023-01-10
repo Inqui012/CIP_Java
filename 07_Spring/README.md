@@ -26,6 +26,7 @@ DTO, DAO 가 데이터베이스의 형태나, 가져오는 데이터에 의존�
 어플리케이션 실행시 하나의 Entity Manager Factory 를 생성(Static)하고 요청이 있을경우 이곳에서 Entity Manager 를 생성한다.  
 Entity Manager 는 요청이 있을때마다 다수 생성될 수 있으며 Entity 를 실제로 저장하고 있는 영속성 컨텍스트(Persistence Context)로 접근하여 DB작업을 실행한다.
 Persistence Context 는 엔티티를 영구 저장하는 장소.
+이처럼 쿼리문의 처리를 EMF가 대신 해주기 때문에 DAO의 사용에도 변화가 있다.
 
 #### 엔티티의 생명주기
 영속성 컨텍스트를 크게 두가지 구역으로 나뉘어서 생각하면 편하다.  
