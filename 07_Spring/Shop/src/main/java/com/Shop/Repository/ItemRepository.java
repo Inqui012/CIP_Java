@@ -15,5 +15,6 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
 //	변수이름은 쿼리메소드의 네이밍 룰을 참조.
 	List<Item> findByItemName(String itemName);
 	List<Item> findByPriceGreaterThan(int num);
+	List<Item> findByPriceGreaterThanOrderByPriceDesc(int num);
 	List<Item> findByItemNameOrItemDetail(String itemName, String itemDetail);
 }

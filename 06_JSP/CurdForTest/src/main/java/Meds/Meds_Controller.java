@@ -48,6 +48,7 @@ public class Meds_Controller extends HttpServlet {
 				String[] medsCode = req.getParameterValues("medsCode");
 				String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
 				DB.sellOrder(medsQuant, medsCode, now, div);
+				DB.updateStock(medsCode);
 				resp.sendRedirect(root + "/sellMeds");
 			}
 			break;
@@ -111,6 +112,7 @@ public class Meds_Controller extends HttpServlet {
 				String[] medsCode = req.getParameterValues("medsCode");
 				String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
 				DB.sellOrder(medsQuant, medsCode, now, div);
+				DB.updateStock(medsCode);
 				resp.sendRedirect(root + "/storeOrder");				
 			}
 			break;
