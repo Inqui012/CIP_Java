@@ -33,10 +33,10 @@ public class MemberService {
 //			persist로 지정하여 영속성 컨텍스트에 저장했던 엔티티 객체들을 분리한 상태.
 //			.close(), .detach(엔티티), .clear() 모두 같은 동작을 한다.
 //			저장공간에서의 삭제와는 다르다. 영속성 컨텍스트에 활성/비활성 구역이 있는 느낌? 
-//			em.close();
+			em.close();
 //			영속성 컨텍스트에서 해당 엔티티를 삭제하는 명령어. DB에서도 삭제된다는데...흐음?
 //			close를 먼저하면 오류나는듯?
-			em.remove(member);
+//			em.remove(member);
 		}
 	}
 }
