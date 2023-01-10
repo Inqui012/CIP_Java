@@ -17,6 +17,8 @@ public class Item {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+//	데이터타입을 설정할때, not null 설정을 해주었을경우는 객체형 타입이 아닐경우 오류가 날 수 있다.
+//	일반 데이터타입에는 null 값을 저장할 수 없기 때문에
 	@Column(nullable = false, length = 50)
 	private String itemName;
 	
