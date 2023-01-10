@@ -20,3 +20,35 @@ DI로 jar만 추가해서는 사용할 수 없고 lombok의 jar 파일을 실행
 ### ORM (Object Relational Mapping)
 DTO, DAO 가 데이터베이스의 형태나, 가져오는 데이터에 의존적임을 극복하기 위해서 나온 방법. 객체와 데이터베이스를 자동으로 매핑해주는 기술? 대표적으로 JPA가 있다.  
 사용하는 데이터베이스에 따른 SQL의 변화등을 단순한 설정만으로도 간단하게 변환 가능하다.
+
+### JPA
+@Entity 로 선언한 클래스가 DTO의 역할을 대신하는 엔티티 클래스이다.  
+어플리케이션 실행시 하나의 Entity Manager Factory 를 생성(Static)하고 요청이 있을경우 이곳에서 Entity Manager 를 생성한다.  
+Entity Manager 는 요청이 있을때마다 다수 생성될 수 있으며 Entity 를 실제로 저장하고 있는 영속성 컨텍스트(Persistence Context)로 접근하여 DB작업을 실행한다.
+Persistence Context 는 엔티티를 영구 저장하는 장소.
+
+#### 엔티티의 생명주기
+```java
+EntityClass box = new EntityClass();
+```
+비영속 상태. 단순히 new 선언으로 엔티티 객체를 생성.  
+  
+```java
+EntityManager.persist(box);
+EntityTransaction.commit();
+```
+영속 상태. 비영속으로 생성만 되어 있던 객체를 엔티티 매니저가 영속상태로 변환한다.  
+실제 실행은 commit() 에서 하고, 명령문을 준비하는 단계?  
+  
+```java
+EntityManager.close();
+EntityManager.detach(box);
+EntityManager.clear();
+```
+준영속 상태. 모두 같은 기능을 한다. 영속성 컨텍스트에 저장되어 있는 엔티티를 비활성화로 바꾼다고 생각하면 편한가.  
+컨텍스트 내부에서 삭제되는것은 아니고 분리만 시켜놓고 있는 상태. 비활성화 상태라 영속성 컨텍스트가 제공하는 기능을 사용하지 못한다. 비영속과의 차이점으로는 식별자의 존재여부?
+
+```java
+EntityManager.remove(box);
+```
+삭제. 영속성 컨텍스트에서 해당 객체를 삭제한다. DB의 데이터는 남아있네.

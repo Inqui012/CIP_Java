@@ -27,6 +27,7 @@ public class Member {
 	private String name;
 	
 //	만약 필드에 열거형데이터 Enum을 사용할경우 사용하는 어노테이션.
+//	속성값으로 어떤식으로 DB에 저장할것인지 지정할 수 있다. 아래는 상수이름을 스트링 형태로 저장하겠다는 선언.
 	@Enumerated(EnumType.STRING)
 	@Column
 	private MemberClass MemberClass;
