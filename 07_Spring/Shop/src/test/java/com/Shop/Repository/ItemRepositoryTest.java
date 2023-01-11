@@ -17,6 +17,8 @@ import org.springframework.test.context.TestPropertySource;
 import com.Shop.Constant.ItemSellStatus;
 import com.Shop.Entity.Item;
 import com.Shop.Entity.QItem;
+import com.fasterxml.jackson.databind.util.ArrayBuilders.BooleanBuilder;
+import com.querydsl.core.QueryResults;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
@@ -94,6 +96,26 @@ class ItemRepositoryTest {
 //		}
 //	}
 	
+	public void createItemTest02() {
+		for(int i = 1; i <= 10; i++) {
+			Item item = new Item();
+			item.setItemName("Test Product" + i);
+			item.setPrice(8800 + i);
+			item.setItemDetail("The cake is fake" + i);
+			if(i < 5) {
+				item.setItemSellStatus(ItemSellStatus.SELL);	
+				item.setStockNumber(100 + i);
+			} else if(i < 8) {
+				item.setItemSellStatus(ItemSellStatus.SOLD_OUT);
+				item.setStockNumber(0);
+			} else {
+				item.setItemSellStatus(null);
+			}
+			item.setRegTime(LocalDateTime.now());
+			itemRepository.save(item);
+		}
+	}
+	
 	@Test
 	@DisplayName("QueryDsl test")
 	public void queryDslTest() {
@@ -107,5 +129,15 @@ class ItemRepositoryTest {
 		for(Item item : itemList) {
 			System.out.println(item.toString());
 		}
+	}
+
+	@Test
+	@DisplayName("QueryDsl paging")
+	public void queryDslTest2() {
+		this.createItemTest02();
+//		쿼리문에 들어갈 조건을 생성해주는 빌더 클래스.
+		BooleanBuilder b = new BooleanBuilder();
+		QItem qItem = QItem.item;
+		b.and(qItem.itemDetail.like("%fake%"));
 	}
 }
