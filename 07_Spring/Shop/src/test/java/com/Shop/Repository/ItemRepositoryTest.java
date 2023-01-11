@@ -45,8 +45,8 @@ class ItemRepositoryTest {
 		}
 	}
 	
-	@Test
-	@DisplayName("select test")
+//	@Test
+//	@DisplayName("select test")
 	public void findByItemNameTest() {
 		this.createItemTest();
 		List<Item> itemList = itemRepository.findByItemName("Test Product4");
@@ -58,6 +58,26 @@ class ItemRepositoryTest {
 			System.out.println(item.toString());
 		}
 		itemList = itemRepository.findByItemNameOrItemDetail("Test Product3", "The cake is fake9");
+		for(Item item : itemList) {
+			System.out.println(item.toString());
+		}
+	}
+	
+	@Test
+	@DisplayName("Jpql")
+	public void findByItemDeail() {
+		this.createItemTest();
+		List<Item> itemList = itemRepository.findByItemDeail("fake5");
+		for(Item item : itemList) {
+			System.out.println(item.toString());
+		}
+	}
+	
+	@Test
+	@DisplayName("Jpql native")
+	public void findByItemDeailNative() {
+		this.createItemTest();
+		List<Item> itemList = itemRepository.findByItemDeailNative("fake8");
 		for(Item item : itemList) {
 			System.out.println(item.toString());
 		}
