@@ -1,7 +1,7 @@
 # Spring FrameWork
 수업에서는 이클립스와 Maven을 사용함.  
 이클립스의 MarketPlace 에서 Spring Tools 를 설치 후, Spring IO 사이트에서 간단하게 초기화 작업을 진행할 수 있다.  
-[Spring IO](https://start.spring.io/)  
+[Spring IO start](https://start.spring.io/)  
 
 ### IoC (Inversion of Control)
 제어의 역행. 기존의 java 에서는 main() 메소드에서 실행에 필요한 모든 객체의 생성, 호출을 진행하지만 제어의 역행이 적용되는 프로그램은 해당 행위를 다른곳에 위임하는 형태를 취한다.  
@@ -12,7 +12,8 @@ Java 사용시 계속해서 반복사용하게 되는 getter/setter 등의 주�
 DI로 jar만 추가해서는 사용할 수 없고 lombok의 jar 파일을 실행시켜서 사용하는 IDE를 지정하여 설치를 진행해주어야 한다.
 
 ### H2 DB
-가볍네. 웹에서 바로 보이는듯? 테스트운용으로 자주 쓰이는듯하다.
+가볍네. 웹에서 바로 보이는듯? 테스트운용으로 자주 쓰이는듯하다.  
+[H2 DataBase](https://www.h2database.com/html/main.html)  
 
 ### MySql
 오라클과는 조금씩 다름. 스키마(Database)를 생성하고, 해당 스키마를 생성하기 위해 use 커맨드를 사용.
@@ -24,9 +25,10 @@ DTO, DAO 가 데이터베이스의 형태나, 가져오는 데이터에 의존�
 ### JPA
 @Entity 로 선언한 클래스가 DTO의 역할을 대신하는 엔티티 클래스이다.  
 어플리케이션 실행시 하나의 Entity Manager Factory 를 생성(Static)하고 요청이 있을경우 이곳에서 Entity Manager 를 생성한다.  
-Entity Manager 는 요청이 있을때마다 다수 생성될 수 있으며 Entity 를 실제로 저장하고 있는 영속성 컨텍스트(Persistence Context)로 접근하여 DB작업을 실행한다.
-Persistence Context 는 엔티티를 영구 저장하는 장소.
-이처럼 쿼리문의 처리를 EMF가 대신 해주기 때문에 DAO의 사용에도 변화가 있다.
+Entity Manager 는 요청이 있을때마다 다수 생성될 수 있으며 Entity 를 실제로 저장하고 있는 영속성 컨텍스트(Persistence Context)로 접근하여 DB작업을 실행한다.  
+Persistence Context 는 엔티티를 영구 저장하는 장소.  
+이처럼 쿼리문의 처리를 EMF가 대신 해주기 때문에 DAO의 사용에도 변화가 있다.  
+[Spring Data JPA API](https://docs.spring.io/spring-data/jpa/docs/current/api/index.html)  
 
 ### JpaRepository<엔티티 객체, pk데이터타입>
 JPA에서 DAO의 역할을 담당하는 클래스이다. DB작업이 필요한 엔티티에 맞추어 인터페이스를 생성하고, 해당 클래스를 상속받아 사용하게 된다.  
@@ -37,6 +39,7 @@ JPA에서 DAO의 역할을 담당하는 클래스이다. DB작업이 필요한 �
 
 #### Querydsl
 JPQL 을 사용하여 쿼리를 실행할시, 오류를 발견하기 위해서는 컴파일 시점까지 진행할 수밖에 없다. 이런 단점을 보완하고 빠르게 오류를 발견하기 위해 사용하는것이 QueryDsl이다. 의존성과 플러그인을 삽입하면 자동으로 각 엔티티에 맞춘 클래스를 생성해준다.  
+[Querydsl API](http://querydsl.com/static/querydsl/latest/reference/html/index.html)  
 
 #### 엔티티의 생명주기
 영속성 컨텍스트를 크게 두가지 구역으로 나뉘어서 생각하면 편하다.  

@@ -5,6 +5,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +16,9 @@ import org.springframework.test.context.TestPropertySource;
 
 import com.Shop.Constant.ItemSellStatus;
 import com.Shop.Entity.Item;
+import com.Shop.Entity.QItem;
+import com.querydsl.jpa.impl.JPAQuery;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 
 // 테스트용으로 사용할 클래스를 선언.
 @SpringBootTest
@@ -23,6 +29,11 @@ class ItemRepositoryTest {
 //	의존성주입. @Autowired 는 알아서 해당 클래스의 인스턴스를 생성하여 변수에 대입해준다.
 	@Autowired
 	ItemRepository itemRepository;
+	
+//	QueryDsl은 사용하기 위해서 영속성 컨텍스트를 가져와야한다.
+//	아래 어노테이션으로 영속성 컨텍스트의 사용을 선언한다.
+	@PersistenceContext
+	EntityManager em;
 	
 //	지정된 메소드를 테스트하겠다는 선언.
 //	@Test
@@ -47,37 +58,52 @@ class ItemRepositoryTest {
 	
 //	@Test
 //	@DisplayName("select test")
-	public void findByItemNameTest() {
-		this.createItemTest();
-		List<Item> itemList = itemRepository.findByItemName("Test Product4");
-		for(Item item : itemList) {
-			System.out.println(item.toString());
-		}
-		itemList = itemRepository.findByPriceGreaterThan(8805);
-		for(Item item : itemList) {
-			System.out.println(item.toString());
-		}
-		itemList = itemRepository.findByItemNameOrItemDetail("Test Product3", "The cake is fake9");
-		for(Item item : itemList) {
-			System.out.println(item.toString());
-		}
-	}
+//	public void findByItemNameTest() {
+//		this.createItemTest();
+//		List<Item> itemList = itemRepository.findByItemName("Test Product4");
+//		for(Item item : itemList) {
+//			System.out.println(item.toString());
+//		}
+//		itemList = itemRepository.findByPriceGreaterThan(8805);
+//		for(Item item : itemList) {
+//			System.out.println(item.toString());
+//		}
+//		itemList = itemRepository.findByItemNameOrItemDetail("Test Product3", "The cake is fake9");
+//		for(Item item : itemList) {
+//			System.out.println(item.toString());
+//		}
+//	}
+	
+//	@Test
+//	@DisplayName("Jpql")
+//	public void findByItemDeail() {
+//		this.createItemTest();
+//		List<Item> itemList = itemRepository.findByItemDeail("fake5");
+//		for(Item item : itemList) {
+//			System.out.println(item.toString());
+//		}
+//	}
+	
+//	@Test
+//	@DisplayName("Jpql native")
+//	public void findByItemDeailNative() {
+//		this.createItemTest();
+//		List<Item> itemList = itemRepository.findByItemDeailNative("fake8");
+//		for(Item item : itemList) {
+//			System.out.println(item.toString());
+//		}
+//	}
 	
 	@Test
-	@DisplayName("Jpql")
-	public void findByItemDeail() {
+	@DisplayName("QueryDsl test")
+	public void queryDslTest() {
 		this.createItemTest();
-		List<Item> itemList = itemRepository.findByItemDeail("fake5");
-		for(Item item : itemList) {
-			System.out.println(item.toString());
-		}
-	}
-	
-	@Test
-	@DisplayName("Jpql native")
-	public void findByItemDeailNative() {
-		this.createItemTest();
-		List<Item> itemList = itemRepository.findByItemDeailNative("fake8");
+//		쿼리를 동적으로 생성하기 위한 객체.
+		JPAQueryFactory qf = new JPAQueryFactory(em);
+		QItem qItem = QItem.item;
+//		Dsl을 사용해서 DB의 쿼리문을 메소드 체이닝 형식으로 사용할 수 있다.
+		JPAQuery<Item> query = qf.selectFrom(qItem).where(qItem.itemSellStatus.eq(ItemSellStatus.SELL)).orderBy(qItem.price.desc());
+		List<Item> itemList = query.fetch();
 		for(Item item : itemList) {
 			System.out.println(item.toString());
 		}
