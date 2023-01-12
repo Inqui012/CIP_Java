@@ -16,8 +16,16 @@
 		같은 이름으로 여러개의 본문내용을 담은 태그를 작성해서 바꿔끼는건 상상할 수 있는데, 이거 어떤 본문을 표시할지는 어떻게...
 		아 컨트롤러에서 여기로 들어오고는 이 본문을 가지고 page01 을 표현하니까 그거 컨트롤러에서 조절할 수 있겠구나.
 	-->
-	<section layout:fragment="section">
-		<p style="font-size: 100px">SECTION</p>
-	</section>
+	<div layout:fragment="section">
+		<section class="card">
+			<div class="card-body" style="font-size: 100px">SECTION 01</div>		
+		</section>
+		<section class="card">
+			<div class="card-body" style="font-size: 100px">SECTION 02</div>		
+		</section>
+		<section class="card">
+			<div class="card-body" style="font-size: 100px">SECTION 03</div>		
+		</section>
+	</div>
 </body>
 </html>

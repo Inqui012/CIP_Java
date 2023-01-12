@@ -5,13 +5,22 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-	<meta charset="UTF-8">
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
 	<title>Insert title here</title>
-	<!-- 
-		레이아웃을 사용할때에는 js 와 css 를 불러오는 영역을 따로 th:block 으로 선언해주어야 한다.
-	-->
-	<th:block layout:fragment="script"></th:block>
-	<th:block layout:fragment="css"></th:block>
+	<!-- Bootstrap js, css, jquery -->
+	<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+	
+	<link th:href="@{/css/page01.css}" rel="stylesheet">
+	<!-- 레이아웃을 사용할때에는 js 와 css 를 불러오는 영역을 따로 th:block 으로 선언해주어야 한다. -->
+	<th:block layout:fragment="script">
+	</th:block>
+	<th:block layout:fragment="css">
+		
+	</th:block>
 </head>
 <body>
 	<!--
@@ -22,7 +31,11 @@
 		layout:fragment 를 사용한다.
 	-->
 	<div th:replace="/fragments/Header.html :: head"></div>
-	<div layout:fragment="section"></div>
+	<!--
+		여기서 태그에 스타일으주던 클래스를 주던 렌더링하면서 덮어씌우기 때문에 전부 적용안됨.
+		아니네, 불러오는쪽의 태그에 클래스명시가 없다면 이쪽이 적용이 됨. 만약 있다면 그쪽이 우선되어서 이쪽은 무시. 
+	-->
+	<div layout:fragment="section" class="content"></div>
 	<div th:replace="/fragments/Footer.html :: foot"></div>
 </body>
 </html>
