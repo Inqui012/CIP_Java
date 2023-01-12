@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>순번</th>
+				<th>이름</th>
+				<th>가격</th>
+				<th>상세</th>
+				<th>시간</th>
+			</tr>
+		</thead>
+		<tbody>
+<!--
+	타임리프:each="변수이름, status: ${속성명}"
+	태그를 감싸는 형태가 아니라 반복할 태그에 직접 작성하네
+  	status: 부분이 반복할 리스트를 지정하는 곳인듯. 컨트롤러에서 받아온 속성명을 작성.
+ 	이 each 문 안에서 반복되는 값을 가져오기 위해서는 임의로 지정할 수 있는 변수이름.필드명 으로 가져오는것이 가능.
+ 	status 는 반복문의 i 같은 역할을 하는것 같다. .index 로 현재 순서를 가져올 수 있고
+ 	.even 으로 짝수 판별이 가능한거 보면...
+-->
+			<tr th:each="itemDto, status: ${dtoList}">
+			<!-- 
+				th:if 와 th:unless 는 java의 if else 문과 동일함.
+				지정한 조건에 맞을경우 if 문이 붙어있는 태그를 표시하고, 아닐경우 unless가 붙어있는 태그를 표시함.
+				th:switch 와 th:case 를 사용할수도 있음. 이경우는 switch 를 지정한 태그 안쪽에 case 가 지정된 태그가 들어가는듯?
+				if 와 switch 문을 복합해서는 못쓰는것 같네...내가 못하는건지 원래 안되는건지
+			-->
+				<td th:text="${status.index}" th:if="${status.even}" style="background-color: grey"></td>
+				
+				<!--
+					되네. th:text가 가장 우선되는것 같으니까 스위치문과 동일한 태그에 같이 있으면 일단 안되는것 같고.
+					보니까 status 는 0부터가 아니라 1부터 시작임??? 짝수일때 색을 넣었는데 리스트 인덱스 홀수번이 칠해지는거 보면...
+				-->
+				<td th:unless="${status.even}" th:switch="${status.index}">
+					<p th:case=6 th:text="six"></p>
+					<p th:case=8 th:text="팔"></p>
+					<p th:case=* th:text="${status.index}">
+				</td> 				
+				
+				<td th:text="${itemDto.itemName}"></td>
+				<td th:text="${itemDto.price}"></td>
+				<!-- 
+					스위치문. td에 직접 th:text를 주면 그쪽이 우선시 되는것...같아. 응. 위치와 상관없이 text가 제일 우선?
+					case 문에 조건을 넣는건 똑같고, default 값을 설정하고 싶을경우에는 * 을 사용하는듯.
+					if문하고 다르게 스위치문 하위의 태그들에 케이스가 적용되는거니까 태그가 하나 더 필요하네
+				-->
+				<td th:switch="${status.index}">
+					<p th:case=3 th:text="삼"></p>
+					<p th:case=* th:text="${itemDto.itemDetail}"></p>
+				</td>
+				<td th:text="${itemDto.regTime}"></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
