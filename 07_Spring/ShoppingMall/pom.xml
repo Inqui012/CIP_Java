@@ -50,6 +50,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- QueryDsl -->
 		<dependency>
 			<groupId>com.querydsl</groupId>
 			<artifactId>querydsl-jpa</artifactId>
@@ -60,10 +61,18 @@
 			<artifactId>querydsl-apt</artifactId>
 			<version>5.0.0</version>
 		</dependency>
+		<!-- Spring auto refresh -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
+		<!-- 타임리프 페이지 레이아웃 -->
+		<dependency>
+		     <groupId>nz.net.ultraq.thymeleaf</groupId>
+		     <artifactId>thymeleaf-layout-dialect</artifactId>
+		     <version>3.1.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

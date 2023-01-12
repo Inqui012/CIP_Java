@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!-- 
+	레이아웃 프레그먼트를 지정할때는 필요하지 않지만 지정한 프래그먼트를 사용하기 위해서는 아래의 설정이 필요함.
+-->
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<!-- 
+		레이아웃을 사용할때에는 js 와 css 를 불러오는 영역을 따로 th:block 으로 선언해주어야 한다.
+	-->
+	<th:block layout:fragment="script"></th:block>
+	<th:block layout:fragment="css"></th:block>
+</head>
+<body>
+	<!--
+		코드상에서는 div 로 작성을 했지만, 리플레이스로 프래그먼트로 설정한 태그를 가져와서 덮어씌우기 때문에
+		실제로 화면에 구현되었을 때에는 프레그먼트로 불러온 header 와 footer 태그로 표현된다.
+		여러 화면에서 동일한 화면을 표현하기 위해서는 프레그먼트를 아래처럼 사용하고
+		페이지마다 다른 내용을 담게되는 영역에는
+		layout:fragment 를 사용한다.
+	-->
+	<div th:replace="/fragments/Header.html :: head"></div>
+	<div layout:fragment="section"></div>
+	<div th:replace="/fragments/Footer.html :: foot"></div>
+</body>
+</html>

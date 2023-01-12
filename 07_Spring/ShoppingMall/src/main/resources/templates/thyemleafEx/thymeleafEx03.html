@@ -8,10 +8,16 @@
 
 	<div style="background-color: blue; width: 100px; height: 100px; text-align: center;">
 		<!--
-			th:href 는 a태그의 href 기능을 대신하는 느낌인듯. a 가 아닌 다른 태그에 클릭 이동을 설정하기 위해서는
+			th:href="@{주소}" 는 a태그의 href 기능을 대신하는 느낌인듯. a 가 아닌 다른 태그에 클릭 이동을 설정하기 위해서는
 			th:onclick 이라는 다른 기능이 있는것 같아.
 		-->
 		<a th:href="@{/thymeleaf/ex02}" style="color: white; line-height: 100px">to ex02</a>
+	</div>
+	<div style="background-color: yellow; width: 100px; height: 100px; text-align: center;">
+		<!--
+			주소값 안에서 ()로 파라메터를 직접 지정해서 보낼 수 있음. 기본방식은 get이네
+		-->
+		<a th:href="@{/thymeleaf/ex04(day='12', name='kamokosi')}" style="line-height: 100px">to ex04</a>
 	</div>
 </body>
 </html>
