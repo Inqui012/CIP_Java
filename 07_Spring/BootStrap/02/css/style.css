@@ -1,0 +1,38 @@
+* {margin: 0; padding: 0;}
+p {color: #37434b; font-size: 14px;}
+i {font-size: 50px;}
+
+.navbar {height: 60px;}
+.header-box {margin: 60px 0 0 0;}
+.pad-20 {padding: 20px;}
+.pad-ud-30 {padding: 30px 0;}
+.pad-ud-30 h3 {margin-bottom: 20px;}
+.display-pc {display: none;}
+
+.bg-first {background-color: #4b4b4b;}
+.bg-second {background-color: #dadada;}
+.slider-txt-bg {width: 100%; position: absolute; left: 0; bottom: 0; color: black; background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 35%, rgba(255,255,255,0) 100%);}
+@media (min-width: 1200px) {
+    .navbar {height: 80px;}
+    .header-box {height: calc(100vh - 80px); margin: 80px 0 0 0;}
+    .img-slider {height: calc(100vh - 80px);}
+    p {font-size: 16px;}
+    h3 {font-size: 2em; padding: 30px 0;}
+    .slider-txt-bg {box-sizing: border-box; background: transparent; left: 0; top: 0; padding: 150px 0 0 150px; text-align: left;}
+    .slider-txt-bg h2 {font-size: 4em;}
+    .slider-txt-bg p {font-size: 2.5em;}
+    .display-pc {display: block;}
+    #car-opt .col-md-6 {width: 33.33%;}
+    #btn-menu .row {justify-content: center;}
+    #btn-menu .col-md-3 {width: 15%;}
+}
+
+.img-h350 {height: 350px;}
+.img-flip {transform: scaleX(-1);}
+
+.flex-col-start {align-items: flex-start;}
+.flex-al-center {align-items: center;}
+
+.txt-box {padding: 30px 0 0;}
+
+.footer { padding: 50px 0; color: white;}

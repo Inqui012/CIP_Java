@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- bootstrap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <!-- bootstrap js, popper -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+    <!-- css -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header" id="head">
+        <nav class="navbar navbar-dark bg-first fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">기아 자동차</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">기아 자동차</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#head">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#car-niro">Niro 소개</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#car-ev6">EV6 소개</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#car-opt">옵션</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#car-point">특징</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            고객센터
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="#btn-menu">자동차</a></li>
+                                <li><a class="dropdown-item" href="#btn-menu">견적내기</a></li>
+                                <li><a class="dropdown-item" href="#btn-menu">구매하기</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#btn-menu">문의</a></li>
+                            </ul>
+                        </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="header-box">
+            <div id="carouselExampleCaptions" class="carousel slide carousel-dark h-100">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="img/Main_Slider (1).jpg" class="d-block w-100 img-slider" alt="Kia Sorento">
+                        <div class="carousel-caption d-none d-md-block slider-txt-bg">
+                            <h2><strong>Kia Sorento</strong></h2>
+                            <p>Look ahead</p>
+                        </div>
+                    </div>
+                <div class="carousel-item">
+                    <img src="img/Main_Slider (2).jpg" class="d-block w-100 img-slider" alt="Kia Stinger">
+                    <div class="carousel-caption d-none d-md-block slider-txt-bg">
+                        <h2><strong>The Kia Stinger</strong></h2>
+                        <p>Just the way you are</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="img/Main_Slider (3).jpg" class="d-block w-100 img-slider" alt="Kia EV6 GT">
+                    <div class="carousel-caption d-none d-md-block slider-txt-bg">
+                        <h2><strong>The Kia EV6 GT</strong></h2>
+                        <p>Feel the unexpected perfomance</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+            </div>
+        </div>
+    </header>
+    <section id="car-niro">
+        <div class="container pad-ud-30">
+            <h3><strong>내일을 향한 움직임, Niro EV</strong></h3>
+            <div class="row flex-al-center">
+                <div class="col-md-5">
+                    <p>Niro가 생각하는 지속가능성은 먼 미래가 아닌 일상에 있습니다.</p>
+                    <p>누구나 쉽게 실천하는 ‘친환경’이야말로 내일을 변화시킬 수 있기에 Niro가 시작합니다. 세상을 이롭게 하는 움직임을.</p>
+                </div>
+                <div class="col-md-7">
+                    <img class="w-100" src="img/Car (2).jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="car-ev6" class="bg-second">
+        <div class="container pad-ud-30">
+            <h3><strong>새로운 여정의 시작, EV6</strong></h3>
+            <div class="row flex-al-center">
+                <div class="col-md-7">
+                    <img class="w-100 img-flip" src="img/Car (1).jpg" alt="">
+                </div>
+                <div class="col-md-5">
+                    <p>이제, 우리는 차에 기능 그 이상을 기대하게 되었습니다.</p>
+                    <p>아침 해가 쏟아놓는 새날을 누구보다 먼저 맞이할 수 있게 하고 매혹적이고 강렬한 시간으로 선사해 주길 바랍니다. 낡은 날은 뒤로 보내고, 신선함으로 채워지는 길로 안내해 주기를 기대합니다.</p>
+                    <p>우리가 기대하는 차는 삶에 깊은 영감을 주는 여정에 함께 하는 새로운 이동 수단입니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="car-opt">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 flex-column pad-20">
+                    <img class="w-100 img-h350" src="img/Interior (1).jpg" alt="">
+                    <div class="txt-box">
+                        <h3><strong>전자식 변속 다이얼(SBW)</strong></h3>
+                        <p>
+                            정교한 디테일이 돋보이는 다이얼 타입<br/>
+                            전자식 변속기를 적용하여 편안한 그립감과 고급감을 동시에 제공합니다.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 flex-column pad-20 display-pc">
+                    <img class="w-100 img-h350" src="img/Interior (5).jpg" alt="">
+                    <div class="txt-box">
+                        <h3><strong>스티어링 휠</strong></h3>
+                        <p>
+                            알칸타라 소재 적용을 통해 부드러움과 고급감을 한층 더 높여주는 상품입니다.<br/>
+                            * GT 에서만 적용가능 /트리뷰트 에디션 적용불가
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 flex-column pad-20">
+                    <img class="w-100 img-h350" src="img/Interior (2).jpg" alt="">
+                    <div class="txt-box">
+                        <h3><strong>풀오토 에어컨</strong></h3>
+                        <p>
+                            원터치 조작을 통해 자동으로 온도를 조정해주어 조작 편의성을 향상시켰습니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="car-point" class="bg-second">
+        <div class="container flex-column flex-column-start pad-ud-30">
+            <img class="w-100 h-100" src="img/Interior (4).jpg" alt="">
+            <div class="txt-box">
+                <h3><strong>GT만의 프리미엄 퍼포먼스 감성 인테리어</strong></h3>
+                <p>
+                    스웨이드 스포츠 버킷 시트에서 느껴지는 질감, 스포티한 디자인과 사운드까지.<br/>
+                    퍼포먼스를 입체적으로 체감할 수 있는 하이엔드 감성의 고급스러움을 담고 있습니다.
+                </p>
+            </div>
+            <img class="w-100 h-100 txt-box" src="img/Interior (3).jpg" alt="">
+            <div class="txt-box">
+                <h3><strong>새로운 컬러와 더욱 강화된 보유가치</strong></h3>
+                <p>
+                    19인치 유광 블랙 디자인 휠 및 블랙 브렘보 브레이크 캘리퍼<br/>
+                    브렘보 브레이크 캘리퍼는 퍼포먼스 패키지 선택 시 적용됩니다.
+                </p>
+            </div>
+        </div>
+    </section>
+    <section id="btn-menu">
+        <div class="container pad-ud-30">
+            <div class="row">
+                <div class="col-md-3">
+                    <button type="button" class="btn card w-100 flex-column flex-al-center" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <div class="card-body flex-column">
+                            <i class="bi bi-car-front-fill"></i>
+                            <p>자동차</p>
+                        </div>
+                    </button>
+                </div>
+                <div class="col-md-3">
+                    <button type="button" class="btn card w-100 flex-column flex-al-center" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <div class="card-body flex-column">
+                            <i class="bi bi-journal-text"></i>
+                            <p>견젹내기</p>
+                        </div>
+                    </button>
+                </div>
+                <div class="col-md-3">
+                    <button type="button" class="btn card w-100 flex-column flex-al-center" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <div class="card-body flex-column">
+                            <i class="bi bi-cart-check"></i>
+                            <p>구매하기</p>
+                        </div>
+                    </button>
+                </div>
+                <div class="col-md-3">
+                    <button type="button" class="btn card w-100 flex-column flex-al-center" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <div class="card-body flex-column">
+                            <i class="bi bi-chat-left-dots"></i>
+                            <p>문의하기</p>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">기능을 실행할 수 없음</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                현재 준비중입니다.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <footer class="footer text-center bg-first">
+        The site owner is not responsible for uploaded images. You can only upload images for which you own the copyright.
+    </footer>
+</body>
+</html>
