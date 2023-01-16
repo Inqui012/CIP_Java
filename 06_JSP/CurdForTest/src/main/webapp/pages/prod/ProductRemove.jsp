@@ -6,11 +6,11 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Insert title here</title>
+	<title>@@약국 판매관리 페이지</title>
 	<link rel="stylesheet" href="css/Meds.css" />
 </head>
 <body>
-	<c:import url="Header.jsp"></c:import>
+	<c:import url="../Header.jsp"></c:import>
 	<section class="prodRemove">
 		<div class="wrap">
 			<h2>판매 제품 삭제</h2>
@@ -47,7 +47,7 @@
 			</div>
 		</div>
 	</section>
-	<c:import url="Footer.jsp"></c:import>
+	<c:import url="../Footer.jsp"></c:import>
 	<script type="text/javascript" src="js/jquery-3.6.3.js"></script>
 	<script type="text/javascript" src="js/Meds.js"></script>
 </body>

@@ -4,10 +4,10 @@ $(".sellList tbody tr.sellmainList").on("click", function () {
 	sublist.toggleClass("dispNone");
 });
 
-$(".prodEdit .productList tbody tr").on("click", function () {
-	$(this).toggleClass("bgc");
-	const prodName = null;
-})
+// $(".prodEdit .productList tbody tr").on("click", function () {
+// 	$(this).toggleClass("bgc");
+// 	const prodName = null;
+// })
 
 // function
 function getTotalCart() {
@@ -124,5 +124,29 @@ function prodRemove(row) {
 	const form = $(".removeForm");
 	form.children("input").attr("value", prodCode);
 	alert(prodName + " 을 판매목록에서 삭제 하시겠습니까?");
+	form.submit();
+}
+
+function prodEdit_List(row){
+	const medsCode = $(row).siblings("p").text();
+	const form = $(".editCode");
+	form.children("input").attr("value", medsCode);
+	form.submit();
+}
+
+function prodEdit_Edit(){
+	const form = $(".prodForm");
+	alert("상품의 정보를 변경하였습니다.");
+	form.submit();
+}
+
+function storeRefund(row) {
+	const form = $(".hiddenForm");
+	const prodName = $(row).parent().siblings().eq(0).text();
+	const prodCode = $(row).siblings("p").text();
+	const refundQuant = $(row).siblings("input").val();
+	form.children("input").eq(0).attr("value", prodCode);
+	form.children("input").eq(1).attr("value", refundQuant);
+	alert("상품 " + prodName + " 을/를 " + refundQuant + " 개 반품처리 합니다.");
 	form.submit();
 }

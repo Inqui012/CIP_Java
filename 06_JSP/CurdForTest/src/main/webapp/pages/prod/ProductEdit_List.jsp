@@ -6,12 +6,12 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Insert title here</title>
+	<title>@@약국 판매관리 페이지</title>
 	<link rel="stylesheet" href="css/Meds.css" />
 </head>
 <body>
-	<c:import url="Header.jsp"></c:import>
-	<section class="prodEdit">
+	<c:import url="../Header.jsp"></c:import>
+	<section class="prodEdit_List">
 		<div class="wrap">
 			<h2>판매 제품 수정</h2>
 			<div class="flexWrapper">
@@ -34,23 +34,19 @@
 							<td class="txtRight">${ med.inprice }</td>
 							<td class="oneBtn">
 								<p class="dispNone">${ med.code }</p>
-								<button class="btn" type="button" onclick="">수정</button>
+								<button class="btn" type="button" onclick="prodEdit_List(this);">수정</button>
 							</td>
 						</tr>					
 					</c:forEach>
 					</tbody>
 				</table>
-				<form method="post" action="prodEdit?edit=Y" class="editForm dispNone">
+				<form method="post" action="prodEdit?edit=N" class="editCode dispNone">
 					<input type="hidden" name="prodcode" value="">
-					<input type="hidden" name="prodname" value="">
-					<input type="hidden" name="prodmadeby" value="">
-					<input type="hidden" name="prodoutprice" value="">
-					<input type="hidden" name="prodinprice" value="">
 				</form>
 			</div>
 		</div>
 	</section>
-	<c:import url="Footer.jsp"></c:import>
+	<c:import url="../Footer.jsp"></c:import>
 	<script type="text/javascript" src="js/jquery-3.6.3.js"></script>
 	<script type="text/javascript" src="js/Meds.js"></script>
 </body>

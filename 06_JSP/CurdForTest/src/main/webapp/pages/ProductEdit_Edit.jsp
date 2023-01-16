@@ -6,24 +6,25 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Insert title here</title>
+	<title>@@약국 판매관리 페이지</title>
 	<link rel="stylesheet" href="css/Meds.css" />
 </head>
 <body>
-	<c:import url="Header.jsp"></c:import>
-	<section class="prodAdd">
+	<c:import url="../Header.jsp"></c:import>
+	<section class="prodEdit_Edit">
 		<div class="wrap">
-			<h2>판매 제품 추가</h2>
+			<h2>판매 제품 수정</h2>
 			<div class="flexWrapper">
-				<form method="post" action="prodAdd?add=Y" class="prodForm">
+				<form method="post" action="prodEdit?edit=Y" class="prodForm">
 					<table class="prod">
                         <tr>
                             <th>
                                 <label for="prodCode">상품코드</label>
                             </th>
                             <td>
-                                <input type="number" id="prodCode" name="prodCode" value="${nextCode}" disabled required>
-                                <span>상품코드는 자동으로 생성됩니다.</span>
+                                <input type="number"value="${Selected.code}" disabled required>
+                                <input type="hidden" class="dispNone" id="prodCode" name="prodCode" value="${Selected.code}" required>
+                                <span>상품코드는 변경할 수 없습니다.</span>
                             </td>
                         </tr>
                         <tr>
@@ -31,7 +32,7 @@
                                 <label for="prodName">상품명</label>
                             </th>
                             <td>
-                                <input type="text" id="prodName" name="prodName" required>
+                                <input type="text" id="prodName" name="prodName" value="${Selected.name}" required>
                             </td>
                         </tr>
                         <tr>
@@ -39,7 +40,7 @@
                                 <label for="prodMade">제조사</label>
                             </th>
                             <td>
-                                <input type="text" id="prodMade" name="prodMade" required>
+                                <input type="text" id="prodMade" name="prodMade" value="${Selected.madeby}" required>
                             </td>
                         </tr>
                         <tr>
@@ -47,7 +48,7 @@
                                 <label for="prodIn">구매가</label>
                             </th>
                             <td>
-                                <input type="number" id="prodIn" name="prodIn" min="0">
+                                <input type="number" id="prodIn" name="prodIn" value="${Selected.inprice}" min="0">
                             </td>
                         </tr>
                         <tr>
@@ -55,22 +56,13 @@
                                 <label for="prodOut">판매가</label>
                             </th>
                             <td>
-                                <input type="number" id="prodOut" name="prodOut"  min="0" required>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <label for="prodStock">초기재고</label>
-                            </th>
-                            <td>
-                                <input type="number" id="prodStock" name="prodStock" min="0">
-                                <span>설정하지 않을경우 0으로 초기화 됩니다.</span>
+                                <input type="number" id="prodOut" name="prodOut" value="${Selected.outprice}" min="0" required>
                             </td>
                         </tr>
                         <tr>
 							<td class="txtCenter" colspan="2">
-								<button type="reset" class="btn">추가 취소</button>
-								<button type="submit" class="btn" onclick="inputSubmit(); return false;">상품 추가</button>
+								<button type="reset" class="btn">변경 취소</button>
+								<button type="submit" class="btn" onclick="prodEdit_Edit(); return false;">정보 변경</button>
 						    </td>
 						</tr>                   
 					</table>
@@ -78,7 +70,7 @@
 			</div>
 		</div>
 	</section>
-	<c:import url="Footer.jsp"></c:import>
+	<c:import url="../Footer.jsp"></c:import>
 	<script type="text/javascript" src="js/jquery-3.6.3.js"></script>
 	<script type="text/javascript" src="js/Meds.js"></script>
 </body>

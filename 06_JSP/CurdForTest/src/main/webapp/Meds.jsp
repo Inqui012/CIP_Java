@@ -4,26 +4,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Insert title here</title>
-	<link rel="stylesheet" href="css/Meds.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>@@약국 판매관리 페이지</title>
+<link rel="stylesheet" href="css/Meds.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,1,0" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,1,0" />
 </head>
 <body>
 	<c:import url="pages/Header.jsp"></c:import>
-	<section class="saleProduct">
+	<section class="sellManage">
 		<div class="wrap">
-			<h2>판매</h2>
-			<div class="insideWrapper">
+			<div class="flexWrapper btnMenu">
 				<div class="cards">
-					<i class="fa-solid fa-cart-shopping"></i>
+					<a href="sellMeds">
+						<span class="material-symbols-outlined">shopping_cart</span>
+						<p>판매</p>
+					</a>
 				</div>
 				<div class="cards">
-					
+					<a href="sellRefund">
+						<span class="material-symbols-outlined">remove_shopping_cart </span>
+						<p>환불</p>
+					</a>
 				</div>
-			</div>	
-		</div> 
-
+			</div>
+		</div>
 	</section>
 	<c:import url="pages/Footer.jsp"></c:import>
 </body>

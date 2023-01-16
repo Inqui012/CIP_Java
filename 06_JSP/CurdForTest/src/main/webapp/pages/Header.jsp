@@ -4,16 +4,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>@@약국 판매관리 페이지</title>
 </head>
 <body>
 	<header>
 		<h1>
-			상품판매<br />재고관리<br />프로그램
+			<a href="/Meds">상품판매<br />재고관리<br />프로그램</a>
 		</h1>
 		<nav>
 			<ul class="mainMenu">
-				<li><a href="sellMag">판매</a>
+				<li><a href="/Meds">판매</a>
 					<ul class="subMenu">
 						<li><a href="sellMeds">일반판매</a></li>
 						<li><a href="sellRefund">환불처리</a></li>
@@ -28,12 +28,6 @@
 					<ul class="subMenu">
 						<li><a href="storeOrder">추가 주문</a></li>
 						<li><a href="storeRefund">재고 처리</a></li>
-					</ul></li>
-				<li><a href="salesMag">매출관리</a>
-					<ul class="subMenu">
-						<li><a href="salesDate">기간별</a></li>
-						<li><a href="salesProd">제품별</a></li>
-						<li><a href="salesMade">제조사별</a></li>
 					</ul></li>
 			</ul>
 		</nav>
