@@ -1,8 +1,13 @@
 package com.Shop.Controller;
 
+
+import javax.validation.Valid;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,9 +36,19 @@ public class MemberController {
 //	Post 방식으로 요청이 올때의 메소드.
 //	회원가입 페이지의 form 태그의 버튼을 눌러 submit을 했을때 실행하는 메소드.
 	@PostMapping("/register")
-	public String register(MemberFormDTO memberFormDTO) {
-		Member member = Member.createMember(memberFormDTO, passwordEncoder);
-		memberService.saveMember(member);
+//	메소드의 유효성 체크를 하려는 매개변수 앞에 @Valid 의 어노테이션을 지정하고, BindingResult 객체의 값을 받아야 유효성검사를 할 수 있다.
+//	BindingResult 는 유효성을 검사한 후의 결과를 담는 객체.
+	public String register(@Valid MemberFormDTO memberFormDTO, BindingResult bindingResult, Model model) {
+		if(bindingResult.hasErrors()) {
+			return "member/shop_memberForm";
+		}
+		try {
+			Member member = Member.createMember(memberFormDTO, passwordEncoder);
+			memberService.saveMember(member);						
+		} catch (IllegalStateException e) {
+			model.addAttribute("errorMessage", e.getMessage());
+			return "member/shop_memberForm";
+		}
 //		새로고침등으로 데이터가 다시 들어가는것을 방지하기 위해 데이터를 초기화하고 새로운 페이지로 넘어간다.
 //		redirect:경로 형식으로 지정한다.
 		return "redirect:/";

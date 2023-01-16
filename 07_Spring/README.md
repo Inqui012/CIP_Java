@@ -99,12 +99,21 @@ JPQL 을 사용하여 쿼리를 실행할시, 오류를 발견하기 위해서�
 어플리케이션에서 사용하는 인증/인가 등의 보안 솔루션을 제공하는 라이브러리?  
 인증은 리소스에서 작업을 실행할 수 있는지 사용자의 신원을 확인하는 작업이고, 인가는 인증과정 후에 일어나는 사용자의 권한을 확인하는 작업이다.  
 시큐리티를 설치하고 따로 설정하지 않는 이상 모든 페이지에 접속하기 위해서는 우선 로그인창이 자동으로 생성된다. 기본 아이디는 user 이며, 비밀번호는 콘솔창에 표시된다.  
- 
+
 #### 스프링 시큐리티 필터
 시큐리티에서 제공하는 서블릿 필터. 클라이언트의 요청에 대해 우선적으로 실행하게 되는... 무언가. 하나 이상으 필터를 순차적으로 연결하여 filter chain 을 구성한다.  
 시큐리티 필터체인은 종류가 다양하지만 수업에서는 UsernamePassword AutherticaionFilter 만 사용하는듯.
+
+##### UsernamePassword AutherticaionFilter
+1. 사용자가 로그인정보(아이디, 비밀번호)와 함께 인증요청(로그인)을 한다.
+2. servlet 으로 향하는 요청을 filter가 가로채어 로그인정보를 이용해 Token 을 생성하여 ProviderManager 로 전달한다.
+3. ProviderManager 에서는 해당 정보를 등록된 Provider 에 조회하여 인증을 요구한다.
+4. UserDetailsService 를 상속받은 Service 객체에서 받아온 정보를 통해 DB를 조회하고, 해당하는 사용자가 있을경우 해당 정보로 UserDetails 객체를 생성하여 반환한다.
+5. Provider 에서 반환받은 UserDetails 를 로그인정보와 비교하여 인증을 진행하고, 완료되었을 경우 해당 정보를 담은 Authentication 객체를 반환한다.
+...
 
 ### 스프링의 MVC
 기본적으로는 Client > View <-> Controller > Model(DAO) > DB 의 MVC2 형태를 가지지만 스프링에서는 컨트롤러가 조금더 세분화해서 나눠진다.  
 DispatcherServlet(Front Controller) 에서 우선 HandlerMapping 으로 클라이언트의 요청에 맞는 컨트롤러를 찾는 과정, 해당 컨트롤러에서 작업을 실행하는 과정, ViewResolver 에서 컨트롤러의 처리결과를 생성할 페이지를 찾는 과정 을 거쳐서 이후에 View 에 화면을 생성하여 결과화면을 리턴한다. 컨트롤러를 조금 더 나눠서 작업하는 느낌?  
 스프링 시큐리티는 이 클라이언트와 DispatcherServlet 의 사이에서 요청을 가로채 인증과 인가작업을 하는 서블릿 필터를 거치게 만드는 느낌인가봐. 
+
