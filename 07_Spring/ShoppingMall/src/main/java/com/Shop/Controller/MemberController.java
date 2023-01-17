@@ -53,4 +53,15 @@ public class MemberController {
 //		redirect:경로 형식으로 지정한다.
 		return "redirect:/";
 	}
+	
+	@GetMapping("/login")
+	public String login() {
+		return "member/shop_memberLoginForm";
+	}
+	
+	@GetMapping("/login/error")
+	public String loginError(Model model) {
+		model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호가 일치하지 않습니다.");
+		return "member/shop_memberLoginForm";
+	}
 }
