@@ -109,7 +109,7 @@ JPQL 을 사용하여 쿼리를 실행할시, 오류를 발견하기 위해서�
 2. servlet 으로 향하는 요청을 filter가 가로채어 로그인정보를 이용해 Token 을 생성하여 ProviderManager 로 전달한다.
 3. ProviderManager 에서는 해당 정보를 등록된 Provider 에 조회하여 인증을 요구한다.
 4. UserDetailsService 를 상속받은 Service 객체에서 받아온 정보를 통해 DB를 조회하고, 해당하는 사용자가 있을경우 해당 정보로 UserDetails 객체를 생성하여 반환한다.
-5. Provider 에서 반환받은 UserDetails 를 로그인정보와 비교하여 인증을 진행하고, 완료되었을 경우 해당 정보를 담은 Authentication 객체를 반환한다.
+5. Provider 에서 반환받은 UserDetails 를 로그인정보와 비교하여 인증을 진행하고, 완료되었을 경우 해당 정보를 담은 Authentication 객체를 반환한다.  
 ...
 
 ### 스프링의 MVC

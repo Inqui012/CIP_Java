@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<!-- 메뉴를 사용자 권한에 따라 다르게 보이게 하기 위해서는 아래 속성이 필요함. -->
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -25,22 +27,29 @@
 		    </button>
 		    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 		      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-		        <li class="nav-item">
+		      <!--
+		      	html 태그에서 sec 로 지정한 타입리프의 스프링 시큐리티 기능? 에서
+		      	authorize 속성을 이용하여 사용자의 권한을 확인하여 태그를 표시할지의 여부를 결정한다.
+		      	hasAnyAuthority(역할명) 으로 특정 권한을 가진 사용자에게만 표시하거나
+		      	isAuthenticated() 으로 인증(로그인)한 사용자에게 표시,
+		      	isAnonymous() 으로 모든 비인증? 사용자에게 표시한다.
+		      -->
+		        <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
 		          <a class="nav-link" href="/admin/item/new">상품등록</a>
 		        </li>
-		        <li class="nav-item">
+		        <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
 		          <a class="nav-link" href="/admin/items">상품관리</a>
 		        </li>
-		        <li class="nav-item">
+		        <li class="nav-item" sec:authorize="isAuthenticated()">
 		          <a class="nav-link" href="/cart">장바구니</a>
 		        </li>
-		        <li class="nav-item">
+		        <li class="nav-item" sec:authorize="isAuthenticated()">
 		          <a class="nav-link" href="/orders">구매이력</a>
 		        </li>
-		        <li class="nav-item">
+		        <li class="nav-item" sec:authorize="isAnonymous()">
 		          <a class="nav-link" href="/members/login">로그인</a>
 		        </li>
-		        <li class="nav-item">
+		        <li class="nav-item" sec:authorize="isAuthenticated()">
 		          <a class="nav-link" href="/members/logout">로그아웃</a>
 		        </li>
 		      </ul>

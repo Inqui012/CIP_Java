@@ -47,6 +47,7 @@ public class SecurityConfig {
 //		.formLogin() 로그인에 대한 설정을 시작한다는...메소드...?
 //		기본적으로 (로그인에 대한 설정).and().(로그아웃에 대한 설정) 형식을 가지는것 같다.
 //		.loginPage(경로) 로그인이 실행되는 페이지의 경로를 지정한다.
+//		여기서 알아서 로그인에 관한 로직을 실행한다. Members 의 UserDetails 객체반환 메소드를 알아서 하는듯?
 		http.formLogin().loginPage("/members/login")
 //			.defaultSuccessUrl(경로) 로그인이 성공했을 시 이동할 페이지의 경로
 //			.usernameParameter(파라메터명) 로그인 작업에 사용할 파라메터의 이름
