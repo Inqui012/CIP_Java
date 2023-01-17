@@ -56,6 +56,25 @@ public class SecurityConfig {
 			.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/members/logout"))
 //			.logoutSuccessUrl(경로) 로그아웃에 성공했을 때 이동할 페이지의 경로
 			.logoutSuccessUrl("/");
+		
+//		.authorizeRequests 페이지 접근권한에 대한 설정.
+		http.authorizeRequests()
+//			.mvcMatchers(경로, 경로 ...) 지정한 경로에 대한 접근권한을 개별로 설정할 수 있다. ** 는 경로의 하위를 의미.
+//			.permitAll() 앞에서 지정한 경로에대해, 모든 사용자에 대해 로그인없이 접근할 수 있도록 설정한다.
+			.mvcMatchers("/", "/members/**", "/item/**", "/img/**", "/css/**", "/js/**").permitAll()
+//			.hasRole() 아ㅠ에서 지정한 경로에대해, 지정한 역할을 가지고 있는 사용자만이 접근할 수 있도록 설정한다.
+			.mvcMatchers("/admin/**").hasRole("ADMIN")
+//			.anyRequest() 위에서 설정한 것 이외의 모든 다른 경로에 대한 설정.
+//			.authenticated() 로그인(인증)이 필요한 접근
+			.anyRequest().authenticated();
+		
+//		인증되지 않은(비로그인) 상태의 사용자가 리소스(페이지, 이미지...)에 접근했을 때의 설정.
+//		따로 예외처리를 담당할 클래스를 만들어놓고 거기에서 가져온다. 예외처리는 전부 해당 클래스에서 지정하는건가?
+//		아니네, 인증되지 않은 접속의 경우에는 authenticationEntryPoint(401에러)를 사용하고
+//		인증은 했는데 권한이 없는 접근의 경우에는 CustomAccessDeniedHandler(403?) 를 사용하는 것 같다.
+//		에러마다 전부 메소드가 있는건 아닌것 같고... 특별한 몇몇개만 있는건가?
+//		이 처리는 스프링의 ExceptionTranslationFilter 에서 걸러내는? 것이고 여기서는 401, 403 두개만 처리해서 메소드가 저 두개만 있는듯
+		http.exceptionHandling().authenticationEntryPoint(new CustomAuthenticationEntryPoint());
 		return http.build();
 	}
 }

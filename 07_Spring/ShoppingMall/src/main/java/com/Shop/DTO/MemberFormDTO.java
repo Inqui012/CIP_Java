@@ -13,7 +13,7 @@ import lombok.Setter;
 public class MemberFormDTO {
 	
 //	해당 필드에 들어오는값이 문자열일경우 null, 길이 0, 공백을 확인하여 일치하지 않을경우 에러메세지를 반환한다.
-	@NotBlank(message = "이름 필수 입력 값입니다.")	
+	@NotBlank(message = "이름은 필수 입력 값입니다.")	
 	private String name;
 	
 	@Email(message = "이메일 형식으로 입력해주세요.")
