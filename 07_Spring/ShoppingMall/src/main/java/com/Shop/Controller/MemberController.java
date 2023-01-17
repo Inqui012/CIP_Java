@@ -1,16 +1,19 @@
 package com.Shop.Controller;
 
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.Shop.DTO.MemberFormDTO;
 import com.Shop.Entity.Member;
@@ -56,6 +59,27 @@ public class MemberController {
 	
 	@GetMapping("/login")
 	public String login() {
+		return "member/shop_memberLoginForm";
+	}
+
+//	아래는 세션을 사용하기 위한 테스트 메소드
+	private final SessionManager sessionManager;
+
+//	@RequestParam 변수명을 자동으로 param 의 name 값으로 인식해서 파라메터를 가져온다.
+	@PostMapping("/login2")
+	public String login2(HttpServletResponse resp, HttpSession session, @RequestParam String email) {
+		System.out.println(email);
+//		쿠키생성 java Servlet 의 쿠키. 키와 값으로 구성되어 있음.
+		Cookie idCookie = new Cookie("UserCookieID", email);
+//		페이지 응답에 생성한 쿠키를 저장하여 돌려보낸다. 이렇게 해야 페이지에서 쿠키를 확인할 수 있음.
+//		크롬의 개발자도구에서 application 메뉴에 저장된 쿠키 내용을 볼 수 있음.
+//		이렇게 생성한 쿠키는 기본적으로 생성한 페이지의 상위...에서만 유효한가? /members 에서만 유효하네
+		resp.addCookie(idCookie);
+		
+//		서버에 세션을 저장한다.
+//		세션 객체에 바로 atturibute 를 사용할수도 있고, 따로 클래스를 만들어서 사용할수도 있다.
+//		session.setAttribute("userSessionTesting", email);
+		sessionManager.createSession(email, resp);
 		return "member/shop_memberLoginForm";
 	}
 	

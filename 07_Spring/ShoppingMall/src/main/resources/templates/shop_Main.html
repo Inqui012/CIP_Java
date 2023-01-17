@@ -5,6 +5,7 @@
 -->
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       layout:decorate="~{layouts/shopping}">
 <head>
 	<meta charset="UTF-8">
@@ -18,8 +19,20 @@
 	-->
 	<div layout:fragment="section">
 		<section class="card">
-			<div class="card-body">
-				This is Main Page
+			<div class="card-body" sec:authorize="isAnonymous()">
+				비로그인 상태
+			</div>
+			<!--
+				hasRole() 과 hasAuthority() 는 역할과 권한의 표현차이가 있을 뿐 기본적인 기능으로써는 유사하다.
+				isAuthenticated() 는 권한을 가진 모든 사용자를 의미하니까 USER 와 ADMIN을 포함한다.
+				권한은 계층적인 구조? 라고 생각하면 되려나
+				특정 권한에서만 특정 페이지를 보이게하려면 권한을 지정해줘야함.
+			-->
+			<div class="card-body" sec:authorize="hasRole('USER')">
+				일반 회원 [ <span th:text="${User}"></span> ] 로그인 상태
+			</div>		
+			<div class="card-body" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+				관리자 [ <span th:text="${User}"></span> ]로그인 상태
 			</div>		
 		</section>
 	</div>
