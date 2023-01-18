@@ -23,6 +23,6 @@ public class Cart {
 	@JoinColumn(name = "member_id")
 //	엔티티 Memeber 와 Cart 의 관계가 일대일임을 지정함.
 //	Member 가 부모, Cart 가 자식. 연관관계 지정은 자식이 될 엔티티(테이블)에서 설정해준다.
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY)
 	private Member member;
 }

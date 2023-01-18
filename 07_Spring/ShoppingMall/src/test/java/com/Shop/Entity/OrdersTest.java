@@ -17,6 +17,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.Shop.Constant.ItemSellStatus;
 import com.Shop.Repository.ItemRepository;
+import com.Shop.Repository.MemberRepository;
+import com.Shop.Repository.OrderItemRepository;
 import com.Shop.Repository.OrderRepository;
 
 @SpringBootTest
@@ -33,6 +35,7 @@ class OrdersTest {
 	@PersistenceContext
 	EntityManager em;
 	
+	
 	public Item createItemTest() {
 		Item item = new Item();
 		item.setItemName("Test Product");
@@ -46,7 +49,7 @@ class OrdersTest {
 	}
 	
 	@Test
-	@DisplayName("CascadeTest")
+	@DisplayName("CascadeCreateTest")
 	public void cascadeTest() {
 		Orders orders = new Orders();
 		for(int i = 0; i < 3; i++) {
@@ -67,5 +70,54 @@ class OrdersTest {
 		
 		Orders savedOrders = orderRepository.findById(orders.getId()).orElseThrow(EntityNotFoundException::new);
 		assertEquals(3, savedOrders.getOrderItems().size());
+	}
+	
+	@Autowired
+	MemberRepository memberRepository;
+	public Orders createOrder() {
+		Orders orders = new Orders();
+		for(int i = 0; i < 3; i++) {
+			Item item = this.createItemTest();
+			itemRepository.save(item);
+			OrderItem orderItem = new OrderItem();
+			orderItem.setItem(item);
+			orderItem.setCount(10);
+			orderItem.setOrderPrice(1000);
+			orderItem.setOrders(orders);
+			orders.getOrderItems().add(orderItem);
+		}
+//		상품을 주문할 임의의 고객을 생성
+		Member member = new Member();
+		memberRepository.save(member);
+		
+//		주문정보에 위에서 생성한 회원정보를 묶는다.
+		orders.setMember(member);
+		orderRepository.save(orders);
+		
+		return orders;
+	}
+	
+	@Test
+	@DisplayName("Orphan Delete Test")
+	public void orphanRemoveTest() {
+		Orders orders = this.createOrder();
+//		실행하면 리스트에서 삭제된 orderItem 엔티티를 하나 delete 하는 쿼리문을 실행하는것을 알 수 있다.
+		orders.getOrderItems().remove(0);
+		em.flush();
+		em.clear();
+	}
+	
+	@Autowired
+	OrderItemRepository orderItemRepository;
+	
+	@Test
+	@DisplayName("LazyLoad")
+	public void lazyLoadingTest() {
+		Orders orders = this.createOrder();
+		Long orderItemId = orders.getOrderItems().get(0).getId();
+		em.flush();
+		em.clear();
+//		lazy 설정을 해주면 관계성이 있다고 해도 필요한 엔티티만을 선택하여 select 문을 실행하는것을 알 수 있다.
+		OrderItem orderItem = orderItemRepository.findById(orderItemId).orElseThrow(EntityNotFoundException::new);
 	}
 }

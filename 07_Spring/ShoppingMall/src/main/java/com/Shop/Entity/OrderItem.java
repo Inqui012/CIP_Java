@@ -16,11 +16,12 @@ public class OrderItem {
 	private Long id;
 	
 	@JoinColumn(name = "order_id")
-	@ManyToOne
+//	지연로딩.
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Orders orders;
 	
 	@JoinColumn(name = "item_id")
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Item item;
 	
 	private int orderPrice;

@@ -19,7 +19,7 @@ public class Orders {
 	private Long id;
 	
 	@JoinColumn(name = "member_id")
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Member member;
 	
 	private LocalDateTime orderDate;
@@ -38,6 +38,6 @@ public class Orders {
 //	주의할점은 삭제할 객체를 참조하는곳이 오로지 한곳일 경우에만 사용한다는 점이다.
 //	만약 다른곳에서 orderItems 의 목록을 다른곳에서도 참조하고 있다면 orders 에서 끊어졌다고 삭제할경우 그쪽에서 문제가 생길 수 있음.
 //	cascade 로 인한 delete 는 부모의 상태변화에 따른 설정이기 때문에 부모에게서 자식을 삭제한다고 해서 해당 자식 엔티티가 사라지지는 않음.
-	@OneToMany(mappedBy = "orders", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "orders", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<OrderItem> orderItems = new ArrayList<>();
 }
