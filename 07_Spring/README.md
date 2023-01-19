@@ -114,7 +114,13 @@ JPQL 을 사용하여 쿼리를 실행할시, 오류를 발견하기 위해서�
 
 ### 스프링의 MVC
 기본적으로는 Client > View <-> Controller > Model(DAO) > DB 의 MVC2 형태를 가지지만 스프링에서는 컨트롤러가 조금더 세분화해서 나눠진다.  
-DispatcherServlet(Front Controller) 에서 우선 HandlerMapping 으로 클라이언트의 요청에 맞는 컨트롤러를 찾는 과정, 해당 컨트롤러에서 작업을 실행하는 과정, ViewResolver 에서 컨트롤러의 처리결과를 생성할 페이지를 찾는 과정 을 거쳐서 이후에 View 에 화면을 생성하여 결과화면을 리턴한다. 컨트롤러를 조금 더 나눠서 작업하는 느낌?  
+1. DispatcherServlet(Front Controller) 에서 우선 HandlerMapping 으로 사용자의 요청에 맞는 컨트롤러를 찾는다.
+2. 찾아낸 Controller 는 기능에 맞는 service 객체를 호출하여 아래의 작업을 수행한다.
+    1. service 객체로 찾아가 필요할경우 DB와 정보를 주고받을 Repository 객체를 사용한다.
+    2. DB에서 받아온 정보를 가공하는 과정을 수행한다. 이것을 비즈니스 로직을 수행한다고 한다.
+    3. 가공된 정보를 다시 Controller 에게 넘겨준다.
+3. ViewResolver 에서 컨트롤러의 처리결과를 생성할 페이지를 찾아 화면을 생성하여 결과화면을 리턴한다.  
+컨트롤러를 조금 더 나눠서 작업하는 느낌?  
 스프링 시큐리티는 이 클라이언트와 DispatcherServlet 의 사이에서 요청을 가로채 인증과 인가작업을 하는 서블릿 필터를 거치게 만드는 느낌인가봐. 
 
 ### Cookie
