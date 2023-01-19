@@ -37,7 +37,7 @@ public class ItemFormDTO {
 //	이미지 수정할 때 id 를 담아두는 용도.
 	private List<Long> itemImgIds = new ArrayList<>();
 	
-	public static ModelMapper modelMapper;
+	private static ModelMapper modelMapper = new ModelMapper();
 	public Item createItem() {
 		return modelMapper.map(this, Item.class);
 	}
