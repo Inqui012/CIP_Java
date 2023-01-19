@@ -21,7 +21,6 @@ import lombok.RequiredArgsConstructor;
 public class ItemService {
 	private final ItemRepository itemRepository;
 	private final ItemImgService itemImgService;
-	private final ItemImgRepository itemImgRepository;
 	
 	public Long saveItem(ItemFormDTO itemFormDTO, List<MultipartFile> itemImgFileList) throws Exception {
 //		상품등록		
