@@ -62,7 +62,8 @@ public class SecurityConfig {
 		http.authorizeRequests()
 //			.mvcMatchers(경로, 경로 ...) 지정한 경로에 대한 접근권한을 개별로 설정할 수 있다. ** 는 경로의 하위를 의미.
 //			.permitAll() 앞에서 지정한 경로에대해, 모든 사용자에 대해 로그인없이 접근할 수 있도록 설정한다.
-			.mvcMatchers("/", "/members/**", "/item/**", "/img/**", "/css/**", "/js/**").permitAll()
+			.mvcMatchers("/css/**", "/js/**", "/img/**").permitAll()
+			.mvcMatchers("/", "/members/**", "/item/**").permitAll()
 //			.hasRole() 아ㅠ에서 지정한 경로에대해, 지정한 역할을 가지고 있는 사용자만이 접근할 수 있도록 설정한다.
 			.mvcMatchers("/admin/**").hasRole("ADMIN")
 //			.anyRequest() 위에서 설정한 것 이외의 모든 다른 경로에 대한 설정.

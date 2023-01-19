@@ -10,7 +10,7 @@ import lombok.Setter;
 // 필드 내용은 똑같고 어노테이션의 유무가 좀 다른듯
 @Getter
 @Setter
-public class Item_DTO {
+public class ItemDTO {
 		private Long id;
 		private String itemName;
 		private int price;

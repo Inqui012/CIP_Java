@@ -50,8 +50,6 @@ class ItemRepositoryTest {
 			item.setItemDetail("The cake is fake" + i);
 			item.setItemSellStatus(ItemSellStatus.SELL);
 			item.setStockNumber(109);
-			item.setRegTime(LocalDateTime.now());
-			item.setUpdateTime(LocalDateTime.now());
 			
 //		JpaRepository 에서 상속받은 메소드 .save()로 Insert를 실행한다.
 			Item savedItem = itemRepository.save(item);
@@ -112,7 +110,6 @@ class ItemRepositoryTest {
 			} else {
 				item.setItemSellStatus(null);
 			}
-			item.setRegTime(LocalDateTime.now());
 			itemRepository.save(item);
 		}
 	}
