@@ -3,6 +3,7 @@ package com.Shop.Entity;
 import javax.persistence.*;
 import lombok.*;
 import com.Shop.Constant.ItemSellStatus;
+import com.Shop.DTO.ItemFormDTO;
 
 @Entity
 // 생성할 테이블의 이름을 지정할 수 있다. DB와의 매핑기능도 겸함.
@@ -33,5 +34,13 @@ public class Item extends BaseEntity {
 	
 	@Enumerated(EnumType.STRING)
 	private ItemSellStatus itemSellStatus;
+	
+	public void updateItem (ItemFormDTO itemFormDTO) {
+		this.itemName = itemFormDTO.getItemName();
+		this.price = itemFormDTO.getPrice();
+		this.stockNumber = itemFormDTO.getStockNumber();
+		this.itemDetail = itemFormDTO.getItemDetail();
+		this.itemSellStatus = itemFormDTO.getItemSellStatus();
+	}
 	
 }

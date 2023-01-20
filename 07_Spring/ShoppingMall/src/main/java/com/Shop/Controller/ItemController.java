@@ -8,11 +8,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.Shop.DTO.ItemFormDTO;
+import com.Shop.Entity.Item;
+import com.Shop.Repository.ItemRepository;
 import com.Shop.Service.ItemService;
 
 import lombok.RequiredArgsConstructor;
@@ -20,6 +23,7 @@ import lombok.RequiredArgsConstructor;
 @Controller
 @RequiredArgsConstructor
 public class ItemController {
+	private final ItemService itemService;
 	
 	@GetMapping("/admin/item/new")
 	public String itemForm(Model model) {		
@@ -27,9 +31,7 @@ public class ItemController {
 		return "item/shop_ItemForm";
 	}
 	
-	private final ItemService itemService;
 	
-//	받아온 값으로 상품정보를 생성하는 메소드
 	@PostMapping("/admin/item/new")
 //	@RequestParam으로 지정한 name 을 가진 input 값을 가져오는데 이게 여러개일 경우 List 타입으로 받아올 수 있다.
 //	여기서는 파일을 리스트형태로 받아오고, 이 타입은 form 의 enctype 에서 지정하는 객체인듯함.....
@@ -58,4 +60,42 @@ public class ItemController {
 		
 		return "redirect:/";
 	}
+	
+//	주소에서 지속적으로 변하는 값이 있다면 {} 로 값이 변동되는 위치를 지정해줄 수 있다.
+//	이후 재정한 메소드에서 매개변수에 @PathVariable 어노테이션을 설정해주면 변동되는 값을 가져올 수 있다.
+//	주소값은 String 이라고 생각했는데 숫자로 고정된다면 매개변수에서 형변환이 가능한건가?? Long 으로 지정하네
+//	앞단에서 숫자를 붙일때 itemFormDTO.id 로 붙였으니, 그 데이터형식을 그대로 가져오는건가?
+//	주소를 url 에서 읽는게 아니라 좀더... 어............컴퓨터적으로?????? 읽는.....
+	@GetMapping("/admin/item/{itemId}")
+	public String modItemForm(@PathVariable("itemId") Long itemId, Model model) {
+		try {
+			model.addAttribute("itemFormDTO", itemService.findModItem(itemId));
+		} catch (Exception e) {
+			model.addAttribute("errorMessage", "상품을 불러오는 중 에러가 발생함");
+			model.addAttribute("itemFormDTO", new ItemFormDTO());
+			return "item/shop_ItemForm";
+		}
+		return "item/shop_ItemForm";
+	}
+	
+	@PostMapping("/admin/item/{itemId}")
+	public String modItem(@Valid ItemFormDTO itemFormDTO, BindingResult bindingResult, @RequestParam("itemImgFile") List<MultipartFile> itemImgFile, Model model) {
+		if(bindingResult.hasErrors()) {
+			return "item/shop_ItemForm";
+		}
+		if(itemImgFile.get(0).isEmpty() && itemFormDTO.getId() == null) {
+			model.addAttribute("errorMessage", "대표이미지를 업로드해 주세요");			
+			return "item/shop_ItemForm";
+		}
+		try {
+			itemService.modifyItem(itemFormDTO, itemImgFile);
+		} catch (Exception e) {
+			model.addAttribute("errorMessage", "상품을 수정하는 중 에러가 발생함");
+			model.addAttribute("itemFormDTO", itemFormDTO);
+			return "item/shop_ItemForm";
+		}
+		return "redirect:/";
+	}
+	
+	 
 }

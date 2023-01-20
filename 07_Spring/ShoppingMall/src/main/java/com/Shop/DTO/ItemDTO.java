@@ -18,5 +18,5 @@ public class ItemDTO {
 		private String itemDetail;
 		private ItemSellStatus itemSellStatus;
 		private LocalDateTime regTime;
-		private LocalDateTime updateTime;
+		private LocalDateTime upDateTime;
 }
