@@ -1,9 +1,13 @@
 package com.Shop.Controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.Shop.DTO.ItemFormDTO;
+import com.Shop.DTO.ItemSearchDTO;
 import com.Shop.Entity.Item;
 import com.Shop.Repository.ItemRepository;
 import com.Shop.Service.ItemService;
@@ -97,8 +102,17 @@ public class ItemController {
 		return "redirect:/";
 	}
 	
-	@GetMapping("/admin/items")
-	public String itemManage() {
+	@GetMapping({"/admin/items", "/admin/items/{Page}"})
+//	Page 파라메터를 받아오는 객체는 Optional 타입으로 받네.......
+	public String itemManage(ItemSearchDTO itemSearchDTO, Model model, @PathVariable("Page") Optional<Integer> page) {
+//		PageRequest.of(페이지번호, 한페이지당 리스르갯수); 
+//		Optional 로 받아온 페이지 파라메터가 존재할경우 해당 숫자를, 없을경우 0 을 반환.
+		Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 2);
+		Page<Item> pages = itemService.getAdminItemPage(itemSearchDTO, pageable);
+		System.out.println(pages.getTotalPages());
+		model.addAttribute("items", pages);
+		model.addAttribute("itemSearchDTO", itemSearchDTO);
+		model.addAttribute("maxPage", 5);
 		return "item/shop_itemBoard";
 	}
 	

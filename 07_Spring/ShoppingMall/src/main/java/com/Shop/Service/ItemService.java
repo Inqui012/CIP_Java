@@ -5,12 +5,15 @@ import java.util.List;
 
 import javax.persistence.EntityNotFoundException;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.Shop.DTO.ItemFormDTO;
 import com.Shop.DTO.ItemImgDTO;
+import com.Shop.DTO.ItemSearchDTO;
 import com.Shop.Entity.Item;
 import com.Shop.Entity.ItemImg;
 import com.Shop.Repository.ItemImgRepository;
@@ -78,7 +81,13 @@ public class ItemService {
 		return modifyItem.getId();
 	}
 	
+	@Transactional(readOnly = true)
+	public Page<Item> getAdminItemPage(ItemSearchDTO itemSearchDTO, Pageable pageable){
+		return itemRepository.getAdminItemPage(itemSearchDTO, pageable);
+	}
+	
 //	혼자만든 DB의 아이템을 전부 불러오는 메소드.
+	@Transactional(readOnly = true)
 	public List<ItemFormDTO> itemList() throws Exception {
 		List<ItemFormDTO> itemList = new ArrayList<>();
 		List<Item> allItem = itemRepository.findAll();

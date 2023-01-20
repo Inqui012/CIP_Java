@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.query.Param;
 
 import com.Shop.Entity.Item;
@@ -12,7 +13,8 @@ import com.Shop.Entity.Item;
 // 이 리포지토리 인터페이스가 상속받는 JpaRepository는 엔티티클래스, 해당 엔티티의 기본속성 데이터타입 형을 지정한다.
 // 여기서 기본속성 데이터타입은 해당 엔티티에서 @Id로 지정한 필드의 데이터타입이다.
 // 이 JpaRepository 에는 기본적인 CRUD, Pagination 를 위한 메소드가 포함되어 있다.
-public interface ItemRepository extends JpaRepository<Item, Long> {
+// QuerydslPredicateExecutor<Item>, ItemCustomRepository 는 페이징을 이용한 게시판형식의 출력을 위해 상속받는다.
+public interface ItemRepository extends JpaRepository<Item, Long>, QuerydslPredicateExecutor<Item>, ItemCustomRepository {
 //	Repository 인터페이스가 지원하는 네이밍 룰을 이용해 메소드를 작성하면 지정된 select 문을 간단하게 실행할 수 있다.
 //	기본적으로 find+엔티티이름(생략가능)+By+변수이름() 이다.
 //	변수이름은 쿼리메소드의 네이밍 룰을 참조.
@@ -37,5 +39,6 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
 //	이경우는 DB에서 직접 쿼리문을 작성하는것과 동일하게 테이블명과 컬럼명을 테이블에 맞추어주어야한다.
 	@Query(value = "SELECT * FROM ITEM I WHERE I.ITEM_DETAIL LIKE '%:itemDetail' ORDER BY I.PRICE DESC", nativeQuery = true)
 	List<Item> findByItemDeailNative(@Param("itemDetail") String itemDetail);
+	
 	
 }
