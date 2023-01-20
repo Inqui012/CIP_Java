@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/shopping}">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<th:block layout:fragment="script">
+		<script th:inline="javascript">
+	        $(document).ready(function(){
+	            $("#searchBtn").on("click",function(e) {
+	                e.preventDefault();
+	                page(0);
+	            });
+	        });
+	
+	        function page(page){
+	            var searchDateType = $("#searchDateType").val();
+	            var searchSellStatus = $("#searchSellStatus").val();
+	            var searchBy = $("#searchBy").val();
+	            var searchQuery = $("#searchQuery").val();
+	
+	            location.href="/admin/items/" + page + "?searchDateType=" + searchDateType
+	            + "&searchSellStatus=" + searchSellStatus
+	            + "&searchBy=" + searchBy
+	            + "&searchQuery=" + searchQuery;
+	        }
+		</script>
+	</th:block>
+	<th:block layout:fragment="css">
+		<style>
+			select {
+				margin-right: 10px
+			}
+		</style>
+	</th:block>
+</head>
+<body>
+	<div layout:fragment="section">
+		<section class="card">
+			<div class="card-body">
+				<!-- 검색기능을 위해서 form태그를 사용함 -->
+				<form th:action="@{'/admin/items/' + ${items.number}}" role="form" method="get" th:object="${items}">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>상품아이디</th>							
+								<th>상품명</th>							
+								<th>상태</th>							
+								<th>등록자</th>							
+								<th>등록일</th>							
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="item, status : ${items.getContent()}">
+								<th th:text="${item.id}" scope="row"></th>
+								<td>
+									<a th:href="'/admin/item/' + ${item.id}" th:text="${item.itemName}"></a>
+								</td>
+								<!-- T는 스프링 안에 있는 클래스에 바로 접근을 할수 있는 기능이다. 
+								${item.itemSellStatus == T(com.Shop.Constant.ItemSellStatus).SELL} ? '판매중' : '품절'
+								-->
+								<td th:if="${item.itemSellStatus == T(com.Shop.Constant.ItemSellStatus).SELL}">test</td>
+								<td th:text="${item.createBy}"></td>
+								<td th:text="${item.regTime}"></td>
+							</tr>
+						</tbody>
+					</table>
+					<nav aria-label="Page navigation example">
+					  <ul class="pagination d-flex justify-content-center">
+					    <li class="page-item">
+					      <a class="page-link" href="#" aria-label="Previous">
+					        <span aria-hidden="true">&laquo;</span>
+					      </a>
+					    </li>
+					    <li class="page-item"><a class="page-link" href="#">1</a></li>
+					    <li class="page-item"><a class="page-link" href="#">2</a></li>
+					    <li class="page-item"><a class="page-link" href="#">3</a></li>
+					    <li class="page-item">
+					      <a class="page-link" href="#" aria-label="Next">
+					        <span aria-hidden="true">&raquo;</span>
+					      </a>
+					    </li>
+					  </ul>
+					</nav>
+					<div class="d-flex justify-content-center" style="height: 40px" th:object="${itemSearchDTO}">
+						<select class="form-select form-select-lg mb-3" style="width: auto" th:field="${searchDateType}">
+						  <option value="all">전체기간</option>
+						  <option value="1d">1일</option>
+						  <option value="1w">1주</option>
+						  <option value="1m">1개월</option>
+						  <option value="6m">6개월</option>
+						</select>
+						<select class="form-select form-select-lg mb-3" style="width: auto" th:field="${searchSellStatus}">
+						  <option value="">판매상태 전체</option>
+						  <option value="SELL">판매중</option>
+						  <option value="SOLD_OUT">품절</option>
+						</select>
+						<select class="form-select form-select-lg mb-3" style="width: auto" th:field="${searchBy}">
+							<option value="itemName">상품명</option>
+						  	<option value="createBy">등록자</option>
+						</select>
+						<input type="text" class="form-control" placeholder="검색어 입력" style="width: auto" th:field="${searchQuery}">
+						<button type="submit" class="btn btn-primary mb-3" id="searchBtn" style="height: 100%">Find</button>
+					</div>
+				</form>
+			</div>
+		</section>
+	</div>
+</body>
+</html>

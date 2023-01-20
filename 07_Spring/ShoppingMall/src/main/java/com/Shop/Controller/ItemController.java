@@ -97,5 +97,22 @@ public class ItemController {
 		return "redirect:/";
 	}
 	
-	 
+	@GetMapping("/admin/items")
+	public String itemManage() {
+		return "item/shop_itemBoard";
+	}
+	
+//	내가 혼자 만들어본 아이템 리스트 보여주는 페이지. 선생님거하고 다름.
+//	아직 자세히는 아니지만 좀 감이 잡히는거 같기도 하고....
+	@GetMapping("/item")
+	public String itemList (Model model) {
+		try {
+			List<ItemFormDTO> itemList = itemService.itemList();
+			model.addAttribute("itemList", itemList);
+		} catch (Exception e) {
+			model.addAttribute("errorMessage", "상품리스트를 불러오는 중 에러가 발생함");
+			return "redirect:/";
+		}
+		return "item/shop_ItemList";
+	}
 }

@@ -86,6 +86,38 @@ JPA에서 DAO의 역할을 담당하는 클래스이다. DB작업이 필요한 �
 JPQL 을 사용하여 쿼리를 실행할시, 오류를 발견하기 위해서는 컴파일 시점까지 진행할 수밖에 없다. 이런 단점을 보완하고 빠르게 오류를 발견하기 위해 사용하는것이 QueryDsl이다. 의존성과 플러그인을 삽입하면 자동으로 각 엔티티에 맞춘 클래스를 생성해준다.  
 [Querydsl API](http://querydsl.com/static/querydsl/latest/reference/html/index.html)  
 
+#### @Genarated import 오류.
+자동으로 Q클래스를 생성하면서 @Generated 어노테이션을 잘못된 경로에서 import 해와서 오류가 생긴다.
+javax.annotation.Generated 가 올바른 경로인데 javax.annotation.proccessing.Generated 에서 가져올때,  
+Maven 의 Pom.xml 의 QueryDsl 플러그인을 아래처럼 변경하니 해결됨.  
+문제해결에 참조한 github => [java build failed](https://github.com/redhat-developer/vscode-java/issues/2799)  
+```xml
+<plugin>
+  <groupId>com.mysema.maven</groupId>
+  <artifactId>apt-maven-plugin</artifactId>
+  <version>1.1.3</version>
+  <executions>
+    <execution>
+      <goals>
+        <goal>process</goal>
+      </goals>
+      <configuration>
+	      <outputDirectory>target/generated-sources/java</outputDirectory>
+	      	<processors>
+		    	<processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
+		    </processors>
+		    <options>
+			    <querydsl.generatedAnnotationClass>
+                    javax.annotation.Generated
+                </querydsl.generatedAnnotationClass>
+			</options>
+           </configuration>
+    </execution>
+  </executions>
+</plugin>
+```
+
+
 ### Thymeleaf
 화면을 동적으로 만들기 위해서 사용하는 템플릿 엔진. 서버와의 통신을 통해 바로 View를 업데이트하는 React 같은 방식을 사용하기 위한 엔진인가?  
 여러가지 엔진이 존재하지만 Spring 에서는 Thymeleaf 를 권장한다. JSTL과 비슷한 느낌?
@@ -190,3 +222,4 @@ class B {
 ### 지연로딩
 엔티티를 조회할때, 연관관계를 가지고 있는 엔티티를 전부 가져오게 되는것을 즉시로딩이라고 한다. 엔티티의 갯수가 적을때에는 문제가 없지만 양이 늘어날수록 쓸모없는 데이터의 로딩을 하게되어 낭비가 심해진다.  
 이를 방지하기 위해 사용하는것이 지연로딩이다. 관계성을 설정한 어노테이션의 속성으로 fetch = FecthType.LAZY 를 설정해주면 되는데, 이러게 할 경우 처음에는 Proxy 라는 가상의 객체를 불러오고, 해당 필드에 지정되어 있는 데이터가 실제로 필요한 시점에 DB로 조회를 시작하여 데이터를 가져온다.
+

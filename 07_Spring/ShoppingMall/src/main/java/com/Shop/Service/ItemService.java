@@ -78,5 +78,16 @@ public class ItemService {
 		return modifyItem.getId();
 	}
 	
-
+//	혼자만든 DB의 아이템을 전부 불러오는 메소드.
+	public List<ItemFormDTO> itemList() throws Exception {
+		List<ItemFormDTO> itemList = new ArrayList<>();
+		List<Item> allItem = itemRepository.findAll();
+		for(int i = 0; i < allItem.size(); i++) {
+			ItemFormDTO listedItem = ItemFormDTO.of(allItem.get(i)); 
+			ItemImgDTO refImg = ItemImgDTO.of(itemImgRepository.findByItemIdOrderByIdAsc(allItem.get(i).getId()).get(0));
+			listedItem.getItemImgDTOList().add(refImg);
+			itemList.add(listedItem);
+		}
+		return itemList;
+	}
 }
