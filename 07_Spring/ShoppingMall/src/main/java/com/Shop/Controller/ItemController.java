@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.Shop.DTO.ItemFormDTO;
 import com.Shop.DTO.ItemSearchDTO;
+import com.Shop.DTO.MainItemDTO;
 import com.Shop.Entity.Item;
 import com.Shop.Repository.ItemRepository;
 import com.Shop.Service.ItemService;
@@ -107,14 +108,14 @@ public class ItemController {
 	public String itemManage(ItemSearchDTO itemSearchDTO, Model model, @PathVariable("Page") Optional<Integer> page) {
 //		PageRequest.of(페이지번호, 한페이지당 리스르갯수); 
 //		Optional 로 받아온 페이지 파라메터가 존재할경우 해당 숫자를, 없을경우 0 을 반환.
-		Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 2);
+		Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 3);
 		Page<Item> pages = itemService.getAdminItemPage(itemSearchDTO, pageable);
-		System.out.println(pages.getTotalPages());
 		model.addAttribute("items", pages);
 		model.addAttribute("itemSearchDTO", itemSearchDTO);
 		model.addAttribute("maxPage", 5);
 		return "item/shop_itemBoard";
 	}
+	
 	
 //	내가 혼자 만들어본 아이템 리스트 보여주는 페이지. 선생님거하고 다름.
 //	아직 자세히는 아니지만 좀 감이 잡히는거 같기도 하고....

@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.Shop.DTO.ItemFormDTO;
 import com.Shop.DTO.ItemImgDTO;
 import com.Shop.DTO.ItemSearchDTO;
+import com.Shop.DTO.MainItemDTO;
 import com.Shop.Entity.Item;
 import com.Shop.Entity.ItemImg;
 import com.Shop.Repository.ItemImgRepository;
@@ -84,6 +85,11 @@ public class ItemService {
 	@Transactional(readOnly = true)
 	public Page<Item> getAdminItemPage(ItemSearchDTO itemSearchDTO, Pageable pageable){
 		return itemRepository.getAdminItemPage(itemSearchDTO, pageable);
+	}
+
+	@Transactional(readOnly = true)
+	public Page<MainItemDTO> getMainItemPage(ItemSearchDTO itemSearchDTO, Pageable pageable){
+		return itemRepository.getMainItemPage(itemSearchDTO, pageable);
 	}
 	
 //	혼자만든 DB의 아이템을 전부 불러오는 메소드.
