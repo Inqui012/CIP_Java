@@ -32,9 +32,8 @@ public class MainController {
 	
 	private final ItemService itemService;
 	
-	@GetMapping({"/", "/{Page}"})
-	public String mainItem (ItemSearchDTO itemSearchDTO, Model model, @PathVariable("Page") Optional<Integer> page) {
-		System.out.println("testing");
+	@GetMapping("/")
+	public String mainItem (ItemSearchDTO itemSearchDTO, Model model, Optional<Integer> page) {
 		Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 6);
 		Page<MainItemDTO> pages = itemService.getMainItemPage(itemSearchDTO, pageable);
 		model.addAttribute("items", pages);

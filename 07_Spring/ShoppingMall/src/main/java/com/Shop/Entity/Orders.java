@@ -40,4 +40,29 @@ public class Orders {
 //	cascade 로 인한 delete 는 부모의 상태변화에 따른 설정이기 때문에 부모에게서 자식을 삭제한다고 해서 해당 자식 엔티티가 사라지지는 않음.
 	@OneToMany(mappedBy = "orders", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<OrderItem> orderItems = new ArrayList<>();
+	
+//	Orders 와 OrderItems 는 양방향 관계이기 때문에 자식객체인 item 를 더해줌과 동시에 자식객체에도 부모객체를 지정해줘야한다.
+	public void addOrderItem(OrderItem orderItem) {
+		orderItems.add(orderItem);
+		orderItem.setOrders(this);
+	}
+	
+	public static Orders createOrder(Member member, List<OrderItem> orderItem) {
+		Orders newOrders = new Orders();
+		newOrders.setMember(member);
+		for(OrderItem item : orderItem) {
+			newOrders.addOrderItem(item);
+		}
+		newOrders.setOrderStatus(OrderStatus.ORDER);
+		newOrders.setOrderDate(LocalDateTime.now());
+		return newOrders;
+	}
+	
+	public int getTotalPrice() {
+		int total = 0;
+		for (OrderItem item : orderItems) {
+			total += item.getTotalPrice();
+		}
+		return total;
+	}
 }

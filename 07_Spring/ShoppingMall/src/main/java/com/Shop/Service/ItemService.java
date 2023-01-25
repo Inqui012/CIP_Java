@@ -53,7 +53,7 @@ public class ItemService {
 //	이 설정은 강제로 em.flush() 를 하지 않는이상 플러시가 일어나지 않게 설정하는듯.
 //	따라서 의도치 않은 등록,수정,삭제가 동작하지 않고 오로지 읽어오기만 감지하고 영속성 컨텍스트에서 성능향상을 기대할 수 있다...?
 	@Transactional(readOnly = true)
-	public ItemFormDTO findModItem(Long itemId) throws Exception {
+	public ItemFormDTO findModItem(Long itemId) {
 //		find 메소드 오타주의.....
 		List<ItemImg> itemImgList = itemImgRepository.findByItemIdOrderByIdAsc(itemId);
 		List<ItemImgDTO> itemImgDTOList = new ArrayList<>();

@@ -4,6 +4,7 @@ import javax.persistence.*;
 import lombok.*;
 import com.Shop.Constant.ItemSellStatus;
 import com.Shop.DTO.ItemFormDTO;
+import com.Shop.Exception.OutofStockExection;
 
 @Entity
 // 생성할 테이블의 이름을 지정할 수 있다. DB와의 매핑기능도 겸함.
@@ -43,4 +44,12 @@ public class Item extends BaseEntity {
 		this.itemSellStatus = itemFormDTO.getItemSellStatus();
 	}
 	
+//	상품의 재고감소 
+	public void removeStock(int stockNumber) {
+		int restStock = this.stockNumber - stockNumber;
+		if(restStock < 0) {
+			throw new OutofStockExection("상품의 재고가 부족합니다. (현재고 : " + this.stockNumber + ")");
+		}
+		this.stockNumber = restStock;
+	}
 }

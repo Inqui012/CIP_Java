@@ -116,6 +116,14 @@ public class ItemController {
 		return "item/shop_itemBoard";
 	}
 	
+//	상품 상세페이지
+	@GetMapping("/item/{Id}")
+	public String itemDetail(Model model, @PathVariable("Id") Long id) {
+		ItemFormDTO itemFromDTO = itemService.findModItem(id);
+		model.addAttribute("itemDetail", itemFromDTO);
+		return "item/shop_ItemDetail";
+	}
+	
 	
 //	내가 혼자 만들어본 아이템 리스트 보여주는 페이지. 선생님거하고 다름.
 //	아직 자세히는 아니지만 좀 감이 잡히는거 같기도 하고....
