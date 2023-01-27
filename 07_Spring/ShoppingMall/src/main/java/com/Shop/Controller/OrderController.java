@@ -74,4 +74,9 @@ public class OrderController {
 		model.addAttribute("maxPage", 5);
 		return "member/shop_orderList";
 	}
+	
+	@PostMapping("/order/{OrderId}/cancel")
+	public void cancelOrders (@PathVariable("OrderId") Optional<Long> orderId, Principal principal) {
+		
+	}
 }

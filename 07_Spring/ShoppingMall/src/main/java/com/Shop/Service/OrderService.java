@@ -65,4 +65,14 @@ public class OrderService {
 		}
 		return new PageImpl<OrderHistDTO>(orderHistDTOList, pageable, countTotal);
 	}
+	
+//	현재 사용자와 주문자가 같은 인물인지 확인
+	public boolean validateOrder() {
+		return false;
+	}
+	
+//	주문 취소
+	public void canceling() {
+		
+	}
 }

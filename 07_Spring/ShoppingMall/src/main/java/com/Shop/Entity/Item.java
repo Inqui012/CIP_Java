@@ -52,4 +52,9 @@ public class Item extends BaseEntity {
 		}
 		this.stockNumber = restStock;
 	}
+	
+//	주문취소시 상품재고 복원
+	public void restoreStock(int stockNumber) {
+		this.stockNumber += stockNumber;
+	}
 }

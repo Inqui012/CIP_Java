@@ -65,4 +65,11 @@ public class Orders {
 		}
 		return total;
 	}
+	
+	public void cancleOrder() {
+		this.orderStatus = (OrderStatus.CANCEL);
+		for(OrderItem orderItem : orderItems) {
+			orderItem.cancleItem();
+		}
+	}
 }
