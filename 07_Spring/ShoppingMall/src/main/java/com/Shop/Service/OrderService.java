@@ -9,6 +9,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.thymeleaf.util.StringUtils;
 
 import com.Shop.DTO.OrderDTO;
 import com.Shop.DTO.OrderHistDTO;
@@ -67,12 +68,28 @@ public class OrderService {
 	}
 	
 //	현재 사용자와 주문자가 같은 인물인지 확인
-	public boolean validateOrder() {
-		return false;
+	@Transactional(readOnly = true)
+	public boolean validateOrder(Long orderId, String email) {
+		Member curMember = memberRepository.findByEmail(email);
+		Orders curOrder = orderRepository.findById(orderId).orElseThrow(EntityNotFoundException::new);
+		if(!StringUtils.equals(curMember.getEmail(), curOrder.getMember().getEmail())) {
+			return false;			
+		}
+		return true;
 	}
 	
 //	주문 취소
-	public void canceling() {
-		
+	public void canceling(Long orderId, String email) {
+		Orders order = orderRepository.findById(orderId).orElseThrow(EntityNotFoundException::new);
+		order.cancleOrder();
+	}
+	
+//	주문 삭제
+	public void deleting(Long orderId) {
+//		엔티티에 관계성을 설정해놓았기 때문에 Orders 항목을 삭제하면 동시에 포함하던 OrderItem 테이블도 삭제가 진행된다.
+		orderRepository.deleteById(orderId);
+//		아래 코드랑 동일한 일을 하는것 같은데. 한줄로 끝낼 수 있네.
+//		Orders order = orderRepository.findById(orderId).orElseThrow(EntityNotFoundException::new);
+//		orderRepository.delete(order);
 	}
 }
