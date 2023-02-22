@@ -1,7 +1,6 @@
 # Java
 
 from 2022 10 05. Java 정처기.
-https://themeisle.com/illustrations/
 ---
 
 ## 프로젝트 흐름
